@@ -1,126 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\",
+  "WorkspaceRootPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00007-create table contact.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00007-create table contact.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+      "AbsoluteMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|solutionrelative:application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00003-create table users.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00003-create table users.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00005-create table monthlyplan.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00005-create table monthlyplan.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82678F2B-C55D-44FD-8913-04DB59FDCDB2}|Solution Items{82678F2B-C55D-44FD-8913-04DB59FDCDB2}|C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\README.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{82678F2B-C55D-44FD-8913-04DB59FDCDB2}|Solution Items{82678F2B-C55D-44FD-8913-04DB59FDCDB2}|solutionrelative:README.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00006-create table transactions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00006-create table transactions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\dbupgrader.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\dbupgrader.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\webapi\\webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\infrastructure\\repositories\\authenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\infrastructure\\repositories\\authenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\authenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\infrastructure\\handlers\\genericerrorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\handlers\\genericerrorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0E97495-F135-4362-8B58-4A15E30ED31D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\infrastructure\\handlers\\identityhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\handlers\\identityhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\infrastructure\\handlers\\passwordhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{398C8671-DDFC-41D2-8960-C900E8A508B0}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\handlers\\passwordhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\application\\services\\authorizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\application\\services\\authorizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|solutionrelative:application\\services\\authorizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\application\\interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D57A06BB-BA85-4D51-9E74-8298BD4082B2}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\webapicontracts\\usercredentialscontract1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|solutionrelative:webapicontracts\\usercredentialscontract1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\webapicontracts\\mappers\\usercredentials1mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|solutionrelative:webapicontracts\\mappers\\usercredentials1mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00001-create db.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{08205697-9733-40AA-8CD4-0505221A96CE}|Domain\\Domain.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08205697-9733-40AA-8CD4-0505221A96CE}|Domain\\Domain.csproj|solutionrelative:domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\webapicontracts\\mappers\\usercredentialsmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|solutionrelative:webapicontracts\\mappers\\usercredentialsmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00002-create schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\webapicontracts\\usercredentialscontract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7845B306-D601-47A7-9E7A-3E9BE1E51A73}|WebApiContracts\\WebApiContracts.csproj|solutionrelative:webapicontracts\\usercredentialscontract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00004-create table plandetails.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00006-create table transactions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00006-create table transactions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00005-create table monthlyplan.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00005-create table monthlyplan.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00003-create table users.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00003-create table users.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|c:\\openwork\\centric summer practice\\summerpracticeac\\summerpracticeac\\dbupgrader\\scripts\\step00007-create table contact.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{9D5D9407-7096-46B7-B124-83B0BDA38016}|DbUpgrader\\DbUpgrader.csproj|solutionrelative:dbupgrader\\scripts\\step00007-create table contact.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{08205697-9733-40AA-8CD4-0505221A96CE}|Domain\\Domain.csproj|c:\\users\\andrei\\desktop\\centric\\spendwise\\summerpracticeac\\domain\\usercredentials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08205697-9733-40AA-8CD4-0505221A96CE}|Domain\\Domain.csproj|solutionrelative:domain\\usercredentials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -130,252 +54,208 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1341,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 11,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Step00005-create table MonthlyPlan.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00005-create table MonthlyPlan.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00005-create table MonthlyPlan.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00005-create table MonthlyPlan.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00005-create table MonthlyPlan.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:54:12.056Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{65ddf8c3-8f89-4077-a6c6-dbb8853aab13}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "WebApi\\appsettings.json",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\appsettings.json",
-              "RelativeToolTip": "WebApi\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAACKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-09T12:01:30.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Program.cs",
-              "RelativeDocumentMoniker": "DbUpgrader\\Program.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Program.cs",
-              "RelativeToolTip": "DbUpgrader\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAgAAAA",
+              "DocumentIndex": 0,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\DependencyInjection.cs",
+              "RelativeToolTip": "Application\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T12:01:20.933Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "WebApi\\Program.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\Program.cs",
-              "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T15:08:43.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Step00001-create db.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00001-create db.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00001-create db.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00001-create db.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00001-create db.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:51:50.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Step00002-create schema.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00002-create schema.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00002-create schema.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00002-create schema.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00002-create schema.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T13:08:24.99Z",
+              "WhenOpened": "2024-07-10T15:08:57.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Step00003-create table Users.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00003-create table Users.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00003-create table Users.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00003-create table Users.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00003-create table Users.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:52:34.501Z",
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAADgvxMAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T15:08:51.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserCredentials1Mapper.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\Mappers\\UserCredentials1Mapper.cs",
+              "RelativeDocumentMoniker": "WebApiContracts\\Mappers\\UserCredentials1Mapper.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\Mappers\\UserCredentials1Mapper.cs",
+              "RelativeToolTip": "WebApiContracts\\Mappers\\UserCredentials1Mapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T14:51:23.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Step00004-create table PlanDetails.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00004-create table PlanDetails.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00004-create table PlanDetails.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00004-create table PlanDetails.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00004-create table PlanDetails.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:53:28.437Z",
+              "Title": "UserCredentialsContract1.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\UserCredentialsContract1.cs",
+              "RelativeDocumentMoniker": "WebApiContracts\\UserCredentialsContract1.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\UserCredentialsContract1.cs",
+              "RelativeToolTip": "WebApiContracts\\UserCredentialsContract1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T14:50:04.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Step00007-create table Contact.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00007-create table Contact.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00007-create table Contact.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00007-create table Contact.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00007-create table Contact.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:55:08.007Z",
+              "DocumentIndex": 3,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAnwC0AAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:56:15.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthorizationService.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Services\\AuthorizationService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\AuthorizationService.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Services\\AuthorizationService.cs",
+              "RelativeToolTip": "Application\\Services\\AuthorizationService.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAQwEoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:38:19.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthenticationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Repositories\\AuthenticationRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\AuthenticationRepository.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Repositories\\AuthenticationRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\AuthenticationRepository.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAQwCwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:44:56.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserCredentialsMapper.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\Mappers\\UserCredentialsMapper.cs",
+              "RelativeDocumentMoniker": "WebApiContracts\\Mappers\\UserCredentialsMapper.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\Mappers\\UserCredentialsMapper.cs",
+              "RelativeToolTip": "WebApiContracts\\Mappers\\UserCredentialsMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:54:12.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "README.txt",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\README.txt",
-              "RelativeDocumentMoniker": "README.txt",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\README.txt",
-              "RelativeToolTip": "README.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-07-09T12:00:38.207Z",
+              "Title": "UserCredentialsContract.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\UserCredentialsContract.cs",
+              "RelativeDocumentMoniker": "WebApiContracts\\UserCredentialsContract.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\UserCredentialsContract.cs",
+              "RelativeToolTip": "WebApiContracts\\UserCredentialsContract.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:53:20.924Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Step00006-create table Transactions.sql ",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00006-create table Transactions.sql",
-              "RelativeDocumentMoniker": "DbUpgrader\\Scripts\\Step00006-create table Transactions.sql",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\Scripts\\Step00006-create table Transactions.sql",
-              "RelativeToolTip": "DbUpgrader\\Scripts\\Step00006-create table Transactions.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-07-09T11:55:48.766Z",
+              "Title": "UserCredentials.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\UserCredentials.cs",
+              "RelativeDocumentMoniker": "Domain\\UserCredentials.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\UserCredentials.cs",
+              "RelativeToolTip": "Domain\\UserCredentials.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:35:44.174Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "WebApi",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj",
-              "RelativeDocumentMoniker": "WebApi\\WebApi.csproj",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj",
-              "RelativeToolTip": "WebApi\\WebApi.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-09T12:26:30.066Z",
+              "DocumentIndex": 7,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\User.cs",
+              "ToolTip": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\User.cs",
+              "RelativeToolTip": "Domain\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T13:34:35.66Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1341,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DbUpgrader.csproj",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
-              "RelativeDocumentMoniker": "DbUpgrader\\DbUpgrader.csproj",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
-              "RelativeToolTip": "DbUpgrader\\DbUpgrader.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-09T12:24:17.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AuthenticationRepository.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Repositories\\AuthenticationRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\AuthenticationRepository.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Repositories\\AuthenticationRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Repositories\\AuthenticationRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T17:46:22.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "GenericErrorHandler.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\GenericErrorHandler.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Handlers\\GenericErrorHandler.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\GenericErrorHandler.cs",
-              "RelativeToolTip": "Infrastructure\\Handlers\\GenericErrorHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T15:57:30.46Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACoAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T15:12:53.311Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IdentityHandler.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\IdentityHandler.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Handlers\\IdentityHandler.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\IdentityHandler.cs",
-              "RelativeToolTip": "Infrastructure\\Handlers\\IdentityHandler.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T14:57:31.933Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IPasswordHasher.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Interfaces\\IPasswordHasher.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\IPasswordHasher.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Interfaces\\IPasswordHasher.cs",
-              "RelativeToolTip": "Application\\Interfaces\\IPasswordHasher.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T14:54:40.2Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "PasswordHandler.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\PasswordHandler.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Handlers\\PasswordHandler.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Handlers\\PasswordHandler.cs",
-              "RelativeToolTip": "Infrastructure\\Handlers\\PasswordHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T14:38:53.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AuthorizationService.cs",
-              "DocumentMoniker": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Services\\AuthorizationService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\AuthorizationService.cs",
-              "ToolTip": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Services\\AuthorizationService.cs",
-              "RelativeToolTip": "Application\\Services\\AuthorizationService.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAC4AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T14:35:50.761Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             }
           ]
         }

@@ -33,3 +33,21 @@ C:\OPENWORK\CENTRIC SUMMER PRACTICE\SummerPracticeAC\SummerPracticeAC\Infrastruc
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SummerPracticeAC\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SummerPracticeAC\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SummerPracticeAC\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

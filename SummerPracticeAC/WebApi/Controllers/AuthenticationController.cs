@@ -30,11 +30,11 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult<string>> LoginUser([FromQuery] UserCredentialsContract credentialsContract)
+        public async Task<ActionResult<string>> LoginUser([FromQuery] UserCredentialsContract1 credentialsContract)
         {
             var result = await this._authorizationService.LoginUser(credentialsContract.MapTestToDomain());
 
-            _logger.LogInformation("Logged in as user: "+result.Username);
+            _logger.LogInformation("Logged in as user: "+result.Name);
 
             return Ok(result);
         }
@@ -46,19 +46,6 @@ namespace WebApi.Controllers
             var result = await this._authorizationService.GiveUserAdminRights(email);
 
             return Ok(result);
-        }
-
-        [HttpGet]
-        public ActionResult<string> TestMethod()
-        {
-            return Ok("Test works!");
-        }
-
-        [HttpGet]
-        [Authorize(Policy = IdentityData.AdminUserPolicyName)]
-        public ActionResult<string> TestMethod2()
-        {
-            return Ok("Test works!");
         }
     }
 }

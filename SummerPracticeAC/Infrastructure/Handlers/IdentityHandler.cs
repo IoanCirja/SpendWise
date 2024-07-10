@@ -30,14 +30,14 @@ namespace Infrastructure.Handlers
             {
                 IsAuthenticated = true,
                 AuthenticationType = JwtBearerDefaults.AuthenticationScheme,
-                Name = "SummerPracticeAC"
+                Name = "SpendWise"
             };
 
             var token = tokenHandler.WriteToken(tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(jwtBearerAuthenticatedClient, new List<Claim>
                 {
-                    new(JwtRegisteredClaimNames.Name, "SummerPracticeAC"),
+                    new(JwtRegisteredClaimNames.Name, "SpendWise"),
                     new("admin",user.Role == "admin" ? "true" : "false")
                 }),
                 Expires = expiry,

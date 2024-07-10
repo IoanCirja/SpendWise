@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj": {
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\obj\\",
+        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj"
               }
             }
           }
@@ -83,17 +83,17 @@
         }
       }
     },
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj": {
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -144,17 +144,17 @@
         }
       }
     },
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -169,8 +169,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj"
               }
             }
           }
@@ -231,17 +231,17 @@
         }
       }
     },
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj": {
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
+        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
         "projectName": "WebApiContracts",
-        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
-        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\obj\\",
+        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
+        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -256,8 +256,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Domain\\Domain.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj"
               }
             }
           }
@@ -296,17 +296,17 @@
         }
       }
     },
-    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -321,14 +321,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Application\\Application.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Application\\Application.csproj"
               },
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Infrastructure\\Infrastructure.csproj"
               },
-              "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj": {
-                "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SummerPracticeAC\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj"
+              "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj": {
+                "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj"
               }
             }
           }

@@ -5,8 +5,8 @@ namespace Infrastructure.Handlers
 {
     public class PasswordHandler : IPasswordHasher
     {
-        private const int Salt = 128 / 8;
-        private const int KeySize = 256 / 8;
+        private const int Salt = 64 / 8;
+        private const int KeySize = 128 / 8;
         private const int Iterations = 10000;
         private static readonly HashAlgorithmName _hashAlgorithmName = HashAlgorithmName.SHA256;
         private const char Delimiter = '.';

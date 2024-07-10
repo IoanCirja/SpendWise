@@ -27,13 +27,18 @@ namespace Application.Services
                 throw new Exception("User already registered");
                 //throw new NullReferenceException("User already registered");
             }
+            if (credentials.Password != credentials.ConfirmPassword)
+            {
+                throw new Exception("Passwords are different");
+            }
 
             var hashedPassword = this._passwordHasher.Hash(credentials.Password);
             var registerResult = await this._authenticationRepository.RegisterUser(new UserCredentials
             {
-                Username = credentials.Username,
-                Password = hashedPassword,
+                Name = credentials.Name,
                 Email = credentials.Email,
+                Password = hashedPassword,
+                Phone = credentials.Phone,
                 Role = "user"
             });
 
@@ -51,9 +56,11 @@ namespace Application.Services
 
             var result = new User
             {
-                Username = userHashed.FirstOrDefault().Username,
+                ID = userHashed.FirstOrDefault().ID,
+                Name = userHashed.FirstOrDefault().Name,
                 Email = userHashed.FirstOrDefault().Email,
                 Role = userHashed.FirstOrDefault().Role,
+                Phone = userHashed.FirstOrDefault().Phone,
             };
 
             var jwtToken = this._identityHandler.GenerateToken(result);

@@ -18,7 +18,6 @@ namespace Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHandler>();
 
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
-            services.AddScoped<IFileRepository, FileRepository>();
             return services;
         }
     }

@@ -9,9 +9,11 @@ namespace WebApiContracts.Mappers
         {
             return new UserCredentials
             {
-                Username = credentials.Username,
+                Name = credentials.Name,
+                Email = credentials.Email,
                 Password = credentials.Password,
-                Email = credentials.Email
+                ConfirmPassword = credentials.ConfirmPassword,
+                Phone = credentials.Phone,
             };
         } 
 
