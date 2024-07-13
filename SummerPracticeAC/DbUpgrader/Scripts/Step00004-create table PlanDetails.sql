@@ -6,7 +6,7 @@ BEGIN
     CREATE TABLE SpendWise.PlanDetails(
         plan_id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
         name NVARCHAR(40) NOT NULL,
-		description NVARCHAR(300) NOT NULL,
+		description NVARCHAR(1000) NOT NULL,
 		noCategory INT NOT NULL,
         category NVARCHAR(200) NOT NULL
     );

@@ -1,6 +1,6 @@
 ﻿USE SpendWiseDB;
 GO
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Transactions' AND schema_id = SCHEMA_ID('SpendWise'))
+IF  EXISTS (SELECT * FROM sys.tables WHERE name = 'Transactions' AND schema_id = SCHEMA_ID('SpendWise'))
 BEGIN
   INSERT INTO SpendWise.Transactions (name, monthlyPlan_id, date, category, amount)
 VALUES 

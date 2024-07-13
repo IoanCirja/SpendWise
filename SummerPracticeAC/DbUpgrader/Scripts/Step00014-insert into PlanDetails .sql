@@ -1,4 +1,6 @@
 ﻿BEGIN
+IF  EXISTS (SELECT * FROM sys.tables WHERE name = 'PlanDetails' AND schema_id = SCHEMA_ID('SpendWise'))
+BEGIN
 INSERT INTO SpendWise.PlanDetails (name, description, noCategory, category, imagine, created_by)
 VALUES 
     ('Student plan', 'The Student Budget Plan is designed to help students manage their finances effectively while pursuing their education. This plan aims to provide a structured approach to budgeting, ensuring that students can cover essential expenses, save for the future, and enjoy their college life without financial stress.', 8, 'Food, Rent, Utilities, Entertainment, Clothes, Transportation, Education, Misicellaneous','images/student.svg','Sabina'),
@@ -13,4 +15,5 @@ VALUES
     ('Pet care Plan', 'The Pet Care Plan is designed to help pet owners manage their pet-related expenses efficiently. This plan provides a structured approach to budgeting and managing costs associated with pet care, ensuring that owners can cover essential expenses without exceeding their financial limits. It includes strategies for budgeting expenses such as pet food, monthly maintenance, utilities, entertainment, transportation, and other specific pet needs. By following this plan, pet owners can ensure good care for their pets while maintaining a balanced financial approach.', 12, 'Food, Rent/Monthly rate, Utilities, Entertainment, Clothes, Transportation, Misicellaneous, Pet food, Veterinary, Grooming, Toys and accesories, Pet insurance','images/startup.svg','Sabina'),
     ('Medical expense plan', 'The Medical Expense Plan is designed to help individuals and families effectively manage their healthcare expenses. This plan provides a structured approach to budgeting and preparing for medical costs, ensuring that necessary healthcare needs can be met without financial strain. It includes strategies for budgeting expenses such as doctor visits, medications, procedures, and health insurance premiums. By following this plan, individuals and families can maintain their health and well-being while managing healthcare expenses responsibly and effectively.', 11, 'Food, Rent/Monthly rate, Utilities, Entertainment, Clothes, Transportation, Misicellaneous, Doctor visits, Medications, Procedures, Insurance','images/startup.svg','Andrei'),
     ('Default plan', '50-30-20 rule', 3, 'Needs, Wants, Savings','images/travel.svg','Ioan');
+END
 END
