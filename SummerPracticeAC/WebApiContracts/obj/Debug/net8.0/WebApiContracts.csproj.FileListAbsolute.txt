@@ -45,3 +45,19 @@ C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\WebApiContracts\obj\D
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\refint\WebApiContracts.dll
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.pdb
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\ref\WebApiContracts.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\bin\Debug\net8.0\WebApiContracts.deps.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\bin\Debug\net8.0\WebApiContracts.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\bin\Debug\net8.0\WebApiContracts.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\bin\Debug\net8.0\Domain.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\bin\Debug\net8.0\Domain.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.csproj.AssemblyReference.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.AssemblyInfoInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.AssemblyInfo.cs
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.csproj.CoreCompileInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.sourcelink.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiCo.57717283.Up2Date
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\refint\WebApiContracts.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\WebApiContracts.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\WebApiContracts\obj\Debug\net8.0\ref\WebApiContracts.dll

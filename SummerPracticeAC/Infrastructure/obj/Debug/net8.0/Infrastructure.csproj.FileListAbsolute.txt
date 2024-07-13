@@ -51,3 +51,21 @@ C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\De
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

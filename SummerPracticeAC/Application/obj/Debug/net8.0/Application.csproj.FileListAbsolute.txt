@@ -45,3 +45,19 @@ C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Application\obj\Debug
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\refint\Application.dll
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\ANDREI\Desktop\Centric\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\ref\Application.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\bin\Debug\net8.0\Application.deps.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\bin\Debug\net8.0\Application.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\bin\Debug\net8.0\Application.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\bin\Debug\net8.0\Domain.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\bin\Debug\net8.0\Domain.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.sourcelink.json
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\refint\Application.dll
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\Application.pdb
+C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Application\obj\Debug\net8.0\ref\Application.dll

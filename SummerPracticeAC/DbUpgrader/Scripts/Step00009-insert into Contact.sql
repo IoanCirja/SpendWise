@@ -1,7 +1,7 @@
 ﻿USE SpendWiseDB;
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Contact' AND schema_id = SCHEMA_ID('SpendWise'))
+IF  EXISTS (SELECT * FROM sys.tables WHERE name = 'Contact' AND schema_id = SCHEMA_ID('SpendWise'))
 BEGIN
 INSERT INTO SpendWise.Contact (firstName, lastName, email, message, status)
 VALUES ('Ioan', 'Cîrjă', 'ioan.cirja@student.tuiasi.ro', 'I would like more information.', 'RECEIVED'),
