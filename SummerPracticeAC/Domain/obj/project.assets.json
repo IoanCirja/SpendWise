@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ANDREI\\.nuget\\packages\\": {}
+    "C:\\Users\\IoanC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\Domain\\obj\\",
+      "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
+      "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

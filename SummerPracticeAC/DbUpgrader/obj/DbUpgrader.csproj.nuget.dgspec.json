@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj": {}
+    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj": {
+    "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
+        "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
         "projectName": "DbUpgrader",
-        "projectPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
-        "packagesPath": "C:\\Users\\ANDREI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ANDREI\\Desktop\\Centric\\SpendWise\\SummerPracticeAC\\DbUpgrader\\obj\\",
+        "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
+        "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
+        "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ANDREI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
