@@ -11,3 +11,4 @@ BEGIN
         role NVARCHAR(30) NOT NULL DEFAULT 'user'
     );
 END
+GO

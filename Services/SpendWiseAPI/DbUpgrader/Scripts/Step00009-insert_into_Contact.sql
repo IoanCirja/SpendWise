@@ -11,3 +11,4 @@ VALUES ('Ioan', 'Cîrjă', 'ioan.cirja@student.tuiasi.ro', 'I would like more in
  ('Andrei', 'Cazamir', 'andrei.cazamir@student.tuiasi.ro', 'I would like more information.', 'RECEIVED');
 
 END
+GO

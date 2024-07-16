@@ -8,3 +8,4 @@ VALUES
     ('sabina-nadejda.barila@student.tuiasi.ro'),
     ('ioan.cirja@student.tuiasi.ro');
 END
+GO

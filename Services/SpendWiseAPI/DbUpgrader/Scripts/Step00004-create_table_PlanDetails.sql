@@ -13,3 +13,4 @@ BEGIN
         FOREIGN KEY (created_by) REFERENCES SpendWise.Users(user_id)
     );
 END
+GO
