@@ -9,8 +9,5 @@
         public int noCategory { get; set; }
 
         public string category { get; set; }
-
-
-
     }
 }

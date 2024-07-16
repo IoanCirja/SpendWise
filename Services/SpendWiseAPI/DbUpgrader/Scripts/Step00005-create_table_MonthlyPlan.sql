@@ -16,3 +16,4 @@ BEGIN
 		FOREIGN KEY (plan_id) REFERENCES SpendWise.PlanDetails(plan_id)
     );
 END
+GO

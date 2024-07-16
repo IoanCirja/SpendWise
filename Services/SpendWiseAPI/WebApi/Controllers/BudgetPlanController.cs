@@ -17,12 +17,20 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetFile()
+        public async Task<ActionResult> GetPlans()
         {
             var result = this._planService.GetPlans();
 
             return Ok(result);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPlan([FromQuery] Guid id)
+        {
+            var result = this._planService.GetPlan(id);
+
+            return Ok(result);
+        }
     }
 }

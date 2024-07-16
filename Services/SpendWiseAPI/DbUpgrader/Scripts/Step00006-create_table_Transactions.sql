@@ -13,3 +13,4 @@ BEGIN
 		FOREIGN KEY (monthlyPlan_id) REFERENCES SpendWise.MonthlyPlan(monthlyPlan_id)
     );
 END
+GO

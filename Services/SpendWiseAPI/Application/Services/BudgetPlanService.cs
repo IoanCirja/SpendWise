@@ -18,9 +18,13 @@ namespace Application.Services
 
             return _budgetPlanRepository.GetPlans();
         }
+        public List<BudgetPlan> GetPlan(Guid id)
+        {
+            return _budgetPlanRepository.GetPlan(id);
+        }
 
 
 
-       
+
     }
 }
