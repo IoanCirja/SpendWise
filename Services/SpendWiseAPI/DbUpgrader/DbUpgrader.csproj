@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\Step00001-create db.sql" />
+    <None Remove="Scripts\Step00002-create schema.sql" />
+    <None Remove="Scripts\Step00003-create table Users.sql" />
+    <None Remove="Scripts\Step00004-create table PlanDetails.sql" />
+    <None Remove="Scripts\Step00005-create table MonthlyPlan.sql" />
+    <None Remove="Scripts\Step00006-create table Transactions.sql" />
+    <None Remove="Scripts\Step00007-create table Contact.sql" />
+    <None Remove="Scripts\Step00008-create table Subscriptions.sql" />
+    <None Remove="Scripts\Step00009-insert into Contact.sql" />
+    <None Remove="Scripts\Step00010-insert into Subscriptions.sql" />
+    <None Remove="Scripts\Step00011-insert into Users.sql" />
+    <None Remove="Scripts\Step00012- alter tablePlanDetails %27imagine%27.sql" />
+    <None Remove="Scripts\Step00013- alter tablePlanDetails %27created by%27 .sql" />
+    <None Remove="Scripts\Step00014-insert into PlanDetails .sql" />
+    <None Remove="Scripts\Step00016-insert into Transactions.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Step00001-create db.sql" />
+	<EmbeddedResource Include="Scripts\Step00002-create schema.sql" />
+	<EmbeddedResource Include="Scripts\Step00003-create table Users.sql" />
+    <EmbeddedResource Include="Scripts\Step00004-create table PlanDetails.sql" />
+    <EmbeddedResource Include="Scripts\Step00005-create table MonthlyPlan.sql" />
+    <EmbeddedResource Include="Scripts\Step00006-create table Transactions.sql" />
+    <EmbeddedResource Include="Scripts\Step00007-create table Contact.sql" />
+    <EmbeddedResource Include="Scripts\Step00008-create table Subscriptions.sql" />
+    <EmbeddedResource Include="Scripts\Step00009-insert into Contact.sql" />
+    <EmbeddedResource Include="Scripts\Step00010-insert into Subscriptions.sql" />
+    <EmbeddedResource Include="Scripts\Step00011-insert into Users.sql" />
+    <EmbeddedResource Include="Scripts\Step00012- alter tablePlanDetails 'imagine'.sql" />
+    <EmbeddedResource Include="Scripts\Step00013- alter tablePlanDetails 'created by' .sql" />
+    <EmbeddedResource Include="Scripts\Step00014-insert into PlanDetails .sql" />
+    <EmbeddedResource Include="Scripts\Step00016-insert into Transactions.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dbup" Version="5.0.40" />
+  </ItemGroup>
+
+</Project>
