@@ -40,7 +40,6 @@
     <EmbeddedResource Include="Scripts\Step00012- alter tablePlanDetails 'imagine'.sql" />
     <EmbeddedResource Include="Scripts\Step00013- alter tablePlanDetails 'created by' .sql" />
     <EmbeddedResource Include="Scripts\Step00014-insert into PlanDetails .sql" />
-    <EmbeddedResource Include="Scripts\Step00015-insert into Transactions.sql" />
   </ItemGroup>
 
   <ItemGroup>

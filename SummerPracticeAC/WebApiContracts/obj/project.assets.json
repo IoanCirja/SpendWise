@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IoanC\\.nuget\\packages\\": {}
+    "C:\\Users\\CristiBos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
+      "projectUniqueName": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
       "projectName": "WebApiContracts",
-      "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
-      "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-      "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\WebApiContracts\\obj\\",
+      "projectPath": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\WebApiContracts\\WebApiContracts.csproj",
+      "packagesPath": "C:\\Users\\CristiBos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\WebApiContracts\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CristiBos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -54,8 +54,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj"
+            "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\Domain\\Domain.csproj"
             }
           }
         }

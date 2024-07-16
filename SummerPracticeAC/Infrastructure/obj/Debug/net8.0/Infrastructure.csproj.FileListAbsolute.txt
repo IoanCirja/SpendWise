@@ -69,3 +69,21 @@ C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\ob
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\OPENWORK\CENTRIC SUMMER PRACTICE\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\CristiBos\Source\Repos\SpendWise\SummerPracticeAC\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

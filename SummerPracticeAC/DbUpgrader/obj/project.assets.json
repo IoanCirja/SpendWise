@@ -7833,19 +7833,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IoanC\\.nuget\\packages\\": {}
+    "C:\\Users\\CristiBos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
+      "projectUniqueName": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
       "projectName": "DbUpgrader",
-      "projectPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
-      "packagesPath": "C:\\Users\\IoanC\\.nuget\\packages\\",
-      "outputPath": "C:\\OPENWORK\\CENTRIC SUMMER PRACTICE\\SpendWise\\SummerPracticeAC\\DbUpgrader\\obj\\",
+      "projectPath": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\DbUpgrader\\DbUpgrader.csproj",
+      "packagesPath": "C:\\Users\\CristiBos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CristiBos\\Source\\Repos\\SpendWise\\SummerPracticeAC\\DbUpgrader\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\IoanC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CristiBos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
