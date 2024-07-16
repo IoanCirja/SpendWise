@@ -1,0 +1,21 @@
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.875em;
+}
+
+.is-invalid {
+  border-color: red;
+}
