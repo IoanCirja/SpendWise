@@ -11,7 +11,7 @@ namespace Application.Interfaces
     {
         Task<bool> AddMonthlyPlans(MonthlyPlan monthlyPlan );
         Task<bool> CancelMonthlyPlan(Guid id);
-        List<MonthlyPlan> GetMonthlyPlans(Guid user_id);
-        List<MonthlyPlan> GetMonthlyPlan(Guid monthlyPlan_id);
+        List<MonthlyPlanGetNameDate> GetMonthlyPlans(Guid user_id);
+        List<MonthlyPlanGet> GetMonthlyPlan(Guid monthlyPlan_id);
     }
 }

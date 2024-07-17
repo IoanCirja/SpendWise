@@ -49,18 +49,15 @@ namespace Application.Services
         {
             var userHashed = await this._authenticationRepository.GetUser(credentials.Email);
 
-            if (!_passwordHasher.Verify(userHashed.FirstOrDefault().Password, credentials.Password))
+            if (userHashed.ToList().Count==0 || !_passwordHasher.Verify(userHashed.FirstOrDefault().Password, credentials.Password))
             {
                 throw new Exception("Username or password are incorrect");
             }
 
             var result = new User
             {
-                ID = userHashed.FirstOrDefault().ID,
-                Name = userHashed.FirstOrDefault().Name,
-                Email = userHashed.FirstOrDefault().Email,
-                Role = userHashed.FirstOrDefault().Role,
-                Phone = userHashed.FirstOrDefault().Phone,
+                ID = userHashed.FirstOrDefault().user_id,
+                Name = userHashed.FirstOrDefault().Name, 
             };
 
             var jwtToken = this._identityHandler.GenerateToken(result);
