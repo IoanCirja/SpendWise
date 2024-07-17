@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {ContactUsComponent} from "./contact-us/contact-us.component";
+import {OurTeamComponent} from "./our-team/our-team.component";
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () =>
@@ -7,7 +9,9 @@ const routes: Routes = [
   },
   { path: 'budget-plans', loadChildren: () =>
     import('./budget-plan-choosing/budget-plan-choosing.module').then((m) => m.BudgetPlansModule),
-  }
+  },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'our-team', component: OurTeamComponent }
 
 ];
 

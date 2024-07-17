@@ -13,7 +13,7 @@ body {
   align-items: center;
 }
 
-.register-container {
+.contact-us-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,21 +24,48 @@ body {
   height: 463px;
   width: 413px;
   border-radius: 7px;
+
+  input[placeholder="First name"] {
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  input[placeholder="Last name"] {
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  input[placeholder="Email"] {
+    width: 325px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  input[placeholder="Message"] {
+    width: 325px;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
 }
 
-.register-container img.login-logo {
+.contact-us-container img.login-logo {
   width: 73px;
   height: 130px;
   margin-bottom: 20px;
 }
 
-.register-container h1 {
+.contact-us-container h1 {
   margin-bottom: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D
 }
 
-.register-container input {
+.contact-us-container input {
   font-family: 'Roboto Condensed', sans-serif;
   width: 250px;
   padding: 10px;
@@ -48,7 +75,7 @@ body {
   color: #043F2D;
 }
 
-.register-container button {
+.contact-us-container button {
   width: 100%;
   padding: 10px;
   background-color: #2A6F2C;
@@ -61,12 +88,13 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.register-container button:hover {
+.contact-us-container button:hover {
   opacity: 0.8;
 }
 
-.register-container p{
+.contact-us-container p{
   margin-bottom: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D
 }
+
