@@ -12,6 +12,7 @@ BEGIN
 		amountSpent INT NOT NULL,
 		priceByCategory NVARCHAR(200),
 		spentOfCategory NVARCHAR(200),
+		status NVARCHAR(30) DEFAULT 'In Progress',
 		FOREIGN KEY (user_id) REFERENCES SpendWise.Users(user_id),
 		FOREIGN KEY (plan_id) REFERENCES SpendWise.PlanDetails(plan_id)
     );

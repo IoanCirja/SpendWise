@@ -10,7 +10,7 @@ namespace WebApiContracts
     {
         public Guid user_id { get; set; }
         public Guid plan_id { get; set; }
-        public DateOnly date { get; set; }
+        public DateTime date { get; set; }
         public int totalAmount { get; set; }
         public int amountSpent { get; set; }
         public string priceByCategory { get; set; }
