@@ -11,6 +11,11 @@ namespace Domain
         public Guid monthlyPlan_id { get; set; }
         public Guid user_id { get; set; }
         public Guid plan_id { get; set; }
+        public string plan_name { get; set; }
+        public string description { get; set; }
+        public int noCategory { get; set; }
+        public string category { get; set; }
+        public string image {  get; set; }
         public DateTime date { get; set; }
         public int totalAmount { get; set; }
         public int amountSpent { get; set; }

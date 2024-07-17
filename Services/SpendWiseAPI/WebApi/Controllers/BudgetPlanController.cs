@@ -26,7 +26,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetPlan([FromQuery] Guid id)
+        public async Task<ActionResult> GetPlan([FromBody] Guid id)
         {
             var result = this._planService.GetPlan(id);
 
