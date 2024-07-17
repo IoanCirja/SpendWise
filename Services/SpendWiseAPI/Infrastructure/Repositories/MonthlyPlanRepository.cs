@@ -44,5 +44,20 @@ namespace Infrastructure.Repositories
             return result != 0;
         }
 
+        public List<MonthlyPlan> GetMonthlyPlans(Guid user_id)
+        {
+            var sql = "select [monthlyPlan_id], [user_id], [plan_id], [date], [status], [totalAmount], [amountSpent], [priceByCategory], [spentOfCategory]  from [SpendWise].[MonthlyPlan] where [user_id]=@UserID";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<MonthlyPlan>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+        public List<MonthlyPlan> GetMonthlyPlan(Guid monthlyPlan_id)
+        {
+            var sql = "select [monthlyPlan_id], [user_id], [plan_id], [date], [status], [totalAmount], [amountSpent], [priceByCategory], [spentOfCategory]  from [SpendWise].[MonthlyPlan] where [monthlyPlan_id]=@MonthlyPlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlan>(sql, new { MonthlyPlanID = monthlyPlan_id }).ToList();
+            return plan;
+        }
     }
 }
