@@ -32,5 +32,13 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPopularFivePlans()
+        {
+            var result = this._planService.GetPopularFivePlans();
+
+            return Ok(result);
+        }
     }
 }

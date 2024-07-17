@@ -22,9 +22,10 @@ namespace Application.Services
         {
             return _budgetPlanRepository.GetPlan(id);
         }
+        public List<BudgetPlanGetPopular> GetPopularFivePlans()
+        {
+            return _budgetPlanRepository.GetPopularFivePlans();
 
-
-
-
+        }
     }
 }
