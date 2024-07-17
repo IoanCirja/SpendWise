@@ -29,5 +29,17 @@ namespace WebApi.Controllers
 
             return StatusCode(500, "An error occurred while adding the monthly plan.");
         }
+        [HttpPost]
+        public async Task<IActionResult> CancelMonthlyPlans([FromQuery] Guid id)
+        {
+            var result = await _monthlyPlanService.CancelMonthlyPlan(id);
+
+            if (result)
+            {
+                return Ok("Monthly plan canceled successfully.");
+            }
+
+            return StatusCode(500, "An error occurred while adding the monthly plan.");
+        }
     }
 }

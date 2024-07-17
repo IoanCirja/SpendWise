@@ -15,6 +15,7 @@ namespace Domain
         public DateOnly date { get; set; }
         public int totalAmount { get; set; }
         public int amountSpent { get; set; }
+        public string status { get; set; }
         public string priceByCategory { get; set; }
         public string spentOfCategory { get; set; }
     }

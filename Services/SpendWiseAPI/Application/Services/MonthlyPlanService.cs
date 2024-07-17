@@ -19,5 +19,9 @@ namespace Application.Services
         {
             return await _monthlyPlanRepository.AddMonthlyPlans(monthlyPlan);
         }
+        public async Task<bool> CancelMonthlyPlan(Guid id)
+        {
+            return await _monthlyPlanRepository.CancelMonthlyPlan(id);
+        }
     }
 }

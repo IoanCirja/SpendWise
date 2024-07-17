@@ -18,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHandler>();
             services.AddScoped<IBudgetPlanRepository, BudgetPlanRepository>();
             services.AddScoped<IMonthlyPlanRepository, MonthlyPlanRepository>();
+            services.AddScoped<INewsletterRepository, NewsletterRepository>();
 
 
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();

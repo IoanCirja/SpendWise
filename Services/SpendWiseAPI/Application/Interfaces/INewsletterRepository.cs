@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IMonthlyPlanRepository
+    public interface INewsletterRepository
     {
-        Task<bool> AddMonthlyPlans(MonthlyPlan monthlyPlan );
-        Task<bool> CancelMonthlyPlan(Guid id);
+        List<Newsletter> GetSubscriberByEmail(string email);
+        Task<bool> AddSubscription(string email);
     }
 }
