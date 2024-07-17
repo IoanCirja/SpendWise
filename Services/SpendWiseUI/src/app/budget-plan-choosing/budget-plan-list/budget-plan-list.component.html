@@ -1,0 +1,25 @@
+
+<div>
+    <mat-form-field>
+        <mat-label>Sort Options</mat-label>
+        <mat-select [(value)]="selectedSortOption" (selectionChange)="onSortChange()">
+          <mat-option *ngFor="let option of sortOptions" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+  
+  <div class="scroll-container">
+    <app-budget-plan-card
+      *ngFor="let plan of budgetPlans"
+      [plan_id]="plan.plan_id"
+      [name]="plan.name"
+      [description]="plan.description"
+      [noCategory]="plan.noCategory"
+      [category]="plan.category"
+      [image]="plan.image"
+      [created_by]="plan.created_by">
+    </app-budget-plan-card>
+  </div>
+

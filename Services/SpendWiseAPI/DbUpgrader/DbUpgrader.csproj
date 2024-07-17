@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿ <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -19,7 +19,7 @@
 		<None Remove="Scripts\Step00009-insert_into_Contact.sql" />
 		<None Remove="Scripts\Step00010-insert_into_Subscriptions.sql" />
 		<None Remove="Scripts\Step00011-insert_into_Users.sql" />
-		<None Remove="Scripts\Step00012-alter_tablePlanDetails _'imagine'.sql" />
+		<None Remove="Scripts\Step00012-alter_tablePlanDetails _'image'.sql" />
 		<None Remove="Scripts\Step00013-insert_into_PlanDetails .sql" />
 		<None Remove="Scripts\Step00014-insert_into_MonthlyPlan.sql" />
 		<None Remove="Scripts\Step00015-insert_into_Transactions.sql" />
@@ -37,7 +37,7 @@
 		<EmbeddedResource Include="Scripts\Step00009-insert_into_Contact.sql" />
 		<EmbeddedResource Include="Scripts\Step00010-insert_into_Subscriptions.sql" />
 		<EmbeddedResource Include="Scripts\Step00011-insert_into_Users.sql" />
-		<EmbeddedResource Include="Scripts\Step00012-alter_tablePlanDetails _%27imagine%27.sql" />
+		<EmbeddedResource Include="Scripts\Step00012-alter_tablePlanDetails _%27image%27.sql" />
 		<EmbeddedResource Include="Scripts\Step00013-insert_into_PlanDetails .sql" />
 		<EmbeddedResource Include="Scripts\Step00014-insert_into_MonthlyPlan.sql" />
 		<EmbeddedResource Include="Scripts\Step00015-insert_into_Transactions.sql" />
