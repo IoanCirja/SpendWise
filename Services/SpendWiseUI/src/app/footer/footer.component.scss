@@ -1,0 +1,90 @@
+.footer {
+    background:linear-gradient(to right, var(--green5-color), var(--green4-color));
+    color: white;
+    padding: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    text-align: left;
+    justify-content: space-between;
+  }
+  
+  .footer-section {
+    margin: 10px 0;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .footer-section h2,
+  .footer-section h3,
+  .footer-section h4 {
+    margin: 10px 0;
+  }
+  
+  .footer-section p {
+    margin: 5px 0;
+    font-size: 12px;
+  }
+  
+  .brand h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .legal-links a {
+    color: var(--green1-color);
+    text-decoration: none;
+    margin: 0 24px;
+    font-size: 14px;
+  }
+  
+  .legal-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .newsletter button {
+    background-color: var(--green1-color);
+    color: var(--green4-color);
+  }
+  
+  .contact-info .social-media a {
+    color: var(--green1-color);
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .contact-info .social-media a:hover {
+    color: var(--light_grey-color);
+  }
+
+  .join_sign_up{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    }
+
+    .email{
+        font-size: 14px;
+    }
+    
+    .email input {
+        color: var(--green1-color);
+        background-color: var(--green4-color);
+        border-color: var(--green1-color);
+        border-radius: 8px;
+        width: 240px;
+        height: 24px;
+
+    }
+    .email input-placeholder{
+        color: var(--green1-color);
+    }
+
+    .logo_and_links{
+        display: flex;
+        flex-direction: row;
+    }
