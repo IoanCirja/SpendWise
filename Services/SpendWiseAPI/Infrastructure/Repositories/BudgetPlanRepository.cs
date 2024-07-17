@@ -18,19 +18,19 @@ namespace Infrastructure.Repositories
         {
             this._databaseContext = databaseContext;
         }
-        public List<BudgetPlan> GetPlans()
+        public List<BudgetPlanGet> GetPlans()
         {
-            var sql = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by]  from [SpendWise].[PlanDetails]";
+            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id]";
 
             var connection = _databaseContext.GetDbConnection();
-            var file = connection.Query<BudgetPlan>(sql).ToList();
+            var file = connection.Query<BudgetPlanGet>(sql).ToList();
             return file;
         }
-        public List<BudgetPlan> GetPlan(Guid id)
+        public List<BudgetPlanGet> GetPlan(Guid id)
         {
-            var sql = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by]  from [SpendWise].[PlanDetails] where [plan_id]=@PlanID";
+            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] and [plan_id]=@PlanID";
             var connection = _databaseContext.GetDbConnection();
-            var plan = connection.Query<BudgetPlan>(sql, new { PlanID = id }).ToList();
+            var plan = connection.Query<BudgetPlanGet>(sql, new { PlanID = id }).ToList();
             return plan;
         }
     }
