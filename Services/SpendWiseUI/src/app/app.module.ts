@@ -10,12 +10,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import {OurTeamComponent} from "./our-team/our-team.component";
+import {ContactUsComponent} from "./contact-us/contact-us.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OurTeamComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
