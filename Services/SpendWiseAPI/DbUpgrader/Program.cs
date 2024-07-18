@@ -10,7 +10,7 @@ namespace DbUpgrader
 
             var connectionString =
                 args.FirstOrDefault()
-                ?? "data source=IC_ACER_NITRO_5\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
+                ?? "data source=DESKTOP-SG6AG8I\\SQLEXPRESS01;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
             EnsureDatabase.For.SqlDatabase(connectionString);
 
             var upgrader =
