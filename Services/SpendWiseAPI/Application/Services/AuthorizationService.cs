@@ -58,6 +58,7 @@ namespace Application.Services
             {
                 ID = userHashed.FirstOrDefault().user_id,
                 Name = userHashed.FirstOrDefault().Name, 
+                Role = userHashed.FirstOrDefault().Role,
             };
 
             var jwtToken = this._identityHandler.GenerateToken(result);
