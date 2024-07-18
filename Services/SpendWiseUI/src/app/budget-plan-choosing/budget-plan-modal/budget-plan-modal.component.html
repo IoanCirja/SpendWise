@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Details of {{data.name}}</h1>
+<mat-dialog-content>
+  <p><strong>Description:</strong> {{data.description}}</p>
+  <p><strong>Number of Categories:</strong> {{data.noCategory}}</p>
+  <div *ngFor="let category of data.categories; let i = index">
+    <p><strong>{{category.name}}:</strong> <input type="number" [(ngModel)]="data.categories[i].value"></p>
+  </div>
+  <img [src]="data.image" alt="Image of {{ data.name }}" style="width: 100%; border-radius: 4px; margin-top: 10px;">
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="savePlan()">Save</button>
+</mat-dialog-actions>

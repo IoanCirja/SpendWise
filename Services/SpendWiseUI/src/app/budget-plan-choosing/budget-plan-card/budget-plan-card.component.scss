@@ -1,42 +1,46 @@
 .budget-plan-card {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 12px;
-    color: #043F2D;
-    background-color: #fcfcf9;
-    border-radius: 7px;
-    overflow: hidden;
-    margin: 10px; 
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12px;
+  color: #043F2D;
+  background-color: #fcfcf9;
+  border-radius: 7px;
+  overflow: hidden;
+  margin: 10px;
   
-    mat-card-header {
-      .mat-card-title {
-        font-weight: bold;
-      }
-  
-      .mat-card-subtitle {
-        color: #043F2D;
-      }
+  mat-card-header {
+    .mat-card-title {
+      font-weight: bold;
     }
-  
-    img.mat-card-image {
-      border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
-      height: 200px; 
-      object-fit: cover; // Ensures the image covers the area without distortion
-    }
-  
-    mat-card-content {
-      p {
-        margin: 0 0 10px 0; // Add space between paragraphs
-      }
-    }
-  
-    mat-card-actions {
-      display: flex;
-      justify-content: flex-end; // Align buttons to the right
-  
-      button {
-        color: #043F2D; // Button text color
-      }
+
+    .mat-card-subtitle {
+      color: #043F2D;
     }
   }
-  
+
+  img.mat-card-image {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    height: 200px; 
+    object-fit: cover;
+  }
+
+  mat-card-content {
+    p {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      color: #043F2D;
+    }
+  }
+
+  img{
+    width: 40px;
+    height:40px;
+  }
+}

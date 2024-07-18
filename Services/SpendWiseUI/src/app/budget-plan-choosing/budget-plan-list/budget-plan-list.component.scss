@@ -1,13 +1,13 @@
 .scroll-container {
-    display: grid; // Use CSS Grid for layout
-    grid-template-columns: repeat(3, 1fr); // 3 cards per row
-    grid-gap: 10px; // Space between cards
-    overflow-y: auto; // Enable vertical scrolling
-    height: 100vh; // Set to full viewport height, adjust as needed
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px; 
+    overflow-y: auto; 
+    height: 100vh;
   
-    // Ensure cards have consistent height
+
     app-budget-plan-card {
-      height: 100%; // Allow cards to stretch to fill the available height
+      height: 100%; 
     }
   }
   
