@@ -27,20 +27,14 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult> GetPlan([FromBody] Guid id)
-        {
-            var result = this._planService.GetPlan(id);
 
-            return Ok(result);
-        }
 
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult> GetPopularFivePlans()
         {
             var result = this._planService.GetPopularFivePlans();
+            return Ok(result);
             }
 
 
