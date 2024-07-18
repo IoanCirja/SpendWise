@@ -44,19 +44,26 @@ namespace Infrastructure.Repositories
             return result != 0;
         }
 
-        public List<MonthlyPlan> GetMonthlyPlans(Guid user_id)
+        public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
         {
-            var sql = "select [monthlyPlan_id], [user_id], [plan_id], [date], [status], [totalAmount], [amountSpent], [priceByCategory], [spentOfCategory]  from [SpendWise].[MonthlyPlan] where [user_id]=@UserID";
+            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID";
 
             var connection = _databaseContext.GetDbConnection();
-            var file = connection.Query<MonthlyPlan>(sql, new { UserID = user_id }).ToList();
+            var file = connection.Query<MonthlyPlanGetNameDate>(sql, new { UserID = user_id }).ToList();
             return file;
         }
-        public List<MonthlyPlan> GetMonthlyPlan(Guid monthlyPlan_id)
+        public List<MonthlyPlanGet> GetMonthlyPlanFromHistory(Guid monthlyPlan_id)
         {
-            var sql = "select [monthlyPlan_id], [user_id], [plan_id], [date], [status], [totalAmount], [amountSpent], [priceByCategory], [spentOfCategory]  from [SpendWise].[MonthlyPlan] where [monthlyPlan_id]=@MonthlyPlanID";
+            var sql = "select [mp].[monthlyPlan_id], [mp].[user_id], [mp].[plan_id], [pd].[name] as 'plan_name', [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [mp].[date], [mp].[status], [mp].[totalAmount], [mp].[amountSpent], [mp].[priceByCategory], [mp].[spentOfCategory]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [monthlyPlan_id]=@MonthlyPlanID";
             var connection = _databaseContext.GetDbConnection();
-            var plan = connection.Query<MonthlyPlan>(sql, new { MonthlyPlanID = monthlyPlan_id }).ToList();
+            var plan = connection.Query<MonthlyPlanGet>(sql, new { MonthlyPlanID = monthlyPlan_id }).ToList();
+            return plan;
+        }
+        public List<MonthlyPlanGet> GetCurrentPlan(Guid user_id)
+        {
+            var sql = "select [mp].[monthlyPlan_id], [mp].[user_id], [mp].[plan_id], [pd].[name] as 'plan_name', [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [mp].[date], [mp].[status], [mp].[totalAmount], [mp].[amountSpent], [mp].[priceByCategory], [mp].[spentOfCategory]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID and [mp].[status]='In Progress' order by [mp].[date]";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlanGet>(sql, new { UserID = user_id }).ToList();
             return plan;
         }
     }

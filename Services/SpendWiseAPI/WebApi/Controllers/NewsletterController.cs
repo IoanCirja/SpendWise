@@ -13,7 +13,7 @@ namespace WebApi.Controllers
             _newsletterService = newsletterService;
         }
         [HttpPost]
-        public async Task<IActionResult> AddSubscription(string email)
+        public async Task<IActionResult> AddSubscription([FromBody]string email)
         {
             var result = await _newsletterService.AddSubscription(email);
 

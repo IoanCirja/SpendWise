@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddMonthlyPlans([FromQuery] MonthlyPlanContract monthlyPlan)
+        public async Task<IActionResult> AddMonthlyPlans([FromBody] MonthlyPlanContract monthlyPlan)
         {
             var result = await _monthlyPlanService.AddMonthlyPlans(monthlyPlan.MapTestToDomain());
 
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             return StatusCode(500, "An error occurred while adding the monthly plan.");
         }
         [HttpPost]
-        public async Task<IActionResult> CancelMonthlyPlans([FromQuery] Guid id)
+        public async Task<IActionResult> CancelMonthlyPlans([FromBody] Guid id)
         {
             var result = await _monthlyPlanService.CancelMonthlyPlan(id);
 
@@ -44,18 +44,27 @@ namespace WebApi.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetMonthlyPlans([FromQuery] Guid user_id)
+        public async Task<ActionResult> GetHistoryPlans([FromBody] Guid user_id)
         {
-            var result = this._monthlyPlanService.GetMonthlyPlans(user_id);
+            var result = this._monthlyPlanService.GetHistoryPlans(user_id);
 
             return Ok(result);
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetMonthlyPlan([FromQuery] Guid monthlyPlanid)
+        public async Task<ActionResult> GetPlanFromHistory([FromBody] Guid monthlyPlanid)
         {
-            var result = this._monthlyPlanService.GetMonthlyPlan(monthlyPlanid);
+            var result = this._monthlyPlanService.GetMonthlyPlanFromHistory(monthlyPlanid);
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetCurrentPlan([FromBody] Guid user_id)
+        {
+            var result = this._monthlyPlanService.GetCurrentPlan(user_id);
 
             return Ok(result);
         }

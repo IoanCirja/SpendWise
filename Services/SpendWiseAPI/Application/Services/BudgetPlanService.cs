@@ -13,14 +13,19 @@ namespace Application.Services
             _budgetPlanRepository = budgetPlanRepository;
         }
 
-        public List<BudgetPlan> GetPlans()
+        public List<BudgetPlanGet> GetPlans()
         {
 
             return _budgetPlanRepository.GetPlans();
         }
-        public List<BudgetPlan> GetPlan(Guid id)
+        public List<BudgetPlanGet> GetPlan(Guid id)
         {
             return _budgetPlanRepository.GetPlan(id);
+        }
+        public List<BudgetPlanGetPopular> GetPopularFivePlans()
+        {
+            return _budgetPlanRepository.GetPopularFivePlans();
+
         }
 
         public async Task<bool> AddNewPlan(BudgetPlan budgetPlan)
@@ -43,9 +48,6 @@ namespace Application.Services
 
             return registerResult;
         }
-
-
-
 
 
     }

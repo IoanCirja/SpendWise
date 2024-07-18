@@ -29,12 +29,21 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetPlan([FromQuery] Guid id)
+        public async Task<ActionResult> GetPlan([FromBody] Guid id)
         {
             var result = this._planService.GetPlan(id);
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPopularFivePlans()
+        {
+            var result = this._planService.GetPopularFivePlans();
+            }
+
+
 
         [HttpPost]
         public async Task<ActionResult<bool>> AddPlan([FromQuery] BudgetPlanContract budgetPlanContract)
@@ -49,6 +58,7 @@ namespace WebApi.Controllers
 
             Guid id_user = new Guid("BFA5C58A-1DD0-4C67-89E0-D82224B02472");
             var result = await this._planService.AddNewPlan(budgetPlanContract.MapTestToDomain());
+
             return Ok(result);
         }
     }

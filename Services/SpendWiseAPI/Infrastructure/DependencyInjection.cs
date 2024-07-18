@@ -19,6 +19,7 @@ namespace Infrastructure
             services.AddScoped<IBudgetPlanRepository, BudgetPlanRepository>();
             services.AddScoped<IMonthlyPlanRepository, MonthlyPlanRepository>();
             services.AddScoped<INewsletterRepository, NewsletterRepository>();
+            services.AddScoped<IContactUsRepository, ContactUsRepository>();
 
 
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();

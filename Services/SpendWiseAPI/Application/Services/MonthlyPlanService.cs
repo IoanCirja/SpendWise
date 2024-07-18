@@ -23,14 +23,18 @@ namespace Application.Services
         {
             return await _monthlyPlanRepository.CancelMonthlyPlan(id);
         }
-        public List<MonthlyPlan> GetMonthlyPlans(Guid user_id)
+        public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
         {
 
-            return _monthlyPlanRepository.GetMonthlyPlans(user_id);
+            return _monthlyPlanRepository.GetHistoryPlans(user_id);
         }
-        public List<MonthlyPlan> GetMonthlyPlan(Guid monthlyPlan_id)
+        public List<MonthlyPlanGet> GetMonthlyPlanFromHistory(Guid monthlyPlan_id)
         {
-            return _monthlyPlanRepository.GetMonthlyPlan(monthlyPlan_id);
+            return _monthlyPlanRepository.GetMonthlyPlanFromHistory(monthlyPlan_id);
+        }
+        public List<MonthlyPlanGet> GetCurrentPlan(Guid user_id) 
+        {
+            return _monthlyPlanRepository.GetCurrentPlan(user_id);
         }
     }
 }
