@@ -1,50 +1,45 @@
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: var(--green1-color);
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  .tagline {
-    font-size: 12px;
-    margin-left: 5px;
-  }
-  
-  .nav-menu {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-menu a {
-    text-decoration: none;
-    color: var(--black-color);
-    font-weight: 500;
-    &:hover{
-        background-color: var(--light_grey-color)!important;
-    }
-  }
-  
-  .auth-buttons {
-    display: flex;
-    gap: 10px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #FCFCF9;
+}
 
-  .sign_up{
-    background-color: var(--green4-color)!important;
-    color:var(--green1-color)!important;
-    &:hover {
-        background-color: var(--green5-color)!important;
-      }
-  }
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.tagline {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  //color: #000000;
+  font-weight: 500;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.sign_up {
+  background-color: #2A6F2C !important;
+  color:#FCFCF9 !important;
+}
+

@@ -1,7 +1,9 @@
+
 .footer {
-    background:linear-gradient(to right, var(--green5-color), var(--green4-color));
-    color: white;
+  background: rgb(4,63,45);
+  background: linear-gradient(90deg, rgba(4,63,45,1) 0%, rgba(4,63,45,1) 35%, rgba(42,111,44,1) 100%);
     padding: 20px;
+    color: #FCFCF9;
   }
   
   .footer-content {
@@ -35,7 +37,7 @@
   }
   
   .legal-links a {
-    color: var(--green1-color);
+    color: #FCFCF9;
     text-decoration: none;
     margin: 0 24px;
     font-size: 14px;
@@ -46,20 +48,16 @@
   }
   
   .newsletter button {
-    background-color: var(--green1-color);
-    color: var(--green4-color);
+    background-color: #FCFCF9;
   }
   
   .contact-info .social-media a {
-    color: var(--green1-color);
+    color: #FCFCF9;
     margin: 0 10px;
     text-decoration: none;
     font-size: 20px;
   }
   
-  .contact-info .social-media a:hover {
-    color: var(--light_grey-color);
-  }
 
   .join_sign_up{
     display: flex;
@@ -72,19 +70,23 @@
     }
     
     .email input {
-        color: var(--green1-color);
-        background-color: var(--green4-color);
-        border-color: var(--green1-color);
+        color: #FCFCF9;
+        background-color: #2A6F2C;
+        border-color: #FCFCF9;
         border-radius: 8px;
         width: 240px;
         height: 24px;
 
     }
-    .email input-placeholder{
-        color: var(--green1-color);
+    ::placeholder {
+        color: #FCFCF9;
     }
 
     .logo_and_links{
         display: flex;
         flex-direction: row;
+    }
+
+    button {
+      color: #2A6F2C !important;
     }
