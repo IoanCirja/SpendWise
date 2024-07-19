@@ -12,11 +12,20 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>View Options</mat-label>
+    <mat-select [(value)]="selectedViewOption" (selectionChange)="onViewChange()">
+      <mat-option *ngFor="let option of viewOptions" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
 <div class="scroll-container">
   <app-budget-plan-card
-    *ngFor="let plan of filteredBudgetPlans"
+    *ngFor="let plan of getDisplayedPlans()"
     [plan_id]="plan.plan_id"
     [name]="plan.name"
     [description]="plan.description"
@@ -25,4 +34,10 @@
     [image]="plan.image"
     [created_by]="plan.created_by">
   </app-budget-plan-card>
+</div>
+
+<div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">
+  <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{currentPage}} of {{totalPages}}</span>
+  <button mat-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div>
