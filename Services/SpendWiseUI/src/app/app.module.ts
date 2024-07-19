@@ -12,6 +12,8 @@ import { MaterialModule } from './material/material.module';
 import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
+    HomeComponent,
   ],
     imports: [
         BrowserModule,
@@ -28,7 +31,8 @@ import {MatInputModule} from '@angular/material/input';
         BrowserAnimationsModule,
         MaterialModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatCardModule
     ],
   providers: [],
   bootstrap: [AppComponent]
