@@ -11,7 +11,8 @@
       <p><strong>Created By:</strong> {{ created_by }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>View Details</button>
+      <button mat-button (click)="openDialog()">View Details</button>
+
     </mat-card-actions>
   </mat-card>
   

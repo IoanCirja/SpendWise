@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BudgetPlanModalComponent } from '../budget-plan-modal/budget-plan-modal.component';
 
 @Component({
   selector: 'app-budget-plan-card',
@@ -14,6 +16,22 @@ export class BudgetPlanCardComponent {
   @Input() image!: string;
   @Input() created_by!: string;
 
+  constructor(public dialog: MatDialog) {}
 
-
+  openDialog(): void {
+    this.dialog.open(BudgetPlanModalComponent, {
+      data: {
+        plan_id:this.plan_id,
+        name: this.name,
+        description: this.description,
+        noCategory: this.noCategory,
+        categories: this.category.split(',').map(cat => ({ name: cat.trim(), value: 0 })),
+        image: this.image,
+        created_by: this.created_by
+      },
+            disableClose: true,
+      autoFocus: false,
+      width: '500px',
+    });
+  }
 }
