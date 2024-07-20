@@ -1,3 +1,4 @@
+<!-- registration.component.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,13 @@
   <div class="register-container">
     <h1>SIGN UP</h1>
     <p>Already have an account? Log in!</p>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <input type="text" placeholder="Phone number">
-      <input type="password" placeholder="Password">
-      <input type="password" placeholder="Confirm password">
-      <button type="submit">Sign up</button>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="name" placeholder="Name">
+      <input type="email" formControlName="email" placeholder="Email">
+      <input type="text" formControlName="phone" placeholder="Phone number">
+      <input type="password" formControlName="password" placeholder="Password">
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm password">
+      <button type="submit" class="submit-button">Submit</button>
     </form>
   </div>
 </div>

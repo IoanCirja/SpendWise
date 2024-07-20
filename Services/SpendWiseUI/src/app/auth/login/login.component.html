@@ -12,9 +12,9 @@
   <div class="login-container">
     <h1>SIGN IN</h1>
     <p>Don't have an account? Sign up!</p>
-    <form>
-      <input type="text" placeholder="Username / Email">
-      <input type="password" placeholder="Password">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="email" placeholder="Email">
+      <input type="password" formControlName="password" placeholder="Password">
       <button type="submit">Login</button>
     </form>
   </div>
