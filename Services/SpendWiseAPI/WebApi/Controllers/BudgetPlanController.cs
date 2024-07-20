@@ -38,6 +38,15 @@ namespace WebApi.Controllers
             }
 
 
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPlan(Guid id)
+        {
+            var result = this._planService.GetPlan(id);
+
+            return Ok(result);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<bool>> AddPlan([FromQuery] BudgetPlanContract budgetPlanContract)

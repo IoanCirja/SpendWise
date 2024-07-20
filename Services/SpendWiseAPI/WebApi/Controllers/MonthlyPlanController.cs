@@ -42,27 +42,27 @@ namespace WebApi.Controllers
 
             return StatusCode(500, "An error occurred while adding the monthly plan.");
         }
-        [HttpGet]
+        [HttpGet("{user_id}")]
         [AllowAnonymous]
-        public async Task<ActionResult> GetHistoryPlans([FromBody] Guid user_id)
+        public async Task<ActionResult> GetHistoryPlans(Guid user_id)
         {
             var result = this._monthlyPlanService.GetHistoryPlans(user_id);
 
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("{monthlyPlanid}")]
         [AllowAnonymous]
-        public async Task<ActionResult> GetPlanFromHistory([FromBody] Guid monthlyPlanid)
+        public async Task<ActionResult> GetPlanFromHistory(Guid monthlyPlanid)
         {
             var result = this._monthlyPlanService.GetMonthlyPlanFromHistory(monthlyPlanid);
 
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("{user_id}")]
         [AllowAnonymous]
-        public async Task<ActionResult> GetCurrentPlan([FromBody] Guid user_id)
+        public async Task<ActionResult> GetCurrentPlan(Guid user_id)
         {
             var result = this._monthlyPlanService.GetCurrentPlan(user_id);
 

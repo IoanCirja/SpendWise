@@ -4,6 +4,10 @@ import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {OurTeamComponent} from "./our-team/our-team.component";
 import { CurrentPlanComponent } from './dashboard/current-plan/current-plan.component';
 import { DashboardNavigationComponent } from './dashboard/dashboard-navigation/dashboard-navigation.component';
+import { AccountSettingsComponent } from './dashboard/account-settings/account-settings.component';
+import { CategoryDetailsComponent } from './dashboard/category-details/category-details.component';
+import { HistoryComponent } from './dashboard/history/history.component';
+import { ManagePlansComponent } from './dashboard/manage-plans/manage-plans.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () =>
@@ -14,7 +18,7 @@ const routes: Routes = [
   },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'our-team', component: OurTeamComponent },
-  { path: 'dashboard', component: DashboardNavigationComponent}
+
 
 
 ];

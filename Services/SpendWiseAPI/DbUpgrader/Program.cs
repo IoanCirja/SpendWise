@@ -11,7 +11,7 @@ namespace DbUpgrader
             var connectionString =
                 args.FirstOrDefault()
 
-                ?? "data source=AcerPC\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
+                ?? "data source=IC_ACER_NITRO_5\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
 
             EnsureDatabase.For.SqlDatabase(connectionString);
 

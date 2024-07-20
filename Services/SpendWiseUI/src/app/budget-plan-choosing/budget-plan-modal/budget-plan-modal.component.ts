@@ -31,7 +31,7 @@ export class BudgetPlanModalComponent {
 
   savePlan(): void {
     const plan_id = this.dataHolder.plan_id;
-    const user_id = "B499672A-9992-4109-A7DD-9879BD74437F";
+    const user_id = "04A7CE09-3B90-4940-835A-1EFEA93370B7";
 
     const totalAmount = this.dataHolder.categories.reduce((acc, category) => acc + category.value, 0);
 
