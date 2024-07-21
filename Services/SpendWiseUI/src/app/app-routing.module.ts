@@ -8,8 +8,11 @@ import { AccountSettingsComponent } from './dashboard/account-settings/account-s
 import { CategoryDetailsComponent } from './dashboard/category-details/category-details.component';
 import { HistoryComponent } from './dashboard/history/history.component';
 import { ManagePlansComponent } from './dashboard/manage-plans/manage-plans.component';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'auth', loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule),
   },

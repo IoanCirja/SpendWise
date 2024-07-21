@@ -1,0 +1,140 @@
+// html{
+//     overflow:scroll;
+// }
+body{
+    height: 250%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(232,255,221);
+    background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
+    //padding: 10px;
+
+    h1{
+        color:#043F2D;
+    }
+    h3{
+        color:#043F2D;
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
+    }
+    //scroll-behavior: smooth;
+}
+
+section {
+    padding:10px;
+    min-height: 100vh;
+}
+
+.first_page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+.left{
+    padding-left: 24px;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    .tips{
+        width: 75%;
+        border: 1px solid #043F2D;
+        border-radius: 7px;
+        margin-bottom: 24px;
+        p{
+            margin: 16px 32px 16px 16px;
+        }
+
+        h3{
+            margin-left: 16px;
+        }
+        
+    }
+
+    button{
+        color:#FCFCF9; 
+        background-color: #2A6F2C;
+        //font-weight: bold;
+    }
+    .long_text{
+        text-align: left;
+        margin-top: 64px;
+        margin-right: 100px;
+        font-size: 14px;
+    }
+}
+
+.right {
+    width: 100%;
+    height: 100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    img{
+        width: 60%;
+    }
+    p
+    {
+        font-size: 16px;
+        width: 50%;
+        margin-left:16px;
+        text-align: center;
+    }
+    h3{
+        margin:8px 100px 0px 92px;
+    }
+    .smart{
+        justify-content: center;
+        margin-top:160px;
+    }
+
+    .twoimages{
+        display:flex;
+        flex-direction: column;
+        gap:24px;
+    }
+}
+
+}
+.second_page{
+    padding: 36px;
+    .cards{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-around;
+        text-align: center;
+
+        mat-card{
+            width:500px;
+            height:600px;
+        }
+
+        mat-card-title{
+            padding-left: 12px;
+        }
+
+        mat-card-content{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            p{
+                text-align: left;
+                margin:64px 12px;
+                font-size: 14px;
+            }
+        }
+
+        mat-card-header{
+            color:#043F2D;
+            font-weight: bold;
+        }
+    }
+
+
+}
+
