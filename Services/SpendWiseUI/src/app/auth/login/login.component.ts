@@ -42,7 +42,7 @@ export class LoginComponent {
         this.successMessage = 'Login successful!';
         this.errorMessage = null;
         console.log('Login successful', response);
-        this.router.navigate(['/our-team']);
+        this.router.navigate(['/home']);
       },
       error => {
         this.errorMessage = 'Login failed. Please try again.';

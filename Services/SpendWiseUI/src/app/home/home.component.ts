@@ -1,20 +1,33 @@
-import { Component, Input, Output } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import { MatCard } from '@angular/material/card';
+import {DisplayPopularPlanService} from "./services/display-popular-plan.service";
+import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  @Input() plan_id!: string;
-  @Input() name!: string;
-  @Input() description!: string;
-  @Input() noCategory!: number;
-  @Input() category!: string;
-  @Input() image!: string;
-  @Input() created_by!: string;
+export class HomeComponent implements OnInit {
+  mostPopularBudgetPlans: BudgetPlanGetPopular[] = [];
 
-  //constructor (public card: MatCard){}
+  constructor (
+    public displayPopularPlanService: DisplayPopularPlanService,
+  ){
+    console.log("[HomeComponent] constructor]")
+  }
+
+  ngOnInit(): void {
+    this.displayPopularPlanService.getPopularBudgetPlans().subscribe(
+      response => {
+        this.mostPopularBudgetPlans = response;
+        console.log('getPopularBudgetPlans successful', response);
+      },
+      error => {
+        console.error('getPopularBudgetPlans failed', error);
+      }
+    );
+    console.log("[HomeComponent] init]")
+  }
 
 }
