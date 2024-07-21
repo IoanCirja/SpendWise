@@ -65,7 +65,123 @@ namespace Infrastructure.Repositories
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
             return result != 0;
+        }
 
+        //Added 21/07/2024
+
+        public List<BudgetPlan> GetPlansByAdminCreator(Guid id)
+        {
+            var query = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by]  from [SpendWise].[PlanDetails] where [created_by]=@AdminId";
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Query<BudgetPlan>(query, new { AdminId = id }).ToList();
+            return result;
+        }
+
+        public async Task<BudgetPlan> GetPlanById(Guid id)
+        {
+            var sql = "SELECT [plan_id], [name], [description], [noCategory], [category], [image], [created_by] FROM [SpendWise].[PlanDetails] WHERE [plan_id] = @PlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = await connection.QuerySingleOrDefaultAsync<BudgetPlan>(sql, new { PlanID = id });
+            return plan;
+        }
+
+        public async Task<BudgetPlan> EditPlanById(BudgetPlan budgetPlan, Guid id)
+        {
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [name] = @Name, [description] = @Description, [noCategory] = @NoCategory, [category] = @Category, [image] = @Image WHERE [plan_id] = @PlanID";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("Name", budgetPlan.name, DbType.String);
+            parameters.Add("Description", budgetPlan.description, DbType.String);
+            parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
+            parameters.Add("Category", budgetPlan.category, DbType.String);
+            parameters.Add("Image", budgetPlan.image, DbType.String);
+            parameters.Add("PlanID", id, DbType.Guid);
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(sql, parameters, _databaseContext.GetDbTransaction());
+
+            if (result == 0)
+            {
+                throw new InvalidOperationException("No rows were updated. Plan ID may not exist.");
+            }
+
+            var query = "SELECT * FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [plan_id] = @PlanID";
+            var plan = await connection.QuerySingleOrDefaultAsync<BudgetPlan>(query, new { PlanID = id });
+
+            if (plan == null)
+            {
+                throw new InvalidOperationException("The plan was updated but could not be retrieved.");
+            }
+
+            return plan;
+        }
+
+        public async Task<BudgetPlan> EditPlanByName(BudgetPlan budgetPlan, String name)
+        {
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [name] = @NewName, [description] = @Description, [noCategory] = @NoCategory, [category] = @Category, [image] = @Image WHERE [name] = @Name";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("NewName", budgetPlan.name, DbType.String);
+            parameters.Add("Description", budgetPlan.description, DbType.String);
+            parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
+            parameters.Add("Category", budgetPlan.category, DbType.String);
+            parameters.Add("Image", budgetPlan.image, DbType.String);
+            parameters.Add("Name", name, DbType.String);
+
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(sql, parameters, _databaseContext.GetDbTransaction());
+
+            if (result == 0)
+            {
+                throw new InvalidOperationException("No rows were updated. A Plan with this name may not exist.");
+            }
+
+            var query = "SELECT * FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [name] = @NewName";
+            var plan = await connection.QuerySingleOrDefaultAsync<BudgetPlan>(query, new { NewName = budgetPlan.name });
+
+            if (plan == null)
+            {
+                throw new InvalidOperationException("The plan was updated but could not be retrieved.");
+            }
+
+            return plan;
+        }
+
+
+        public async Task<string> DeletePlanById(Guid id)
+        {
+            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [plan_id] = @Plan_ID";
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(sql, new { Plan_ID = id });
+
+            if (result > 0)
+            {
+                return "Plan with Id: " + id + " was deleted";
+            }
+            else
+            {
+                throw new InvalidOperationException("Plan with the specified id does not exist");
+            }
+        }
+
+        public async Task<string> DeletePlanByName(String name)
+        {
+            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [name] = @Name";
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(sql, new { Name = name });
+
+            if (result > 0)
+            {
+                return "Plan with Name: " + name + " was deleted";
+            }
+            else
+            {
+                throw new InvalidOperationException("Plan with the specified name does not exist");
+            }
         }
     }
 }
