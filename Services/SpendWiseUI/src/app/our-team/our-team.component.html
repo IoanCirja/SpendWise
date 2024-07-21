@@ -10,7 +10,11 @@
 <div class="flex-container">
   <h1>LET'S MEET OUR TEAM!</h1>
   <div class="team-members">
-    <div *ngFor="let member of members" class="team-member">{{member}}</div>
+    <div *ngFor="let member of members" class="team-member">
+      <img [src]="member.imageUrl" [alt]="member.name">
+      <p class="name">{{member.name}}</p>
+      <p class="description">{{member.description}}</p>
+    </div>
   </div>
 </div>
 </body>
