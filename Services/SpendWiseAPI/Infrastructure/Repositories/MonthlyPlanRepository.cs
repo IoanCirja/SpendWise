@@ -66,5 +66,19 @@ namespace Infrastructure.Repositories
             var plan = connection.Query<MonthlyPlanGet>(sql, new { UserID = user_id }).ToList();
             return plan;
         }
+        public List<MonthlyPlanGetDateID> GetDateFromMonthlyPlanByUserID(Guid user_id)
+        {
+            var sql = "select [monthlyPlan_id], [date] from [SpendWise].[MonthlyPlan] where [status]='In Progress' and [user_id]=@UserID";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlanGetDateID>(sql, new { UserID = user_id }).ToList();
+            return plan;
+        }
+        public bool FinishedMonthlyPlan(Guid monthlyPlan_id)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan]  SET [status]='Finished' where [monthlyPlan_id]=@MonthlyPlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Execute(query, new { MonthlyPlanID = monthlyPlan_id });
+            return result != 0;
+        }
     }
 }

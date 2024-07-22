@@ -27,6 +27,15 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet ("{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPlan(Guid id)
+        {
+            var result = this._planService.GetPlan(id);
+
+            return Ok(result);
+        }
+
 
 
         [HttpGet]
@@ -35,7 +44,7 @@ namespace WebApi.Controllers
         {
             var result = this._planService.GetPopularFivePlans();
             return Ok(result);
-            }
+        }
 
 
         [HttpGet("{id}")]
