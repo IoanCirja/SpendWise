@@ -21,5 +21,16 @@ namespace WebApiContracts.Mappers
                 image = budgetPlanContract.Imagine
             };
         }
+        public static BudgetPlan MapPlanEditToDomain(this BudgetPlanEditContract budgetPlanContract)
+        {
+            return new BudgetPlan
+            {
+                name = budgetPlanContract.Name,
+                description = budgetPlanContract.Description,
+                category = budgetPlanContract.Category,
+                noCategory = budgetPlanContract.NoCategory,
+                image = budgetPlanContract.Image
+            };
+        }
     }
 }

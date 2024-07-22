@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; 
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CurrentPlanComponent } from './current-plan/current-plan.component';
 import { DashboardNavigationComponent } from './dashboard-navigation/dashboard-navigation.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,8 +20,6 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterOutlet } from '@angular/router';
-import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
     StatisticsComponent,
     AccountSettingsComponent,
     ManagePlansComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -46,8 +44,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
     MatFormFieldModule,
     HttpClientModule,
     MatToolbarModule,
-    RouterOutlet,
-    RouterModule
+    RouterModule,  
   ]
 })
 export class DashboardModule { }
