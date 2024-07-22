@@ -11,12 +11,12 @@
   <img src="../../assets/contactus.svg" alt="Logo" class="login-logo">
   <div class="contact-us-container">
     <h1>LET'S GET IN TOUCH!</h1>
-    <form>
-      <input type="text" placeholder="First name">
-      <input type="text" placeholder="Last name">
-      <input type="email" placeholder="Email">
-      <input type="text" placeholder="Message">
-      <button type="submit">Submit</button>
+    <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="firstName" placeholder="First name">
+      <input type="text"  formControlName="lastName" placeholder="Last name">
+      <input type="text" formControlName="email"  placeholder="Email">
+      <input type="text" formControlName="message"  placeholder="Message">
+      <button type="submit" class="submit-button">Submit</button>
     </form>
   </div>
 </div>
