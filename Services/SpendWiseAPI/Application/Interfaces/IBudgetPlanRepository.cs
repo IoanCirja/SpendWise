@@ -14,5 +14,18 @@ namespace Application.Interfaces
         Task<IEnumerable<BudgetPlan>> GetPlanByName(string name);
         Task<bool> AddPlan(BudgetPlan budgetPlan);
 
+        //Added 21/07/2024
+
+        List<BudgetPlan> GetPlansByAdminCreator(Guid id);
+
+        Task<BudgetPlan> GetPlanById(Guid id);
+
+        Task<BudgetPlan> EditPlanById(BudgetPlan budgetPlan, Guid id);
+
+        Task<BudgetPlan> EditPlanByName(BudgetPlan budgetPlan, String name);
+
+        Task<String> DeletePlanById(Guid id);
+
+        Task<String> DeletePlanByName(String name);
     }
 }

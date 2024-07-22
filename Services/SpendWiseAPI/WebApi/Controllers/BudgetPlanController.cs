@@ -49,19 +49,52 @@ namespace WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<bool>> AddPlan([FromQuery] BudgetPlanContract budgetPlanContract)
+        public async Task<ActionResult<bool>> AddPlan([FromBody] BudgetPlanContract budgetPlanContract)
         {
-            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user1 = User.FindFirstValue(ClaimTypes.Name);
-            var user3 = User.FindFirstValue(ClaimTypes.GivenName);
-            var user2 = User.FindFirstValue(ClaimTypes.Email);
-
-
-            Console.WriteLine("-------------" + user + " -----------------------" + "Name" + user1 + "Email" + user2 + "Given Name" + user3);
-
-            Guid id_user = new Guid("BFA5C58A-1DD0-4C67-89E0-D82224B02472");
             var result = await this._planService.AddNewPlan(budgetPlanContract.MapTestToDomain());
+            return Ok(result);
+        }
 
+        //Added 21/07/2024
+
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetPlansByAdminCreator(Guid id)
+        {
+            var result = this._planService.GetPlansByAdminCreator(id);
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> EditPlanByPlanId([FromBody] BudgetPlanEditContract budgetPlanContract, Guid id)
+        {
+            var result = await this._planService.EditPlanByPlanId(budgetPlanContract.MapPlanEditToDomain(), id);
+            return Ok(result);
+        }
+
+        [HttpPut("{name}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> EditPlanMyName([FromBody] BudgetPlanEditContract budgetPlanContract, String name)
+        {
+            var result = await this._planService.EditPlanByPlanName(budgetPlanContract.MapPlanEditToDomain(), name);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> DeletePlanById(Guid id)
+        {
+            var result = await this._planService.DeletePlanById(id);
+            return Ok(result);
+        }
+
+        [HttpDelete("{name}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> DeletePlanByName(String name)
+        {
+            var result = await this._planService.DeletePlanByName(name);
             return Ok(result);
         }
     }
