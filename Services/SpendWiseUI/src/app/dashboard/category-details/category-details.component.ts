@@ -15,7 +15,7 @@ export class CategoryDetailsComponent implements OnInit {
   constructor(private router: Router, private currentPlanService: CurrentPlanService) { }
 
   ngOnInit(): void {
-    const userId = '04A7CE09-3B90-4940-835A-1EFEA93370B7'; 
+    const userId = 'E28D2431-5530-4C67-9CCB-152E7317DCE4'; 
     this.currentPlanService.getCurrentPlan(userId).subscribe(
       data => {
         const currentPlan = data[0]; 

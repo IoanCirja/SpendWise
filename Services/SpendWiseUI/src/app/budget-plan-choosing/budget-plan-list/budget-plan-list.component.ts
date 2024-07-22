@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BudgetPlans } from '../models/BudgetPlan';
 import { DisplayPlanService } from '../services/display-plans.service';
+import { CreateBudgetPlanModalComponent } from '../create-budget-plan-modal/create-budget-plan-modal.component';
 
 @Component({
   selector: 'app-budget-plan-list',
@@ -26,7 +28,10 @@ export class BudgetPlanListComponent implements OnInit {
   itemsPerPage: number = 2;
   totalPages: number = 1;
 
-  constructor(private displayPlanService: DisplayPlanService) {}
+  constructor(
+    private displayPlanService: DisplayPlanService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.displayPlanService.getBudgetPlans().subscribe({
@@ -105,5 +110,24 @@ export class BudgetPlanListComponent implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
+  }
+
+  openCreateDialog(): void {
+    const dialogRef = this.dialog.open(CreateBudgetPlanModalComponent, {
+      width: '500px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Refresh the budget plans after a successful save
+        this.displayPlanService.getBudgetPlans().subscribe(data => {
+          this.budgetPlans = data;
+          this.filteredBudgetPlans = data;
+          this.sortBudgetPlans();
+          this.updatePagination();
+        });
+      }
+    });
   }
 }

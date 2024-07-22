@@ -1,4 +1,5 @@
 <div>
+  <!-- Existing form fields and controls -->
   <mat-form-field appearance="fill">
     <mat-label>Search</mat-label>
     <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()" placeholder="Search budget plans">
@@ -21,6 +22,9 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <!-- Button to open the Create Budget Plan dialog -->
+  <button mat-raised-button color="primary" (click)="openCreateDialog()">+ Create New Plan</button>
 </div>
 
 <div class="scroll-container">

@@ -13,10 +13,17 @@ export class CurrentPlanComponent implements OnInit {
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
 
-  constructor(private currentPlanService: CurrentPlanService, private router: Router) { }
+  constructor(
+    private currentPlanService: CurrentPlanService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    const userId = '04A7CE09-3B90-4940-835A-1EFEA93370B7'; 
+    this.loadCurrentPlan();
+  }
+
+  loadCurrentPlan(): void {
+    const userId = 'E28D2431-5530-4C67-9CCB-152E7317DCE4'; 
     this.currentPlanService.getCurrentPlan(userId).subscribe(
       data => {
         this.currentPlan = data[0]; 
@@ -46,5 +53,18 @@ export class CurrentPlanComponent implements OnInit {
     console.log(this.categoriesWithDetails);
   }
 
-
+  cancelPlan(): void {
+    if (this.currentPlan && this.currentPlan.monthlyPlan_id) {
+      this.currentPlanService.cancelCurrentPlan(this.currentPlan.monthlyPlan_id).subscribe(
+        response => {
+          console.log('Plan canceled successfully', response);
+          // Navigate to the same route to refresh the component
+          this.router.navigate([this.router.url]); // This should reload the component
+        },
+        error => {
+          console.error('Error canceling the plan', error);
+        }
+      );
+    }
+  }
 }

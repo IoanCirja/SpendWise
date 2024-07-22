@@ -47,17 +47,11 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult> GetPlan(Guid id)
-        {
-            var result = this._planService.GetPlan(id);
 
-            return Ok(result);
-        }
 
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<bool>> AddPlan([FromBody] BudgetPlanContract budgetPlanContract)
         {
             var result = await this._planService.AddNewPlan(budgetPlanContract.MapTestToDomain());

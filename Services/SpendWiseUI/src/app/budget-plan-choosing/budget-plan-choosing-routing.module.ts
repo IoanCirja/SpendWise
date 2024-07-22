@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BudgetPlanListComponent } from './budget-plan-list/budget-plan-list.component';
 
 const routes: Routes = [
-  { path: 'budgets', component: BudgetPlanListComponent}
+  { path: '', component: BudgetPlanListComponent}
 
 ];
 

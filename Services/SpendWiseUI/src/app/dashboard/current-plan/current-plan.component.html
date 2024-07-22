@@ -1,4 +1,6 @@
+<!-- current-plan.component.html -->
 <div class="container">
+  <!-- Display current plan if available -->
   <mat-card class="plan-card" *ngIf="currentPlan">
     <mat-card-header>
       <mat-card-title>{{ currentPlan.plan_name }}</mat-card-title>
@@ -9,7 +11,7 @@
       <p><strong>Total Amount:</strong> {{ currentPlan.totalAmount }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="warn">Cancel Your Current Plan</button>
+      <button mat-raised-button color="warn" (click)="cancelPlan()">Cancel Your Current Plan</button>
     </mat-card-actions>
   </mat-card>
 
@@ -25,4 +27,9 @@
       </div>
     </mat-card-content>
   </mat-card>
+
+  <!-- Display message and button if no current plan -->
+  <div *ngIf="!currentPlan" class="no-plan-message">
+    <p>No budget plan this month. Choose one <a [routerLink]="['/budget-plans/budgets']">here</a>.</p>
+  </div>
 </div>

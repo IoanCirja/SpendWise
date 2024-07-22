@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
+import { MatIcon } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { HomeComponent } from './home/home.component';
     MaterialModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
