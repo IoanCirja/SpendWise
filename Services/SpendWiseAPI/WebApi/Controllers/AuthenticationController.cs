@@ -47,5 +47,18 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpPost]
+        public async Task<ActionResult<string>> SaveAccountSettings([FromBody] UserAccount userAccount)
+        {
+            var result = await this._authorizationService.SaveAccountSettings(userAccount.MapTestToDomain());
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<ActionResult<string>> ResetPassword([FromBody] PasswordReset userAccount)
+        {
+            var result = await this._authorizationService.ResetPassword(userAccount.MapTestToDomain());
+            return Ok(result);
+        }
+
     }
 }
