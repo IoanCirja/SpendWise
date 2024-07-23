@@ -14,7 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
-
+import { TabsComponent } from './tabs/tabs.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    TabsComponent,
+    AccountSettingsComponent
   ],
     imports: [
         BrowserModule,
@@ -32,7 +36,8 @@ import { HomeComponent } from './home/home.component';
         MaterialModule,
         MatFormFieldModule,
         MatInputModule,
-        MatCardModule
+        MatCardModule,
+        MatToolbarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
