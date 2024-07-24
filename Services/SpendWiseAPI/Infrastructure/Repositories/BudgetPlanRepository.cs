@@ -21,7 +21,7 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGet> GetPlans()
         {
-            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id]";
+            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id]";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGet>(sql).ToList();
@@ -41,12 +41,12 @@ namespace Infrastructure.Repositories
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGetPopular>(sql).ToList();
             return file;
-}
-        public Task<IEnumerable<BudgetPlan>> GetPlanByName(string name)
+        }
+        public async Task<BudgetPlan> GetPlanByName(string name)
         {
-            var sql = "SELECT * from [SpendWise].[PlanDetails] where [name] = @name";
+            var sql = "SELECT * FROM [SpendWise].[PlanDetails] WHERE [name] = @name";
             var connection = _databaseContext.GetDbConnection();
-            var plan = connection.QueryAsync<BudgetPlan>(sql, new { Name = name });
+            var plan = await connection.QueryFirstOrDefaultAsync<BudgetPlan>(sql, new { Name = name });
             return plan;
         }
 
@@ -67,11 +67,12 @@ namespace Infrastructure.Repositories
             return result != 0;
         }
 
-        //Added 21/07/2024
+
+
 
         public List<BudgetPlan> GetPlansByAdminCreator(Guid id)
         {
-            var query = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by]  from [SpendWise].[PlanDetails] where [created_by]=@AdminId";
+            var query = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by], [isActive]  from [SpendWise].[PlanDetails] where [created_by]=@AdminId AND [isActive] = 1";
 
             var connection = _databaseContext.GetDbConnection();
             var result = connection.Query<BudgetPlan>(query, new { AdminId = id }).ToList();
@@ -152,10 +153,10 @@ namespace Infrastructure.Repositories
 
         public async Task<string> DeletePlanById(Guid id)
         {
-            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [plan_id] = @Plan_ID";
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [isActive] = 0 WHERE [plan_id] = @PlanID";
 
             var connection = _databaseContext.GetDbConnection();
-            var result = await connection.ExecuteAsync(sql, new { Plan_ID = id });
+            var result = await connection.ExecuteAsync(sql, new { PlanID = id });
 
             if (result > 0)
             {
@@ -169,7 +170,7 @@ namespace Infrastructure.Repositories
 
         public async Task<string> DeletePlanByName(String name)
         {
-            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [name] = @Name";
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [isActive] = 0 WHERE [name] = @Name";
 
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(sql, new { Name = name });
@@ -182,6 +183,16 @@ namespace Infrastructure.Repositories
             {
                 throw new InvalidOperationException("Plan with the specified name does not exist");
             }
+        }
+
+        public List<BudgetPlan> GetActivePlans()
+        {
+            var sql = "SELECT * from [SpendWise].[PlanDetails] WHERE [isActive] = 1";
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Query<BudgetPlan>(sql).ToList();
+
+            return result;
+
         }
     }
 }

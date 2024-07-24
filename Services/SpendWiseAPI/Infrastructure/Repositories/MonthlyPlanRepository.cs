@@ -91,5 +91,13 @@ namespace Infrastructure.Repositories
             var result = connection.Execute(query, parameters);
             return result != 0;
         }
+
+        public async Task<bool> CancelMonthlyPlansByPlanId(Guid id)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan]  SET [status]='Canceled' where [plan_id]=@PlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(query, new { PlanID = id });
+            return result != 0;
+        }
     }
 }
