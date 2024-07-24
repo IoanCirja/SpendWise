@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BudgetPlanService } from '../services/budget-plan-modal.service';
 
@@ -17,9 +17,10 @@ export interface DialogData {
   templateUrl: './budget-plan-modal.component.html',
   styleUrls: ['./budget-plan-modal.component.scss']
 })
-export class BudgetPlanModalComponent {
+export class BudgetPlanModalComponent implements OnInit {
 
   dataHolder: DialogData;
+  userId: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<BudgetPlanModalComponent>,
@@ -29,14 +30,26 @@ export class BudgetPlanModalComponent {
     this.dataHolder = data;
   }
 
+  ngOnInit(): void {
+    const userString = localStorage.getItem('currentUser');
+    if (userString) {
+      const user = JSON.parse(userString);
+      this.userId = user.id;
+    }
+  }
+
   savePlan(): void {
+    if (!this.userId) {
+      console.error('User ID not found. Unable to save budget plan.');
+      return;
+    }
+
     const plan_id = this.dataHolder.plan_id;
-    const user_id = "04A7CE09-3B90-4940-835A-1EFEA93370B7";
 
     const totalAmount = this.dataHolder.categories.reduce((acc, category) => acc + category.value, 0);
 
     const planData = {
-      user_id,
+      user_id: this.userId,
       plan_id,
       date: new Date().toISOString(),
       totalAmount,
@@ -60,4 +73,3 @@ export class BudgetPlanModalComponent {
     this.dialogRef.close();
   }
 }
-

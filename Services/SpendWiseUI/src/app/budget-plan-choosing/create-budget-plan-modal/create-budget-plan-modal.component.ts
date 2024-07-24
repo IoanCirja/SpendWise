@@ -14,11 +14,18 @@ export class CreateBudgetPlanModalComponent {
     imagine: '', // Image URL input
     categories: [{ name: '' }] // Initialize with one empty category
   };
+  userId: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<CreateBudgetPlanModalComponent>,
     private createBudgetPlanService: CreateBudgetPlanService
-  ) {}
+  ) {
+    const userString = localStorage.getItem('currentUser');
+    if (userString) {
+      const user = JSON.parse(userString);
+      this.userId = user.id;
+    }
+  }
 
   addCategory(): void {
     this.newPlan.categories.push({ name: '' });
@@ -41,6 +48,11 @@ export class CreateBudgetPlanModalComponent {
   }
 
   onSave(): void {
+    if (!this.userId) {
+      console.error('User ID not found. Unable to create budget plan.');
+      return;
+    }
+
     // Create plain object
     const planData = {
       name: this.newPlan.name,
@@ -48,7 +60,7 @@ export class CreateBudgetPlanModalComponent {
       noCategory: this.newPlan.categories.length,
       category: this.newPlan.categories.map(cat => cat.name).join(','),
       imagine: this.newPlan.imagine,
-      user_id: 'E28D2431-5530-4C67-9CCB-152E7317DCE4' // Replace with actual user ID
+      user_id: this.userId
     };
 
     this.createBudgetPlanService.createBudgetPlan(planData).subscribe({

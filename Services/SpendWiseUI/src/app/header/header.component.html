@@ -1,18 +1,28 @@
 <mat-toolbar class="header">
-    <span class="logo">
-      <img src="assets/logo.png" alt="SpendWise Logo" height="40" />
-    </span>
-    <span class="spacer"></span>
-    <nav class="nav-menu">
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/financial-planner">Financial Planner</a>
-      <a mat-button routerLink="/budget-plans">Budget Plans</a>
-      <a mat-button routerLink="/our-team">About Us</a>
-      <a mat-button routerLink="/contact-us">Get in Touch</a>
-    </nav>
-    <span class="spacer"></span>
-    <div class="auth-buttons">
-      <a mat-button class="log _in" href="/auth/login">Log In</a>
-      <a mat-raised-button color="primary" class="sign_up" href="/auth/register">Sign Up</a>
+  <span class="logo">
+    <img src="assets/logo.png" alt="SpendWise Logo" height="40" />
+  </span>
+  <span class="spacer"></span>
+  <nav class="nav-menu">
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/financial-planner">Financial Planner</a>
+    <a mat-button routerLink="/budget-plans">Budget Plans</a>
+    <a mat-button routerLink="/our-team">About Us</a>
+    <a mat-button routerLink="/contact-us">Get in Touch</a>
+  </nav>
+  <span class="spacer"></span>
+  <div class="auth-buttons" *ngIf="!user; else loggedIn">
+    <a mat-button class="log_in" href="/auth/login">Log In</a>
+    <a mat-raised-button color="primary" class="sign_up" href="/auth/register">Sign Up</a>
+  </div>
+  <ng-template #loggedIn>
+
+    <div class="user-info">
+      <a mat-button routerLink="/dashboard">Dashboard</a>
+
+      <img src="assets/profile.svg" alt="User Image" height="40" />
+      <span>{{ user.name }}</span>
+      <button mat-button (click)="logout()">Log Out</button>
     </div>
+  </ng-template>
 </mat-toolbar>

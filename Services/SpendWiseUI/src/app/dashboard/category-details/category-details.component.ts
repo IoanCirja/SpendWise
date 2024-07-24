@@ -11,12 +11,38 @@ import { MonthlyPlan } from '../models/MonthlyPlan';
 export class CategoryDetailsComponent implements OnInit {
 
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
+  userId: string | null = null;
 
-  constructor(private router: Router, private currentPlanService: CurrentPlanService) { }
+  constructor(
+    private router: Router,
+    private currentPlanService: CurrentPlanService
+  ) { }
 
   ngOnInit(): void {
-    const userId = 'E28D2431-5530-4C67-9CCB-152E7317DCE4'; 
-    this.currentPlanService.getCurrentPlan(userId).subscribe(
+    this.userId = this.getUserIdFromLocalStorage();
+    if (this.userId) {
+      this.loadCurrentPlan();
+    } else {
+      console.error('User ID not found in local storage.');
+    }
+  }
+
+  getUserIdFromLocalStorage(): string | null {
+    const userString = localStorage.getItem('currentUser');
+    if (userString) {
+      const user = JSON.parse(userString);
+      return user.id;
+    }
+    return null;
+  }
+
+  loadCurrentPlan(): void {
+    if (!this.userId) {
+      console.error('User ID is required to load the current plan.');
+      return;
+    }
+
+    this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
         const currentPlan = data[0]; 
         if (currentPlan) {

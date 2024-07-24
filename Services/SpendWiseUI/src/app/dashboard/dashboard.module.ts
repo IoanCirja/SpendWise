@@ -20,6 +20,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TransactionModalComponent } from './transaction-modal/transaction-modal.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     StatisticsComponent,
     AccountSettingsComponent,
     ManagePlansComponent,
+    TransactionModalComponent,
   ],
   imports: [
     CommonModule,
