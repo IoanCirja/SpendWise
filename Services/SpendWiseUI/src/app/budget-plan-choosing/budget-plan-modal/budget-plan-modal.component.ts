@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BudgetPlanService } from '../services/budget-plan-modal.service';
+import {AccountService} from "../../auth/account.service";
+import {Subscription} from "rxjs";
 
 export interface DialogData {
   plan_id: string;
@@ -17,25 +19,32 @@ export interface DialogData {
   templateUrl: './budget-plan-modal.component.html',
   styleUrls: ['./budget-plan-modal.component.scss']
 })
-export class BudgetPlanModalComponent implements OnInit {
+export class BudgetPlanModalComponent implements OnInit, OnDestroy {
 
   dataHolder: DialogData;
   userId: string | null = null;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<BudgetPlanModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private budgetPlanService: BudgetPlanService
+    private budgetPlanService: BudgetPlanService,
+    private accountService: AccountService
   ) {
     this.dataHolder = data;
   }
 
   ngOnInit(): void {
-    const userString = localStorage.getItem('currentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
-      this.userId = user.id;
-    }
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser(): void {
+    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+      if (currentUser) {
+        this.userId = currentUser.id;
+      }
+    })
+    this.subscriptions.push(subscription);
   }
 
   savePlan(): void {
@@ -53,7 +62,7 @@ export class BudgetPlanModalComponent implements OnInit {
       plan_id,
       date: new Date().toISOString(),
       totalAmount,
-      amountSpent: 0, 
+      amountSpent: 0,
       priceByCategory: this.dataHolder.categories.map(cat => cat.value).join(','),
       spentOfCategory: this.dataHolder.categories.map(() => 0).join(',')
     };
@@ -71,5 +80,11 @@ export class BudgetPlanModalComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
   }
 }

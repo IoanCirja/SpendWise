@@ -1,34 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { HistoryService } from '../services/history.service';
+import {Subscription} from "rxjs";
+import {AccountService} from "../../auth/account.service";
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit,OnDestroy{
 
   historyPlans: any[] = [];
   userId: string | null = null;
+  subscriptions: Subscription[] = [];
 
-  constructor(private historyService: HistoryService) { }
+  constructor(private historyService: HistoryService,
+              private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.userId = this.getUserIdFromLocalStorage();
-    if (this.userId) {
-      this.loadHistoryPlans(this.userId);
-    } else {
-      console.error('User ID not found in local storage.');
-    }
+    this.loadCurrentUser();
   }
 
-  getUserIdFromLocalStorage(): string | null {
-    const userString = localStorage.getItem('currentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
-      return user.id;
-    }
-    return null;
+  loadCurrentUser(): void {
+    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+      if (currentUser) {
+        this.userId = currentUser.id;
+        this.loadHistoryPlans(this.userId);
+      }
+    })
+    this.subscriptions.push(subscription);
   }
 
   loadHistoryPlans(userId: string): void {
@@ -44,5 +44,11 @@ export class HistoryComponent implements OnInit {
 
   onPlanSelect(planId: string): void {
     console.log('Selected plan ID:', planId);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
   }
 }

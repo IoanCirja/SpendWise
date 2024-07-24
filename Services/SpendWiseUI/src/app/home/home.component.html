@@ -58,24 +58,21 @@
                 </div>
             </div>
         </section>
-        <br/>
-        <br/>
         <section class="second_page">
-            <h1>Check our popular plans</h1>
-            <div class="cards">
-                <mat-card *ngFor="let plan of mostPopularBudgetPlans">
-                    <mat-card-header>
-                        <mat-card-title>{{ plan.name }}</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>{{ plan.description }}</p>
-
-                    </mat-card-content>
-                </mat-card>
+          <h1>Check our popular plans</h1>
+          <div class="carousel-container">
+            <div class="cards" [ngStyle]="{'animation-duration': mostPopularBudgetPlans.length * 5 + 's'}">
+              <mat-card *ngFor="let plan of duplicatedPlans">
+                <mat-card-header>
+                  <mat-card-title>{{ plan.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{ plan.description }}</p>
+                </mat-card-content>
+              </mat-card>
             </div>
+          </div>
         </section>
-<!-- footer -->
-
+ <!-- footer -->
     </body>
-
  </html>
