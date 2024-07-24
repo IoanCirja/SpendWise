@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain;
+using System.Net;
 
 namespace Application.Services
 {
@@ -79,6 +80,60 @@ namespace Application.Services
             var result = await this._authenticationRepository.GiveUserAdminRights(email);
 
             return result;
+        }
+
+        public async Task<bool> SaveAccountSettings(User credentials)
+        {
+            var userCheck = await this._authenticationRepository.GetUserByID(credentials.ID);
+
+            if (userCheck.ToList().Count == 0)
+            {
+                throw new Exception("User are not registered");
+            }
+
+            var registerResult = await this._authenticationRepository.SaveAccountSettings(new UserCredentials
+            {
+                user_id = credentials.ID,
+                Name = credentials.Name,
+                Email = credentials.Email,
+                Password = userCheck.FirstOrDefault().Password,
+                Phone = credentials.Phone,
+                Role = userCheck.FirstOrDefault().Role
+            });
+
+            return registerResult;
+        }
+        public async Task<bool> ResetPassword(ResetPassword resetPassword)
+        {
+            var userCheck = await this._authenticationRepository.GetUserByID(resetPassword.ID);
+
+            if (userCheck.ToList().Count == 0)
+            {
+                throw new Exception("User are not registered");
+            }
+
+            if (!_passwordHasher.Verify(userCheck.FirstOrDefault().Password, resetPassword.CurrentPassword))
+            {
+                throw new Exception("Current password is incorrect!");
+            }
+
+            if (resetPassword.NewPassword != resetPassword.ConfirmPassword)
+            {
+                throw new Exception("Passwords are different");
+            }
+
+            var hashedNewPassword = this._passwordHasher.Hash(resetPassword.NewPassword);
+            var registerResult = await this._authenticationRepository.ResetPassword(new UserCredentials
+            {
+                user_id = resetPassword.ID,
+                Name = userCheck.FirstOrDefault().Name,
+                Email = userCheck.FirstOrDefault().Email,
+                Password = hashedNewPassword,
+                Phone = userCheck.FirstOrDefault().Phone,
+                Role = userCheck.FirstOrDefault().Role,
+            });
+
+            return registerResult;
         }
     }
 }

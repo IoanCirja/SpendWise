@@ -23,6 +23,14 @@ namespace Infrastructure.Repositories
             var users = connection.QueryAsync<UserCredentials>(sql, new {Email = email});
             return users;
         }
+        public Task<IEnumerable<UserCredentials>> GetUserByID(Guid user_id)
+        {
+            var sql = "SELECT [user_id], [name], [email], [password], [phone], [role] FROM [SpendWise].[Users] WHERE [user_id] = @UserID";
+            var connection = _databaseContext.GetDbConnection();
+            var users = connection.QueryAsync<UserCredentials>(sql, new { UserID = user_id });
+            return users;
+        }
+
 
         public async Task<bool> RegisterUser(UserCredentials credentials)
         {
@@ -45,6 +53,30 @@ namespace Infrastructure.Repositories
             
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(sql, new { Email = email });
+            return result != 0;
+        }
+        public async Task<bool> SaveAccountSettings(UserCredentials credentials)
+        {
+            var query = "UPDATE [SpendWise].[Users] SET [name] = @Name, [email] = @Email, [phone] = @Phone WHERE [user_id] = @UserId";
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId",credentials.user_id, DbType.Guid);
+            parameters.Add("Name", credentials.Name, DbType.String);
+            parameters.Add("Email", credentials.Email, DbType.String);
+            parameters.Add("Phone", credentials.Phone, DbType.String);
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
+            return result != 0;
+        }
+        public async Task<bool> ResetPassword(UserCredentials credentials)
+        {
+            var query = "UPDATE [SpendWise].[Users] SET [password] = @Password WHERE [user_id] = @UserId";
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId", credentials.user_id, DbType.Guid);
+            parameters.Add("Password", credentials.Password, DbType.String);
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
             return result != 0;
         }
     }
