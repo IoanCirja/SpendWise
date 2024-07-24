@@ -10,8 +10,8 @@ VALUES (
     '2024-07-01',
     1000,
     500,
-    'Example price breakdown',
-    'Example spending breakdown'
+    '150,100,100,100,200,100,150,100',
+    '75,25,50,50,100,50,75,75'
 );
 
 INSERT INTO SpendWise.MonthlyPlan (user_id, plan_id, date, totalAmount, amountSpent, priceByCategory, spentOfCategory)
@@ -21,8 +21,8 @@ VALUES (
     '2024-07-01', 
     1500, 
     700, 
-    'Another example price breakdown', 
-    'Another example spending breakdown' 
+    '150,200,150,150,200,150,150,200,150', 
+    '75,150,50,75,50,50,50,150,50' 
 );
 
 
@@ -33,8 +33,8 @@ VALUES (
     '2024-07-01', 
     1200, 
     600, 
-    'Third example price breakdown', 
-    'Third example spending breakdown' 
+    '80,100,100,50,75,50,85,100,175,85,125,75,50,50', 
+    '40,50,50,25,37.5,25,42.5,50,87.5,42.5,62.5,37.5,25,25' 
 );
 
 

@@ -17,5 +17,6 @@ namespace Application.Interfaces
         List<MonthlyPlanGet> GetCurrentPlan(Guid user_id);
         List<MonthlyPlanGetDateID> GetDateFromMonthlyPlanByUserID(Guid user_id);
         bool FinishedMonthlyPlan(Guid monthlyPlan_id);
+        bool UpdateMonthlyPlanWithTransaction(Guid monthlyPlan_id, double amount, string spentOfCategory);
     }
 }

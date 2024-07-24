@@ -9,6 +9,7 @@ namespace Application.Interfaces
         List<BudgetPlanGet> GetPlans();
         List<BudgetPlanGet> GetPlan(Guid id);
         List<BudgetPlanGetPopular> GetPopularFivePlans();
+        
 
 
         Task<IEnumerable<BudgetPlan>> GetPlanByName(string name);

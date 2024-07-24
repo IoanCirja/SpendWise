@@ -80,5 +80,16 @@ namespace Infrastructure.Repositories
             var result = connection.Execute(query, new { MonthlyPlanID = monthlyPlan_id });
             return result != 0;
         }
+        public bool UpdateMonthlyPlanWithTransaction(Guid monthlyPlan_id, double amount, string spentOfCategory)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan] SET [amountSpent]=[amountSpent]+@Amount, [spentOfCategory]=@SpentOfCategory where [monthlyPlan_id]=@MonthlyPlanID";
+            var parameters = new DynamicParameters();
+            parameters.Add("Amount", amount, DbType.Double);
+            parameters.Add("MonthlyPlanID", monthlyPlan_id, DbType.Guid);
+            parameters.Add("SpentOfCategory", spentOfCategory, DbType.String);
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Execute(query, parameters);
+            return result != 0;
+        }
     }
 }
