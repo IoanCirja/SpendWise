@@ -60,5 +60,14 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpGet("{category}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetTransactionForCategory(string category)
+
+        {
+            var result = this._transactionsService.GetTransactionForCategory(category);
+
+            return Ok(result);
+        }
     }
 }

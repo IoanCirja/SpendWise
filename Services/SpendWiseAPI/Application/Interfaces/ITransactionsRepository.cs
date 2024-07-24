@@ -13,5 +13,6 @@ namespace Application.Interfaces
         Task<bool> DeleteTransactions(Guid transaction_id);
         List<Transactions> GetAllTransactions(Guid monthlyPlan_id);
         List<Transactions> GetTransaction(Guid transaction_id);
+        List<Transactions> GetTransactionsForCategory(string category);
     }
 }
