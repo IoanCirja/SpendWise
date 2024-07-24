@@ -9,7 +9,7 @@ BEGIN
 		monthlyPlan_id UNIQUEIDENTIFIER,
 		date DATE NOT NULL,
 		category NVARCHAR(30) NOT NULL,
-		amount INT NOT NULL,
+		amount FLOAT NOT NULL,
 		FOREIGN KEY (monthlyPlan_id) REFERENCES SpendWise.MonthlyPlan(monthlyPlan_id)
     );
 END

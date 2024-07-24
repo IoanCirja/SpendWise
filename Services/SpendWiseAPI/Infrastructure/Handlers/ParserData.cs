@@ -10,7 +10,7 @@ namespace Infrastructure.Handlers
 {
     public class ParserData:IParserData
     {
-        public string GetUpdatedStringSpentOfCategoryWhenAddTransaction(string categoryBudgetPlan, string spentOfCategoryMonthlyPlan, string currentCategory, int amount)
+        public string GetUpdatedStringSpentOfCategoryWhenAddTransaction(string categoryBudgetPlan, string spentOfCategoryMonthlyPlan, string currentCategory, double amount)
         {
             if(!categoryBudgetPlan.Contains(currentCategory))
             {
@@ -26,13 +26,13 @@ namespace Infrastructure.Handlers
 
                 if (categorie.Equals(currentCategory) || categorie.Equals(" "+currentCategory))
                 {
-                    int numar;
-                    bool raspuns = int.TryParse(cheltuieli[i], out numar);
+                    double numar;
+                    bool raspuns = double.TryParse(cheltuieli[i], out numar);
                     if(raspuns == false)
                     {
                         throw new Exception("error parsing the number");
                     }
-                    int suma = numar + amount;
+                    double suma = numar + amount;
                     spentOfCategory += suma.ToString();
                 }
                 else

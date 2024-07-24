@@ -8,6 +8,6 @@ namespace Application.Interfaces
 {
     public interface IParserData
     {
-        string GetUpdatedStringSpentOfCategoryWhenAddTransaction(string categoryBudgetPlan, string spentOfCategoryMonthlyPlan, string CurrentCategory, int amount);
+        string GetUpdatedStringSpentOfCategoryWhenAddTransaction(string categoryBudgetPlan, string spentOfCategoryMonthlyPlan, string CurrentCategory, double amount);
     }
 }
