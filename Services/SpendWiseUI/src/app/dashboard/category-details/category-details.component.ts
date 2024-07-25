@@ -1,16 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { CurrentPlanService } from '../services/current-plan.service';
 import { TransactionService } from '../services/transaction-service';
-import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
-import { Subscription } from 'rxjs';
+import { MonthlyPlan } from '../models/MonthlyPlan';
 
 interface Transaction {
   name: string;
   amount: number;
-  date: string; 
-  category?: string; 
+  date: string;
+  category?: string;
 }
 
 @Component({
@@ -19,7 +20,6 @@ interface Transaction {
   styleUrls: ['./category-details.component.scss']
 })
 export class CategoryDetailsComponent implements OnInit, OnDestroy {
-
   categoriesWithDetails: { name: string, price: number, spent: number, transactions: Transaction[] }[] = [];
   displayedTransactions: Transaction[] = [];
   displayedColumns: string[] = ['category', 'name', 'amount', 'date'];
@@ -32,11 +32,15 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
     private router: Router,
     private currentPlanService: CurrentPlanService,
     private transactionService: TransactionService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.loadCurrentUser();
+    this.route.queryParams.subscribe(params => {
+      this.selectedCategory = params['category'] || 'all';
+      this.loadCurrentUser();
+    });
   }
 
   loadCurrentUser(): void {
@@ -72,9 +76,9 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
   }
 
   extractCategoryDetails(plan: MonthlyPlan): void {
-    const categories = plan.category.split(', ').map(c => c.trim());
-    const prices = plan.priceByCategory.split(', ').map(price => Number(price.trim()));
-    const spends = plan.spentOfCategory.split(', ').map(spend => Number(spend.trim()));
+    const categories = plan.category.split(',').map(c => c.trim());
+    const prices = plan.priceByCategory.split(',').map(price => Number(price.trim()));
+    const spends = plan.spentOfCategory.split(',').map(spend => Number(spend.trim()));
 
     this.categoriesWithDetails = categories.map((category, index) => ({
       name: category,
@@ -128,6 +132,10 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
         default: return 0;
       }
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['dashboard/current-plan']);
   }
 
   ngOnDestroy(): void {

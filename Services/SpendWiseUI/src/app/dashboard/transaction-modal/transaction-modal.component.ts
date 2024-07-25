@@ -73,6 +73,7 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
 
     this.transactionService.saveTransaction(transactionData).subscribe(
       response => {
+        // Assuming the response is a text message indicating success
         console.log('Transaction saved successfully', response);
         this.dialogRef.close(true); // Close the modal and signal success
       },

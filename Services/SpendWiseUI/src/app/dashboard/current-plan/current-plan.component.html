@@ -9,7 +9,7 @@
       <p><strong>Total Amount:</strong> {{ currentPlan.totalAmount }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="warn" (click)="cancelPlan()">Cancel Your Current Plan</button>
+      <button mat-raised-button color="warn" (click)="openCancelDialog()">Cancel Your Current Plan</button>
     </mat-card-actions>
   </mat-card>
 
@@ -20,7 +20,9 @@
     <mat-card-content>
       <div class="categories">
         <div *ngFor="let category of categoriesWithDetails" class="category-item">
-          <button mat-button>{{ category.name }}</button>
+          <button mat-button (click)="openCategoryDetails(category.name)">
+            {{ category.name }}
+          </button>
           <div class="progress-circle">
             <mat-progress-spinner
               [value]="(category.spent / category.price) * 100"

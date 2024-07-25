@@ -3,7 +3,7 @@
     <mat-card class="details-card">
       <mat-card-header>
         <mat-card-title>Plan Details</mat-card-title>
-        <button mat-icon-button (click)="goBack()">return        </button>
+        <button mat-icon-button (click)="goBack()">Return</button>
       </mat-card-header>
       <mat-card-content>
         <div class="card-container">
@@ -15,6 +15,8 @@
               <div>
                 <p><strong>Plan Name:</strong> {{ selectedPlan?.plan_name }}</p>
                 <p><strong>Description:</strong> {{ selectedPlan?.description }}</p>
+                <!-- Navigation button to HistoryCategoryDetailsComponent -->
+                <button mat-raised-button color="primary" (click)="goToDetails()">View History Details</button>
               </div>
             </mat-card-content>
           </mat-card>
