@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PasswordReset } from '../models/PasswordReset';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,13 @@ export class ChangePasswordService {
   
   constructor(private http: HttpClient){}
 
-  changePassword(data: any): Observable<any>{
+  changePassword(data : PasswordReset): Observable<any>{
 
-    return this.http.post<any>(this.endPoint,data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post<any>(this.endPoint, data, {headers});
   }
 
 }

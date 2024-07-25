@@ -12,7 +12,7 @@ namespace DbUpgrader
                 args.FirstOrDefault()
 
 
-                ?? "data source=ASUS_TUF_F15\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
+                ?? "data source=DESKTOP-T8SGQKC\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
 
             EnsureDatabase.For.SqlDatabase(connectionString);
 
