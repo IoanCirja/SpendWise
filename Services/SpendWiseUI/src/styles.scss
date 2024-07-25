@@ -4,7 +4,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -47,14 +46,11 @@ $green-palette:(
     A700: #ffffff,
   )
 );
-//$SpendWiseUI-primary: mat.define-palette(mat.$indigo-palette);
-//$SpendWiseUI-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $SpendWiseUI-warn: mat.define-palette(mat.$red-palette);
 
-//$green-palette: mat.define-palette(mat.$green-palette);
-$SpendWiseUIi-primary: mat.define-palette(mat.$green-palette);
+$SpendWiseUIi-primary: mat.define-palette($green-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -71,5 +67,20 @@ $SpendWiseUI-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($SpendWiseUI-theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Global Styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif; /* Set default font */
+  background: linear-gradient(to bottom, #FCFCF9, #E8FFDD); /* Gradient background */
+}
+
+// Apply Roboto Condensed to all text elements
+* {
+  font-family: 'Roboto Condensed', sans-serif !important; /* Ensure all text uses Roboto Condensed */
+}
+
+// Ensure Angular Material components use the correct font
+.mat-button, .mat-card-title, .mat-card-subtitle, .mat-card-content, .mat-card-actions {
+  font-family: 'Roboto Condensed', sans-serif !important;
+}

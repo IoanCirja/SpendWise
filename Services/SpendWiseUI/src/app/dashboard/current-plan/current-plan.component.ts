@@ -72,6 +72,16 @@ export class CurrentPlanComponent implements OnInit {
     console.log(this.categoriesWithDetails);
   }
 
+  getCircleColor(percentage: number): string {
+    if (percentage < 50) {
+      return 'primary'; // Blue
+    } else if (percentage < 75) {
+      return 'accent'; // Orange
+    } else {
+      return 'warn'; // Red
+    }
+  }
+
   cancelPlan(): void {
     if (this.currentPlan && this.currentPlan.monthlyPlan_id) {
       this.currentPlanService.cancelCurrentPlan(this.currentPlan.monthlyPlan_id).subscribe(

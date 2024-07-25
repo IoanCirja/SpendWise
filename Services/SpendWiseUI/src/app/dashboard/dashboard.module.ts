@@ -21,6 +21,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TransactionModalComponent } from './transaction-modal/transaction-modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { TransactionModalComponent } from './transaction-modal/transaction-modal
     HttpClientModule,
     MatToolbarModule,
     RouterModule,  
+    MatProgressSpinnerModule
   ]
 })
 export class DashboardModule { }

@@ -31,7 +31,7 @@ export class BudgetPlanCardComponent {
       },
       disableClose: true,
       autoFocus: false,
-      width: '500px',
+      width: '60vw',
     });
   }
 
