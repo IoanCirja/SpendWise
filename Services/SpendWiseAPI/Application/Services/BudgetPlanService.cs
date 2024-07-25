@@ -6,11 +6,12 @@ namespace Application.Services
     public class BudgetPlanService
     {
         private IBudgetPlanRepository _budgetPlanRepository;
+        private IMonthlyPlanRepository _monthlyPlanRepository;
 
-
-        public BudgetPlanService(IBudgetPlanRepository budgetPlanRepository)
+        public BudgetPlanService(IBudgetPlanRepository budgetPlanRepository, IMonthlyPlanRepository monthlyPlanRepository)
         {
             _budgetPlanRepository = budgetPlanRepository;
+            _monthlyPlanRepository = monthlyPlanRepository;
         }
 
         public List<BudgetPlanGet> GetPlans()
@@ -32,7 +33,7 @@ namespace Application.Services
         {
             var planCheck = await this._budgetPlanRepository.GetPlanByName(budgetPlan.name);
 
-            if (planCheck.ToList().Count != 0)
+            if (planCheck != null)
             {
                 throw new Exception("Plan already added");
             }
@@ -61,10 +62,6 @@ namespace Application.Services
         {
             var planCheck = await this._budgetPlanRepository.GetPlanByName(budgetPlan.name);
 
-            if (planCheck.ToList().Count != 0)
-            {
-                throw new Exception("Plan with this name already exists");
-            }
 
             var plan = await this._budgetPlanRepository.GetPlanById(id);
 
@@ -73,6 +70,10 @@ namespace Application.Services
                 throw new Exception("Plan not found");
             }
 
+            if (planCheck != null && plan.name != budgetPlan.name)
+            {
+                throw new Exception("Plan with this name already exists");
+            }
             var result = await this._budgetPlanRepository.EditPlanById(budgetPlan, id);
 
             return result;
@@ -80,18 +81,18 @@ namespace Application.Services
 
         public async Task<BudgetPlan> EditPlanByPlanName(BudgetPlan budgetPlan, String name)
         {
-            var planCheck = await this._budgetPlanRepository.GetPlanByName(budgetPlan.name);
-
-            if (planCheck.ToList().Count != 0)
-            {
-                throw new Exception("Plan with this name already exists");
-            }
-
             var plan = await this._budgetPlanRepository.GetPlanByName(name);
+
+            var planCheck = await this._budgetPlanRepository.GetPlanByName(budgetPlan.name);
 
             if (plan == null)
             {
                 throw new Exception("Plan not found");
+            }
+
+            if (planCheck != null && budgetPlan.name != name)
+            {
+                throw new Exception("Plan with this name already exists");
             }
 
             var result = await this._budgetPlanRepository.EditPlanByName(budgetPlan, name);
@@ -107,7 +108,7 @@ namespace Application.Services
             {
                 throw new Exception("Plan not found");
             }
-
+            await this._monthlyPlanRepository.CancelMonthlyPlansByPlanId(id);
             var result = await this._budgetPlanRepository.DeletePlanById(id);
 
             return result;
@@ -121,11 +122,16 @@ namespace Application.Services
             {
                 throw new Exception("Plan not found");
             }
-
+            await this._monthlyPlanRepository.CancelMonthlyPlansByPlanId(plan.plan_id);
             var result = await this._budgetPlanRepository.DeletePlanByName(name);
 
             return result;
         }
 
+
+        public List<BudgetPlan> GetActivePlans()
+        {
+            return _budgetPlanRepository.GetActivePlans();
+        }
     }
 }

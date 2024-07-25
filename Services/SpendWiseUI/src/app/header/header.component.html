@@ -21,7 +21,7 @@
       <a mat-button routerLink="/dashboard">Dashboard</a>
 
       <img src="assets/profile.svg" alt="User Image" height="40" />
-      <span>{{ user.name }}</span>
+      <span *ngIf="user">{{ user.name }}</span>
       <button mat-button (click)="logout()">Log Out</button>
     </div>
   </ng-template>

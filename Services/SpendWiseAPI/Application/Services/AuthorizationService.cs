@@ -82,7 +82,7 @@ namespace Application.Services
             return result;
         }
 
-        public async Task<bool> SaveAccountSettings(User credentials)
+        public async Task<User> SaveAccountSettings(User credentials)
         {
             var userCheck = await this._authenticationRepository.GetUserByID(credentials.ID);
 
@@ -101,7 +101,24 @@ namespace Application.Services
                 Role = userCheck.FirstOrDefault().Role
             });
 
-            return registerResult;
+            userCheck = await this._authenticationRepository.GetUserByID(credentials.ID);
+
+            if (userCheck.ToList().Count == 0)
+            {
+                throw new Exception("ID are incorrect");
+            }
+
+            var result = new User
+            {
+                ID = userCheck.FirstOrDefault().user_id,
+                Name = userCheck.FirstOrDefault().Name,
+                Role = userCheck.FirstOrDefault().Role,
+            };
+
+            var jwtToken = this._identityHandler.GenerateToken(result);
+            result.JwtToken = jwtToken;
+
+            return result;
         }
         public async Task<bool> ResetPassword(ResetPassword resetPassword)
         {

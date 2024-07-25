@@ -1,41 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CurrentPlanService } from '../services/current-plan.service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { Router } from '@angular/router';
+import {AccountService} from "../../auth/account.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-current-plan',
   templateUrl: './current-plan.component.html',
   styleUrls: ['./current-plan.component.scss']
 })
-export class CurrentPlanComponent implements OnInit {
+export class CurrentPlanComponent implements OnInit, OnDestroy {
 
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
   userId: string | null = null;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private currentPlanService: CurrentPlanService,
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
-    this.userId = this.getUserIdFromLocalStorage();
-    if (this.userId) {
-      this.loadCurrentPlan();
-    } else {
-      console.error('User ID not found in local storage.');
-    }
+   this.loadCurrentUser();
   }
 
-  getUserIdFromLocalStorage(): string | null {
-    const userString = localStorage.getItem('currentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
-      return user.id;
-    }
-    return null;
+  loadCurrentUser(): void {
+    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+      if (currentUser) {
+        this.userId = currentUser.id;
+        this.loadCurrentPlan();
+      }
+    })
+    this.subscriptions.push(subscription);
   }
+
 
   loadCurrentPlan(): void {
     if (!this.userId) {
@@ -45,7 +46,7 @@ export class CurrentPlanComponent implements OnInit {
 
     this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
-        this.currentPlan = data[0]; 
+        this.currentPlan = data[0];
         if (this.currentPlan) {
           this.extractCategoryDetails();
         }
@@ -95,5 +96,11 @@ export class CurrentPlanComponent implements OnInit {
         }
       );
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
   }
 }

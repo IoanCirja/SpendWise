@@ -7,6 +7,7 @@ body{
     flex-direction: column;
     background: rgb(232,255,221);
     background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
+    font-family: 'Roboto Condensed', sans-serif;
     //padding: 10px;
 
     h1{
@@ -49,11 +50,11 @@ section {
         h3{
             margin-left: 16px;
         }
-        
+
     }
 
     button{
-        color:#FCFCF9; 
+        color:#FCFCF9;
         background-color: #2A6F2C;
         //font-weight: bold;
     }
@@ -97,44 +98,63 @@ section {
 }
 
 }
-.second_page{
-    padding: 36px;
-    .cards{
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content: space-around;
-        text-align: center;
 
-        mat-card{
-            width:500px;
-            height:600px;
-        }
-
-        mat-card-title{
-            padding-left: 12px;
-        }
-
-        mat-card-content{
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            p{
-                text-align: left;
-                margin:64px 12px;
-                font-size: 14px;
-            }
-        }
-
-        mat-card-header{
-            color:#043F2D;
-            font-weight: bold;
-        }
-    }
-
-
+.second_page {
+  padding: 36px;
+  overflow: hidden;
 }
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  animation: scroll linear infinite;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.cards:hover {
+  animation-play-state: paused;
+}
+
+mat-card {
+  min-width: 500px;
+  height: 600px;
+  margin: 0 10px;
+}
+
+mat-card-title {
+  padding-left: 12px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card-header {
+  color: #043F2D;
+  font-weight: bold;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
 

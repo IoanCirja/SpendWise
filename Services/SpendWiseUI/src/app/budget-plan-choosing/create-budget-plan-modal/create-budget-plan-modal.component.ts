@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateBudgetPlanService } from '../services/create-budget-plan-service';
+import {Subscription} from "rxjs";
+import {AccountService} from "../../auth/account.service";
 
 @Component({
   selector: 'app-create-budget-plan-modal',
   templateUrl: './create-budget-plan-modal.component.html',
   styleUrls: ['./create-budget-plan-modal.component.scss']
 })
-export class CreateBudgetPlanModalComponent {
+export class CreateBudgetPlanModalComponent implements OnDestroy{
   newPlan = {
     name: '',
     description: '',
@@ -15,16 +17,14 @@ export class CreateBudgetPlanModalComponent {
     categories: [{ name: '' }] // Initialize with one empty category
   };
   userId: string | null = null;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<CreateBudgetPlanModalComponent>,
-    private createBudgetPlanService: CreateBudgetPlanService
+    private createBudgetPlanService: CreateBudgetPlanService,
+    private accountService: AccountService
   ) {
-    const userString = localStorage.getItem('currentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
-      this.userId = user.id;
-    }
+    this.loadCurrentUser();
   }
 
   addCategory(): void {
@@ -71,5 +71,20 @@ export class CreateBudgetPlanModalComponent {
         console.error('Error creating budget plan:', err);
       }
     });
+  }
+
+  loadCurrentUser(): void {
+    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+      if (currentUser) {
+        this.userId = currentUser.id;
+      }
+    })
+    this.subscriptions.push(subscription);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
   }
 }

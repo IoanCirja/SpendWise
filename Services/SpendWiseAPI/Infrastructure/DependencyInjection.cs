@@ -20,6 +20,8 @@ namespace Infrastructure
             services.AddScoped<IMonthlyPlanRepository, MonthlyPlanRepository>();
             services.AddScoped<INewsletterRepository, NewsletterRepository>();
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            services.AddScoped<IParserData, ParserData>();
+            services.AddScoped<ITransactionsRepository, TransactionsRepository>();
 
 
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
