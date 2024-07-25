@@ -2,15 +2,24 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 
+// plan-state.service.ts
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlanStateService {
-  private currentPlanSubject = new BehaviorSubject<MonthlyPlan | null>(null);
-  currentPlan$: Observable<MonthlyPlan | null> = this.currentPlanSubject.asObservable();
+  private _monthlyPlanId: string | null = null;
 
-  // Update the current plan
-  updateCurrentPlan(plan: MonthlyPlan | null): void {
-    this.currentPlanSubject.next(plan);
+  setMonthlyPlanId(id: string): void {
+    this._monthlyPlanId = id;
+  }
+
+  getMonthlyPlanId(): string | null {
+    return this._monthlyPlanId;
+  }
+
+  clearMonthlyPlanId(): void {
+    this._monthlyPlanId = null;
   }
 }
+

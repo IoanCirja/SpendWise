@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
+import { DashboardButtonService } from '../services/dashboard-button-service';
 import { CurrentPlanService } from '../services/current-plan.service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
-import { PlanStateService } from '../services/plan-state-service';
 import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
 
 @Component({
@@ -21,24 +21,15 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
+    private dashboardButtonService: DashboardButtonService,
     private currentPlanService: CurrentPlanService,
     private router: Router,
     private accountService: AccountService,
-    private planStateService: PlanStateService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.loadCurrentUser();
-
-    this.subscriptions.push(
-      this.planStateService.currentPlan$.subscribe(plan => {
-        this.currentPlan = plan;
-        if (this.currentPlan) {
-          this.extractCategoryDetails();
-        }
-      })
-    );
   }
 
   loadCurrentUser(): void {
@@ -60,6 +51,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
         this.currentPlan = data[0];
+        this.dashboardButtonService.setCurrentPlan(this.currentPlan); // Update the shared service
         if (this.currentPlan) {
           this.extractCategoryDetails();
         }

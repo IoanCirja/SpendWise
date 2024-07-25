@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HistoryService } from '../services/history.service';
 import { TransactionService } from '../services/transaction-service';
-import { Subscription } from 'rxjs';
-import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
 import { HistoryPlan } from '../models/HistoryPlan';
+import { MonthlyPlan } from '../models/MonthlyPlan';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -13,11 +14,9 @@ import { firstValueFrom } from 'rxjs';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit, OnDestroy {
-
   historyPlans: HistoryPlan[] = [];
   selectedPlan: MonthlyPlan | null = null;
   displayedTransactions: any[] = [];
-  displayedColumns: string[] = ['category', 'name', 'amount', 'date'];
   categoriesWithDetails: any[] = [];
   selectedCategory: string = 'all';
   sortCriteria: string = 'dateAsc';
@@ -28,8 +27,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
   constructor(
     private historyService: HistoryService,
     private transactionService: TransactionService,
-    private accountService: AccountService
-  ) { }
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadCurrentUser();
@@ -80,7 +80,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
       const plan = await firstValueFrom(this.historyService.getPlanFromHistory(monthlyPlanId));
       if (plan) {
         this.selectedPlan = plan[0];
-
         if (this.selectedPlan?.monthlyPlan_id) {
           await this.loadTransactions(this.selectedPlan.monthlyPlan_id);
         } else {
@@ -149,6 +148,16 @@ export class HistoryComponent implements OnInit, OnDestroy {
   goBack(): void {
     this.isDetailedView = false;
     this.selectedPlan = null;
+  }
+
+  goToDetails(): void {
+    if (this.selectedPlan?.monthlyPlan_id) {
+      this.router.navigate(['dashboard/history-category-details'], {
+        queryParams: { monthlyPlanId: this.selectedPlan.monthlyPlan_id }
+      });
+    } else {
+      console.error('Selected Plan or monthlyPlan_id is undefined');
+    }
   }
 
   ngOnDestroy(): void {

@@ -5,8 +5,9 @@
     <li><a routerLink="history" routerLinkActive="active">History</a></li>
     <li><a routerLink="manage-plans" routerLinkActive="active">Manage Plans</a></li>
     <li><a routerLink="statistics" routerLinkActive="active">Statistics</a></li>
-
   </ul>
-  <button mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
+  <ng-container *ngIf="hasCurrentPlan$ | async">
+    <button mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
+  </ng-container>
 </nav>
 <router-outlet></router-outlet>

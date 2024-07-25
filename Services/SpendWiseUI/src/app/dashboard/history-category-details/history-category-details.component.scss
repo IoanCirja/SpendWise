@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: stretch; 
+    gap: 20px; 
+    padding: 20px;
+    height: 100vh; 
+  }
+  
+  .details-card {
+    flex: 1; 
+    min-width: 0; 
+  }
+  
+  .details-card mat-card-header {
+    background-color: #f5f5f5; // You can adjust the background color if needed
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .details-card mat-card-content {
+    padding: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .regular-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .regular-table th, .regular-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .regular-table th {
+    background-color: #f5f5f5;
+  }
+  
+  .back-button {
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+  
+  .message-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%; 
+  }
+  
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .category-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .progress-circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-progress-spinner {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .percentage-text {
+    position: absolute;
+    font-size: 12px; 
+  }
+  
