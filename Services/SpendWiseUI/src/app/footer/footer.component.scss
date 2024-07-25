@@ -1,92 +1,92 @@
-
 .footer {
   background: rgb(4,63,45);
   background: linear-gradient(90deg, rgba(4,63,45,1) 0%, rgba(4,63,45,1) 35%, rgba(42,111,44,1) 100%);
-    padding: 20px;
-    color: #FCFCF9;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    text-align: left;
-    justify-content: space-between;
-  }
-  
-  .footer-section {
-    margin: 10px 0;
-    max-width: 800px;
-    width: 100%;
-  }
-  
-  .footer-section h2,
-  .footer-section h3,
-  .footer-section h4 {
-    margin: 10px 0;
-  }
-  
-  .footer-section p {
-    margin: 5px 0;
-    font-size: 12px;
-  }
-  
-  .brand h1 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  .legal-links a {
-    color: #FCFCF9;
-    text-decoration: none;
-    margin: 0 24px;
-    font-size: 14px;
-  }
-  
-  .legal-links a:hover {
-    text-decoration: underline;
-  }
-  
-  .newsletter button {
-    background-color: #FCFCF9;
-  }
-  
-  .contact-info .social-media a {
-    color: #FCFCF9;
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  
+  padding: 20px;
+  color: #FCFCF9;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: auto;
+}
 
-  .join_sign_up{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    }
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  text-align: left;
+  justify-content: space-between;
+}
 
-    .email{
-        font-size: 14px;
-    }
-    
-    .email input {
-        color: #FCFCF9;
-        background-color: #2A6F2C;
-        border-color: #FCFCF9;
-        border-radius: 8px;
-        width: 240px;
-        height: 24px;
+.footer-section {
+  margin: 10px 0;
+  max-width: 800px;
+  width: 100%;
+}
 
-    }
-    ::placeholder {
-        color: #FCFCF9;
-    }
+.footer-section h2,
+.footer-section h3,
+.footer-section h4 {
+  margin: 10px 0;
+}
 
-    .logo_and_links{
-        display: flex;
-        flex-direction: row;
-    }
+.footer-section p {
+  margin: 5px 0;
+  font-size: 12px;
+}
 
-    button {
-      color: #2A6F2C !important;
-    }
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.legal-links a {
+  color: #FCFCF9;
+  text-decoration: none;
+  margin: 0 24px;
+  font-size: 14px;
+}
+
+.legal-links a:hover {
+  text-decoration: underline;
+}
+
+.newsletter button {
+  background-color: #FCFCF9;
+}
+
+.contact-info .social-media a {
+  color: #FCFCF9;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.join_sign_up {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.email {
+  font-size: 14px;
+}
+
+.email input {
+  color: #FCFCF9;
+  background-color: #2A6F2C;
+  border-color: #FCFCF9;
+  border-radius: 8px;
+  width: 240px;
+  height: 24px;
+}
+
+::placeholder {
+  color: #FCFCF9;
+}
+
+.logo_and_links {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  color: #2A6F2C !important;
+}

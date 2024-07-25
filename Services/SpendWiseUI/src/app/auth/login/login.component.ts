@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../login.service';
+import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private accountService: AccountService,
     private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
@@ -37,22 +37,11 @@ export class LoginComponent {
     }
     const loginData = this.loginForm.value;
 
-    this.loginService.login(loginData).subscribe(
+    this.accountService.login(loginData).subscribe(
       response => {
         this.successMessage = 'Login successful!';
         this.errorMessage = null;
         console.log('Login successful', response);
-
-        // Store user data and token in local storage
-        localStorage.setItem('currentUser', JSON.stringify({
-          id: response.id,
-          name: response.name,
-          email: response.email,
-          phone: response.phone,
-          role: response.role
-        }));
-        localStorage.setItem('token', response.jwtToken);
-
         this.router.navigate(['/home']);
       },
       error => {
