@@ -5,6 +5,7 @@
   color: #FCFCF9;
   font-family: 'Roboto Condensed', sans-serif;
   margin-top: auto;
+  position: sticky;
 }
 
 .footer-content {
@@ -89,4 +90,16 @@
 
 button {
   color: #2A6F2C !important;
+  border-radius: 7px;
 }
+
+.right{
+  .newsletter {
+    .join_sign_up{
+      .sign_up{
+        background-color: #3f51b5;
+    }
+  }
+}
+}
+

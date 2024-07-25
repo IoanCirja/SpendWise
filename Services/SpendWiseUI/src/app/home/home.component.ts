@@ -2,6 +2,7 @@ import {AfterViewInit,Renderer2,ElementRef, Component, Input, OnInit, Output} fr
 import { MatCard } from '@angular/material/card';
 import {DisplayPopularPlanService} from "./services/display-popular-plan.service";
 import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor (
     public displayPopularPlanService: DisplayPopularPlanService,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private router: Router
   ){
     console.log("[HomeComponent] constructor]")
   }
@@ -58,5 +60,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     styleSheet.type = 'text/css';
     styleSheet.innerHTML = keyframes;
     this.renderer.appendChild(this.el.nativeElement, styleSheet);
+  }
+
+  redirectToLogin(): void {
+    this.router.navigate(['/auth/login']);
   }
 }
