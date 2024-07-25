@@ -1,4 +1,3 @@
-<!-- current-plan.component.html -->
 <div class="container">
   <!-- Display current plan if available -->
   <mat-card class="plan-card" *ngIf="currentPlan">
@@ -21,9 +20,17 @@
     </mat-card-header>
     <mat-card-content>
       <div class="categories">
-        <button mat-button *ngFor="let category of currentPlan.category.split(', ')">
-          {{ category }}
-        </button>
+        <div *ngFor="let category of categoriesWithDetails" class="category-item">
+          <button mat-button>{{ category.name }}</button>
+          <div class="progress-circle">
+            <mat-progress-spinner
+              [value]="(category.spent / category.price) * 100"
+              [color]="getCircleColor((category.spent / category.price) * 100)"
+              mode="determinate">
+            </mat-progress-spinner>
+            <div class="percentage-text">{{ ((category.spent / category.price) * 100) | number: '1.0-0' }}%</div>
+          </div>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

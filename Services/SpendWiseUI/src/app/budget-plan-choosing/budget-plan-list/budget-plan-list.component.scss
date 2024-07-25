@@ -1,13 +1,91 @@
-.scroll-container {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 10px; 
-    overflow-y: auto; 
-    height: 100vh;
-  
+/* Base font settings */
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
-    app-budget-plan-card {
-      height: 100%; 
-    }
+/* Header container layout */
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Space out elements */
+  align-items: center; /* Align items vertically */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Header left section (text and button) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between text and button */
+}
+
+.header-left span {
+  font-size: 1.5rem; /* Bigger text */
+  font-weight: bold; /* Bold text */
+  font-family: 'Roboto Condensed', sans-serif; /* Roboto Condensed font */
+}
+
+/* Header middle section (search input) */
+.header-middle {
+  flex: 1; /* Take up remaining space between left and right sections */
+  display: flex;
+  justify-content: center; /* Center search input horizontally */
+}
+
+.header-middle mat-form-field {
+  flex: 1; /* Make search input take up available space */
+  max-width: 500px; /* Limit maximum width of search bar */
+}
+
+/* Header right section (filters) */
+.header-right {
+  display: flex;
+  align-items: center; /* Ensure filters are aligned on the same line */
+  gap: 10px; /* Space between form fields */
+  margin-left: auto; /* Push to the far right */
+}
+
+/* Style for all buttons */
+.details-button {
+  color: #043F2D !important; /* Override Angular Material color */
+  background: none !important; /* Override Angular Material background */
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
+  width: 135px; /* Fixed width */
+  height: 45px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 48px; /* Increased font size for buttons */
+  font-family: 'Roboto Condensed', sans-serif; /* Ensure font is applied */
+}
+
+.details-button:hover {
+  background-color: #2A6F2C !important; /* Darker green on hover */
+  color: #fcfcf9 !important; /* White text on hover */
+}
+
+/* Card container layout */
+.card-container {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+  grid-gap: 10px; /* Space between cards */
+  padding: 20px; /* Padding inside the container */
+  margin: 20px; /* Margin outside the container to separate it from other elements */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+@media (max-width: 800px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
   }
-  
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}

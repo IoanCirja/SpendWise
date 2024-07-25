@@ -1,15 +1,85 @@
+/* Custom class for the dialog container */
+.custom-dialog-container {
+  .mat-dialog-container {
+    width: 80vw; /* Adjust width as needed */
+    max-width: 1000px; /* Maximum width */
+    min-width: 600px; /* Minimum width */
+  }
+}
+
+/* Dialog title */
+mat-dialog-title {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #043F2D; /* Matching the color used for buttons */
+  padding-bottom: 10px; /* Spacing below title */
+  border-bottom: 1px solid #ddd; /* Light border below title */
+
+}
+
+/* Dialog content */
 mat-dialog-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout */
+  gap: 20px; /* Space between rows */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width/height calculations */
+
+  .text-content {
+    grid-column: 1 / -1; /* Make text content span all columns */
     display: flex;
     flex-direction: column;
+    gap: 10px; /* Space between text blocks */
+  }
+
+  .category-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for inputs */
+    gap: 20px; /* Space between inputs */
+  }
+
+  mat-form-field {
+    width: 100%; /* Full width of the container */
+  }
 
 
-  }
+}
+
+/* Dialog actions */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+  padding: 10px 20px;
+  box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Style for all buttons in dialog actions */
+mat-dialog-actions button {
+  color: #043F2D !important; /* Override Angular Material color */
+  background: none !important; /* Override Angular Material background */
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px; /* Increased font size for buttons */
+  font-family: 'Roboto Condensed', sans-serif; /* Ensure font is applied */
   
-  mat-dialog-actions {
-    display: flex;
+  &:hover {
+    background-color: #2A6F2C !important; /* Darker green on hover */
+    color: #fcfcf9 !important; /* White text on hover */
   }
-  img{
-    width: 40px;
-    height: 40px;
-  }
-  
+}
+
+img {
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  border-radius: 4px;
+  margin-top: 10px;
+}
