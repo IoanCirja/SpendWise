@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AccountService} from "../account.service";
+import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,14 +24,18 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registrationForm.valid) {
       this.accountService.register(this.registrationForm.value).subscribe(
-          (response: any) => {
-            console.log('Registration successful', response);
-            this.router.navigate(['/auth/login']);
+        (response: any) => {
+          console.log('Registration successful', response);
+          this.router.navigate(['/auth/login']);
         },
-          (error: any) => {
+        (error: any) => {
           console.error('Registration failed', error);
         }
       );
     }
+  }
+
+  redirectToLogin() {
+    this.router.navigate(['/auth/login']);
   }
 }

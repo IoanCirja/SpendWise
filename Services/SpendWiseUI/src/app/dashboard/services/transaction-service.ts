@@ -12,8 +12,9 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  saveTransaction(transactionData: any): Observable<any> {
-    return this.http.post(this.apiUrl, transactionData);
+  saveTransaction(transactionData: any): Observable<string> {
+    // Expecting a text response from the server
+    return this.http.post(this.apiUrl, transactionData, { responseType: 'text' });
   }
 
   getAllTransactions(monthlyPlanId: string): Observable<any[]> {

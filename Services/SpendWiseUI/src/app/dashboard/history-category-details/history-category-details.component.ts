@@ -16,10 +16,10 @@ interface Transaction {
 
 @Component({
   selector: 'app-category-details',
-  templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.scss']
+  templateUrl: './history-category-details.component.html',
+  styleUrls: ['./history-category-details.component.scss']
 })
-export class CategoryDetailsComponent implements OnInit, OnDestroy {
+export class HistoryCategoryDetailsComponent implements OnInit, OnDestroy {
   categoriesWithDetails: { name: string, price: number, spent: number, transactions: Transaction[] }[] = [];
   displayedTransactions: Transaction[] = [];
   displayedColumns: string[] = ['category', 'name', 'amount', 'date'];
@@ -135,7 +135,7 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.router.navigate(['dashboard/current-plan']);
+    this.router.navigate(['dashboard/history']);
   }
 
   ngOnDestroy(): void {

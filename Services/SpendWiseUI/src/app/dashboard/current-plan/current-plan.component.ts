@@ -1,9 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+
 import { CurrentPlanService } from '../services/current-plan.service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
-import { Router } from '@angular/router';
 import { AccountService } from '../../auth/account.service';
-import { Subscription } from 'rxjs';
+import { PlanStateService } from '../services/plan-state-service';
+import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
 
 @Component({
   selector: 'app-current-plan',
@@ -11,7 +15,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./current-plan.component.scss']
 })
 export class CurrentPlanComponent implements OnInit, OnDestroy {
-
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
   userId: string | null = null;
@@ -20,11 +23,22 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   constructor(
     private currentPlanService: CurrentPlanService,
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private planStateService: PlanStateService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.loadCurrentUser();
+
+    this.subscriptions.push(
+      this.planStateService.currentPlan$.subscribe(plan => {
+        this.currentPlan = plan;
+        if (this.currentPlan) {
+          this.extractCategoryDetails();
+        }
+      })
+    );
   }
 
   loadCurrentUser(): void {
@@ -43,11 +57,10 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const subscription = this.currentPlanService.getCurrentPlan(this.userId).subscribe(
+    this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
         this.currentPlan = data[0];
         if (this.currentPlan) {
-          console.log('Current Plan:', this.currentPlan);
           this.extractCategoryDetails();
         }
       },
@@ -55,22 +68,13 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         console.error('Error fetching current plan', error);
       }
     );
-    this.subscriptions.push(subscription);
   }
 
   extractCategoryDetails(): void {
     if (this.currentPlan) {
-      console.log('Category:', this.currentPlan.category);
-      console.log('Price by Category:', this.currentPlan.priceByCategory);
-      console.log('Spent of Category:', this.currentPlan.spentOfCategory);
-
       const categories = this.currentPlan.category.split(',').map(c => c.trim());
       const prices = this.currentPlan.priceByCategory.split(',').map(price => Number(price.trim()));
       const spends = this.currentPlan.spentOfCategory.split(',').map(spend => Number(spend.trim()));
-
-      console.log('Categories:', categories);
-      console.log('Prices:', prices);
-      console.log('Spends:', spends);
 
       this.categoriesWithDetails = categories.map((category, index) => ({
         name: category,
@@ -78,7 +82,6 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         spent: spends[index] || 0
       }));
     }
-    console.log(this.categoriesWithDetails);
   }
 
   getCircleColor(percentage: number): string {
@@ -91,18 +94,34 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     }
   }
 
+  openCancelDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmCancelDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.cancelPlan();
+      }
+    });
+  }
+
   cancelPlan(): void {
     if (this.currentPlan && this.currentPlan.monthlyPlan_id) {
       this.currentPlanService.cancelCurrentPlan(this.currentPlan.monthlyPlan_id).subscribe(
         response => {
           console.log('Plan canceled successfully', response);
-          this.router.navigate([this.router.url]); 
+          this.loadCurrentPlan(); // Refresh the current plan
         },
         error => {
           console.error('Error canceling the plan', error);
         }
       );
     }
+  }
+
+  openCategoryDetails(categoryName: string): void {
+    this.router.navigate(['dashboard/category-details'], {
+      queryParams: { category: categoryName }
+    });
   }
 
   ngOnDestroy(): void {

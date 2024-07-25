@@ -14,4 +14,4 @@ export interface MonthlyPlan {
     priceByCategory: string;
     spentOfCategory: string;
   }
-  
+ 

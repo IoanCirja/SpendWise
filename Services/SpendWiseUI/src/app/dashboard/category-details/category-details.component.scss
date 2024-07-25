@@ -1,19 +1,19 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   padding: 20px;
   font-family: 'Roboto Condensed', sans-serif; 
+  position: relative; /* To position the back button absolutely */
+  margin-bottom: 400px;
 }
 
 .details-card {
-  width: 100%;
-  max-width: 800px;
+  width: 70%; /* Adjusted to fit within container */
+  max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Center the card horizontally with margin auto */
+  padding: 16px; /* Add padding inside the card */
 }
 
 .mat-form-field {
@@ -22,13 +22,13 @@
 }
 
 .regular-table {
-  width: 100%;
+  width: calc(100% - 30px); /* Full width minus some padding to center */
   border-collapse: collapse;
-  margin-top: 16px;
-  font-size: 16px;
-
+  font-size: 18px; /* Increase font size */
+  margin: 16px auto; /* Center the table with auto margin */
+  
   th, td {
-    padding: 12px 16px;
+    padding: 16px 24px; /* Increase padding for larger columns */
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
@@ -37,6 +37,7 @@
     background-color: #e8f5e9; 
     color: #388e3c; 
     font-weight: 600;
+    font-size: 18px; /* Increase font size */
   }
 
   tr {
@@ -49,15 +50,12 @@
 
   td {
     vertical-align: middle;
+    font-size: 18px; /* Increase font size */
   }
 }
 
 .mat-card-content {
-  padding: 16px;
-}
-
-.mat-form-field {
-  margin-bottom: 16px;
+  padding: 0; /* Remove padding to fit the table better */
 }
 
 .mat-card-header {
@@ -75,4 +73,21 @@
 .mat-card-content p {
   font-size: 16px;
   color: #333;
+}
+
+.back-button {
+  position: absolute; /* Position it absolutely within the container */
+  top: 16px; /* Space from the top */
+  left: 16px; /* Space from the left */
+  color: #000; /* Default color */
+  background-color: #e0e0e0; /* Background color */
+  border-radius: 50%; /* Make the button circular */
+  padding: 8px; /* Add some padding */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+  z-index: 1; /* Ensure the button is above other content */
+  
+  &:hover {
+    background-color: #4caf50; /* Green background on hover */
+    color: #fff; /* White color on hover */
+  }
 }

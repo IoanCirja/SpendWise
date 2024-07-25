@@ -1,4 +1,9 @@
 <div class="container">
+  <div>
+    <button mat-icon-button (click)="goBack()" class="back-button">
+      go back  </button>
+      </div>
+
   <mat-card class="details-card">
     <mat-card-header>
       <mat-card-title>Category Details</mat-card-title>
@@ -9,7 +14,9 @@
           <mat-label>Filter by Category</mat-label>
           <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
             <mat-option value="all">All</mat-option>
-            <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">{{ category.name }}</mat-option>
+            <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+              {{ category.name }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
         

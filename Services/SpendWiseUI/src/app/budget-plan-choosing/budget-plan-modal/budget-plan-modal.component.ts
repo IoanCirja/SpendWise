@@ -1,9 +1,10 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BudgetPlanService } from '../services/budget-plan-modal.service';
-import {AccountService} from "../../auth/account.service";
-import {Subscription} from "rxjs";
-
+import { AccountService } from '../../auth/account.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CurrentPlanService } from 'src/app/dashboard/services/current-plan.service';
 export interface DialogData {
   plan_id: string;
   name: string;
@@ -24,12 +25,15 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
   dataHolder: DialogData;
   userId: string | null = null;
   subscriptions: Subscription[] = [];
+  currentPlanExists: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<BudgetPlanModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private budgetPlanService: BudgetPlanService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router,
+    private currentPlanService: CurrentPlanService
   ) {
     this.dataHolder = data;
   }
@@ -42,8 +46,26 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
     const subscription = this.accountService.currentUser$.subscribe(currentUser => {
       if (currentUser) {
         this.userId = currentUser.id;
+        this.checkCurrentPlan();
       }
-    })
+    });
+    this.subscriptions.push(subscription);
+  }
+
+  checkCurrentPlan(): void {
+    if (!this.userId) {
+      console.error('User ID is required to check the current plan.');
+      return;
+    }
+
+    const subscription = this.currentPlanService.getCurrentPlan(this.userId).subscribe(
+      data => {
+        this.currentPlanExists = !!data.length;
+      },
+      error => {
+        console.error('Error checking current plan', error);
+      }
+    );
     this.subscriptions.push(subscription);
   }
 
@@ -54,9 +76,7 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
     }
 
     const plan_id = this.dataHolder.plan_id;
-
     const totalAmount = this.dataHolder.categories.reduce((acc, category) => acc + category.value, 0);
-
     const planData = {
       user_id: this.userId,
       plan_id,
@@ -67,10 +87,13 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
       spentOfCategory: this.dataHolder.categories.map(() => 0).join(',')
     };
 
+    console.log('Saving plan data:', planData);
+    this.dialogRef.close();
+
     this.budgetPlanService.saveBudgetPlan(planData).subscribe(
       (response) => {
         console.log('Save successful:', response);
-        this.dialogRef.close();
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.error('Save failed:', error);
@@ -82,9 +105,12 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
+  goToCurrentPlan(): void {
+    this.router.navigate(['/dashboard']);
+    this.dialogRef.close();
+  }
+
   ngOnDestroy() {
-    this.subscriptions.forEach(subscription =>
-      subscription.unsubscribe()
-    );
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }
