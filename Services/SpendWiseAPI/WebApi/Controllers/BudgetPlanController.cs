@@ -27,7 +27,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet ("{id}")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult> GetPlan(Guid id)
         {
@@ -50,7 +50,7 @@ namespace WebApi.Controllers
 
 
 
-    
+
 
         //Added 21/07/2024
 
@@ -63,14 +63,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult> GetActivePlans()
-        {
-            var result = this._planService.GetActivePlans();
-            return Ok(result);
-        }   
-        
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<bool>> AddPlan([FromBody] BudgetPlanContract budgetPlanContract)
@@ -110,5 +103,7 @@ namespace WebApi.Controllers
             var result = await this._planService.DeletePlanByName(name);
             return Ok(result);
         }
+
+
     }
 }
