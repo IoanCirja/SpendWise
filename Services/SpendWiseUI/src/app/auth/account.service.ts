@@ -23,7 +23,6 @@ export class AccountService {
       map((response: any) => {
         const user: AuthenticatedUser = response;
         if (user) {
-          // Store user data and token in local storage
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('token', response.jwtToken);
           this.currentUserSource.next(user);

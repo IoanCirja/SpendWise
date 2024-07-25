@@ -30,7 +30,6 @@
   </div>
 </div>
 
-<!-- Container for budget plan cards -->
 <div class="card-container">
   <app-budget-plan-card
     *ngFor="let plan of getDisplayedPlans()"
@@ -44,7 +43,6 @@
   </app-budget-plan-card>
 </div>
 
-<!-- Pagination controls (only visible when 'Pages' view option is selected) -->
 <div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">
   <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
   <span>Page {{currentPage}} of {{totalPages}}</span>

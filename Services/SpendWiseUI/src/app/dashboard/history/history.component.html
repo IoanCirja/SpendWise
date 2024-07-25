@@ -1,15 +1,88 @@
 <div class="container">
+  <ng-container *ngIf="isDetailedView">
+    <mat-card class="details-card">
+      <mat-card-header>
+        <mat-card-title>Plan Details</mat-card-title>
+        <button mat-icon-button (click)="goBack()">return        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-container">
+          <mat-card class="plan-card">
+            <mat-card-header>
+              <mat-card-title>Plan Overview</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div>
+                <p><strong>Plan Name:</strong> {{ selectedPlan?.plan_name }}</p>
+                <p><strong>Description:</strong> {{ selectedPlan?.description }}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="transactions-card">
+            <mat-card-header>
+              <mat-card-title>Transactions</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div>
+                <label for="categoryFilter">Filter by Category:</label>
+                <select id="categoryFilter" [(ngModel)]="selectedCategory" (change)="filterTransactions()">
+                  <option value="all">All</option>
+                  <option *ngFor="let category of categoriesWithDetails" [value]="category.name">{{ category.name }}</option>
+                </select>
+
+                <label for="sortCriteria">Sort by:</label>
+                <select id="sortCriteria" [(ngModel)]="sortCriteria" (change)="sortTransactions()">
+                  <option value="dateAsc">Date Ascending</option>
+                  <option value="dateDesc">Date Descending</option>
+                  <option value="amountAsc">Amount Ascending</option>
+                  <option value="amountDesc">Amount Descending</option>
+                  <option value="nameAsc">Name Ascending</option>
+                  <option value="nameDesc">Name Descending</option>
+                </select>
+              </div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th *ngIf="selectedCategory === 'all'">Category</th>
+                    <th>Transaction Name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let transaction of displayedTransactions">
+                    <td *ngIf="selectedCategory === 'all'">{{ transaction.category }}</td>
+                    <td>{{ transaction.name }}</td>
+                    <td>{{ transaction.amount | currency }}</td>
+                    <td>{{ transaction.date | date:'shortDate' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div *ngIf="displayedTransactions.length === 0">
+                <p>No transactions</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-container *ngIf="!isDetailedView">
     <mat-card class="history-card">
       <mat-card-header>
         <mat-card-title>Historical Plans</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="plans-list">
-          <button mat-raised-button *ngFor="let plan of historyPlans" (click)="onPlanSelect(plan.monthlyPlan_id)">
+          <button mat-raised-button *ngFor="let plan of historyPlans" (click)="onPlanSelect(plan)">
             {{ plan.plan_name }} ({{ plan.date | date:'shortDate' }})
           </button>
         </div>
       </mat-card-content>
     </mat-card>
-  </div>
-  
+  </ng-container>
+</div>

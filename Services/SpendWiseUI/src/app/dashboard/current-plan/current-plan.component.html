@@ -1,5 +1,4 @@
 <div class="container">
-  <!-- Display current plan if available -->
   <mat-card class="plan-card" *ngIf="currentPlan">
     <mat-card-header>
       <mat-card-title>{{ currentPlan.plan_name }}</mat-card-title>
@@ -30,12 +29,12 @@
             </mat-progress-spinner>
             <div class="percentage-text">{{ ((category.spent / category.price) * 100) | number: '1.0-0' }}%</div>
           </div>
+          <div class="category-details">{{ category.spent }}/{{ category.price }}</div>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
 
-  <!-- Display message and button if no current plan -->
   <div *ngIf="!currentPlan" class="no-plan-message">
     <p>No budget plan this month. Choose one <a [routerLink]="['/budget-plans']">here</a>.</p>
   </div>

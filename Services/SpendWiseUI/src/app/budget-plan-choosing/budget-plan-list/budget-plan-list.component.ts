@@ -37,7 +37,7 @@ export class BudgetPlanListComponent implements OnInit {
     this.displayPlanService.getBudgetPlans().subscribe({
       next: (data) => {
         this.budgetPlans = data;
-        this.filteredBudgetPlans = data; // Initialize filteredBudgetPlans
+        this.filteredBudgetPlans = data; 
         console.log('Fetched data:', this.budgetPlans);
         this.sortBudgetPlans();
         this.updatePagination();
@@ -67,7 +67,7 @@ export class BudgetPlanListComponent implements OnInit {
 
   onSortChange(): void {
     this.sortBudgetPlans();
-    this.applyFilter(); // Apply filter after sorting
+    this.applyFilter(); 
   }
 
   applyFilter(): void {
@@ -78,8 +78,8 @@ export class BudgetPlanListComponent implements OnInit {
       plan.category.toLowerCase().includes(filterValue) || 
       plan.created_by.toLowerCase().includes(filterValue)
     );
-    this.sortBudgetPlans(); // Ensure sorted order is maintained after filtering
-    this.updatePagination(); // Update pagination after filtering
+    this.sortBudgetPlans(); 
+    this.updatePagination(); 
   }
 
   onViewChange(): void {
@@ -120,7 +120,6 @@ export class BudgetPlanListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Refresh the budget plans after a successful save
         this.displayPlanService.getBudgetPlans().subscribe(data => {
           this.budgetPlans = data;
           this.filteredBudgetPlans = data;

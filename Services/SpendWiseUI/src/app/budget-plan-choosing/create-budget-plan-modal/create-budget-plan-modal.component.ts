@@ -13,8 +13,8 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
   newPlan = {
     name: '',
     description: '',
-    imagine: '', // Image URL input
-    categories: [{ name: '' }] // Initialize with one empty category
+    imagine: '', 
+    categories: [{ name: '' }] 
   };
   userId: string | null = null;
   subscriptions: Subscription[] = [];
@@ -53,7 +53,6 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
       return;
     }
 
-    // Create plain object
     const planData = {
       name: this.newPlan.name,
       description: this.newPlan.description,
@@ -65,7 +64,7 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
 
     this.createBudgetPlanService.createBudgetPlan(planData).subscribe({
       next: () => {
-        this.dialogRef.close(true); // Signal that the plan was saved successfully
+        this.dialogRef.close(true); 
       },
       error: err => {
         console.error('Error creating budget plan:', err);

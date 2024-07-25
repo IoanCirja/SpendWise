@@ -5,7 +5,7 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { HistoryComponent } from './history/history.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
-import { DashboardNavigationComponent } from './dashboard-navigation/dashboard-navigation.component'; // Import the DashboardNavigationComponent
+import { DashboardNavigationComponent } from './dashboard-navigation/dashboard-navigation.component'; 
 
 const routes: Routes = [
   {

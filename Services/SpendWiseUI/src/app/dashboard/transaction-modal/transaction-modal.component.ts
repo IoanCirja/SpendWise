@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CurrentPlanService } from '../services/current-plan.service';
-import {AccountService} from "../../auth/account.service";
-import {Subscription} from "rxjs"; // Adjust path if necessary
+import { AccountService } from '../../auth/account.service';
+import { TransactionService } from '../services/transaction-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-modal',
@@ -13,14 +14,16 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
   categories: string[] = [];
   selectedCategory: string = '';
   transactionValue: number | null = null;
+  transactionName: string = '';
   userId: string | null = null;
+  monthlyPlanId: string | null = null;
   subscriptions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<TransactionModalComponent>,
     private currentPlanService: CurrentPlanService,
-    private accountService: AccountService
-
+    private accountService: AccountService,
+    private transactionService: TransactionService
   ) {}
 
   ngOnInit(): void {
@@ -33,15 +36,16 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
         this.userId = currentUser.id;
         this.loadCategories(this.userId);
       }
-    })
+    });
     this.subscriptions.push(subscription);
   }
 
-  loadCategories(userId:string): void {
-    this.currentPlanService.getCurrentPlan(userId).subscribe(
+  loadCategories(userId: string): void {
+    const subscription = this.currentPlanService.getCurrentPlan(userId).subscribe(
       data => {
         const currentPlan = data[0];
         if (currentPlan) {
+          this.monthlyPlanId = currentPlan.monthlyPlan_id; 
           const categories = currentPlan.category.split(', ');
           this.categories = categories;
         }
@@ -50,30 +54,32 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
         console.error('Error fetching categories', error);
       }
     );
+    this.subscriptions.push(subscription);
   }
 
   onSave(): void {
-    if (!this.selectedCategory || this.transactionValue === null) {
-      console.error('Category and value are required.');
+    if (!this.selectedCategory || this.transactionValue === null || !this.transactionName) {
+      console.error('Name, category, and value are required.');
       return;
     }
 
     const transactionData = {
+      name: this.transactionName,
+      monthlyPlan_id: this.monthlyPlanId,
+      date: new Date().toISOString(),
       category: this.selectedCategory,
-      value: this.transactionValue,
-      user_id: this.userId // Make sure this is set
+      amount: this.transactionValue
     };
 
-    // Call your service to save the transaction
-    // this.transactionService.saveTransaction(transactionData).subscribe(
-    //   response => {
-    //     console.log('Transaction saved successfully', response);
-    //     this.dialogRef.close(true); // Close the modal and signal success
-    //   },
-    //   error => {
-    //     console.error('Error saving transaction', error);
-    //   }
-    // );
+    this.transactionService.saveTransaction(transactionData).subscribe(
+      response => {
+        console.log('Transaction saved successfully', response);
+        this.dialogRef.close(true); // Close the modal and signal success
+      },
+      error => {
+        console.error('Error saving transaction', error);
+      }
+    );
   }
 
   onCancel(): void {
@@ -81,8 +87,6 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(subscription =>
-      subscription.unsubscribe()
-    );
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

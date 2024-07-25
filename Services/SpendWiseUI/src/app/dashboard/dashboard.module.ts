@@ -22,8 +22,10 @@ import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TransactionModalComponent } from './transaction-modal/transaction-modal.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 @NgModule({
   declarations: [
     CurrentPlanComponent,
@@ -49,7 +51,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     MatToolbarModule,
     RouterModule,  
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule,
+    
   ]
 })
 export class DashboardModule { }

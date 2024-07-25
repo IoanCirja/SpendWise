@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TransactionModalComponent } from '../transaction-modal/transaction-modal.component'; // Adjust path if necessary
+import { TransactionModalComponent } from '../transaction-modal/transaction-modal.component'; 
 
 @Component({
   selector: 'app-dashboard-navigation',
@@ -12,8 +12,8 @@ export class DashboardNavigationComponent {
 
   openTransactionModal(): void {
     this.dialog.open(TransactionModalComponent, {
-      width: '300px', // Adjust the width as needed
-      data: {} // Pass any necessary data here
+      width: '300px', 
+      data: {} 
     });
   }
 }

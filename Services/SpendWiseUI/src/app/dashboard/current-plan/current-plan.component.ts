@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CurrentPlanService } from '../services/current-plan.service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { Router } from '@angular/router';
-import {AccountService} from "../../auth/account.service";
-import {Subscription} from "rxjs";
+import { AccountService } from '../../auth/account.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-current-plan',
@@ -24,7 +24,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-   this.loadCurrentUser();
+    this.loadCurrentUser();
   }
 
   loadCurrentUser(): void {
@@ -33,10 +33,9 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         this.userId = currentUser.id;
         this.loadCurrentPlan();
       }
-    })
+    });
     this.subscriptions.push(subscription);
   }
-
 
   loadCurrentPlan(): void {
     if (!this.userId) {
@@ -44,10 +43,11 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.currentPlanService.getCurrentPlan(this.userId).subscribe(
+    const subscription = this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
         this.currentPlan = data[0];
         if (this.currentPlan) {
+          console.log('Current Plan:', this.currentPlan);
           this.extractCategoryDetails();
         }
       },
@@ -55,13 +55,22 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         console.error('Error fetching current plan', error);
       }
     );
+    this.subscriptions.push(subscription);
   }
 
   extractCategoryDetails(): void {
     if (this.currentPlan) {
-      const categories = this.currentPlan.category.split(', ');
-      const prices = this.currentPlan.priceByCategory.split(', ').map(Number);
-      const spends = this.currentPlan.spentOfCategory.split(', ').map(Number);
+      console.log('Category:', this.currentPlan.category);
+      console.log('Price by Category:', this.currentPlan.priceByCategory);
+      console.log('Spent of Category:', this.currentPlan.spentOfCategory);
+
+      const categories = this.currentPlan.category.split(',').map(c => c.trim());
+      const prices = this.currentPlan.priceByCategory.split(',').map(price => Number(price.trim()));
+      const spends = this.currentPlan.spentOfCategory.split(',').map(spend => Number(spend.trim()));
+
+      console.log('Categories:', categories);
+      console.log('Prices:', prices);
+      console.log('Spends:', spends);
 
       this.categoriesWithDetails = categories.map((category, index) => ({
         name: category,
@@ -69,17 +78,16 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         spent: spends[index] || 0
       }));
     }
-
     console.log(this.categoriesWithDetails);
   }
 
   getCircleColor(percentage: number): string {
     if (percentage < 50) {
-      return 'primary'; // Blue
+      return 'primary'; 
     } else if (percentage < 75) {
-      return 'accent'; // Orange
+      return 'accent'; 
     } else {
-      return 'warn'; // Red
+      return 'warn'; 
     }
   }
 
@@ -88,8 +96,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       this.currentPlanService.cancelCurrentPlan(this.currentPlan.monthlyPlan_id).subscribe(
         response => {
           console.log('Plan canceled successfully', response);
-          // Navigate to the same route to refresh the component
-          this.router.navigate([this.router.url]); // This should reload the component
+          this.router.navigate([this.router.url]); 
         },
         error => {
           console.error('Error canceling the plan', error);
@@ -98,9 +105,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription =>
-      subscription.unsubscribe()
-    );
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

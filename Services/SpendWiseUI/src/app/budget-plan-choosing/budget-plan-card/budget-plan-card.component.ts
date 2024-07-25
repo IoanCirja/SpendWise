@@ -40,18 +40,17 @@ export class BudgetPlanCardComponent {
       width: '500px',
       data: {
         plan: {
-          id: this.plan_id,  // Ensure the correct id is passed
+          id: this.plan_id, 
           name: this.name,
           description: this.description,
           image: this.image,
-          categories: this.category.split(',') // Convert comma-separated string to array
+          categories: this.category.split(',') 
         }
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Refresh or update view as necessary
       }
     });
   }
