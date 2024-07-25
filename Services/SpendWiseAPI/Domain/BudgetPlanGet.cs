@@ -18,6 +18,8 @@ namespace Domain
         public string image { get; set; }
         public bool isActive { get; set; }
 
+        public DateTime creationDate { get; set; }
+
         public string created_by { get; set; }
     }
 }

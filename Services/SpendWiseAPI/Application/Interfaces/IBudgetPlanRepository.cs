@@ -9,10 +9,10 @@ namespace Application.Interfaces
         List<BudgetPlanGet> GetPlans();
         List<BudgetPlanGet> GetPlan(Guid id);
         List<BudgetPlanGetPopular> GetPopularFivePlans();
-        
 
 
-        
+
+
         Task<bool> AddPlan(BudgetPlan budgetPlan);
 
         List<BudgetPlan> GetPlansByAdminCreator(Guid id);
@@ -27,6 +27,5 @@ namespace Application.Interfaces
 
         Task<String> DeletePlanByName(String name);
         Task<BudgetPlan> GetPlanByName(string name);
-        List<BudgetPlan> GetActivePlans();
     }
 }
