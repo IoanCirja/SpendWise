@@ -1,0 +1,13 @@
+.scroll-container {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px; 
+    overflow-y: auto; 
+    height: 100vh;
+  
+
+    app-budget-plan-card {
+      height: 100%; 
+    }
+  }
+  

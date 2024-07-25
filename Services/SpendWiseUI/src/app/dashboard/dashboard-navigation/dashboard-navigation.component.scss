@@ -1,0 +1,44 @@
+/* General styles for the navigation menu */
+nav {
+    background-color: #f8f9fa; /* Light background for the navbar */
+    padding: 10px 20px; /* Padding around the navbar */
+    border-bottom: 1px solid #e0e0e0; /* Light border for visual separation */
+    text-align: center; /* Center the content within the nav */
+  }
+  
+  /* Style for the navigation list */
+  nav ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: inline-flex; /* Display list items horizontally */
+    gap: 15px; /* Space between list items */
+  }
+  
+  /* Style for each navigation item */
+  nav li {
+    display: inline; /* Ensure list items are displayed inline */
+  }
+  
+  /* Style for links in the navigation menu */
+  nav a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #28a745; /* Default link color (green) */
+    font-weight: 500; /* Slightly bold text */
+    padding: 5px 10px; /* Padding around the text */
+    border-radius: 4px; /* Rounded corners for the link */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  /* Style for active links */
+  nav a.active {
+    color: #ffffff; /* White text for the active link */
+    background-color: #218838; /* Darker green background for the active link */
+  }
+  
+  /* Style for links on hover */
+  nav a:hover {
+    color: #ffffff; /* White text on hover */
+    background-color: #1e7e34; /* Darker green background on hover */
+  }
+  

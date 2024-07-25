@@ -18,6 +18,7 @@ namespace WebApiContracts.Mappers
                 date = monthlyplan.date,
                 totalAmount = monthlyplan.totalAmount,
                 amountSpent = monthlyplan.amountSpent,
+                status = "In progress",
                 priceByCategory = monthlyplan.priceByCategory,
                 spentOfCategory = monthlyplan.spentOfCategory,
             };

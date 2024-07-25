@@ -18,7 +18,14 @@ namespace WebApi
             var builder = WebApplication.CreateBuilder(args);
             var config = builder.Configuration;
 
-            // Add services to the container.
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
+            });
+
             builder.Services.AddSwaggerGen(options =>
             {
                 options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
@@ -59,7 +66,7 @@ namespace WebApi
             });
             builder.Services.AddAuthorization(options =>
             {
-                options.AddPolicy(IdentityData.AdminUserPolicyName, p => 
+                options.AddPolicy(IdentityData.AdminUserPolicyName, p =>
                     p.RequireClaim(IdentityData.AdminUserClaimName, "true"));
             });
 
@@ -67,9 +74,9 @@ namespace WebApi
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
 
-            app.UseExceptionHandler(_ => {});
+
+            app.UseExceptionHandler(_ => { });
 
             if (app.Environment.IsDevelopment())
             {
@@ -78,7 +85,8 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
-            
+
+            app.UseCors("AllowSpecificOrigin");
             app.UseAuthentication();
             app.UseAuthorization();
 

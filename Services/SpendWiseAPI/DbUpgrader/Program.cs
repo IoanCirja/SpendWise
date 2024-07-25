@@ -10,7 +10,10 @@ namespace DbUpgrader
 
             var connectionString =
                 args.FirstOrDefault()
+
+
                 ?? "data source=ASUS_TUF_F15\\SQLEXPRESS;initial catalog=SpendWiseDB;trusted_connection=true;TrustServerCertificate=True;";
+
             EnsureDatabase.For.SqlDatabase(connectionString);
 
             var upgrader =

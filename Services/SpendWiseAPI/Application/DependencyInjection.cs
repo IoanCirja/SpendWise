@@ -11,6 +11,8 @@ namespace Application
             services.AddScoped<AuthorizationService>();
             services.AddScoped<BudgetPlanService>();
             services.AddScoped<MonthlyPlanService>();
+            services.AddScoped<NewsLetterService>();
+            services.AddScoped<ContactUsService>();
 
             return services;
         }

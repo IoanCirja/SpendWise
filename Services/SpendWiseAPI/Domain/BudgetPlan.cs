@@ -9,5 +9,7 @@
         public int noCategory { get; set; }
 
         public string category { get; set; }
+        public string image { get; set; }
+        public Guid created_by { get; set; }
     }
 }

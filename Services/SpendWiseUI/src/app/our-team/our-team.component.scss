@@ -1,0 +1,57 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding-top: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #043F2D;
+  background: linear-gradient(180deg, #FCFCF9 0%, #E8FFDD 100%);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.flex-container .team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.flex-container .team-member {
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  flex: 1 0 18%;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #043F2D;
+  min-height: 550px;
+}
+
+.flex-container .team-member img {
+  width: 80%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.flex-container .team-member .description {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #043F2D;
+}
+
+.flex-container .team-member p {
+  margin-top: 10px;
+  font-size: 1em;
+}

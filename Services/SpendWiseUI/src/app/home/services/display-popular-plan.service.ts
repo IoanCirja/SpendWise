@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {BudgetPlans} from '../models/BudgetPlanGetPopolar';
+import {BudgetPlans} from '../models/BudgetPlanGetPopular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DisplayPopularPlanService {
-  private endPoint = "https//localhost:7154/BudgetPlanGetPopular/GetPopularFivePlans"
+  private endPoint = "https://localhost:7154/BudgetPlan/GetPopularFivePlans"
 
   constructor(private http: HttpClient){}
 
-  getPopolarBudgetPlans():Observable<BudgetPlans>{
+  getPopularBudgetPlans():Observable<BudgetPlans>{
     return this.http.get<BudgetPlans>(this.endPoint);
   }
 

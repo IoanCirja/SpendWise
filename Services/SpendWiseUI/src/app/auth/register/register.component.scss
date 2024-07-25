@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg, #FCFCF9 0%, #E8FFDD 100%);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  justify-content: center;
+  background-color: #FCFCF9;
+  height: 463px;
+  width: 413px;
+  border-radius: 7px;
+}
+
+.register-container img.login-logo {
+  width: 73px;
+  height: 130px;
+  margin-bottom: 20px;
+}
+
+.register-container h1 {
+  margin-bottom: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #043F2D;
+}
+
+.register-container p {
+  margin-bottom: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #043F2D;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-container input {
+  font-family: 'Roboto Condensed', sans-serif;
+  width: 250px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
+  border: 1px solid #D9D9D9;
+  color: #043F2D;
+}
+
+.register-container button {
+  width: 165px;
+  padding: 10px;
+  background-color: #2A6F2C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 44px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.register-container button:hover {
+  opacity: 0.8;
+}

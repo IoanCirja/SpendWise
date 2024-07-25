@@ -36,5 +36,49 @@ namespace Infrastructure.Repositories
             return result != 0;
         }
 
+        public async Task<bool> CancelMonthlyPlan(Guid id)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan]  SET [status]='Canceled' where [monthlyPlan_id]=@MonthlyPlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(query, new { MonthlyPlanID = id });
+            return result != 0;
+        }
+
+        public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
+        {
+            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<MonthlyPlanGetNameDate>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+        public List<MonthlyPlanGet> GetMonthlyPlanFromHistory(Guid monthlyPlan_id)
+        {
+            var sql = "select [mp].[monthlyPlan_id], [mp].[user_id], [mp].[plan_id], [pd].[name] as 'plan_name', [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [mp].[date], [mp].[status], [mp].[totalAmount], [mp].[amountSpent], [mp].[priceByCategory], [mp].[spentOfCategory]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [monthlyPlan_id]=@MonthlyPlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlanGet>(sql, new { MonthlyPlanID = monthlyPlan_id }).ToList();
+            return plan;
+        }
+        public List<MonthlyPlanGet> GetCurrentPlan(Guid user_id)
+        {
+            var sql = "select [mp].[monthlyPlan_id], [mp].[user_id], [mp].[plan_id], [pd].[name] as 'plan_name', [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [mp].[date], [mp].[status], [mp].[totalAmount], [mp].[amountSpent], [mp].[priceByCategory], [mp].[spentOfCategory]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID and [mp].[status]='In Progress' order by [mp].[date]";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlanGet>(sql, new { UserID = user_id }).ToList();
+            return plan;
+        }
+        public List<MonthlyPlanGetDateID> GetDateFromMonthlyPlanByUserID(Guid user_id)
+        {
+            var sql = "select [monthlyPlan_id], [date] from [SpendWise].[MonthlyPlan] where [status]='In Progress' and [user_id]=@UserID";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = connection.Query<MonthlyPlanGetDateID>(sql, new { UserID = user_id }).ToList();
+            return plan;
+        }
+        public bool FinishedMonthlyPlan(Guid monthlyPlan_id)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan]  SET [status]='Finished' where [monthlyPlan_id]=@MonthlyPlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Execute(query, new { MonthlyPlanID = monthlyPlan_id });
+            return result != 0;
+        }
     }
 }

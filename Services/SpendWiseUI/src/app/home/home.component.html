@@ -1,12 +1,11 @@
 <!DOCTYPE html meta>
 <html lang="en">
     <head>
-      <meta charset="utf-8"> 
+      <meta charset="utf-8">
       <title>Home</title>
     </head>
     <body>
         <!-- header -->
-        <header><app-header></app-header></header>
         <section class="first_page">
             <div class="left">
                 <h1>Budgeting Tips and Insights</h1>
@@ -29,14 +28,14 @@
                     <p>
                         Categorize your expenses into needs (essentials) and wants (non-essentials). Focus on fulfilling your needs and limit spending on wants.
                         Understanding the difference between essential and non-essential spending helps you make more conscious financial decisions, preventing impulse purchases and promoting financial discipline.
-                    </p>  
+                    </p>
                 </div>
                 <button mat-raised-button color="primary" class="begin">Begin Your Budgeting Journey Now</button>
-                
-                <p class="long_text">Take the first step towards a financially secure future. 
-                    Join SpendWise and transform the way you manage money today! 
-                    With our powerful tools and intuitive interface, you’ll gain valuable insights into your spending habits, set achievable financial goals, and enjoy the peace of mind that comes with knowing your finances are under control. 
-                    Whether you're looking to save for a big purchase, pay off debt, or simply take charge of your daily expenses, SpendWise is here to guide you every step of the way. 
+
+                <p class="long_text">Take the first step towards a financially secure future.
+                    Join SpendWise and transform the way you manage money today!
+                    With our powerful tools and intuitive interface, you’ll gain valuable insights into your spending habits, set achievable financial goals, and enjoy the peace of mind that comes with knowing your finances are under control.
+                    Whether you're looking to save for a big purchase, pay off debt, or simply take charge of your daily expenses, SpendWise is here to guide you every step of the way.
                     Embrace a smarter, simpler, and more effective approach to managing your money. Start your journey with SpendWise now and see the difference it can make in your financial life!</p>
             </div>
             <div class="right">
@@ -59,23 +58,24 @@
                 </div>
             </div>
         </section>
+        <br/>
+        <br/>
         <section class="second_page">
             <h1>Check our popular plans</h1>
             <div class="cards">
-                <mat-card>
+                <mat-card *ngFor="let plan of mostPopularBudgetPlans">
                     <mat-card-header>
-                        <mat-card-title>{{ name }}</mat-card-title>
+                        <mat-card-title>{{ plan.name }}</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>{{ description }}</p>
-                        
+                        <p>{{ plan.description }}</p>
+
                     </mat-card-content>
                 </mat-card>
             </div>
         </section>
 <!-- footer -->
-        <footer><app-footer></app-footer></footer>  
-          
+
     </body>
-      
+
  </html>
