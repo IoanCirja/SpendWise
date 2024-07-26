@@ -18,7 +18,9 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGet> GetPlans()
         {
+
             var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive], [pd].[creationDate]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] AND [pd].[isActive] = 1";
+
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGet>(sql).ToList();
@@ -33,12 +35,21 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGetPopular> GetPopularFivePlans()
         {
-            var sql = "select top(5) [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], (select count([mp].[plan_id]) from [SpendWise].[MonthlyPlan] mp where [mp].[plan_id] = [pd].[plan_id] group by [mp].[plan_id]) as 'numberOfUse'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] order by numberOfUse desc";
+            var sql = "select top(5) [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], (select count([mp].[plan_id]) from [SpendWise].[MonthlyPlan] mp where [mp].[plan_id] = [pd].[plan_id] and [isActive]=1 group by [mp].[plan_id]) as 'numberOfUse'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] order by numberOfUse desc";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGetPopular>(sql).ToList();
             return file;
         }
+
+        public List<BudgetPlanGetPopular> GetMostUsedPlan(Guid user_id)
+        {
+            var sql = "SELECT pd.plan_id, pd.name, pd.description, pd.noCategory, pd.category, pd.image, COUNT(mp.plan_id) AS numberOfUse FROM SpendWise.PlanDetails pd INNER JOIN SpendWise.MonthlyPlan mp ON pd.plan_id = mp.plan_id INNER JOIN SpendWise.Users us ON pd.created_by = us.user_id WHERE pd.isActive = 1 AND mp.user_id = @UserID GROUP BY pd.plan_id, pd.name, pd.description, pd.noCategory, pd.category, pd.image HAVING COUNT(mp.plan_id) > 0 ORDER BY numberOfUse DESC;";
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<BudgetPlanGetPopular>(sql, new {UserID = user_id}).ToList();
+            return file;
+        }
+
         public async Task<BudgetPlan> GetPlanByName(string name)
         {
             var sql = "SELECT * FROM [SpendWise].[PlanDetails] WHERE [name] = @name";

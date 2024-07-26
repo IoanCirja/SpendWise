@@ -10,8 +10,7 @@ namespace Application.Interfaces
         List<BudgetPlanGet> GetPlan(Guid id);
         List<BudgetPlanGetPopular> GetPopularFivePlans();
 
-
-
+        List<BudgetPlanGetPopular> GetMostUsedPlan(Guid user_id);
 
         Task<bool> AddPlan(BudgetPlan budgetPlan);
 

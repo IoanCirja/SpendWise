@@ -4,7 +4,9 @@ using Domain;
 using Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +66,57 @@ namespace Infrastructure.Repositories
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<Transactions>(sql, new { Category = category }).ToList();
             return file;
+        }
+
+        public List<TransactionsInfo> GetBiggestTransaction(Guid user_id)
+        {
+            var sql = "select top(1) [t].[name], max([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID group by [t].[name] having max([t].[amount])=(select max([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<TransactionsInfo>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+
+        public List<TransactionsInfo> GetSmallestTransaction(Guid user_id)
+        {
+            var sql = "select top(1) [t].[name], min([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID group by [t].[name] having min([t].[amount])=(select min([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<TransactionsInfo>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+        public List<TransactionsInfo> GetBiggestTransactionCurrentPlan(Guid user_id)
+        {
+            var sql = "select top(1) [t].[name], max([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID and [mp].[status]='In Progress'  group by [t].[name] having max([t].[amount])=(select max([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<TransactionsInfo>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+        public List<TransactionsInfo> GetSmallestTransactionCurrentPlan(Guid user_id)
+        {
+            var sql = "select top(1) [t].[name], min([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID and [mp].[status]='In Progress' group by [t].[name] having min([t].[amount])=(select min([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<TransactionsInfo>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
+        public List<DateTime> GetDate(Guid monthlyPlan_id, string category, double Amount)
+        {
+            Console.WriteLine(category +Amount);
+            var sql = "WITH CategorySums AS (" +
+                    "SELECT [date],SUM(amount) OVER (PARTITION BY monthlyPlan_id, category ORDER BY date) AS cumulative_amount " +
+                    "FROM SpendWise.Transactions where monthlyPlan_id = @MonthlyPlanID and (category=@Category or CONCAT(' ',category)=@Category) )" +
+                    "SELECT ISNULL(MIN(date),CONVERT(DATETIME,'2500-10-10',120)) as 'data' FROM CategorySums WHERE cumulative_amount >= @Amount ";
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<DateTime>(sql, new { MonthlyPlanID = monthlyPlan_id, Category = category, Amount = Amount });
+            Console.WriteLine(file.FirstOrDefault());
+            if (file.Count() == 0)
+            {
+                Console.WriteLine("Nu s-au găsit rezultate.");
+            }
+
+            return file.ToList();
         }
     }
 }

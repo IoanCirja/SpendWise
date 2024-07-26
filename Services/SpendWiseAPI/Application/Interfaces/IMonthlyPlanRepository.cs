@@ -19,9 +19,7 @@ namespace Application.Interfaces
         bool FinishedMonthlyPlan(Guid monthlyPlan_id);
         bool UpdateMonthlyPlanWithTransaction(Guid monthlyPlan_id, double amount, string spentOfCategory);
 
-
-
-
         Task<bool> CancelMonthlyPlansByPlanId(Guid id);
+        List<MonthlyPlanDemo> GetDemoMonthlyPlan(Guid plan_id);
     }
 }
