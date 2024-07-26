@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChangePasswordService } from './change-password.service';
 import { Router } from '@angular/router';
@@ -70,7 +70,6 @@ export class AccountSettingsComponent {
     const confirmNewPassword = this.changePasswordForm.get('confirmNewPassword')?.value;
     const ID = this.user?.id.toUpperCase();
 
-
     class passwordReset implements PasswordReset{
 
       userID: string;
@@ -92,6 +91,7 @@ export class AccountSettingsComponent {
     this.changePasswordService.changePassword(passwordreset).subscribe(
       (response) => {
         console.log('Password changed successfully', response);
+        alert('Password changed successfully');
         this.router.navigate(['/account-settings']);
       },
       (error) => {
@@ -99,8 +99,13 @@ export class AccountSettingsComponent {
         console.log(newPassword);
         console.log(confirmNewPassword);
         console.error('Error changing password', error);
+        alert('Error chnaging password');
       }
     );
+
+    this.changePasswordForm.get('currentPassword')?.setValue('');
+    this.changePasswordForm.get('newPassword')?.setValue('');
+    this.changePasswordForm.get('confirmNewPassword')?.setValue('');
     
   }
   
@@ -110,8 +115,6 @@ export class AccountSettingsComponent {
       return;
     }
     console.log(this.user?.id);
-
-    // const personalInfoData = this.personalInformationForm.value;
 
     const fullName = this.personalInformationForm.get('fullname')?.value;
     const email = this.personalInformationForm.get('email')?.value;
@@ -138,6 +141,7 @@ export class AccountSettingsComponent {
     this.personalInformationService.personalInformation(personalinformation).subscribe(
       (response) =>{
         console.log('Personal Information updated successfully', response);
+        alert('Personal Information updated successfully');
         this.router.navigate(['/account-settings']);
       },
       (error) =>{
@@ -145,7 +149,13 @@ export class AccountSettingsComponent {
         console.log(email);
         console.log(phone);
         console.error('Error updating personal information', error);
+        alert('Error updating personal information');
       }
     )
+
+    this.personalInformationForm.get('fullname')?.setValue('');
+    this.personalInformationForm.get('email')?.setValue('');
+    this.personalInformationForm.get('phone')?.setValue('');
+    
   }
 }

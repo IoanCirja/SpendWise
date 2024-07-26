@@ -27,12 +27,12 @@
                             <input type="text" formControlName="email" placeholder="jamessmith@example.com">
                         </div>
                     
-                        <button type="submit">Save Changes</button>
+                        <button mat-raised-button type="submit">Save Changes</button>
                     </form>
                 </div>
                 <div class="change-password-section">
                     <h3>Change Password</h3>
-                    <form class="changepassword" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
+                    <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
                         <div class="current-password">
                             <label>Current Password</label>
                             <input type="password" formControlName="currentPassword" placeholder="Current password">
