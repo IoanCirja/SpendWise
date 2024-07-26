@@ -38,15 +38,7 @@ namespace Application.Services
             {
                 throw new Exception("Plan already added");
             }
-            var registerResult = await this._budgetPlanRepository.AddPlan(new BudgetPlan
-            {
-                name = budgetPlan.name,
-                description = budgetPlan.description,
-                category = budgetPlan.category,
-                noCategory = budgetPlan.noCategory,
-                created_by = budgetPlan.created_by,
-                image = budgetPlan.image
-            });
+            var registerResult = await this._budgetPlanRepository.AddPlan(budgetPlan);
 
             return registerResult;
         }

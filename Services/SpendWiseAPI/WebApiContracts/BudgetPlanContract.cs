@@ -14,5 +14,6 @@ namespace WebApiContracts
         public string Category { get; set; }
         public string Imagine { get; set; }
         public Guid user_id { get; set; }
+        public DateTime creationDate { get; set; }
     }
 }
