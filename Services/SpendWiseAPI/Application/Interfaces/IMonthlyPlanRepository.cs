@@ -20,5 +20,6 @@ namespace Application.Interfaces
         bool UpdateMonthlyPlanWithTransaction(Guid monthlyPlan_id, double amount, string spentOfCategory);
 
         Task<bool> CancelMonthlyPlansByPlanId(Guid id);
+        List<MonthlyPlanDemo> GetDemoMonthlyPlan(Guid plan_id);
     }
 }
