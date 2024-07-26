@@ -67,11 +67,9 @@ namespace Infrastructure.Repositories
             parameters.Add("Category", budgetPlan.category, DbType.String);
             parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
             parameters.Add("Created_by", budgetPlan.created_by, DbType.Guid);
+            parameters.Add("CreationDate", DateTime.Today, DbType.Date);
             parameters.Add("Image", budgetPlan.image, DbType.String);
-            parameters.Add("CreationDate", budgetPlan.creationDate, DbType.Date);
-            parameters.Add("IsActive", 1, DbType.Int32);
-
-
+           
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
             return result != 0;
