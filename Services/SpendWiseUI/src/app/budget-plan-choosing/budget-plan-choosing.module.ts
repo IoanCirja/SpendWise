@@ -22,7 +22,7 @@ import { EditPlanModalComponent } from './edit-budget-plan-modal/edit-plan-modal
     BudgetPlanModalComponent,
     CreateBudgetPlanModalComponent,
     BudgetPlanModalComponent,
-    EditPlanModalComponent
+    EditPlanModalComponent,
     
   ],
   imports: [

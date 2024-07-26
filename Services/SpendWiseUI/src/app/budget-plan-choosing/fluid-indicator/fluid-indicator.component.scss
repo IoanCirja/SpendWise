@@ -1,0 +1,137 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+  .progress {
+    --progress-value: 40;
+    --progress-indicator-size: 150px; /* Reduced size */
+    --progress-size: 90px; /* Reduced size */
+    --progress-inner-size: calc(var(--progress-size) - 10px); /* Adjusted for new size */
+    border: 5px solid #fcfcf9; /* Light background color for the circle */
+  
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      border-radius: 50%;
+      min-width: 8px;
+      min-height: 8px;
+      transform: translate(-50%, -50%);
+    }
+  
+    &[data-value="100"] {
+      border-color: #f88; /* Red tone for completed state */
+      &::before {
+        animation: progress-firework 1.3s 0.1s ease infinite both;
+      }
+    }
+  
+    &,
+    &-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--progress-size);
+      height: var(--progress-size);
+      border-radius: 50%; /* Adjusted to a circle */
+      background: #fcfcf9; /* Light background color */
+      border: 5px solid #ccc; /* Border added */
+    }
+  
+    &-inner {
+      width: var(--progress-inner-size);
+      height: var(--progress-inner-size);
+      border: none;
+      margin: auto;
+      overflow: hidden;
+    }
+  
+    &-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #333; /* Darker text color for better readability */
+  
+      strong {
+        font-size: 120%; /* Adjusted size */
+      }
+      span {
+        font-size: 100%; /* Adjusted size */
+      }
+    }
+  
+    &-indicator {
+      background: #8dbf8e; /* Main indicator color: light green */
+      transform-origin: center center;
+      opacity: 0.6;
+      animation: progress-wave-animation 8s linear infinite both;
+      position: absolute;
+      top: calc(100% - var(--progress-value) * 1%);
+      left: -50%;
+      right: 50%;
+      width: var(--progress-indicator-size);
+      height: var(--progress-indicator-size);
+      border-radius: calc(var(--progress-indicator-size) / 2.5);
+    }
+  
+    &-indicator:nth-child(2) {
+      background: #6ca76c; /* Slightly darker green for the second indicator */
+      transform: rotate(90deg);
+      border-radius: 90%;
+    }
+  
+    &.progress--upper-half-value {
+      &-indicator {
+        background: #fc8a8a; /* Transition to red tones */
+      }
+  
+      &-indicator:nth-child(2) {
+        background: #d63f3f; /* Darker red for the second indicator */
+      }
+    }
+  }
+  
+  @keyframes progress-firework {
+    from, 0% {
+      width: 50%;
+      height: 50%;
+      background: #f88; /* Red tone for the firework effect */
+      opacity: 1;
+    }
+    30% {
+      opacity: 1;
+    }
+    to, 100% {
+      width: 150%;
+      height: 150%;
+      background: #fbb; /* Light red for the final effect */
+      opacity: 0;
+    }
+  }
+  
+  @keyframes progress-wave-animation {
+    to, 100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .description {
+    display: flex;
+    max-width: 300px;
+    place-items: center;
+    justify-content: space-between;
+  
+    input {
+      max-width: 30%;
+    }
+  }
+  

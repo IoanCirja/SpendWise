@@ -1,43 +1,96 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  gap: 20px;
   padding: 20px;
-  font-family: 'Roboto Condensed', sans-serif;
 }
 
-
 .details-card {
-  display: flex;
-  gap: 16px;
+  width: 100%;
 }
 
 .card-container {
   display: flex;
-  flex: 1;
+  flex-direction: column;
+  gap: 20px; /* Space between the cards */
 }
 
-.plan-card, .transactions-card {
-  flex: 1;
-  padding: 16px;
+.plan-card, .category-card {
+  border-radius: 7px;
+  margin: 20px;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #043F2D;
+  background-color: #FCFCF9 !important;
 }
 
-table {
+.category-card {
+  margin-top: 16px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Increase space between category items */
+}
+
+.category-item {
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 150px; /* Set a fixed width for category items */
+}
+
+.progress-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-progress-spinner {
+  width: 60px; /* Increase size of spinner */
+  height: 60px;
+}
+
+.percentage-text {
+  position: absolute;
+  font-size: 18px; /* Increase font size */
+}
+
+.category-details {
+  margin-top: 4px;
+  font-size: 16px; /* Increase font size */
+}
+
+.history-card {
   width: 100%;
-  border-collapse: collapse;
 }
 
-table, th, td {
-  border: 1px solid #ddd;
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between plan buttons */
 }
 
-th, td {
-  padding: 8px;
-  text-align: left;
+.plans-list button {
+  font-size: 18px; /* Increase text size */
+  padding: 12px 24px; /* Increase padding for bigger button */
+  border-radius: 7px; /* Rounded corners */
+  background-color: #043F2D; /* Initial background color */
+  color: #FCFCF9; /* Text color */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+  width: 100%; /* Full width of the container */
+  text-align: center; /* Center text within button */
 }
 
-th {
-  background-color: #f4f4f4;
+.plans-list button:hover {
+  background-color: #FCFCF9; /* Background color on hover */
+  color: #043F2D; /* Text color on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
+.details-card button.mat-raised-button {
+  margin-top: 20px;
+}

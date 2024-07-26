@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BudgetPlanModalComponent } from '../budget-plan-modal/budget-plan-modal.component';
 import { EditPlanModalComponent } from '../edit-budget-plan-modal/edit-plan-modal.component';
+
 @Component({
   selector: 'app-budget-plan-card',
   templateUrl: './budget-plan-card.component.html',
@@ -14,6 +15,7 @@ export class BudgetPlanCardComponent {
   @Input() noCategory!: number;
   @Input() category!: string;
   @Input() image!: string;
+  @Input() creationDate!: string; // Ensure this is included
   @Input() created_by!: string;
 
   constructor(public dialog: MatDialog) {}
@@ -27,7 +29,8 @@ export class BudgetPlanCardComponent {
         noCategory: this.noCategory,
         categories: this.category.split(',').map(cat => ({ name: cat.trim(), value: 0 })),
         image: this.image,
-        created_by: this.created_by
+        created_by: this.created_by,
+        creationDate: this.creationDate // Pass creationDate here
       },
       disableClose: true,
       autoFocus: false,
@@ -40,17 +43,19 @@ export class BudgetPlanCardComponent {
       width: '500px',
       data: {
         plan: {
-          id: this.plan_id, 
+          id: this.plan_id,
           name: this.name,
           description: this.description,
           image: this.image,
-          categories: this.category.split(',') 
+          categories: this.category.split(','),
+          creationDate: this.creationDate // Pass creationDate here
         }
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        // Handle result if necessary
       }
     });
   }

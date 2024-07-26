@@ -39,9 +39,11 @@
     [noCategory]="plan.noCategory"
     [category]="plan.category"
     [image]="plan.image"
+    [creationDate]="plan.creationDate"  
     [created_by]="plan.created_by">
   </app-budget-plan-card>
 </div>
+
 
 <div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">
   <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>

@@ -35,6 +35,8 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.monthlyPlanId = params['monthlyPlanId'];
+      this.selectedCategory = params['category'] || 'all'; // Initialize with the selected category
+
       if (this.monthlyPlanId) {
         this.loadPlanDetails(this.monthlyPlanId);
       } else {
@@ -81,8 +83,8 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   extractCategoryDetails(): { name: string, price: number, spent: number, transactions: Transaction[] }[] {
     if (this.selectedPlan) {
       const categories = this.selectedPlan.category.split(', ').map(c => c.trim());
-      const prices = this.selectedPlan.priceByCategory.split(', ').map(price => Number(price.trim()));
-      const spends = this.selectedPlan.spentOfCategory.split(', ').map(spend => Number(spend.trim()));
+      const prices = this.selectedPlan.priceByCategory.split(', ').map(price => parseFloat(price.trim()));
+      const spends = this.selectedPlan.spentOfCategory.split(', ').map(spend => parseFloat(spend.trim()));
 
       return categories.map((category, index) => ({
         name: category,
@@ -121,6 +123,6 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['dashboard/current-plan']);
+    this.router.navigate(['dashboard/history']);
   }
 }

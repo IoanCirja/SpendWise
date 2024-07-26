@@ -1,62 +1,136 @@
 .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
-
 }
 
-.plan-card, .category-card, .message-card {
+.plan-card, .category-card {
   flex: 1;
   min-width: 0;
+  border-radius: 7px; /* Rounded corners */
+  margin: 20px; /* Adds space around the cards */
+  padding: 20px; /* Adds padding inside the cards */
+  font-size: 1.2rem; /* Makes the text bigger */
+  color: #043F2D; /* Text color */
+  min-width: 300px; /* Minimum size for the cards */
+  background-color: #FCFCF9 !important; /* Set background color */
+  position: relative; /* Needed for positioning the floating indicator */
 }
 
-.message-card {
+.plan-card {
+  margin-bottom: 20px; /* Adds space between the plan card and the category card */
+}
+
+.plan-card img {
+  width: 50px; /* Set width to 50px */
+  height: 50px; /* Set height to 50px */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-right: 20px; /* Adds space between the image and the text */
+  margin-left: 20px; /* Optional: Adds space to the left of the image */
+}
+
+.plan-card mat-card-title {
+  font-size: 2rem; /* Makes the title bigger */
+  line-height: 50px; /* Aligns the title vertically with the image */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Align items on the same line */
+  align-items: center; /* Center align items vertically */
+  margin-top: 20px; /* Add some space at the top */
+}
+
+.mat-card-actions p {
+  margin: 0; /* Remove default margin */
+}
+
+.plan-card .cancel-button {
+  background: none;
+  border: none;
+  border-radius: 7px;
+  color: #043F2D; /* Text color */
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px 20px; /* Adds padding for better click area */
+  transition: background-color 0.3s, color 0.3s, width 0.3s, height 0.3s; /* Adds animation */
+}
+
+.plan-card .cancel-button:hover {
+  background-color: #ee0000; /* Red background */
+  color: #FCFCF9; /* Text color */
+  text-align: center;
+}
+
+.category-card .categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* Increase the gap between category items */
+  justify-content: center; /* Center the categories */
+}
+
+.category-card .category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Increase gap between button and progress circle */
+  width: 120px; /* Adjust width as needed */
+}
+
+.category-card .category-button {
+  font-size: 16px; /* Increase text size to 16px */
+  color: #043F2D; /* Initial text color */
+  background: none; /* No background initially */
+  border: none; /* Remove border initially */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px; /* Increase padding inside the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition for background and text color, and transformation */
+  width: 140px; /* Fixed width for consistency */
+  text-align: center; /* Center text within button */
+  transform: translateX(-5px); /* Move button 5px to the left */
+}
+
+.category-card .category-button:hover {
+  background-color: #043F2D; /* Background color on hover */
+  color: #FCFCF9; /* Text color on hover */
+}
+
+.category-card .progress-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.category-card mat-progress-spinner {
+  width: 60px; /* Increase width of spinner */
+  height: 60px; /* Increase height of spinner */
+}
+
+.category-card .percentage-text {
+  font-size: 1.5rem; /* Increase font size to 1.5rem */
+}
+
+.no-plan-message {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100%;
   font-family: 'Roboto Condensed', sans-serif;
+  color: #043F2D; /* Text color */
+  font-size: 1.2rem; /* Makes the text bigger */
 }
 
-img {
-  width: 40px;
-  height: 40px;
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
-  gap: 20px;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.progress-circle {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-mat-progress-spinner {
-  width: 50px;
-  height: 50px;
-}
-
-.percentage-text {
+.floating-indicator-wrapper {
   position: absolute;
-  font-size: 12px;
+  top: -40px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  width: 100px; /* Width of the indicator */
+  height: 100px; /* Height of the indicator */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-

@@ -20,8 +20,10 @@ export class BudgetPlanListComponent implements OnInit {
     'Sort by Name (Z-A)',
     'Sort by No. of Categories (Ascending)',
     'Sort by No. of Categories (Descending)',
+    'Sort by Creation Date (Newest First)',  // New option
+    'Sort by Creation Date (Oldest First)'   // New option
   ];
-  selectedSortOption: string = this.sortOptions[0];
+  selectedSortOption: string = 'Sort by Creation Date (Newest First)'; // Default sort option
   selectedViewOption: string = this.viewOptions[0];
 
   currentPage: number = 1;
@@ -37,7 +39,7 @@ export class BudgetPlanListComponent implements OnInit {
     this.displayPlanService.getBudgetPlans().subscribe({
       next: (data) => {
         this.budgetPlans = data;
-        this.filteredBudgetPlans = data; 
+        this.filteredBudgetPlans = data;
         console.log('Fetched data:', this.budgetPlans);
         this.sortBudgetPlans();
         this.updatePagination();
@@ -62,12 +64,18 @@ export class BudgetPlanListComponent implements OnInit {
       case 'Sort by No. of Categories (Descending)':
         this.filteredBudgetPlans.sort((a, b) => b.noCategory - a.noCategory);
         break;
+      case 'Sort by Creation Date (Newest First)':
+        this.filteredBudgetPlans.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+        break;
+      case 'Sort by Creation Date (Oldest First)':
+        this.filteredBudgetPlans.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime());
+        break;
     }
   }
 
   onSortChange(): void {
     this.sortBudgetPlans();
-    this.applyFilter(); 
+    this.applyFilter();
   }
 
   applyFilter(): void {
@@ -78,8 +86,8 @@ export class BudgetPlanListComponent implements OnInit {
       plan.category.toLowerCase().includes(filterValue) || 
       plan.created_by.toLowerCase().includes(filterValue)
     );
-    this.sortBudgetPlans(); 
-    this.updatePagination(); 
+    this.sortBudgetPlans();
+    this.updatePagination();
   }
 
   onViewChange(): void {
