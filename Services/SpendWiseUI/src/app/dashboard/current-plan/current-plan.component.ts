@@ -40,6 +40,9 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(refreshSubscription);
   }
+  goToDetails(): void {
+    this.router.navigate(['dashboard/category-details']);
+  }
 
   loadCurrentUser(): void {
     const subscription = this.accountService.currentUser$.subscribe(currentUser => {

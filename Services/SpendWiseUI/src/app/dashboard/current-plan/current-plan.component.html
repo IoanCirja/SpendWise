@@ -19,8 +19,9 @@
   
   <!-- Categories Card -->
   <mat-card class="category-card" *ngIf="currentPlan">
-    <mat-card-header>
+    <mat-card-header style="display: flex; justify-content: space-between; align-items: center;">
       <mat-card-title>Categories</mat-card-title>
+      <button class="view-transactions-button" (click)="goToDetails()">View Transactions</button>
     </mat-card-header>
     <mat-card-content>
       <div class="categories">
@@ -29,6 +30,7 @@
             {{ category.name }}
           </button>
           <app-fluid-indicator [value]="getRoundedPercentage(category.spent, category.price)"></app-fluid-indicator>
+          <div class="category-details">{{ category.spent }}/{{ category.price }} &euro;</div>
         </div>
       </div>
     </mat-card-content>

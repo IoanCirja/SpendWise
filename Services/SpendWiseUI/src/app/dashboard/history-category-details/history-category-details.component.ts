@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { HistoryService } from '../services/history.service';
 import { TransactionService } from '../services/transaction-service';
+import { StateService } from '../services/state-service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { firstValueFrom } from 'rxjs';
 
@@ -29,7 +30,8 @@ export class HistoryCategoryDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private historyService: HistoryService,
     private transactionService: TransactionService,
-    private router: Router
+    private router: Router,
+    private stateService: StateService // Inject the shared service
   ) {}
 
   ngOnInit(): void {
@@ -123,6 +125,16 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['dashboard/history']);
+    if (this.selectedPlan) {
+      const navigationExtras: NavigationExtras = {
+        state: {
+          returnTo: 'detailed-view',
+          planId: this.selectedPlan.monthlyPlan_id
+        }
+      };
+      this.router.navigate(['dashboard/history'], navigationExtras);
+    } else {
+      console.error('Selected Plan or monthlyPlan_id is undefined');
+    }
   }
 }

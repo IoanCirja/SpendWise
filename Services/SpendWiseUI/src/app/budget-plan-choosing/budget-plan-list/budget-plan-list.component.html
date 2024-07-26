@@ -1,7 +1,8 @@
 <div class="header-container">
   <div class="header-left">
     <span>Choose a Budget Plan for this Month</span>
-    <button class="details-button" (click)="openCreateDialog()">+</button>
+    <!-- Conditionally render the create button -->
+    <button class="details-button" *ngIf="isAdmin" (click)="openCreateDialog()">+</button>
   </div>
   <div class="header-middle">
     <mat-form-field appearance="fill">
@@ -27,6 +28,11 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    
+    <!-- Add a checkbox for admin users to filter their own plans -->
+    <mat-checkbox *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()">
+      Show My Plans Only
+    </mat-checkbox>
   </div>
 </div>
 
@@ -43,7 +49,6 @@
     [created_by]="plan.created_by">
   </app-budget-plan-card>
 </div>
-
 
 <div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">
   <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>

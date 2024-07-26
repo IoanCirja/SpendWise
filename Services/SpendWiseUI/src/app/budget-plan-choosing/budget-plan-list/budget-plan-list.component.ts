@@ -20,27 +20,30 @@ export class BudgetPlanListComponent implements OnInit {
     'Sort by Name (Z-A)',
     'Sort by No. of Categories (Ascending)',
     'Sort by No. of Categories (Descending)',
-    'Sort by Creation Date (Newest First)',  // New option
-    'Sort by Creation Date (Oldest First)'   // New option
+    'Sort by Creation Date (Newest First)',  
+    'Sort by Creation Date (Oldest First)'   
   ];
-  selectedSortOption: string = 'Sort by Creation Date (Newest First)'; // Default sort option
+  selectedSortOption: string = 'Sort by Creation Date (Newest First)'; 
   selectedViewOption: string = this.viewOptions[0];
 
   currentPage: number = 1;
   itemsPerPage: number = 2;
   totalPages: number = 1;
-
+  
+  isAdmin: boolean = false;
+  showMyPlansOnly: boolean = false; // Property to control the checkbox state
+  
   constructor(
     private displayPlanService: DisplayPlanService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
+    this.checkUserRole();
     this.displayPlanService.getBudgetPlans().subscribe({
       next: (data) => {
         this.budgetPlans = data;
         this.filteredBudgetPlans = data;
-        console.log('Fetched data:', this.budgetPlans);
         this.sortBudgetPlans();
         this.updatePagination();
       },
@@ -48,6 +51,16 @@ export class BudgetPlanListComponent implements OnInit {
         console.error('Error fetching data:', err);
       }
     });
+  }
+
+  checkUserRole(): void {
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson) {
+      const user = JSON.parse(userJson);
+      this.isAdmin = user.role === 'admin';
+    } else {
+      console.error('No user data found in local storage.');
+    }
   }
 
   sortBudgetPlans(): void {
@@ -80,12 +93,22 @@ export class BudgetPlanListComponent implements OnInit {
 
   applyFilter(): void {
     const filterValue = this.searchQuery.trim().toLowerCase();
-    this.filteredBudgetPlans = this.budgetPlans.filter(plan => 
-      plan.name.toLowerCase().includes(filterValue) || 
-      plan.description.toLowerCase().includes(filterValue) || 
-      plan.category.toLowerCase().includes(filterValue) || 
-      plan.created_by.toLowerCase().includes(filterValue)
-    );
+    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const username = user.name || '';
+
+    this.filteredBudgetPlans = this.budgetPlans.filter(plan => {
+      let matchesSearch = plan.name.toLowerCase().includes(filterValue) || 
+                          plan.description.toLowerCase().includes(filterValue) || 
+                          plan.category.toLowerCase().includes(filterValue) || 
+                          plan.created_by.toLowerCase().includes(filterValue);
+
+      if (this.isAdmin && this.showMyPlansOnly) {
+        matchesSearch = matchesSearch && plan.created_by === username;
+      }
+
+      return matchesSearch;
+    });
+
     this.sortBudgetPlans();
     this.updatePagination();
   }
@@ -121,20 +144,29 @@ export class BudgetPlanListComponent implements OnInit {
   }
 
   openCreateDialog(): void {
-    const dialogRef = this.dialog.open(CreateBudgetPlanModalComponent, {
-      width: '500px',
-      disableClose: true
-    });
+    if (this.isAdmin) {
+      const dialogRef = this.dialog.open(CreateBudgetPlanModalComponent, {
+        width: '500px',
+        disableClose: true
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.displayPlanService.getBudgetPlans().subscribe(data => {
-          this.budgetPlans = data;
-          this.filteredBudgetPlans = data;
-          this.sortBudgetPlans();
-          this.updatePagination();
-        });
-      }
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.displayPlanService.getBudgetPlans().subscribe(data => {
+            this.budgetPlans = data;
+            this.filteredBudgetPlans = data;
+            this.sortBudgetPlans();
+            this.updatePagination();
+          });
+        }
+      });
+    } else {
+      alert('You do not have permission to create a budget plan.');
+    }
+  }
+
+  toggleShowMyPlans(): void {
+    this.showMyPlansOnly = !this.showMyPlansOnly;
+    this.applyFilter();
   }
 }

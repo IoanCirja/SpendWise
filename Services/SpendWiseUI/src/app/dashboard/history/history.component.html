@@ -1,52 +1,50 @@
 <div class="container">
-  <!-- Detailed View -->
-  <ng-container *ngIf="isDetailedView">
-    <mat-card class="details-card">
-      <mat-card-header>
-        <button mat-icon-button (click)="goBack()">Return</button>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="card-container">
-          <mat-card class="plan-card">
-            <mat-card-header>
-              <mat-card-title>Plan Overview</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div>
-                <p><strong>Plan Name:</strong> {{ selectedPlan?.plan_name }}</p>
-                <p><strong>Description:</strong> {{ selectedPlan?.description }}</p>
-                <!-- Navigation button to HistoryCategoryDetailsComponent -->
-                <button mat-raised-button color="primary" (click)="goToDetails()">View History Details</button>
-              </div>
-            </mat-card-content>
-          </mat-card>
+  <!-- Conditionally show Return button -->
+  <button mat-icon-button *ngIf="isDetailedView" (click)="goBack()">Return</button>
 
-          <!-- Categories Card -->
-          <mat-card class="category-card">
-            <mat-card-header>
-              <mat-card-title>Categories</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="categories">
-                <div *ngFor="let category of categoriesWithDetails" class="category-item">
-                  <button mat-button (click)="openCategoryDetails(category.name)">
-                    {{ category.name }}
-                  </button>
+  <!-- Detailed View: Plan Card -->
+  <mat-card class="plan-card" *ngIf="isDetailedView">
+    <mat-card-header style="display: flex; align-items: center;">
+      <img mat-card-image [src]="selectedPlan?.image" alt="{{ selectedPlan?.plan_name }}">
+      <mat-card-title>{{ selectedPlan?.plan_name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ selectedPlan?.description }}</p>
+      <div class="mat-card-actions">
+        <p><strong>Total Amount:</strong> {{ selectedPlan?.totalAmount }} &euro;</p>
+      </div>
+    </mat-card-content>
+    <div class="floating-indicator-wrapper">
+      <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
+    </div>
+  </mat-card>
 
-                  <app-fluid-indicator [value]="(category.spent / category.price) * 100"></app-fluid-indicator>
-
-                  <div class="category-details">{{ category.spent }}/{{ category.price }}</div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
+  <!-- Detailed View: Categories Card -->
+  <mat-card class="category-card" *ngIf="isDetailedView">
+    <mat-card-header class="category-header">
+      <mat-card-title>Categories</mat-card-title>
+      <button class="history-details-button" (click)="goToDetails()">View History Details</button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="categories">
+        <div *ngFor="let category of categoriesWithDetails; let i = index" class="category-item">
+          <button class="category-button" (click)="openCategoryDetails(category.name)">
+            {{ category.name }}
+          </button>
+          <app-fluid-indicator [value]="getRoundedPercentage(category.spent, category.price)"></app-fluid-indicator>
+          <div class="category-details">{{ category.spent }}/{{ category.price }}&euro;</div>
         </div>
-      </mat-card-content>
-    </mat-card>
-  </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-  <!-- Historical Plans View -->
-  <ng-container *ngIf="!isDetailedView">
+  <!-- No Plan Message -->
+  <div *ngIf="!isDetailedView && historyPlans.length === 0" class="no-plan-message">
+    <p>No budget plans in History. Your current plan will be automatically added when it ends.</p>
+  </div>
+
+  <!-- History Plans List -->
+  <ng-container *ngIf="!isDetailedView && historyPlans.length > 0">
     <mat-card class="history-card">
       <mat-card-content>
         <div class="plans-list">

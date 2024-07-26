@@ -15,6 +15,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button class="details-button" (click)="openDialog()">View Details</button>
-    <button mat-button class="edit-button" (click)="editPlan()">Edit</button>
+    <!-- Conditionally render the edit button -->
+    <button mat-button class="edit-button" *ngIf="canEdit" (click)="editPlan()">Edit</button>
   </mat-card-actions>
 </mat-card>

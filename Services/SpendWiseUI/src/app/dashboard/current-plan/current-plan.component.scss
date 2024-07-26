@@ -134,3 +134,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.view-transactions-button {
+  background: none; /* No background initially */
+  border: none; /* No border initially */
+  color: #043F2D; /* Initial text color */
+  cursor: pointer; /* Change cursor to pointer */
+  padding: 10px 20px; /* Padding for better click area */
+  font-size: 1.2rem; /* Font size */
+  border-radius: 7px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.view-transactions-button:hover {
+  background-color: #043F2D; /* Green background on hover */
+  color: #FCFCF9; /* Text color on hover */
+}
