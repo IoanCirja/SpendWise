@@ -60,7 +60,7 @@ namespace Infrastructure.Repositories
 
         public async Task<bool> AddPlan(BudgetPlan budgetPlan)
         {
-            var query = "INSERT INTO [SpendWise].[PlanDetails] ([plan_id], [name], [description], [category], [noCategory], [created_by], [image]) VALUES (NEWID(), @Name, @Description, @Category, @NoCategory, @Created_by,@Image)";
+            var query = "INSERT INTO [SpendWise].[PlanDetails] ([plan_id], [name], [description], [category], [noCategory], [created_by], [creationDate], [image]) VALUES (NEWID(), @Name, @Description, @Category, @NoCategory, @Created_by, @CreationDate, @Image)";
             var parameters = new DynamicParameters();
             parameters.Add("Name", budgetPlan.name, DbType.String);
             parameters.Add("Description", budgetPlan.description, DbType.String);
@@ -68,7 +68,7 @@ namespace Infrastructure.Repositories
             parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
             parameters.Add("Created_by", budgetPlan.created_by, DbType.Guid);
             parameters.Add("Image", budgetPlan.image, DbType.String);
-            parameters.Add("CreationDate", DateTime.Today, DbType.Date);
+            parameters.Add("CreationDate", budgetPlan.creationDate, DbType.Date);
             parameters.Add("IsActive", 1, DbType.Int32);
 
 
