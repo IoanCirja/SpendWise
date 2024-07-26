@@ -19,7 +19,6 @@ namespace WebApiContracts.Mappers
                 noCategory = budgetPlanContract.NoCategory,
                 created_by = budgetPlanContract.user_id,
                 image = budgetPlanContract.Imagine,
-                creationDate = budgetPlanContract.creationDate,
             };
         }
         public static BudgetPlan MapPlanEditToDomain(this BudgetPlanEditContract budgetPlanContract)
