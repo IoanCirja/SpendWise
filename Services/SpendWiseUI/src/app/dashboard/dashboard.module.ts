@@ -29,7 +29,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatIcon } from '@angular/material/icon';
 import { ConfirmCancelDialogComponent } from './cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
-
+import { FluidIndicatorComponent } from '../budget-plan-choosing/fluid-indicator/fluid-indicator.component';
 import { HistoryCategoryDetailsComponent } from './history-category-details/history-category-details.component';
 
 @NgModule({
@@ -43,6 +43,7 @@ import { HistoryCategoryDetailsComponent } from './history-category-details/hist
     TransactionModalComponent,
     ConfirmCancelDialogComponent,
     HistoryCategoryDetailsComponent,
+    FluidIndicatorComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +62,7 @@ import { HistoryCategoryDetailsComponent } from './history-category-details/hist
     MatProgressSpinnerModule,
     MatTableModule,
     MatSortModule,
+    
     
   ]
 })

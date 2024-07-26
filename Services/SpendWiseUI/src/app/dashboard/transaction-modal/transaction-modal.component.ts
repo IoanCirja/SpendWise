@@ -4,7 +4,9 @@ import { CurrentPlanService } from '../services/current-plan.service';
 import { AccountService } from '../../auth/account.service';
 import { TransactionService } from '../services/transaction-service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
+import { CurrentPlanRefreshService } from '../services/current-plan-refresh-service';
 @Component({
   selector: 'app-transaction-modal',
   templateUrl: './transaction-modal.component.html',
@@ -23,7 +25,9 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<TransactionModalComponent>,
     private currentPlanService: CurrentPlanService,
     private accountService: AccountService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private router: Router,
+    private currentPlanRefreshService: CurrentPlanRefreshService // Inject CurrentPlanRefreshService
   ) {}
 
   ngOnInit(): void {
@@ -73,9 +77,14 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
 
     this.transactionService.saveTransaction(transactionData).subscribe(
       response => {
-        // Assuming the response is a text message indicating success
         console.log('Transaction saved successfully', response);
         this.dialogRef.close(true); // Close the modal and signal success
+
+        // Notify CurrentPlanComponent to refresh
+        this.currentPlanRefreshService.triggerRefresh();
+
+        // Redirect to dashboard/current-plan
+        this.router.navigate(['/dashboard/current-plan']);
       },
       error => {
         console.error('Error saving transaction', error);

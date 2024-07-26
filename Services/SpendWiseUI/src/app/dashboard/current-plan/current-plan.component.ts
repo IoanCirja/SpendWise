@@ -8,6 +8,7 @@ import { CurrentPlanService } from '../services/current-plan.service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
 import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
+import { CurrentPlanRefreshService } from '../services/current-plan-refresh-service';
 
 @Component({
   selector: 'app-current-plan',
@@ -17,6 +18,7 @@ import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/
 export class CurrentPlanComponent implements OnInit, OnDestroy {
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
+  averagePercentage: number = 0; // Added property
   userId: string | null = null;
   subscriptions: Subscription[] = [];
 
@@ -25,11 +27,21 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     private currentPlanService: CurrentPlanService,
     private router: Router,
     private accountService: AccountService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private currentPlanRefreshService: CurrentPlanRefreshService
+  ) {}
 
   ngOnInit(): void {
     this.loadCurrentUser();
+
+    // Subscribe to refresh notifications
+    const refreshSubscription = this.currentPlanRefreshService.refresh$.subscribe(() => {
+      this.loadCurrentPlan(); // Reload current plan data
+    });
+    this.subscriptions.push(refreshSubscription);
+  }
+  goToDetails(): void {
+    this.router.navigate(['dashboard/category-details']);
   }
 
   loadCurrentUser(): void {
@@ -54,6 +66,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         this.dashboardButtonService.setCurrentPlan(this.currentPlan); // Update the shared service
         if (this.currentPlan) {
           this.extractCategoryDetails();
+          this.calculateAveragePercentage(); // Calculate average percentage
         }
       },
       error => {
@@ -74,6 +87,29 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         spent: spends[index] || 0
       }));
     }
+  }
+
+  calculateAveragePercentage(): void {
+    if (this.categoriesWithDetails.length === 0) {
+      this.averagePercentage = 0;
+      return;
+    }
+
+    const totalSpent = this.categoriesWithDetails.reduce((acc, category) => acc + category.spent, 0);
+    const totalPrice = this.categoriesWithDetails.reduce((acc, category) => acc + category.price, 0);
+
+    if (totalPrice === 0) {
+      this.averagePercentage = 0;
+    } else {
+      this.averagePercentage = Math.round((totalSpent / totalPrice) * 100);
+    }
+  }
+
+  getRoundedPercentage(spent: number, price: number): number {
+    if (price === 0) {
+      return 0;
+    }
+    return Math.round((spent / price) * 100);
   }
 
   getCircleColor(percentage: number): string {

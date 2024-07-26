@@ -5,6 +5,8 @@
       <div class="header-text">
         <mat-card-title>{{ name }}</mat-card-title>
         <mat-card-subtitle>{{ category }}</mat-card-subtitle>
+        <!-- Display creation date here -->
+        <mat-card-subtitle>Created on: {{ creationDate }}</mat-card-subtitle>
       </div>
     </div>
   </mat-card-header>
@@ -13,6 +15,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button class="details-button" (click)="openDialog()">View Details</button>
-    <button mat-button class="edit-button" (click)="editPlan()">Edit</button>
+    <!-- Conditionally render the edit button -->
+    <button mat-button class="edit-button" *ngIf="canEdit" (click)="editPlan()">Edit</button>
   </mat-card-actions>
 </mat-card>

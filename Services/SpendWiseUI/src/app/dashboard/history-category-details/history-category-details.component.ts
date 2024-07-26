@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { HistoryService } from '../services/history.service';
 import { TransactionService } from '../services/transaction-service';
+import { StateService } from '../services/state-service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { firstValueFrom } from 'rxjs';
 
@@ -29,12 +30,15 @@ export class HistoryCategoryDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private historyService: HistoryService,
     private transactionService: TransactionService,
-    private router: Router
+    private router: Router,
+    private stateService: StateService // Inject the shared service
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.monthlyPlanId = params['monthlyPlanId'];
+      this.selectedCategory = params['category'] || 'all'; // Initialize with the selected category
+
       if (this.monthlyPlanId) {
         this.loadPlanDetails(this.monthlyPlanId);
       } else {
@@ -81,8 +85,8 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   extractCategoryDetails(): { name: string, price: number, spent: number, transactions: Transaction[] }[] {
     if (this.selectedPlan) {
       const categories = this.selectedPlan.category.split(', ').map(c => c.trim());
-      const prices = this.selectedPlan.priceByCategory.split(', ').map(price => Number(price.trim()));
-      const spends = this.selectedPlan.spentOfCategory.split(', ').map(spend => Number(spend.trim()));
+      const prices = this.selectedPlan.priceByCategory.split(', ').map(price => parseFloat(price.trim()));
+      const spends = this.selectedPlan.spentOfCategory.split(', ').map(spend => parseFloat(spend.trim()));
 
       return categories.map((category, index) => ({
         name: category,
@@ -121,6 +125,16 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['dashboard/current-plan']);
+    if (this.selectedPlan) {
+      const navigationExtras: NavigationExtras = {
+        state: {
+          returnTo: 'detailed-view',
+          planId: this.selectedPlan.monthlyPlan_id
+        }
+      };
+      this.router.navigate(['dashboard/history'], navigationExtras);
+    } else {
+      console.error('Selected Plan or monthlyPlan_id is undefined');
+    }
   }
 }
