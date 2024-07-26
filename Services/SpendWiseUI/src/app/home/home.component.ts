@@ -1,5 +1,4 @@
-import {AfterViewInit,Renderer2,ElementRef, Component, Input, OnInit, Output} from '@angular/core';
-import { MatCard } from '@angular/material/card';
+import {ElementRef, Component, Input, OnInit, Output} from '@angular/core';
 import {DisplayPopularPlanService} from "./services/display-popular-plan.service";
 import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
 import {Router} from "@angular/router";
@@ -9,13 +8,12 @@ import {Router} from "@angular/router";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   mostPopularBudgetPlans: BudgetPlanGetPopular[] = [];
   duplicatedPlans: BudgetPlanGetPopular[] = [];
 
   constructor (
     public displayPopularPlanService: DisplayPopularPlanService,
-    private renderer: Renderer2,
     private el: ElementRef,
     private router: Router
   ){
@@ -27,7 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       response => {
         this.mostPopularBudgetPlans = response;
         this.duplicatedPlans = [...response, ...response];
-        this.updateAnimation();
         console.log('getPopularBudgetPlans successful', response);
       },
       error => {
@@ -35,31 +32,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     );
     console.log("[HomeComponent] init]")
-  }
-
-  getScrollWidth(): string {
-    return `calc(-500px * ${this.mostPopularBudgetPlans.length})`;
-  }
-
-  ngAfterViewInit(): void {
-    this.updateAnimation();
-  }
-
-  updateAnimation(): void {
-    const scrollWidth = this.mostPopularBudgetPlans.length * 520;
-    const keyframes = `@keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-${scrollWidth}px);
-      }
-    }`;
-
-    const styleSheet = this.renderer.createElement('style');
-    styleSheet.type = 'text/css';
-    styleSheet.innerHTML = keyframes;
-    this.renderer.appendChild(this.el.nativeElement, styleSheet);
   }
 
   redirectToLogin(): void {

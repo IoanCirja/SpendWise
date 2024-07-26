@@ -11,7 +11,7 @@
 .footer-content {
   display: flex;
   flex-direction: row;
-  align-items: left;
+  //align-items: left;
   text-align: left;
   justify-content: space-between;
 }
@@ -49,10 +49,6 @@
   text-decoration: underline;
 }
 
-.newsletter button {
-  background-color: #FCFCF9;
-}
-
 .contact-info .social-media a {
   color: #FCFCF9;
   margin: 0 10px;
@@ -74,9 +70,10 @@
   color: #FCFCF9;
   background-color: #2A6F2C;
   border-color: #FCFCF9;
-  border-radius: 8px;
-  width: 240px;
-  height: 24px;
+  border-radius: 7px;
+  height: 35px;
+  width: 150spx;
+  margin-right: 40px;
 }
 
 ::placeholder {
@@ -89,17 +86,44 @@
 }
 
 button {
-  color: #2A6F2C !important;
+  color: #FCFCF9 !important;
   border-radius: 7px;
 }
 
-.right{
+.right {
   .newsletter {
-    .join_sign_up{
-      .sign_up{
-        background-color: #3f51b5;
+    .join_sign_up {
+      .sign_up {
+        background-color: transparent;
+        color: #FCFCF9;
+        border: 1px solid #FCFCF9;
+        height: 40px;
+        width: 125px;
+      }
+      .sign_up:hover {
+        background-color: #FCFCF9;
+        color: #043F2D !important;
+        border-color: #043F2D;
+        height: 40px;
+        width: 125px;
+      }
     }
   }
 }
+
+
+.newsletter button {
+  background-color: transparent;
+  color :#FCFCF9;
+  border: 1px solid #FCFCF9;
+  height: 40px;
+  width: 125px;
 }
 
+.newsletter button:hover{
+  background-color: #FCFCF9;
+  color: #043F2D !important;
+  border-color: #043F2D;
+  height: 40px;
+  width: 125px;
+}
