@@ -13,6 +13,8 @@ export class BudgetPlanListComponent implements OnInit {
   budgetPlans: BudgetPlans = [];
   filteredBudgetPlans: BudgetPlans = [];
   searchQuery: string = '';
+  hasPlansToShow: boolean = true;
+  disableCheckbox: boolean = false; // New property to control checkbox state
 
   viewOptions: string[] = ['View All', 'Pages'];
   sortOptions: string[] = [
@@ -95,24 +97,27 @@ export class BudgetPlanListComponent implements OnInit {
     const filterValue = this.searchQuery.trim().toLowerCase();
     const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
     const username = user.name || '';
-
+  
     this.filteredBudgetPlans = this.budgetPlans.filter(plan => {
       let matchesSearch = plan.name.toLowerCase().includes(filterValue) || 
                           plan.description.toLowerCase().includes(filterValue) || 
                           plan.category.toLowerCase().includes(filterValue) || 
                           plan.created_by.toLowerCase().includes(filterValue);
-
+  
       if (this.isAdmin && this.showMyPlansOnly) {
         matchesSearch = matchesSearch && plan.created_by === username;
       }
-
+  
       return matchesSearch;
     });
-
+  
     this.sortBudgetPlans();
     this.updatePagination();
+    
+    // Update hasPlansToShow based on the filtered results
+    this.hasPlansToShow = this.filteredBudgetPlans.length > 0;
   }
-
+  
   onViewChange(): void {
     this.currentPage = 1;
     this.updatePagination();

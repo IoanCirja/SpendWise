@@ -15,6 +15,9 @@
       <div class="text-content">
         <p><strong>Description:</strong> {{data.description}}</p>
         <p><strong>Number of Categories:</strong> {{data.noCategory}}</p>
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{errorMessage}}</p>
+        </div>
       </div>
       <div class="category-inputs">
         <div *ngFor="let category of data.categories; let i = index">
@@ -24,6 +27,7 @@
           </mat-form-field>
         </div>
       </div>
+
     </div>
   </ng-template>
 </mat-dialog-content>

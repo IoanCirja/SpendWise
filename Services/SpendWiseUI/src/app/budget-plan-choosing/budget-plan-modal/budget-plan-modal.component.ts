@@ -26,6 +26,7 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
   userId: string | null = null;
   subscriptions: Subscription[] = [];
   currentPlanExists: boolean = false;
+  errorMessage: string | null = null; // Added property for error message
 
   constructor(
     public dialogRef: MatDialogRef<BudgetPlanModalComponent>,
@@ -75,6 +76,21 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
       return;
     }
 
+    // Validate input
+    const hasNegativeValues = this.dataHolder.categories.some(cat => cat.value <= 0);
+    if (hasNegativeValues) {
+      this.errorMessage = 'Only positive values are allowed';
+      return;
+    }
+    const smallValues = this.dataHolder.categories.some(cat => cat.value <= 30);
+    if (smallValues) {
+      this.errorMessage = 'Each category needs to be funded with at least 30€';
+      return;
+    }
+
+
+    this.errorMessage = null; // Clear any previous error message
+
     const plan_id = this.dataHolder.plan_id;
     const totalAmount = this.dataHolder.categories.reduce((acc, category) => acc + category.value, 0);
     const planData = {
@@ -88,12 +104,12 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
     };
 
     console.log('Saving plan data:', planData);
-    this.dialogRef.close();
 
     this.budgetPlanService.saveBudgetPlan(planData).subscribe(
       (response) => {
         console.log('Save successful:', response);
-        this.router.navigate(['/dashboard']);
+        this.dialogRef.close();
+        this.router.navigate(['/dashboard/current-plan']);
       },
       (error) => {
         console.error('Save failed:', error);

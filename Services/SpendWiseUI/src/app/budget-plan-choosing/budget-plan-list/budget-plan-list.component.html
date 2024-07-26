@@ -30,9 +30,9 @@
     </mat-form-field>
     
     <!-- Add a checkbox for admin users to filter their own plans -->
-    <mat-checkbox *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()">
-      Show My Plans Only
-    </mat-checkbox>
+<mat-checkbox *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
+  Show My Plans Only
+</mat-checkbox>
   </div>
 </div>
 
@@ -55,3 +55,8 @@
   <span>Page {{currentPage}} of {{totalPages}}</span>
   <button mat-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div>
+
+<div class="no-plans-message" *ngIf="!hasPlansToShow && showMyPlansOnly">
+  No plans available for your account. 
+</div>
+

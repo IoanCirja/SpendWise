@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChangePasswordService } from './change-password.service';
 import { Router } from '@angular/router';
 import { PersonalInformationService } from './personal-information.service';
 import { PasswordReset } from '../models/PasswordReset';
-import {User} from '../models/User';
+import { User } from '../models/User';
 import { PersonalInformation } from '../models/PersonalInformation';
 
 @Component({
@@ -24,7 +24,12 @@ export class AccountSettingsComponent {
     role: ''
   };
 
-  constructor(private fb: FormBuilder, private changePasswordService: ChangePasswordService, private personalInformationService: PersonalInformationService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private changePasswordService: ChangePasswordService,
+    private personalInformationService: PersonalInformationService,
+    private router: Router
+  ) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -44,11 +49,14 @@ export class AccountSettingsComponent {
     const userString = localStorage.getItem('currentUser');
     if (userString) {
       this.user = JSON.parse(userString);
-      console.log(this.user);
-    }else {
+      this.personalInformationForm.patchValue({
+        fullname: this.user.name,
+        email: this.user.email,
+        phone: this.user.phone
+      });
+    } else {
       console.error('User not found in localStorage');
     }
-    
   }
 
   passwordsMatch(group: FormGroup) {
@@ -63,99 +71,68 @@ export class AccountSettingsComponent {
       return;
     }
 
-    console.log(this.user?.id);
-
     const currentPassword = this.changePasswordForm.get('currentPassword')?.value;
     const newPassword = this.changePasswordForm.get('newPassword')?.value;
     const confirmNewPassword = this.changePasswordForm.get('confirmNewPassword')?.value;
     const ID = this.user?.id.toUpperCase();
 
-    class passwordReset implements PasswordReset{
-
-      userID: string;
-      currentPassword: string;
-      newPassword: string;
-      confirmNewPassword: string;
-      
-      constructor (userID: string, currentpassword: string, newpassword: string, confirmnewpassword: string){
-        this.userID = userID;
-        this.currentPassword = currentpassword;
-        this.newPassword = newpassword;
-        this.confirmNewPassword = confirmnewpassword;
-      }
-
+    const passwordReset: PasswordReset = {
+      userID: ID,
+      currentPassword,
+      newPassword,
+      confirmNewPassword
     };
 
-    let passwordreset = new passwordReset(ID, currentPassword, newPassword, confirmNewPassword);
-
-    this.changePasswordService.changePassword(passwordreset).subscribe(
+    this.changePasswordService.changePassword(passwordReset).subscribe(
       (response) => {
         console.log('Password changed successfully', response);
         alert('Password changed successfully');
         this.router.navigate(['/account-settings']);
       },
       (error) => {
-        console.log(currentPassword);
-        console.log(newPassword);
-        console.log(confirmNewPassword);
         console.error('Error changing password', error);
-        alert('Error chnaging password');
+        alert('Error changing password');
       }
     );
 
-    this.changePasswordForm.get('currentPassword')?.setValue('');
-    this.changePasswordForm.get('newPassword')?.setValue('');
-    this.changePasswordForm.get('confirmNewPassword')?.setValue('');
-    
+    this.changePasswordForm.reset();
   }
   
-  onSubmitPersonalInfo(){
-    if(this.personalInformationForm.invalid){
+  onSubmitPersonalInfo() {
+    if (this.personalInformationForm.invalid) {
       console.log(this.personalInformationForm.value);
       return;
     }
-    console.log(this.user?.id);
 
     const fullName = this.personalInformationForm.get('fullname')?.value;
     const email = this.personalInformationForm.get('email')?.value;
     const phone = this.personalInformationForm.get('phone')?.value;
     const ID = this.user?.id.toUpperCase();
 
-    class personalInformation implements PersonalInformation{
-      ID: string;
-      Name: string;
-      email: string;
-      phone: string;
-      
-      constructor (userID: string, fullname: string, email: string, phone: string){
-        this.ID = userID;
-        this.Name = fullname;
-        this.email = email;
-        this.phone = phone;
-      }
-
+    const personalInfo: PersonalInformation = {
+      ID,
+      Name: fullName,
+      email,
+      phone
     };
 
-    let personalinformation = new personalInformation(ID, fullName, email, phone);
-
-    this.personalInformationService.personalInformation(personalinformation).subscribe(
-      (response) =>{
+    this.personalInformationService.personalInformation(personalInfo).subscribe(
+      (response) => {
         console.log('Personal Information updated successfully', response);
         alert('Personal Information updated successfully');
+        
+        // Update local storage with new information
+        this.user = { ...this.user, name: fullName, email, phone };
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
+
         this.router.navigate(['/account-settings']);
       },
-      (error) =>{
-        console.log(fullName);
-        console.log(email);
-        console.log(phone);
+      (error) => {
         console.error('Error updating personal information', error);
         alert('Error updating personal information');
       }
-    )
+    );
 
-    this.personalInformationForm.get('fullname')?.setValue('');
-    this.personalInformationForm.get('email')?.setValue('');
-    this.personalInformationForm.get('phone')?.setValue('');
-    
+    this.personalInformationForm.reset();
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,11 @@ export class EditPlanService {
 
   constructor(private http: HttpClient) {}
 
-  updatePlan(planId: string, planData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${planId}`, planData);
+  updatePlan(planId: string, planData: any): Observable<string> {
+    // Create headers if needed (e.g., Content-Type)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    // Specify the response type as 'text'
+    return this.http.post<string>(`${this.apiUrl}/${planId}`, planData, { headers, responseType: 'text' as 'json' });
   }
 }

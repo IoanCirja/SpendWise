@@ -15,6 +15,7 @@ export class EditPlanModalComponent {
     image: '',
     categories: []
   };
+  hasErrors: boolean = false;
 
   @Output() planChanged = new EventEmitter<void>();
 
@@ -39,11 +40,24 @@ export class EditPlanModalComponent {
     }
   }
 
+  validateForm(): void {
+    this.hasErrors = !(
+      this.plan.name && this.plan.name.length >= 3 &&
+      this.plan.description && this.plan.description.length >= 5 &&
+      this.plan.image && this.plan.image.length >= 5
+    );
+  }
+
   onClose(): void {
     this.dialogRef.close();
   }
 
   onSave(): void {
+    if (this.hasErrors) {
+      this.validateForm();
+      return;
+    }
+    
     const updatedPlan = {
       name: this.plan.name,
       description: this.plan.description,
