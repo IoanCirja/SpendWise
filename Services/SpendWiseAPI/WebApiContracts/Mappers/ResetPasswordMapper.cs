@@ -13,7 +13,7 @@ namespace WebApiContracts.Mappers
         {
             return new ResetPassword
             {
-                ID = model.ID,
+                ID = Guid.Parse(model.UserId),
                 CurrentPassword = model.CurrentPassword,
                 NewPassword = model.NewPassword,
                 ConfirmPassword = model.ConfirmNewPassword,

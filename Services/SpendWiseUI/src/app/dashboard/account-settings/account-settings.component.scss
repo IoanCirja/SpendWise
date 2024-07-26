@@ -1,12 +1,75 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 20px;
-  font-family: 'Roboto Condensed', sans-serif;
+body{
+    display: flex;
+    flex-direction: column;
+    background: rgb(232,255,221);
+    background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
 }
+.account-settings {
+    padding: 20px;
+    overflow-y: hidden;
+}
+  
+  .account-settings-content {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:24px;
+    overflow-y: hidden;
+}
+  
+  h2, h3 {
+    color: #043F2D; 
+  }
 
+  button {
+    background-color:#2A6F2C !important;
+    color:#FCFCF9  !important;
+    width: 165px;
+    height: 44px;
 
+  }
+  
+  .personal-information-section, .change-password-section{
+    display:flex;
+    flex-direction: column;
+
+    .personal-information, .change-password{
+        display:flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .name input, .phone-number input{
+        width: 300px;
+    }
+
+    input{
+        width: 700px;
+        height: 28px;
+        border-radius: 7px;
+        background-color: #FFFFFF;
+        border: 1px solid #D1D5DB;
+
+    }
+
+    label{
+        color:#043F2D;
+        font-size: 16px;
+    }
+    .name, .phone-number, .email, .current-password, .new-password, .confirm-new-password{
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+    }
+    .name-phone{
+        display: flex;
+        flex-direction: row;
+        gap: 92px;
+    }
+
+  }
+
+    

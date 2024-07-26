@@ -22,6 +22,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { MatIcon } from '@angular/material/icon';
+import { TabsComponent } from './tabs/tabs.component';
+import { AccountSettingsComponent } from './dashboard/account-settings/account-settings.component';
+import { MatToolbar} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,12 @@ import { MatIcon } from '@angular/material/icon';
     ContactUsComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    TabsComponent,
+    AccountSettingsComponent,
+    
   ],
+
     imports: [
         AppRoutingModule,
         BudgetPlansModule,

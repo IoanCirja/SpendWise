@@ -17,7 +17,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { HistoryComponent } from './history/history.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TransactionModalComponent } from './transaction-modal/transaction-modal.component';
@@ -27,10 +26,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
+
 import { MatIcon } from '@angular/material/icon';
 import { ConfirmCancelDialogComponent } from './cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
 
 import { HistoryCategoryDetailsComponent } from './history-category-details/history-category-details.component';
+
 @NgModule({
   declarations: [
     CurrentPlanComponent,
@@ -38,7 +39,6 @@ import { HistoryCategoryDetailsComponent } from './history-category-details/hist
     CategoryDetailsComponent,
     HistoryComponent,
     StatisticsComponent,
-    AccountSettingsComponent,
     ManagePlansComponent,
     TransactionModalComponent,
     ConfirmCancelDialogComponent,

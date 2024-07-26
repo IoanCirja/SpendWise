@@ -14,7 +14,7 @@ namespace WebApiContracts.Mappers
         {
             return new User
             {
-                ID = userAccount.ID,
+                ID = Guid.Parse(userAccount.ID),
                 Name = userAccount.Name,
                 Email = userAccount.Email,
                 Phone = userAccount.Phone,

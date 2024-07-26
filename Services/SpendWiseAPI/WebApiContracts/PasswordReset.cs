@@ -8,7 +8,7 @@ namespace WebApiContracts
 {
     public class PasswordReset
     {
-        public Guid ID { get; set; }
+        public string UserId { get; set; }
         public string CurrentPassword { get; set; }
         public string NewPassword { get; set; }
         public string ConfirmNewPassword { get; set; }
