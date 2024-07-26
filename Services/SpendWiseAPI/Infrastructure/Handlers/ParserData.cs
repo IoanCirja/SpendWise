@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -46,6 +47,31 @@ namespace Infrastructure.Handlers
                 i++;
             }
             return spentOfCategory;
+        }
+        public string[] GetCategory(string categoryName)
+        {
+            string[] categorii = categoryName.Split(',');
+            return categorii;
+        }
+        public double[] GetPrice(string priceByCategory)
+        {
+            Console.WriteLine(priceByCategory);
+            string[] cheltuieli = priceByCategory.Split(',');
+            double[] result = new double[cheltuieli.Length+1];
+            int i = 0;
+            foreach( string chelt in cheltuieli)
+            {
+                double numar;
+                bool raspuns = double.TryParse(chelt, out numar);
+                if (raspuns == false)
+                {
+                    throw new Exception("error parsing the number");
+                }
+                result[i] = numar;
+                i++;
+            }
+            Console.WriteLine(result[0]);
+            return result;
         }
     }
 }

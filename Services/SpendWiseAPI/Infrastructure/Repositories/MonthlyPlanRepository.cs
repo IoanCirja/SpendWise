@@ -46,7 +46,7 @@ namespace Infrastructure.Repositories
 
         public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
         {
-            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID";
+            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID and status!='In Progress'";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<MonthlyPlanGetNameDate>(sql, new { UserID = user_id }).ToList();
