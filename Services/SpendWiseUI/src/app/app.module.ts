@@ -12,7 +12,7 @@ import {ContactUsComponent} from "./contact-us/contact-us.component";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './material/material.module';
@@ -40,20 +40,22 @@ import { MatToolbar} from '@angular/material/toolbar';
     AccountSettingsComponent,
     
   ],
-  imports: [
-    AppRoutingModule,
-    BudgetPlansModule,
-    DashboardModule,
-    RouterOutlet,
-    MatToolbarModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule
-  ],
+
+    imports: [
+        AppRoutingModule,
+        BudgetPlansModule,
+        RouterOutlet,
+        MatToolbarModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        DashboardModule,
+        MaterialModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

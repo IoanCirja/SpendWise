@@ -10,6 +10,8 @@
 
         public string category { get; set; }
         public string image { get; set; }
+        public bool isActive { get; set; }
+        public DateTime creationDate { get; set; }
         public Guid created_by { get; set; }
     }
 }

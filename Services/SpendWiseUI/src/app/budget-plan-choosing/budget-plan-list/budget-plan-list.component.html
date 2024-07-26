@@ -1,33 +1,36 @@
-<div>
-  <!-- Existing form fields and controls -->
-  <mat-form-field appearance="fill">
-    <mat-label>Search</mat-label>
-    <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()" placeholder="Search budget plans">
-  </mat-form-field>
+<div class="header-container">
+  <div class="header-left">
+    <span>Choose a Budget Plan for this Month</span>
+    <button class="details-button" (click)="openCreateDialog()">+</button>
+  </div>
+  <div class="header-middle">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()" placeholder="Search budget plans">
+    </mat-form-field>
+  </div>
+  <div class="header-right">
+    <mat-form-field>
+      <mat-label>Sort Options</mat-label>
+      <mat-select [(value)]="selectedSortOption" (selectionChange)="onSortChange()">
+        <mat-option *ngFor="let option of sortOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Sort Options</mat-label>
-    <mat-select [(value)]="selectedSortOption" (selectionChange)="onSortChange()">
-      <mat-option *ngFor="let option of sortOptions" [value]="option">
-        {{ option }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>View Options</mat-label>
-    <mat-select [(value)]="selectedViewOption" (selectionChange)="onViewChange()">
-      <mat-option *ngFor="let option of viewOptions" [value]="option">
-        {{ option }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <!-- Button to open the Create Budget Plan dialog -->
-  <button mat-raised-button color="primary" (click)="openCreateDialog()">+ Create New Plan</button>
+    <mat-form-field>
+      <mat-label>View Options</mat-label>
+      <mat-select [(value)]="selectedViewOption" (selectionChange)="onViewChange()">
+        <mat-option *ngFor="let option of viewOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
 
-<div class="scroll-container">
+<div class="card-container">
   <app-budget-plan-card
     *ngFor="let plan of getDisplayedPlans()"
     [plan_id]="plan.plan_id"

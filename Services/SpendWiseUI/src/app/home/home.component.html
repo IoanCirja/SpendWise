@@ -30,9 +30,10 @@
                         Understanding the difference between essential and non-essential spending helps you make more conscious financial decisions, preventing impulse purchases and promoting financial discipline.
                     </p>
                 </div>
-                <button mat-raised-button color="primary" class="begin">Begin Your Budgeting Journey Now</button>
+              <button mat-raised-button color="primary" class="begin" (click)="redirectToLogin()">Begin Your Budgeting Journey Now</button>
 
-                <p class="long_text">Take the first step towards a financially secure future.
+
+              <p class="long_text">Take the first step towards a financially secure future.
                     Join SpendWise and transform the way you manage money today!
                     With our powerful tools and intuitive interface, you’ll gain valuable insights into your spending habits, set achievable financial goals, and enjoy the peace of mind that comes with knowing your finances are under control.
                     Whether you're looking to save for a big purchase, pay off debt, or simply take charge of your daily expenses, SpendWise is here to guide you every step of the way.
@@ -58,24 +59,21 @@
                 </div>
             </div>
         </section>
-        <br/>
-        <br/>
+
         <section class="second_page">
-            <h1>Check our popular plans</h1>
+          <h1>Check our popular plans</h1>
+          <div class="carousel-container">
             <div class="cards">
-                <mat-card *ngFor="let plan of mostPopularBudgetPlans">
-                    <mat-card-header>
-                        <mat-card-title>{{ plan.name }}</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>{{ plan.description }}</p>
-
-                    </mat-card-content>
-                </mat-card>
+              <mat-card *ngFor="let plan of duplicatedPlans">
+                <mat-card-header>
+                  <mat-card-title>{{ plan.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{ plan.description }}</p>
+                </mat-card-content>
+              </mat-card>
             </div>
+          </div>
         </section>
-<!-- footer -->
-
     </body>
-
  </html>

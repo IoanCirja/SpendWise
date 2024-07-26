@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {RegisterService} from "../register.service";
+import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) {
+  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -23,17 +23,19 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.registerService.register(this.registrationForm.value).subscribe(
-          (response: any) => {
-            console.log('Registration successful', response);
-            const userId = response.user_id;
-            localStorage.setItem('user_id', userId);
-            this.router.navigate(['/auth/login']);
+      this.accountService.register(this.registrationForm.value).subscribe(
+        (response: any) => {
+          console.log('Registration successful', response);
+          this.router.navigate(['/auth/login']);
         },
-          (error: any) => {
+        (error: any) => {
           console.error('Registration failed', error);
         }
       );
     }
+  }
+
+  redirectToLogin() {
+    this.router.navigate(['/auth/login']);
   }
 }

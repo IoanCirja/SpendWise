@@ -20,6 +20,17 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TransactionModalComponent } from './transaction-modal/transaction-modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
+
+import { MatIcon } from '@angular/material/icon';
+import { ConfirmCancelDialogComponent } from './cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
+
+import { HistoryCategoryDetailsComponent } from './history-category-details/history-category-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +41,8 @@ import { TransactionModalComponent } from './transaction-modal/transaction-modal
     StatisticsComponent,
     ManagePlansComponent,
     TransactionModalComponent,
+    ConfirmCancelDialogComponent,
+    HistoryCategoryDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +58,10 @@ import { TransactionModalComponent } from './transaction-modal/transaction-modal
     HttpClientModule,
     MatToolbarModule,
     RouterModule,  
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule,
+    
   ]
 })
 export class DashboardModule { }

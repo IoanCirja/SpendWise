@@ -5,7 +5,6 @@
   <span class="spacer"></span>
   <nav class="nav-menu">
     <a mat-button routerLink="/">Home</a>
-    <a mat-button routerLink="/financial-planner">Financial Planner</a>
     <a mat-button routerLink="/budget-plans">Budget Plans</a>
     <a mat-button routerLink="/our-team">About Us</a>
     <a mat-button routerLink="/contact-us">Get in Touch</a>
@@ -21,7 +20,7 @@
       <a mat-button routerLink="/dashboard">Dashboard</a>
 
       <img src="assets/profile.svg" alt="User Image" height="40" />
-      <span>{{ user.name }}</span>
+      <span *ngIf="user">{{ user.name }}</span>
       <button mat-button (click)="logout()">Log Out</button>
     </div>
   </ng-template>

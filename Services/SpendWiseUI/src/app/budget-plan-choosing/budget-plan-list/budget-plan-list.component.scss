@@ -1,13 +1,84 @@
-.scroll-container {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 10px; 
-    overflow-y: auto; 
-    height: 100vh;
-  
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
-    app-budget-plan-card {
-      height: 100%; 
-    }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-left span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.header-middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-middle mat-form-field {
+  flex: 1;
+  max-width: 500px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.details-button {
+  color: #043F2D !important;
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
+  width: 135px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 48px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.details-button:hover {
+  background-color: #2A6F2C !important;
+  color: #fcfcf9 !important;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}

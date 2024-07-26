@@ -1,6 +1,4 @@
-<!-- current-plan.component.html -->
 <div class="container">
-  <!-- Display current plan if available -->
   <mat-card class="plan-card" *ngIf="currentPlan">
     <mat-card-header>
       <mat-card-title>{{ currentPlan.plan_name }}</mat-card-title>
@@ -11,7 +9,7 @@
       <p><strong>Total Amount:</strong> {{ currentPlan.totalAmount }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="warn" (click)="cancelPlan()">Cancel Your Current Plan</button>
+      <button mat-raised-button color="warn" (click)="openCancelDialog()">Cancel Your Current Plan</button>
     </mat-card-actions>
   </mat-card>
 
@@ -21,14 +19,24 @@
     </mat-card-header>
     <mat-card-content>
       <div class="categories">
-        <button mat-button *ngFor="let category of currentPlan.category.split(', ')">
-          {{ category }}
-        </button>
+        <div *ngFor="let category of categoriesWithDetails" class="category-item">
+          <button mat-button (click)="openCategoryDetails(category.name)">
+            {{ category.name }}
+          </button>
+          <div class="progress-circle">
+            <mat-progress-spinner
+              [value]="(category.spent / category.price) * 100"
+              [color]="getCircleColor((category.spent / category.price) * 100)"
+              mode="determinate">
+            </mat-progress-spinner>
+            <div class="percentage-text">{{ ((category.spent / category.price) * 100) | number: '1.0-0' }}%</div>
+          </div>
+          <div class="category-details">{{ category.spent }}/{{ category.price }}</div>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
 
-  <!-- Display message and button if no current plan -->
   <div *ngIf="!currentPlan" class="no-plan-message">
     <p>No budget plan this month. Choose one <a [routerLink]="['/budget-plans']">here</a>.</p>
   </div>

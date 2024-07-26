@@ -13,6 +13,8 @@ namespace Application
             services.AddScoped<MonthlyPlanService>();
             services.AddScoped<NewsLetterService>();
             services.AddScoped<ContactUsService>();
+            services.AddScoped<TransactionsService>();
+            services.AddScoped<StatisticsService>();
 
             return services;
         }

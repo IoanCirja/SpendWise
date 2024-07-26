@@ -1,17 +1,60 @@
 <div class="container">
-    <mat-card class="details-card">
-      <mat-card-header>
-        <mat-card-title>Category Details</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="categories-list">
-          <div *ngFor="let item of categoriesWithDetails" class="category-item">
-            <p><strong>Category:</strong> {{ item.name }}</p>
-            <p><strong>Price:</strong> {{ item.price }}</p>
-            <p><strong>Spent:</strong> {{ item.spent }}</p>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+  <div>
+    <button mat-icon-button (click)="goBack()" class="back-button">
+      go back  </button>
+      </div>
+
+  <mat-card class="details-card">
+    <mat-card-header>
+      <mat-card-title>Category Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Filter by Category</mat-label>
+          <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
+            <mat-option value="all">All</mat-option>
+            <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Sort by</mat-label>
+          <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
+            <mat-option value="dateAsc">Date Ascending</mat-option>
+            <mat-option value="dateDesc">Date Descending</mat-option>
+            <mat-option value="amountAsc">Amount Ascending</mat-option>
+            <mat-option value="amountDesc">Amount Descending</mat-option>
+            <mat-option value="nameAsc">Name Ascending</mat-option>
+            <mat-option value="nameDesc">Name Descending</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <table class="regular-table">
+        <thead>
+          <tr>
+            <th *ngIf="selectedCategory === 'all'">Category</th>
+            <th>Transaction Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of displayedTransactions">
+            <td *ngIf="selectedCategory === 'all'">{{ transaction.category }}</td>
+            <td>{{ transaction.name }}</td>
+            <td>{{ transaction.amount | currency }}</td>
+            <td>{{ transaction.date | date:'shortDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="displayedTransactions.length === 0">
+        <p>No transactions</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

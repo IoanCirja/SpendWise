@@ -1,24 +1,20 @@
 <h1 mat-dialog-title>Edit Budget Plan</h1>
 <div mat-dialog-content>
-  <!-- Name Input -->
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
     <input matInput [(ngModel)]="plan.name" placeholder="Enter plan name">
   </mat-form-field>
 
-  <!-- Description Input -->
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
     <textarea matInput [(ngModel)]="plan.description" placeholder="Enter plan description"></textarea>
   </mat-form-field>
 
-  <!-- Image URL Input -->
   <mat-form-field appearance="fill">
     <mat-label>Image URL</mat-label>
     <input matInput [(ngModel)]="plan.image" placeholder="Enter image URL">
   </mat-form-field>
 
-  <!-- Categories Section -->
   <div class="categories-section">
     <h2>Categories</h2>
     <div *ngFor="let category of plan.categories; let i = index" class="category-row">

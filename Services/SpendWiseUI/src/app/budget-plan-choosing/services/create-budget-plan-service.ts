@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CreateBudgetPlanService {
-  private apiUrl = 'https://localhost:7154/BudgetPlan/AddPlan'; // Replace with your API URL
+  private apiUrl = 'https://localhost:7154/BudgetPlan/AddPlan'; 
 
   constructor(private http: HttpClient) {}
 

@@ -44,20 +44,22 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 7px;
+
   border: 1px solid #d9d9d9;
+
   color: #043F2D;
 }
 
 .login-container button {
-  width: 100%;
+  //width: 100%;
   padding: 10px;
   background-color: #2A6F2C;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   cursor: pointer;
   height: 44px;
-  width: 165px;
+  width: 155px;
   font-family: 'Roboto Condensed', sans-serif;
 }
 

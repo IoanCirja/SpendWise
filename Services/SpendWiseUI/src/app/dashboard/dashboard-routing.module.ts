@@ -5,16 +5,19 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { HistoryComponent } from './history/history.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ManagePlansComponent } from './manage-plans/manage-plans.component';
-import { DashboardNavigationComponent } from './dashboard-navigation/dashboard-navigation.component'; // Import the DashboardNavigationComponent
-
+import { DashboardNavigationComponent } from './dashboard-navigation/dashboard-navigation.component'; 
+import { StatisticsComponent } from './statistics/statistics.component';
+import { HistoryCategoryDetailsComponent } from './history-category-details/history-category-details.component';
 const routes: Routes = [
   {
     path: 'dashboard', component: DashboardNavigationComponent, children: [
       { path: 'current-plan', component: CurrentPlanComponent },
       { path: 'category-details', component: CategoryDetailsComponent },
+      { path: 'history-category-details', component: HistoryCategoryDetailsComponent },
       { path: 'history', component: HistoryComponent },
       { path: 'account-settings', component: AccountSettingsComponent },
       { path: 'manage-plans', component: ManagePlansComponent },
+      { path: 'statistics', component: StatisticsComponent },
       { path: '', redirectTo: 'current-plan', pathMatch: 'full' },
     ]
   }

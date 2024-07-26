@@ -1,7 +1,7 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import { MatCard } from '@angular/material/card';
+import {ElementRef, Component, Input, OnInit, Output} from '@angular/core';
 import {DisplayPopularPlanService} from "./services/display-popular-plan.service";
 import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,9 +10,12 @@ import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
 })
 export class HomeComponent implements OnInit {
   mostPopularBudgetPlans: BudgetPlanGetPopular[] = [];
+  duplicatedPlans: BudgetPlanGetPopular[] = [];
 
   constructor (
     public displayPopularPlanService: DisplayPopularPlanService,
+    private el: ElementRef,
+    private router: Router
   ){
     console.log("[HomeComponent] constructor]")
   }
@@ -21,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.displayPopularPlanService.getPopularBudgetPlans().subscribe(
       response => {
         this.mostPopularBudgetPlans = response;
+        this.duplicatedPlans = [...response, ...response];
         console.log('getPopularBudgetPlans successful', response);
       },
       error => {
@@ -30,4 +34,7 @@ export class HomeComponent implements OnInit {
     console.log("[HomeComponent] init]")
   }
 
+  redirectToLogin(): void {
+    this.router.navigate(['/auth/login']);
+  }
 }

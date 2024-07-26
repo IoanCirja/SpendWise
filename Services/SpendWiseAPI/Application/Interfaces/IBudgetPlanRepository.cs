@@ -10,11 +10,9 @@ namespace Application.Interfaces
         List<BudgetPlanGet> GetPlan(Guid id);
         List<BudgetPlanGetPopular> GetPopularFivePlans();
 
+        List<BudgetPlanGetPopular> GetMostUsedPlan(Guid user_id);
 
-        Task<IEnumerable<BudgetPlan>> GetPlanByName(string name);
         Task<bool> AddPlan(BudgetPlan budgetPlan);
-
-        //Added 21/07/2024
 
         List<BudgetPlan> GetPlansByAdminCreator(Guid id);
 
@@ -27,5 +25,6 @@ namespace Application.Interfaces
         Task<String> DeletePlanById(Guid id);
 
         Task<String> DeletePlanByName(String name);
+        Task<BudgetPlan> GetPlanByName(string name);
     }
 }

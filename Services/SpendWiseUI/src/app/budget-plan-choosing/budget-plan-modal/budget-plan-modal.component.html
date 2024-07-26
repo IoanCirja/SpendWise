@@ -1,13 +1,33 @@
-<h1 mat-dialog-title>Details of {{data.name}}</h1>
+<h1 mat-dialog-title>
+  <img [src]="data.image" alt="Image of {{ data.name }}">
+  Details of {{data.name}}
+</h1>
 <mat-dialog-content>
-  <p><strong>Description:</strong> {{data.description}}</p>
-  <p><strong>Number of Categories:</strong> {{data.noCategory}}</p>
-  <div *ngFor="let category of data.categories; let i = index">
-    <p><strong>{{category.name}}:</strong> <input type="number" [(ngModel)]="data.categories[i].value"></p>
+  <div *ngIf="currentPlanExists; else planDetails">
+    <p>You already chose a plan for this month.</p>
+    <div>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button (click)="goToCurrentPlan()">Go to Current Plan</button>
+    </div>
   </div>
-  <img [src]="data.image" alt="Image of {{ data.name }}" style="width: 100%; border-radius: 4px; margin-top: 10px;">
+  <ng-template #planDetails>
+    <div class="content-grid">
+      <div class="text-content">
+        <p><strong>Description:</strong> {{data.description}}</p>
+        <p><strong>Number of Categories:</strong> {{data.noCategory}}</p>
+      </div>
+      <div class="category-inputs">
+        <div *ngFor="let category of data.categories; let i = index">
+          <mat-form-field appearance="fill">
+            <mat-label>{{category.name}}</mat-label>
+            <input matInput type="number" [(ngModel)]="data.categories[i].value">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button (click)="savePlan()">Save</button>
+<mat-dialog-actions *ngIf="!currentPlanExists">
+  <button (click)="onNoClick()">Close</button>
+  <button (click)="savePlan()">Save</button>
 </mat-dialog-actions>

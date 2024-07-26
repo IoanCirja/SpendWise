@@ -1,78 +1,93 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CurrentPlanService } from '../services/current-plan.service'; // Adjust path if necessary
+import { CurrentPlanService } from '../services/current-plan.service';
+import { AccountService } from '../../auth/account.service';
+import { TransactionService } from '../services/transaction-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-modal',
   templateUrl: './transaction-modal.component.html',
   styleUrls: ['./transaction-modal.component.scss']
 })
-export class TransactionModalComponent implements OnInit {
+export class TransactionModalComponent implements OnInit, OnDestroy {
   categories: string[] = [];
   selectedCategory: string = '';
   transactionValue: number | null = null;
+  transactionName: string = '';
+  userId: string | null = null;
+  monthlyPlanId: string | null = null;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<TransactionModalComponent>,
-    private currentPlanService: CurrentPlanService
+    private currentPlanService: CurrentPlanService,
+    private accountService: AccountService,
+    private transactionService: TransactionService
   ) {}
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.loadCurrentUser();
   }
 
-  loadCategories(): void {
-    const userId = this.getUserIdFromLocalStorage();
-    if (userId) {
-      this.currentPlanService.getCurrentPlan(userId).subscribe(
-        data => {
-          const currentPlan = data[0];
-          if (currentPlan) {
-            const categories = currentPlan.category.split(', ');
-            this.categories = categories;
-          }
-        },
-        error => {
-          console.error('Error fetching categories', error);
+  loadCurrentUser(): void {
+    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+      if (currentUser) {
+        this.userId = currentUser.id;
+        this.loadCategories(this.userId);
+      }
+    });
+    this.subscriptions.push(subscription);
+  }
+
+  loadCategories(userId: string): void {
+    const subscription = this.currentPlanService.getCurrentPlan(userId).subscribe(
+      data => {
+        const currentPlan = data[0];
+        if (currentPlan) {
+          this.monthlyPlanId = currentPlan.monthlyPlan_id; 
+          const categories = currentPlan.category.split(', ');
+          this.categories = categories;
         }
-      );
-    }
-  }
-
-  getUserIdFromLocalStorage(): string | null {
-    const userString = localStorage.getItem('currentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
-      return user.id;
-    }
-    return null;
+      },
+      error => {
+        console.error('Error fetching categories', error);
+      }
+    );
+    this.subscriptions.push(subscription);
   }
 
   onSave(): void {
-    if (!this.selectedCategory || this.transactionValue === null) {
-      console.error('Category and value are required.');
+    if (!this.selectedCategory || this.transactionValue === null || !this.transactionName) {
+      console.error('Name, category, and value are required.');
       return;
     }
 
     const transactionData = {
+      name: this.transactionName,
+      monthlyPlan_id: this.monthlyPlanId,
+      date: new Date().toISOString(),
       category: this.selectedCategory,
-      value: this.transactionValue,
-      user_id: this.getUserIdFromLocalStorage() // Make sure this is set
+      amount: this.transactionValue
     };
 
-    // Call your service to save the transaction
-    // this.transactionService.saveTransaction(transactionData).subscribe(
-    //   response => {
-    //     console.log('Transaction saved successfully', response);
-    //     this.dialogRef.close(true); // Close the modal and signal success
-    //   },
-    //   error => {
-    //     console.error('Error saving transaction', error);
-    //   }
-    // );
+    this.transactionService.saveTransaction(transactionData).subscribe(
+      response => {
+        // Assuming the response is a text message indicating success
+        console.log('Transaction saved successfully', response);
+        this.dialogRef.close(true); // Close the modal and signal success
+      },
+      error => {
+        console.error('Error saving transaction', error);
+      }
+    );
   }
 
   onCancel(): void {
     this.dialogRef.close(); // Close the modal without saving
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

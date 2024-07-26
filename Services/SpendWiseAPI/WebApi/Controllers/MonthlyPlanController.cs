@@ -74,5 +74,14 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpGet("{plan_id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetDemoMonthlyPlan(Guid plan_id)
+
+        {
+            var result = this._monthlyPlanService.GetDemoMonthlyPlan(plan_id);
+
+            return Ok(result);
+        }
     }
 }

@@ -2,12 +2,9 @@
 using Dapper;
 using Domain;
 using Infrastructure.Interfaces;
-using System;
-using System.Collections.Generic;
+
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Repositories
 {
@@ -21,7 +18,9 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGet> GetPlans()
         {
-            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id]";
+
+            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive], [pd].[creationDate]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] AND [pd].[isActive] = 1";
+
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGet>(sql).ToList();
@@ -36,17 +35,26 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGetPopular> GetPopularFivePlans()
         {
-            var sql = "select top(5) [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], (select count([mp].[plan_id]) from [SpendWise].[MonthlyPlan] mp where [mp].[plan_id] = [pd].[plan_id] group by [mp].[plan_id]) as 'numberOfUse'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] order by numberOfUse desc";
+            var sql = "select top(5) [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], (select count([mp].[plan_id]) from [SpendWise].[MonthlyPlan] mp where [mp].[plan_id] = [pd].[plan_id] and [isActive]=1 group by [mp].[plan_id]) as 'numberOfUse'  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] order by numberOfUse desc";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGetPopular>(sql).ToList();
             return file;
-}
-        public Task<IEnumerable<BudgetPlan>> GetPlanByName(string name)
+        }
+
+        public List<BudgetPlanGetPopular> GetMostUsedPlan(Guid user_id)
         {
-            var sql = "SELECT * from [SpendWise].[PlanDetails] where [name] = @name";
+            var sql = "SELECT pd.plan_id, pd.name, pd.description, pd.noCategory, pd.category, pd.image, COUNT(mp.plan_id) AS numberOfUse FROM SpendWise.PlanDetails pd INNER JOIN SpendWise.MonthlyPlan mp ON pd.plan_id = mp.plan_id INNER JOIN SpendWise.Users us ON pd.created_by = us.user_id WHERE pd.isActive = 1 AND mp.user_id = @UserID GROUP BY pd.plan_id, pd.name, pd.description, pd.noCategory, pd.category, pd.image HAVING COUNT(mp.plan_id) > 0 ORDER BY numberOfUse DESC;";
             var connection = _databaseContext.GetDbConnection();
-            var plan = connection.QueryAsync<BudgetPlan>(sql, new { Name = name });
+            var file = connection.Query<BudgetPlanGetPopular>(sql, new {UserID = user_id}).ToList();
+            return file;
+        }
+
+        public async Task<BudgetPlan> GetPlanByName(string name)
+        {
+            var sql = "SELECT * FROM [SpendWise].[PlanDetails] WHERE [name] = @name";
+            var connection = _databaseContext.GetDbConnection();
+            var plan = await connection.QueryFirstOrDefaultAsync<BudgetPlan>(sql, new { Name = name });
             return plan;
         }
 
@@ -60,6 +68,8 @@ namespace Infrastructure.Repositories
             parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
             parameters.Add("Created_by", budgetPlan.created_by, DbType.Guid);
             parameters.Add("Image", budgetPlan.image, DbType.String);
+            parameters.Add("CreationDate", DateTime.Today, DbType.Date);
+            parameters.Add("IsActive", 1, DbType.Int32);
 
 
             var connection = _databaseContext.GetDbConnection();
@@ -67,11 +77,12 @@ namespace Infrastructure.Repositories
             return result != 0;
         }
 
-        //Added 21/07/2024
+
+
 
         public List<BudgetPlan> GetPlansByAdminCreator(Guid id)
         {
-            var query = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by]  from [SpendWise].[PlanDetails] where [created_by]=@AdminId";
+            var query = "select [plan_id], [name], [description], [noCategory], [category], [image], [created_by], [isActive]  from [SpendWise].[PlanDetails] where [created_by]=@AdminId AND [isActive] = 1";
 
             var connection = _databaseContext.GetDbConnection();
             var result = connection.Query<BudgetPlan>(query, new { AdminId = id }).ToList();
@@ -152,10 +163,10 @@ namespace Infrastructure.Repositories
 
         public async Task<string> DeletePlanById(Guid id)
         {
-            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [plan_id] = @Plan_ID";
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [isActive] = 0 WHERE [plan_id] = @PlanID";
 
             var connection = _databaseContext.GetDbConnection();
-            var result = await connection.ExecuteAsync(sql, new { Plan_ID = id });
+            var result = await connection.ExecuteAsync(sql, new { PlanID = id });
 
             if (result > 0)
             {
@@ -169,7 +180,7 @@ namespace Infrastructure.Repositories
 
         public async Task<string> DeletePlanByName(String name)
         {
-            var sql = "DELETE FROM [SpendWiseDB].[SpendWise].[PlanDetails] WHERE [name] = @Name";
+            var sql = "UPDATE [SpendWiseDB].[SpendWise].[PlanDetails] SET [isActive] = 0 WHERE [name] = @Name";
 
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(sql, new { Name = name });

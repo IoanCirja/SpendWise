@@ -46,7 +46,7 @@ namespace Infrastructure.Repositories
 
         public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
         {
-            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID";
+            var sql = "select [mp].[monthlyPlan_id], [pd].[name] as 'plan_name', [date]  from [SpendWise].[MonthlyPlan] mp, [SpendWise].[PlanDetails] pd where [mp].[plan_id]=[pd].[plan_id] and [user_id]=@UserID and status!='In Progress'";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<MonthlyPlanGetNameDate>(sql, new { UserID = user_id }).ToList();
@@ -79,6 +79,32 @@ namespace Infrastructure.Repositories
             var connection = _databaseContext.GetDbConnection();
             var result = connection.Execute(query, new { MonthlyPlanID = monthlyPlan_id });
             return result != 0;
+        }
+        public bool UpdateMonthlyPlanWithTransaction(Guid monthlyPlan_id, double amount, string spentOfCategory)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan] SET [amountSpent]=[amountSpent]+@Amount, [spentOfCategory]=@SpentOfCategory where [monthlyPlan_id]=@MonthlyPlanID";
+            var parameters = new DynamicParameters();
+            parameters.Add("Amount", amount, DbType.Double);
+            parameters.Add("MonthlyPlanID", monthlyPlan_id, DbType.Guid);
+            parameters.Add("SpentOfCategory", spentOfCategory, DbType.String);
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Execute(query, parameters);
+            return result != 0;
+        }
+
+        public async Task<bool> CancelMonthlyPlansByPlanId(Guid id)
+        {
+            var query = "UPDATE [SpendWise].[MonthlyPlan]  SET [status]='Canceled' where [plan_id]=@PlanID";
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.ExecuteAsync(query, new { PlanID = id });
+            return result != 0;
+        }
+        public List<MonthlyPlanDemo> GetDemoMonthlyPlan(Guid plan_id)
+        {
+            var query = "SELECT totalAmount, priceByCategory FROM [SpendWise].[MonthlyPlan] WHERE [plan_id]=@PlanID and status='Demo'";
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Query<MonthlyPlanDemo>(query, new { PlanID = plan_id }).ToList();
+            return result;
         }
     }
 }
