@@ -38,100 +38,124 @@ VALUES (
 );
 
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Travel Plan'),
     1200, 
     '80,100,100,50,75,50,85,100,175,85,125,75,50,50', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'StartUp Plan'),
     1300, 
     '200,100,100,150,75,75,85,115,175,75,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Wedding Plan'),
     1300, 
     '200,100,100,150,75,75,85,115,175,75,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Pet care Plan'),
     1425, 
     '200,100,100,150,75,75,85,115,175,75,150,125', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Family Plan'),
     1300, 
     '200,150,125,150,150,100,100,150,175', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Medical expensive plan'),
     1300, 
     '200,100,100,150,75,75,85,115,175,75,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Student Plan'),
     1300, 
     '250,275,100,200,150,75,100,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Emergency Fund Plan'),
     1200, 
     '200,100,100,150,100,100,85,115,175,75', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Holiday shopping Plan'),
     1200, 
     '250,150,100,150,75,75,85,115,175,75', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Fitness & Wellness Plan'),
     1300, 
     '200,100,100,150,75,75,85,115,175,75,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Default plan'),
     1500, 
     '750,450,300', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
-INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status)
+INSERT INTO SpendWise.MonthlyPlan (plan_id, totalAmount, priceByCategory, status, date, amountSpent)
 VALUES (
     (SELECT plan_id FROM SpendWise.PlanDetails WHERE name = 'Retirement Plan'),
     1250, 
     '200,100,100,150,75,75,85,140,175,150', 
-    'Demo'
+    'Demo',
+    '2500-10-10',
+    0
 );
 
 END

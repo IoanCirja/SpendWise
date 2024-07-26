@@ -54,7 +54,7 @@ namespace WebApi.Controllers
 
         //Added 21/07/2024
 
-        [HttpGet("{id}")]
+        [HttpGet ("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult> GetPlansByAdminCreator(Guid id)
         {
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPost ("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult> EditPlanByPlanId([FromBody] BudgetPlanEditContract budgetPlanContract, Guid id)
         {
@@ -80,7 +80,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{name}")]
+        [HttpPost ("{name}")]
         [AllowAnonymous]
         public async Task<ActionResult> EditPlanMyName([FromBody] BudgetPlanEditContract budgetPlanContract, String name)
         {
@@ -88,7 +88,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("{id}")]
+        [HttpDelete ("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult> DeletePlanById(Guid id)
         {
@@ -96,7 +96,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("{name}")]
+        [HttpDelete ("{name}")]
         [AllowAnonymous]
         public async Task<ActionResult> DeletePlanByName(String name)
         {
