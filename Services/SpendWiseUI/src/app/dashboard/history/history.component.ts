@@ -1,9 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HistoryService } from '../services/history.service';
 import { TransactionService } from '../services/transaction-service';
- import { Subscription } from 'rxjs';
-import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
+import { HistoryPlan } from '../models/HistoryPlan';
+import { MonthlyPlan } from '../models/MonthlyPlan';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -11,11 +14,9 @@ import { AccountService } from '../../auth/account.service';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit, OnDestroy {
-
-  historyPlans: any[] = [];
+  historyPlans: HistoryPlan[] = [];
   selectedPlan: MonthlyPlan | null = null;
   displayedTransactions: any[] = [];
-  displayedColumns: string[] = ['category', 'name', 'amount', 'date'];
   categoriesWithDetails: any[] = [];
   selectedCategory: string = 'all';
   sortCriteria: string = 'dateAsc';
@@ -26,51 +27,80 @@ export class HistoryComponent implements OnInit, OnDestroy {
   constructor(
     private historyService: HistoryService,
     private transactionService: TransactionService,
-    private accountService: AccountService
-  ) { }
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadCurrentUser();
   }
 
-  loadCurrentUser(): void {
-    const subscription = this.accountService.currentUser$.subscribe(currentUser => {
-      if (currentUser) {
-        this.userId = currentUser.id;
-        this.loadHistoryPlans(this.userId);
-      }
-    });
-    this.subscriptions.push(subscription);
+  async loadCurrentUser(): Promise<void> {
+    try {
+      const subscription = this.accountService.currentUser$.subscribe(currentUser => {
+        if (currentUser) {
+          this.userId = currentUser.id;
+          if (this.userId) {
+            this.loadHistoryPlans(this.userId);
+          } else {
+            console.error('User ID is null or undefined');
+          }
+        }
+      });
+      this.subscriptions.push(subscription);
+    } catch (error) {
+      console.error('Error loading current user:', error);
+    }
   }
 
-  loadHistoryPlans(userId: string): void {
-    this.historyService.getHistoryPlans(userId).subscribe(
-      data => {
-        this.historyPlans = data;
-      },
-      error => {
-        console.error('Error fetching history plans', error);
-      }
-    );
+  async loadHistoryPlans(userId: string): Promise<void> {
+    try {
+      this.historyPlans = await firstValueFrom(this.historyService.getHistoryPlans(userId));
+    } catch (error) {
+      console.error('Error fetching history plans', error);
+    }
   }
 
-  onPlanSelect(plan: MonthlyPlan): void {
-    this.selectedPlan = plan;
+  async onPlanSelect(plan: HistoryPlan): Promise<void> {
     this.isDetailedView = true;
-    this.loadTransactions(plan.monthlyPlan_id);
+    if (plan.monthlyPlan_id) {
+      await this.loadPlanDetails(plan.monthlyPlan_id);
+    } else {
+      console.error('Selected plan does not have a valid monthlyPlan_id');
+    }
   }
 
-  loadTransactions(monthlyPlanId: string): void {
-    this.transactionService.getAllTransactions(monthlyPlanId).subscribe(
-      transactions => {
-        this.displayedTransactions = transactions;
-        this.extractCategoryDetails();
-        this.filterTransactions();
-      },
-      error => {
-        console.error('Error fetching transactions', error);
+  async loadPlanDetails(monthlyPlanId: string): Promise<void> {
+    if (!monthlyPlanId) {
+      console.error('Provided monthlyPlanId is invalid or undefined.');
+      return;
+    }
+
+    try {
+      const plan = await firstValueFrom(this.historyService.getPlanFromHistory(monthlyPlanId));
+      if (plan) {
+        this.selectedPlan = plan[0];
+        if (this.selectedPlan?.monthlyPlan_id) {
+          await this.loadTransactions(this.selectedPlan.monthlyPlan_id);
+        } else {
+          console.error('Selected Plan or monthlyPlan_id is undefined');
+        }
+      } else {
+        console.error('Plan returned from service is undefined');
       }
-    );
+    } catch (error) {
+      console.error('Error fetching plan details', error);
+    }
+  }
+
+  async loadTransactions(monthlyPlanId: string): Promise<void> {
+    try {
+      this.displayedTransactions = await firstValueFrom(this.transactionService.getAllTransactions(monthlyPlanId));
+      this.extractCategoryDetails();
+      this.filterTransactions();
+    } catch (error) {
+      console.error('Error fetching transactions', error);
+    }
   }
 
   extractCategoryDetails(): void {
@@ -83,7 +113,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         name: category,
         price: prices[index] || 0,
         spent: spends[index] || 0,
-        transactions: []
+        transactions: []  // Populate this if needed
       }));
     }
   }
@@ -118,8 +148,16 @@ export class HistoryComponent implements OnInit, OnDestroy {
   goBack(): void {
     this.isDetailedView = false;
     this.selectedPlan = null;
-    this.historyPlans = []; 
-    this.loadHistoryPlans(this.userId!);
+  }
+
+  goToDetails(): void {
+    if (this.selectedPlan?.monthlyPlan_id) {
+      this.router.navigate(['dashboard/history-category-details'], {
+        queryParams: { monthlyPlanId: this.selectedPlan.monthlyPlan_id }
+      });
+    } else {
+      console.error('Selected Plan or monthlyPlan_id is undefined');
+    }
   }
 
   ngOnDestroy(): void {

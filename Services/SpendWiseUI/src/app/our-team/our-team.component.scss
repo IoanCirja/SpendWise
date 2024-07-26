@@ -23,6 +23,7 @@ body {
   justify-content: center;
   flex-wrap: nowrap;
   width: 100%;
+
 }
 
 .flex-container .team-member {
@@ -30,12 +31,13 @@ body {
   box-sizing: border-box;
   text-align: center;
   margin: 5px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  background-color: #FCFCF9;
+  border: 1px solid #2A6F2C;
   flex: 1 0 18%;
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D;
   min-height: 550px;
+  border-radius: 7px;
 }
 
 .flex-container .team-member img {
@@ -43,6 +45,7 @@ body {
   height: 200px;
   object-fit: cover;
   margin-bottom: 10px;
+  border-radius: 7px;
 }
 
 .flex-container .team-member .description {

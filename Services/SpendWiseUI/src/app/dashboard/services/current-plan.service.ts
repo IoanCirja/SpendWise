@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 
@@ -18,10 +18,12 @@ export class CurrentPlanService {
     return this.http.get<MonthlyPlan[]>(url);
   }
 
-  cancelCurrentPlan(monthlyPlan_id: string): Observable<any> {
+  cancelCurrentPlan(monthlyPlan_id: string): Observable<string> {
     console.log(`"${monthlyPlan_id}"`);
-    return this.http.post<any>(this.apiUrlCancelPlan, `"${monthlyPlan_id}"`, {
-      headers: { 'Content-Type': 'application/json' }
+    // Using HttpResponse to handle text response
+    return this.http.post<string>(this.apiUrlCancelPlan, `"${monthlyPlan_id}"`, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      responseType: 'text' as 'json'  // Specify response type as 'text'
     });
   }
 }

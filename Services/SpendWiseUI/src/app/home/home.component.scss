@@ -1,106 +1,98 @@
-// html{
-//     overflow:scroll;
-// }
 body{
-    height: 250%;
-    display: flex;
-    flex-direction: column;
-    background: rgb(232,255,221);
-    background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
-    font-family: 'Roboto Condensed', sans-serif;
-    //padding: 10px;
+  height: 250%;
+  display: flex;
+  flex-direction: column;
+  background: rgb(232,255,221);
+  background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
 
-    h1{
-        color:#043F2D;
-    }
-    h3{
-        color:#043F2D;
-        font-size: 16px;
-    }
-    p{
-        font-size: 14px;
-    }
-    //scroll-behavior: smooth;
+  h1{
+    color:#043F2D;
+  }
+  h3{
+    color:#043F2D;
+    font-size: 16px;
+  }
+  p{
+    font-size: 14px;
+  }
 }
 
-section {
-    padding:10px;
-    min-height: 100vh;
-}
 
 .first_page{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-.left{
+
+  .left{
     padding-left: 24px;
     width: 100%;
     height: 100%;
     justify-content: space-between;
     .tips{
-        width: 75%;
-        border: 1px solid #043F2D;
-        border-radius: 7px;
-        margin-bottom: 24px;
-        p{
-            margin: 16px 32px 16px 16px;
-        }
+      width: 75%;
+      border: 1px solid #043F2D;
+      border-radius: 7px;
+      margin-bottom: 24px;
+      p{
+        margin: 16px 32px 16px 16px;
+      }
 
-        h3{
-            margin-left: 16px;
-        }
+      h3{
+        margin-left: 16px;
+      }
 
     }
 
     button{
-        color:#FCFCF9;
-        background-color: #2A6F2C;
-        //font-weight: bold;
+      color:#FCFCF9;
+      background-color: #2A6F2C;
     }
     .long_text{
-        text-align: left;
-        margin-top: 64px;
-        margin-right: 100px;
-        font-size: 14px;
+      text-align: left;
+      margin-top: 64px;
+      margin-right: 100px;
+      font-size: 14px;
     }
-}
+  }
 
-.right {
+  .right {
     width: 100%;
     height: 100%;
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, 1fr);
     img{
-        width: 60%;
+      width: 60%;
     }
     p
     {
-        font-size: 16px;
-        width: 50%;
-        margin-left:16px;
-        text-align: center;
+      font-size: 16px;
+      width: 50%;
+      margin-left:16px;
+      text-align: center;
     }
     h3{
-        margin:8px 100px 0px 92px;
+      margin:8px 100px 0px 92px;
     }
     .smart{
-        justify-content: center;
-        margin-top:160px;
+      justify-content: center;
+      margin-top:160px;
     }
 
     .twoimages{
-        display:flex;
-        flex-direction: column;
-        gap:24px;
+      display:flex;
+      flex-direction: column;
+      gap:24px;
     }
-}
+  }
 
 }
 
 .second_page {
-  padding: 36px;
+  padding:0;
+  margin:30px;
   overflow: hidden;
 }
 
@@ -112,13 +104,16 @@ section {
   width: 100%;
 }
 
+$animationSpeed : 15s;
+
 .cards {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  animation: scroll linear infinite;
+  animation: scroll $animationSpeed linear infinite;
   font-family: 'Roboto Condensed', sans-serif;
+  width: 200%;
 }
 
 .cards:hover {
@@ -147,14 +142,16 @@ mat-card-header {
   font-weight: bold;
 }
 
+
+//@keyframes scroll {
+//  from {
+//    transform: translateX(0);
+//  }
+//  to {
+//    transform: translateX(-50%);
+//  }
+//}
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-520px * 5))}
 }
-
-
-

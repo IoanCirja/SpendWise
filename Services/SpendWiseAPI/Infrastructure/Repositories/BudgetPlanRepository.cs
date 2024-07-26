@@ -2,12 +2,9 @@
 using Dapper;
 using Domain;
 using Infrastructure.Interfaces;
-using System;
-using System.Collections.Generic;
+
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Repositories
 {
@@ -21,7 +18,9 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGet> GetPlans()
         {
-            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] and [isActive]=1";
+
+            var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive], [pd].[creationDate]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] AND [pd].[isActive] = 1";
+
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGet>(sql).ToList();
@@ -69,6 +68,8 @@ namespace Infrastructure.Repositories
             parameters.Add("NoCategory", budgetPlan.noCategory, DbType.Int64);
             parameters.Add("Created_by", budgetPlan.created_by, DbType.Guid);
             parameters.Add("Image", budgetPlan.image, DbType.String);
+            parameters.Add("CreationDate", DateTime.Today, DbType.Date);
+            parameters.Add("IsActive", 1, DbType.Int32);
 
 
             var connection = _databaseContext.GetDbConnection();
@@ -192,16 +193,6 @@ namespace Infrastructure.Repositories
             {
                 throw new InvalidOperationException("Plan with the specified name does not exist");
             }
-        }
-
-        public List<BudgetPlan> GetActivePlans()
-        {
-            var sql = "SELECT * from [SpendWise].[PlanDetails] WHERE [isActive] = 1";
-            var connection = _databaseContext.GetDbConnection();
-            var result = connection.Query<BudgetPlan>(sql).ToList();
-
-            return result;
-
         }
     }
 }

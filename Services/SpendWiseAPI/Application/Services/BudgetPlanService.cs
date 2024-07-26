@@ -8,6 +8,7 @@ namespace Application.Services
         private IBudgetPlanRepository _budgetPlanRepository;
         private IMonthlyPlanRepository _monthlyPlanRepository;
 
+
         public BudgetPlanService(IBudgetPlanRepository budgetPlanRepository, IMonthlyPlanRepository monthlyPlanRepository)
         {
             _budgetPlanRepository = budgetPlanRepository;
@@ -128,10 +129,5 @@ namespace Application.Services
             return result;
         }
 
-
-        public List<BudgetPlan> GetActivePlans()
-        {
-            return _budgetPlanRepository.GetActivePlans();
-        }
     }
 }

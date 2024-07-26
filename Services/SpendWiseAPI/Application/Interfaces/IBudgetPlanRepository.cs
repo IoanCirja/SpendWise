@@ -9,10 +9,8 @@ namespace Application.Interfaces
         List<BudgetPlanGet> GetPlans();
         List<BudgetPlanGet> GetPlan(Guid id);
         List<BudgetPlanGetPopular> GetPopularFivePlans();
+
         List<BudgetPlanGetPopular> GetMostUsedPlan(Guid user_id);
-
-
-
 
         Task<bool> AddPlan(BudgetPlan budgetPlan);
 
@@ -28,6 +26,5 @@ namespace Application.Interfaces
 
         Task<String> DeletePlanByName(String name);
         Task<BudgetPlan> GetPlanByName(string name);
-        List<BudgetPlan> GetActivePlans();
     }
 }
