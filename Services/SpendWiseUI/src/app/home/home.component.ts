@@ -1,4 +1,4 @@
-import {ElementRef, Component, Input, OnInit, Output} from '@angular/core';
+import {ElementRef, Component, Input, OnInit} from '@angular/core';
 import {DisplayPopularPlanService} from "./services/display-popular-plan.service";
 import {BudgetPlanGetPopular} from "./models/BudgetPlanGetPopular";
 import {Router} from "@angular/router";
@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
   mostPopularBudgetPlans: BudgetPlanGetPopular[] = [];
   duplicatedPlans: BudgetPlanGetPopular[] = [];
+  @Input() image!: string;
+  @Input() name!: string;
 
   constructor (
     public displayPopularPlanService: DisplayPopularPlanService,
