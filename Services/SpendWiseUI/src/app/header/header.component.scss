@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
@@ -39,7 +40,7 @@
   text-decoration: none;
 }
 
-.sign_up {
+.sign-up{
   background-color: #2A6F2C !important;
   color:#FCFCF9 !important;
   border-radius: 7px;
@@ -48,10 +49,28 @@
   width: 125px;
 }
 
-.log_in {
+.log-in .log-out{
   text-decoration: none;
   height: 40px;
   width: 125px;
   color: #2A6F2C !important;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: row;
+  color: #2A6F2C;
+  margin: 8px;
+  span, img, a{
+    margin: 4px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration:none;
+  }
+  span {font-size:large;}
+  a{margin-top: 6px;}
+
+
 }
 

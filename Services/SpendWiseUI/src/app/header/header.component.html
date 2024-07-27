@@ -11,8 +11,8 @@
   </nav>
   <span class="spacer"></span>
   <div class="auth-buttons" *ngIf="!user; else loggedIn">
-    <a mat-button class="log_in" href="/auth/login">Log In</a>
-    <a mat-raised-button color="primary" class="sign_up" href="/auth/register">Sign Up</a>
+    <a mat-button class="log-in" href="/auth/login">Log In</a>
+    <a mat-raised-button color="primary" class="sign-up" href="/auth/register">Sign Up</a>
   </div>
   <ng-template #loggedIn>
 
@@ -21,7 +21,7 @@
 
       <img src="assets/profile.svg" alt="User Image" height="40" />
       <span *ngIf="user">{{ user.name }}</span>
-      <button mat-button (click)="logout()">Log Out</button>
+      <a mat-button (click)="logout()">Log Out</a>
     </div>
   </ng-template>
 </mat-toolbar>

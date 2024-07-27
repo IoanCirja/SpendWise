@@ -11,12 +11,23 @@
   <img src="assets/signup.svg" alt="Logo" class="login-logo">
   <div class="login-container">
     <h1>SIGN IN</h1>
-    <p>Don't have an account? <button (click)="redirectToSignUp()" class="sign-up-button">Sign up!</button></p>
+    <p>Don't have an account? <a (click)="redirectToSignUp()" class="sign-up-button">Sign up!</a></p>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="email" placeholder="Email">
+      <div *ngIf="submitted && f.email.errors" class="error">
+        <span *ngIf="f.email.errors.required">Email is required.</span>
+        <span *ngIf="f.email.errors.email">Invalid email format.</span>
+      </div>
       <input type="password" formControlName="password" placeholder="Password">
+      <div *ngIf="submitted && f.password.errors" class="error">
+        <span *ngIf="f.password.errors.required">Password is required.</span>
+        <span *ngIf="f.password.errors.minlength">Password must be at least 6 characters long.</span>
+      </div>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>   
       <button type="submit">Login</button>
     </form>
+
   </div>
 </div>
 </body>
