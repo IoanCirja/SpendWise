@@ -118,5 +118,13 @@ namespace Infrastructure.Repositories
 
             return file.ToList();
         }
+        public List<Transactions> GetAllTransactionsForUser(Guid user_id)
+        {
+            var sql = "select [t].[transaction_id], [t].[name], [t].[monthlyPlan_id], [t].[date], [t].[category], [t].[amount] from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<Transactions>(sql, new { UserID = user_id }).ToList();
+            return file;
+        }
     }
 }
