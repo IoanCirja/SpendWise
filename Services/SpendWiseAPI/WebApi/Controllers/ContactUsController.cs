@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiContracts;
 using WebApiContracts.Mappers;
@@ -15,6 +16,7 @@ namespace WebApi.Controllers
             _contactUsService = contactUsService;
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AddSubscription([FromBody] ContactUsContract contactUsContract)
         {
             var result = await _contactUsService.AddFormContactUs(contactUsContract.MapTestToDomain());

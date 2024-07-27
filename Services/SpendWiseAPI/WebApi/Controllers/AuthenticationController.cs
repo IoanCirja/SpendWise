@@ -48,17 +48,33 @@ namespace WebApi.Controllers
             return Ok(result);
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<string>> SaveAccountSettings([FromBody] UserAccount userAccount)
         {
             var result = await this._authorizationService.SaveAccountSettings(userAccount.MapTestToDomain());
             return Ok(result);
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<string>> ResetPassword([FromBody] PasswordReset userAccount)
         {
             var result = await this._authorizationService.ResetPassword(userAccount.MapTestToDomain());
+            if(result)
+            {
+                return Ok("Password successfully reset");
+            }
+            else
+            {
+                return StatusCode(500, "An error occured while reseting password.");
+            }
+            
+        }
+        [HttpGet ("{user_id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<string>> SaveAccountSettings(Guid user_id)
+        {
+            var result = await this._authorizationService.GetUserInfo(user_id);
             return Ok(result);
         }
-
     }
 }

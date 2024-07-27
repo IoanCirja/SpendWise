@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories
             var parameters = new DynamicParameters();
             parameters.Add("Name", transactions.name, DbType.String);
             parameters.Add("MonthlyPlanID", transactions.monthlyPlan_id, DbType.Guid);
-            parameters.Add("Date", transactions.date, DbType.Date);
+            parameters.Add("Date", transactions.date, DbType.DateTime);
             parameters.Add("Category", transactions.category, DbType.String);
             parameters.Add("Amount", transactions.amount, DbType.Int64);
 
@@ -87,7 +87,7 @@ namespace Infrastructure.Repositories
         }
         public List<TransactionsInfo> GetBiggestTransactionCurrentPlan(Guid user_id)
         {
-            var sql = "select top(1) [t].[name], max([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID and [mp].[status]='In Progress'  group by [t].[name] having max([t].[amount])=(select max([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
+            var sql = "select top(1) [t].[name], max([t].[amount]) as 'amount' from [SpendWise].[Transactions] t, [SpendWise].[MonthlyPlan] mp where [t].[monthlyPlan_id]=[mp].[monthlyPlan_id] and [mp].[user_id]=@UserID and [mp].[status]='In Progress' group by [t].[name] having max([t].[amount])=(select max([tr].[amount]) from [SpendWise].[Transactions] tr, [SpendWise].[MonthlyPlan] mpl where [tr].[monthlyPlan_id] = [mpl].[monthlyPlan_id] and [mpl].[user_id]=@UserID);";
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<TransactionsInfo>(sql, new { UserID = user_id }).ToList();

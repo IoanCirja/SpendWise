@@ -18,9 +18,7 @@ namespace Infrastructure.Repositories
         }
         public List<BudgetPlanGet> GetPlans()
         {
-
             var sql = "select [pd].[plan_id], [pd].[name], [pd].[description], [pd].[noCategory], [pd].[category], [pd].[image], [us].[name] as 'created_by',[pd].[isActive], [pd].[creationDate]  from [SpendWise].[PlanDetails] pd, [SpendWise].[Users] us where [pd].[created_by]=[us].[user_id] AND [pd].[isActive] = 1";
-
 
             var connection = _databaseContext.GetDbConnection();
             var file = connection.Query<BudgetPlanGet>(sql).ToList();
@@ -74,9 +72,6 @@ namespace Infrastructure.Repositories
             var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
             return result != 0;
         }
-
-
-
 
         public List<BudgetPlan> GetPlansByAdminCreator(Guid id)
         {

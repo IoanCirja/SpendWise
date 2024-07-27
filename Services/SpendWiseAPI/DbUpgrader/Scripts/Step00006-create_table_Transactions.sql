@@ -7,7 +7,7 @@ BEGIN
         transaction_id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
         name NVARCHAR(40) NOT NULL,
 		monthlyPlan_id UNIQUEIDENTIFIER,
-		date DATE NOT NULL,
+		date DATETIME NOT NULL,
 		category NVARCHAR(30) NOT NULL,
 		amount FLOAT NOT NULL,
 		FOREIGN KEY (monthlyPlan_id) REFERENCES SpendWise.MonthlyPlan(monthlyPlan_id)

@@ -17,6 +17,11 @@ namespace Application.Services
         }
         public async Task<bool> AddMonthlyPlans(MonthlyPlan monthlyPlan)
         {
+            var result = _monthlyPlanRepository.VerifyUserHasPlanActive(monthlyPlan.user_id);
+            if(result == false )
+            {
+                throw new Exception("User already have a current plan active");
+            }
             return await _monthlyPlanRepository.AddMonthlyPlans(monthlyPlan);
         }
         public async Task<bool> CancelMonthlyPlan(Guid id)
@@ -25,7 +30,6 @@ namespace Application.Services
         }
         public List<MonthlyPlanGetNameDate> GetHistoryPlans(Guid user_id)
         {
-
             return _monthlyPlanRepository.GetHistoryPlans(user_id);
         }
         public List<MonthlyPlanGet> GetMonthlyPlanFromHistory(Guid monthlyPlan_id)

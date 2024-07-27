@@ -106,5 +106,19 @@ namespace Infrastructure.Repositories
             var result = connection.Query<MonthlyPlanDemo>(query, new { PlanID = plan_id }).ToList();
             return result;
         }
+        public bool VerifyUserHasPlanActive(Guid user_id)
+        {
+            var query = "SELECT [name] from [SpendWise].[MonthlyPlan] WHERE [user_id]=@UserID and [status]='In Progress';";
+            var connection = _databaseContext.GetDbConnection();
+            var result = connection.Query<string>(query,new { UserID = user_id }).ToList();
+            if (result.Count()>0)
+            {
+                return true;
+            }    
+            else
+            {
+                return false; 
+            }
+        }
     }
 }

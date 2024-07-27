@@ -22,6 +22,7 @@ namespace Infrastructure
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
             services.AddScoped<IParserData, ParserData>();
             services.AddScoped<ITransactionsRepository, TransactionsRepository>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
 
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
