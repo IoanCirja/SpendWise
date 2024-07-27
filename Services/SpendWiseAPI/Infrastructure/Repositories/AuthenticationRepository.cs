@@ -16,18 +16,18 @@ namespace Infrastructure.Repositories
             this._databaseContext = databaseContext;
         }
 
-        public Task<IEnumerable<UserCredentials>> GetUser(string email)
+        public async Task<IEnumerable<UserCredentials>> GetUser(string email)
         {
             var sql = "SELECT [user_id], [name], [email], [password], [phone], [role] FROM [SpendWise].[Users] WHERE [email] = @Email";
             var connection = _databaseContext.GetDbConnection();
-            var users = connection.QueryAsync<UserCredentials>(sql, new {Email = email});
+            var users = await connection.QueryAsync<UserCredentials>(sql, new {Email = email});
             return users;
         }
-        public Task<IEnumerable<UserCredentials>> GetUserByID(Guid user_id)
+        public async Task<IEnumerable<UserCredentials>> GetUserByID(Guid user_id)
         {
             var sql = "SELECT [user_id], [name], [email], [password], [phone], [role] FROM [SpendWise].[Users] WHERE [user_id] = @UserID";
             var connection = _databaseContext.GetDbConnection();
-            var users = connection.QueryAsync<UserCredentials>(sql, new { UserID = user_id });
+            var users = await connection.QueryAsync<UserCredentials>(sql, new { UserID = user_id });
             return users;
         }
 
@@ -78,6 +78,13 @@ namespace Infrastructure.Repositories
             var connection = _databaseContext.GetDbConnection();
             var result = await connection.ExecuteAsync(query, parameters, _databaseContext.GetDbTransaction());
             return result != 0;
+        }
+        public List<string> GetAdminEmail()
+        {
+            var sql = "SELECT [email] FROM [SpendWise].[Users] WHERE [role] = 'admin'";
+            var connection = _databaseContext.GetDbConnection();
+            var users = connection.Query<string>(sql).ToList();
+            return users;
         }
     }
 }

@@ -19,6 +19,7 @@ namespace WebApi.Controllers
             _transactionsService = transactionsService;
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AddTransaction([FromBody] TransactionsContract transaction)
         {
             var result = await _transactionsService.AddTransaction(transaction.MapTestToDomain());
@@ -31,6 +32,7 @@ namespace WebApi.Controllers
             return StatusCode(500, "An error occurred while adding the monthly plan.");
         }
         [HttpDelete ("{transaction_id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteTransactions(Guid transaction_id)
         {
             var result = await _transactionsService.DeleteTransactions(transaction_id);

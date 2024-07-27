@@ -21,5 +21,6 @@ namespace Application.Interfaces
 
         Task<bool> CancelMonthlyPlansByPlanId(Guid id);
         List<MonthlyPlanDemo> GetDemoMonthlyPlan(Guid plan_id);
+        bool VerifyUserHasPlanActive(Guid user_id);
     }
 }

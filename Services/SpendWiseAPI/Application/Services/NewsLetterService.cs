@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace Application.Services
     public class NewsLetterService
     {
         private INewsletterRepository _newsletterRepository;
-        public NewsLetterService(INewsletterRepository newsletterRepository)
+        private IEmailSender _emailSender;
+        public NewsLetterService(INewsletterRepository newsletterRepository, IEmailSender emailSender)
         {
             this._newsletterRepository = newsletterRepository;
+            _emailSender = emailSender;
         }
         public async Task<bool> AddSubscription(string email)
         {
@@ -23,7 +26,24 @@ namespace Application.Services
             {
                 throw new Exception("You already subscribed this page.");
             }
-            return await _newsletterRepository.AddSubscription(email);
+            var result = await _newsletterRepository.AddSubscription(email);
+            if (result == true)
+            {
+                List<string> emails = new List<string>();
+                emails.Add(email);
+                string subject = "SpendWise";
+                string urlLogo = "https://i.postimg.cc/HntvP2Pk/logo.png";
+                string body = $@"
+                                <html>
+                                    <body>
+                                        <img src='{urlLogo}' alt='Logo' />
+                                        <p><strong>You have just subscribed to the SpendWise website newsletter.</strong></p>
+                                    <body>
+                                <html>
+                               ";
+                await _emailSender.SendEmailAsync(emails, subject, body);
+            }
+            return result;
         }
     }
 }

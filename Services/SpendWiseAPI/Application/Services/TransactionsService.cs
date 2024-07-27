@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,11 @@ namespace Application.Services
             {
                 throw new Exception("parsing number error");
             }
-            _monthlyPlanRepository.UpdateMonthlyPlanWithTransaction(transactions.monthlyPlan_id, transactions.amount, spentOfCategory);
+            var result =_monthlyPlanRepository.UpdateMonthlyPlanWithTransaction(transactions.monthlyPlan_id, transactions.amount, spentOfCategory);
+            if (result == false)
+            {
+                throw new Exception("Errorrs, while updating the money spend for a category");
+            }
             return await _transactionsRepository.AddTransaction(transactions);
         }
         public async Task<bool> DeleteTransactions(Guid transaction_id)
@@ -54,7 +59,11 @@ namespace Application.Services
             {
                 throw new Exception("parsing number error");
             }
-            _monthlyPlanRepository.UpdateMonthlyPlanWithTransaction(transactions.FirstOrDefault().monthlyPlan_id, -transactions.FirstOrDefault().amount, spentOfCategory);
+            var result =_monthlyPlanRepository.UpdateMonthlyPlanWithTransaction(transactions.FirstOrDefault().monthlyPlan_id, -transactions.FirstOrDefault().amount, spentOfCategory);
+            if(result == false)
+            {
+                throw new Exception("Errorrs, while updating the money spend for a category");
+            }
             return await _transactionsRepository.DeleteTransactions(transaction_id);    
         }
         public List<Transactions> GetAllTransactions(Guid monthlyPlan_id)
