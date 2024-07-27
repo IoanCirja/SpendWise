@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CurrentPlanComponent } from './current-plan/current-plan.component';
@@ -32,6 +32,7 @@ import { ConfirmCancelDialogComponent } from './cancel-plan-confirmation-modal/c
 import { FluidIndicatorComponent } from '../budget-plan-choosing/fluid-indicator/fluid-indicator.component';
 import { HistoryCategoryDetailsComponent } from './history-category-details/history-category-details.component';
 
+
 @NgModule({
   declarations: [
     CurrentPlanComponent,
@@ -45,25 +46,23 @@ import { HistoryCategoryDetailsComponent } from './history-category-details/hist
     HistoryCategoryDetailsComponent,
     FluidIndicatorComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    MatMenuModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatDialogModule,
-    FormsModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    MatToolbarModule,
-    RouterModule,  
-    MatProgressSpinnerModule,
-    MatTableModule,
-    MatSortModule,
-    
-    
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        MatMenuModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatDialogModule,
+        FormsModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        MatToolbarModule,
+        RouterModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatSortModule
+    ]
 })
 export class DashboardModule { }

@@ -8,29 +8,29 @@
         <!-- header -->
         <section class="first_page">
             <div class="left">
-                <h1>Budgeting Tips and Insights</h1>
-                <div class="tips">
-                    <h3>Track Every Expense</h3>
+                <h1>Budgeting tips and insights</h1>
+              <div class="tips" onclick="window.open('https://www.myhubble.money/blog/the-benefits-of-tracking-your-spending-habits', '_blank')">
+                    <h3 href="">Track Every Expense</h3>
                     <p>
                         Keep a record of every single expense, no matter how small. Use a budgeting app or a simple spreadsheet to log your daily spending.
                         This helps you identify spending patterns and pinpoint areas where you can cut back, leading to more mindful and controlled spending.
                     </p>
                 </div>
-                <div class="tips">
+              <div class="tips" onclick="window.open('https://bettermoneyhabits.bankofamerica.com/en/saving-budgeting/learning-to-save', '_blank')">
                     <h3>Prioritize Savings</h3>
                     <p>
                         Treat savings as a non-negotiable expense. Set aside a fixed percentage of your income each month before spending on anything else.
                         Paying yourself first ensures that you consistently build your savings and emergency fund, providing financial security and peace of mind.
                     </p>
                 </div>
-                <div class="tips">
+              <div class="tips" onclick="window.open('https://www.berkeleywellbeing.com/needs-and-wants.html', '_blank')">
                     <h3>Distinguish Needs vs. Wants</h3>
                     <p>
                         Categorize your expenses into needs (essentials) and wants (non-essentials). Focus on fulfilling your needs and limit spending on wants.
                         Understanding the difference between essential and non-essential spending helps you make more conscious financial decisions, preventing impulse purchases and promoting financial discipline.
                     </p>
                 </div>
-              <button mat-raised-button color="primary" class="begin" (click)="redirectToLogin()">Begin Your Budgeting Journey Now</button>
+              <button mat-raised-button color="primary" class="begin" (click)="redirectToLogin()">Begin Your Budgeting Journey Now!</button>
 
 
               <p class="long_text">Take the first step towards a financially secure future.
@@ -66,9 +66,13 @@
             <div class="cards">
               <mat-card *ngFor="let plan of duplicatedPlans">
                 <mat-card-header>
+                  <div class="header-content">
+                    <img mat-card-image [src]="plan.image" alt="{{ name }}" class="small-image">
                   <mat-card-title>{{ plan.name }}</mat-card-title>
+                  </div>
                 </mat-card-header>
                 <mat-card-content>
+                  <p>{{ plan.category }}</p>
                   <p>{{ plan.description }}</p>
                 </mat-card-content>
               </mat-card>
