@@ -69,5 +69,12 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpGet ("{user_id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetAllTransactionForUser(Guid user_id)
+        {
+            var result = this._transactionsService.GetAllTransactionForUser(user_id);
+            return Ok(result);
+        }
     }
 }

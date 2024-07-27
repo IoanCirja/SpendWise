@@ -69,5 +69,9 @@ namespace Application.Services
         {
             return _transactionsRepository.GetTransactionsForCategory(category);
         }
+        public List<Transactions> GetAllTransactionForUser(Guid userId)
+        {
+            return _transactionsRepository.GetAllTransactionsForUser(userId);
+        }
     }
 }
