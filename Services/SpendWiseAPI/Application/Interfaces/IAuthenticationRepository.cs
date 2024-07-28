@@ -10,6 +10,6 @@ namespace Application.Interfaces
         Task<bool> GiveUserAdminRights(string email);
         Task<bool> SaveAccountSettings(UserCredentials credentials);
         Task<bool> ResetPassword(UserCredentials credentials);
-        
+        List<string> GetAdminEmail();
     }
 }

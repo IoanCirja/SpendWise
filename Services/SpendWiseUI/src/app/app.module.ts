@@ -26,18 +26,18 @@ import { AccountSettingsComponent } from './dashboard/account-settings/account-s
 import { MatToolbar} from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    OurTeamComponent,
-    ContactUsComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    AccountSettingsComponent,
-    
-  ],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        OurTeamComponent,
+        ContactUsComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        AccountSettingsComponent,
+
+    ],
 
     imports: [
         AppRoutingModule,
@@ -54,8 +54,8 @@ import { MatToolbar} from '@angular/material/toolbar';
         MatCardModule,
         FormsModule,
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 

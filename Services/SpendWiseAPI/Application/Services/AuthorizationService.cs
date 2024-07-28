@@ -26,13 +26,11 @@ namespace Application.Services
             if (userCheck.ToList().Count != 0)
             {
                 throw new Exception("User already registered");
-                //throw new NullReferenceException("User already registered");
             }
             if (credentials.Password != credentials.ConfirmPassword)
             {
                 throw new Exception("Passwords are different");
             }
-
             var hashedPassword = this._passwordHasher.Hash(credentials.Password);
             var registerResult = await this._authenticationRepository.RegisterUser(new UserCredentials
             {
@@ -42,29 +40,25 @@ namespace Application.Services
                 Phone = credentials.Phone,
                 Role = "user"
             });
-
+            
             return registerResult;
         }
 
         public async Task<User> LoginUser(UserCredentials credentials)
         {
             var userHashed = await this._authenticationRepository.GetUser(credentials.Email);
-
             if (userHashed.ToList().Count==0 || !_passwordHasher.Verify(userHashed.FirstOrDefault().Password, credentials.Password))
             {
                 throw new Exception("Username or password are incorrect");
             }
-
             var result = new User
             {
                 ID = userHashed.FirstOrDefault().user_id,
                 Name = userHashed.FirstOrDefault().Name, 
                 Role = userHashed.FirstOrDefault().Role,
             };
-
             var jwtToken = this._identityHandler.GenerateToken(result);
             result.JwtToken = jwtToken;
-
             return result;
         }
 
@@ -151,6 +145,29 @@ namespace Application.Services
             });
 
             return registerResult;
+        }
+        public async Task<User> GetUserInfo(Guid user_id)
+        {
+            var userCheck = await this._authenticationRepository.GetUserByID(user_id);
+
+            if (userCheck.ToList().Count == 0)
+            {
+                throw new Exception("User are not registered");
+            }
+
+            var result = new User
+            {
+                ID = userCheck.FirstOrDefault().user_id,
+                Name = userCheck.FirstOrDefault().Name,
+                Role = userCheck.FirstOrDefault().Role,
+                Email = userCheck.FirstOrDefault().Email,
+                Phone =userCheck.FirstOrDefault().Phone
+            };
+
+            var jwtToken = this._identityHandler.GenerateToken(result);
+            result.JwtToken = jwtToken;
+
+            return result;
         }
     }
 }

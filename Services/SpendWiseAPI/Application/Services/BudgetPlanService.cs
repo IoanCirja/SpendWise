@@ -17,7 +17,6 @@ namespace Application.Services
 
         public List<BudgetPlanGet> GetPlans()
         {
-
             return _budgetPlanRepository.GetPlans();
         }
         public List<BudgetPlanGet> GetPlan(Guid id)
@@ -27,7 +26,6 @@ namespace Application.Services
         public List<BudgetPlanGetPopular> GetPopularFivePlans()
         {
             return _budgetPlanRepository.GetPopularFivePlans();
-
         }
 
         public async Task<bool> AddNewPlan(BudgetPlan budgetPlan)

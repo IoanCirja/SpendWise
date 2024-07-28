@@ -19,6 +19,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AddMonthlyPlans([FromBody] MonthlyPlanContract monthlyPlan)
         {
             var result = await _monthlyPlanService.AddMonthlyPlans(monthlyPlan.MapTestToDomain());
@@ -31,6 +32,7 @@ namespace WebApi.Controllers
             return StatusCode(500, "An error occurred while adding the monthly plan.");
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CancelMonthlyPlans([FromBody] Guid id)
         {
             var result = await _monthlyPlanService.CancelMonthlyPlan(id);
