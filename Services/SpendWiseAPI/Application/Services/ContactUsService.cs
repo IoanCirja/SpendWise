@@ -14,9 +14,9 @@ namespace Application.Services
 {
     public class ContactUsService
     {
-        private IContactUsRepository _contactUsRepository;
-        private IAuthenticationRepository _authenticationRepository;
-        private IEmailSender _emailSender;
+        private readonly IContactUsRepository _contactUsRepository;
+        private readonly IAuthenticationRepository _authenticationRepository;
+        private readonly IEmailSender _emailSender;
         public ContactUsService(IContactUsRepository contactUsRepository, IAuthenticationRepository authenticationRepository, IEmailSender emailSender)
         {
             _contactUsRepository = contactUsRepository;

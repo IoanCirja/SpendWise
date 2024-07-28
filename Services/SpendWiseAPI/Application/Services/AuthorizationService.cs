@@ -95,6 +95,11 @@ namespace Application.Services
                 Role = userCheck.FirstOrDefault().Role
             });
 
+            if (registerResult == false)
+            {
+                throw new Exception("errors: account settings saving failed");
+            }
+
             userCheck = await this._authenticationRepository.GetUserByID(credentials.ID);
 
             if (userCheck.ToList().Count == 0)
