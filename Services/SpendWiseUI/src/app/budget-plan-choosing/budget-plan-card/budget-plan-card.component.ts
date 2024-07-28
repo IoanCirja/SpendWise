@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BudgetPlanModalComponent } from '../budget-plan-modal/budget-plan-modal.component';
 import { EditPlanModalComponent } from '../edit-budget-plan-modal/edit-plan-modal.component';
@@ -18,6 +18,8 @@ export class BudgetPlanCardComponent implements OnInit {
   @Input() creationDate!: string;
   @Input() created_by!: string;
 
+  @Output() planChanged = new EventEmitter<void>();
+
   isAdmin: boolean = false;
   canEdit: boolean = false;
 
@@ -32,14 +34,12 @@ export class BudgetPlanCardComponent implements OnInit {
     if (userJson) {
       const user = JSON.parse(userJson);
       const userRole = user.role;
-      const username = user.name; // Assuming the username is stored as 'name'
-  
-      // Check if the user is an admin
+      const username = user.name;
+
       this.isAdmin = userRole === 'admin';
       console.log('Created by:', this.created_by);
       console.log('Current user name:', username);
-  
-      // Check if the admin is the creator of the plan
+
       if (this.isAdmin && this.created_by === username) {
         this.canEdit = true;
       }
@@ -58,7 +58,7 @@ export class BudgetPlanCardComponent implements OnInit {
         categories: this.category.split(',').map(cat => ({ name: cat.trim(), value: 0 })),
         image: this.image,
         created_by: this.created_by,
-        creationDate: this.creationDate // Pass creationDate here
+        creationDate: this.creationDate
       },
       disableClose: true,
       autoFocus: false,
@@ -76,14 +76,14 @@ export class BudgetPlanCardComponent implements OnInit {
           description: this.description,
           image: this.image,
           categories: this.category.split(','),
-          creationDate: this.creationDate // Pass creationDate here
+          creationDate: this.creationDate
         }
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Handle result if necessary
+        this.planChanged.emit(); // Emit the event after editing the plan
       }
     });
   }

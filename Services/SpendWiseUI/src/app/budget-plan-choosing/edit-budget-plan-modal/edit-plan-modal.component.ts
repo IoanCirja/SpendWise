@@ -1,5 +1,5 @@
 import { Component, Inject, EventEmitter, Output } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditPlanService } from '../services/edit-budget-plan.service';
 import { DeletePlanService } from '../services/delete-budget-plan.service';
 
@@ -17,9 +17,10 @@ export class EditPlanModalComponent {
   };
   hasErrors: boolean = false;
 
-  @Output() planChanged = new EventEmitter<void>();
+  @Output() planChanged = new EventEmitter<void>(); // Added output property
 
   constructor(
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<EditPlanModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { plan: any },
     private editPlanService: EditPlanService,
@@ -67,6 +68,7 @@ export class EditPlanModalComponent {
     };
     this.editPlanService.updatePlan(this.data.plan.id, updatedPlan).subscribe({
       next: () => {
+        this.planChanged.emit(); // Emit the event after successful save
         this.dialogRef.close(true);
       },
       error: err => {
@@ -76,13 +78,53 @@ export class EditPlanModalComponent {
   }
 
   onDelete(): void {
-    this.deletePlanService.deletePlan(this.data.plan.id).subscribe({
-      next: () => {
-        this.dialogRef.close(true);
-      },
-      error: err => {
-        console.error('Error deleting plan:', err);
+    const confirmDialogRef = this.dialog.open(DeleteConfirmationDialog, {
+      width: '300px',
+      data: { message: 'Are you sure you want to delete this plan?' }
+    });
+
+    confirmDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletePlanService.deletePlan(this.data.plan.id).subscribe({
+          next: () => {
+            this.planChanged.emit(); // Emit the event after successful delete
+            this.dialogRef.close(true);
+          },
+          error: err => {
+            console.error('Error deleting plan:', err);
+          }
+        });
       }
     });
+  }
+}
+
+// Add a component for the confirmation dialog inside the same file
+
+@Component({
+  selector: 'delete-confirmation-dialog',
+  template: `
+    <h1 mat-dialog-title>Confirm Deletion</h1>
+    <div mat-dialog-content>
+      <p>{{data.message}}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
+    </div>
+  `
+})
+export class DeleteConfirmationDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DeleteConfirmationDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: { message: string }
+  ) {}
+
+  onCancel(): void {
+    this.dialogRef.close(false);
+  }
+
+  onConfirm(): void {
+    this.dialogRef.close(true);
   }
 }

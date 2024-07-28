@@ -1,61 +1,56 @@
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <meta charset="utf-8"> 
-      <title>Account Settings</title>
-    </head>
-    <body>
-        <div class="account-settings">
-            <div class="account-settings-content">
-                <h2>Account Settings</h2>
-                <div class="personal-information-section">
-                    <h3>Personal Information</h3>
-                    <form class="personal-information" [formGroup]="personalInformationForm" (ngSubmit)="onSubmitPersonalInfo()">
-                        <section class="name-phone">
-                            <div class="name">
-                                <label>Full Name</label>
-                                <input type="text" formControlName="fullname" placeholder="James Smith">
-                            </div>
-                            
-                            <div class="phone-number">
-                                <label>Phone Number</label>
-                                <input type="text" formControlName="phone" placeholder="+40123456789">       
-                            </div>
-                        </section>
-                        <div class="email">
-                            <label>Email Address</label>
-                            <input type="text" formControlName="email" placeholder="jamessmith@example.com">
+    <div class="account-settings">
+        <mat-card class="account-settings-content">
+            <h2>Account Settings</h2>
+            <div class="personal-information-section">
+                <h3>Personal Information</h3>
+                <form class="personal-information" [formGroup]="personalInformationForm" (ngSubmit)="onSubmitPersonalInfo()">
+                    <section class="name-phone">
+                        <div class="name">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Full Name</mat-label>
+                                <input matInput type="text" formControlName="fullname" placeholder="James Smith" readonly>
+                            </mat-form-field>
                         </div>
-                    
-                        <button mat-raised-button type="submit">Save Changes</button>
-                    </form>
-                </div>
-                <div class="change-password-section">
-                    <h3>Change Password</h3>
-                    <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
-                        <div class="current-password">
-                            <label>Current Password</label>
-                            <input type="password" formControlName="currentPassword" placeholder="Current password">
+                        <div class="phone-number">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Phone Number</mat-label>
+                                <input matInput type="text" formControlName="phone" placeholder="+40123456789" readonly>
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <div class="email">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput type="text" formControlName="email" placeholder="jamessmith@example.com" readonly>
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button type="submit">Save Changes</button>
+                </form>
+                <h3>Change Password</h3>
 
-                        </div>
-
-                        <div class="new-password">
-                            <label>New Password</label>
-                            <input type="password" formControlName="newPassword" placeholder="New password">
-                        </div>
-
-                        <div class="confirm-new-password">
-                            <label>Confirm New Password</label>
-                            <input type="password" formControlName="confirmNewPassword" placeholder="Confirm new password">
-                        </div>
-        
-                        <button type="submit" mat-raised-button color="primary">Change Password</button>
-                    </form>
-                </div>
+                <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
+                    <div class="current-password">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Current Password</mat-label>
+                            <input matInput type="password" formControlName="currentPassword" placeholder="Current password">
+                        </mat-form-field>
+                    </div>
+                    <div class="new-password">
+                        <mat-form-field appearance="fill">
+                            <mat-label>New Password</mat-label>
+                            <input matInput type="password" formControlName="newPassword" placeholder="New password">
+                        </mat-form-field>
+                    </div>
+                    <div class="confirm-new-password">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Confirm New Password</mat-label>
+                            <input matInput type="password" formControlName="confirmNewPassword" placeholder="Confirm new password">
+                        </mat-form-field>
+                    </div>
+                    <button type="submit" mat-raised-button color="primary">Change Password</button>
+                </form>
             </div>
-        </div>
-    </body>
-</html>
-  
 
+        </mat-card>
+    </div>

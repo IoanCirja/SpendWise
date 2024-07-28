@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DashboardButtonService } from '../services/dashboard-button-service';
@@ -9,6 +9,7 @@ import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
 import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
 import { CurrentPlanRefreshService } from '../services/current-plan-refresh-service';
+import { TransactionModalComponent } from '../transaction-modal/transaction-modal.component';
 
 @Component({
   selector: 'app-current-plan',
@@ -19,8 +20,10 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
   averagePercentage: number = 0; // Added property
+  totalSpent: number = 0; // Added property
   userId: string | null = null;
   subscriptions: Subscription[] = [];
+  hasCurrentPlan$: Observable<boolean> | undefined;
 
   constructor(
     private dashboardButtonService: DashboardButtonService,
@@ -33,6 +36,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadCurrentUser();
+    this.hasCurrentPlan$ = this.dashboardButtonService.hasCurrentPlan();
 
     // Subscribe to refresh notifications
     const refreshSubscription = this.currentPlanRefreshService.refresh$.subscribe(() => {
@@ -40,6 +44,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(refreshSubscription);
   }
+
   goToDetails(): void {
     this.router.navigate(['dashboard/category-details']);
   }
@@ -52,6 +57,13 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       }
     });
     this.subscriptions.push(subscription);
+  }
+
+  openTransactionModal(): void {
+    this.dialog.open(TransactionModalComponent, {
+      width: '300px',
+      data: {}
+    });
   }
 
   loadCurrentPlan(): void {
@@ -67,6 +79,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
         if (this.currentPlan) {
           this.extractCategoryDetails();
           this.calculateAveragePercentage(); // Calculate average percentage
+          this.calculateTotalSpent(); // Calculate total spent
         }
       },
       error => {
@@ -105,21 +118,12 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     }
   }
 
-  getRoundedPercentage(spent: number, price: number): number {
-    if (price === 0) {
-      return 0;
-    }
-    return Math.round((spent / price) * 100);
+  calculateTotalSpent(): void {
+    this.totalSpent = this.categoriesWithDetails.reduce((acc, category) => acc + category.spent, 0);
   }
 
-  getCircleColor(percentage: number): string {
-    if (percentage < 50) {
-      return 'primary'; 
-    } else if (percentage < 75) {
-      return 'accent'; 
-    } else {
-      return 'warn'; 
-    }
+  getRoundedPercentage(spent: number, price: number): number {
+    return price === 0 ? 0 : Math.round((spent / price) * 100);
   }
 
   openCancelDialog(): void {

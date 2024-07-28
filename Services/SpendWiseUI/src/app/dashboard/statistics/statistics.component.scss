@@ -1,0 +1,32 @@
+.container {
+  padding: 16px;
+}
+
+.statistics-card {
+  margin: 20px auto;
+  max-width: 1200px; // Adjust as needed
+}
+
+.statistics-layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statistics-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.chart-section {
+  flex: 1;
+}
+
+.statistics-item {
+  margin-bottom: 16px;
+}
+
+canvasjs-chart {
+  display: block;
+  width: 100%;
+  height: 400px;
+}

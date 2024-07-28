@@ -24,6 +24,7 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
   displayedTransactions: Transaction[] = [];
   displayedColumns: string[] = ['category', 'name', 'amount', 'date'];
   selectedCategory: string = 'all';
+  selectedCategoryDetails: { name: string, price: number, spent: number, transactions: Transaction[] } | undefined;
   sortCriteria: string = 'dateAsc';
   userId: string | null = null;
   subscriptions: Subscription[] = [];
@@ -112,10 +113,12 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
         category.transactions.map(transaction => ({ ...transaction, category: category.name }))
       );
       this.displayedColumns = ['category', 'name', 'amount', 'date'];
+      this.selectedCategoryDetails = undefined;
     } else {
       const selectedCategory = this.categoriesWithDetails.find(category => category.name === this.selectedCategory);
       this.displayedTransactions = selectedCategory ? [...selectedCategory.transactions] : [];
       this.displayedColumns = ['name', 'amount', 'date'];
+      this.selectedCategoryDetails = selectedCategory;
     }
     this.sortTransactions();
   }
@@ -132,6 +135,36 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
         default: return 0;
       }
     });
+  }
+
+  getRoundedPercentage(spent: number, price: number): number {
+    if (price === 0) {
+      return 0;
+    }
+    return Math.round((spent / price) * 100);
+  }
+
+  calculateAveragePercentage(): number {
+    if (this.categoriesWithDetails.length === 0) {
+      return 0;
+    }
+
+    const totalSpent = this.categoriesWithDetails.reduce((acc, category) => acc + category.spent, 0);
+    const totalPrice = this.categoriesWithDetails.reduce((acc, category) => acc + category.price, 0);
+
+    if (totalPrice === 0) {
+      return 0;
+    }
+
+    return Math.round((totalSpent / totalPrice) * 100);
+  }
+
+  calculateTotalSpent(): number {
+    return this.categoriesWithDetails.reduce((acc, category) => acc + category.spent, 0);
+  }
+
+  calculateTotalAmount(): number {
+    return this.categoriesWithDetails.reduce((acc, category) => acc + category.price, 0);
   }
 
   goBack(): void {

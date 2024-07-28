@@ -8,20 +8,25 @@
     <mat-card-content>
       <p>{{ currentPlan.description }}</p>
       <div class="mat-card-actions">
-        <p><strong>Total Amount:</strong> {{ currentPlan.totalAmount }} &euro;</p>
+
         <button class="cancel-button" (click)="openCancelDialog()">Cancel Your Current Plan</button>
       </div>
     </mat-card-content>
     <div class="floating-indicator-wrapper">
       <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
+      <div class="category-details">{{ totalSpent }}/{{ currentPlan.totalAmount }} &euro;</div>
+
     </div>
   </mat-card>
-  
+
   <!-- Categories Card -->
   <mat-card class="category-card" *ngIf="currentPlan">
     <mat-card-header style="display: flex; justify-content: space-between; align-items: center;">
       <mat-card-title>Categories</mat-card-title>
       <button class="view-transactions-button" (click)="goToDetails()">View Transactions</button>
+      <ng-container *ngIf="hasCurrentPlan$ | async">
+        <button mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
+      </ng-container>
     </mat-card-header>
     <mat-card-content>
       <div class="categories">

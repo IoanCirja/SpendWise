@@ -24,20 +24,25 @@ export class HistoryCategoryDetailsComponent implements OnInit {
   displayedTransactions: Transaction[] = [];
   categoriesWithDetails: { name: string, price: number, spent: number, transactions: Transaction[] }[] = [];
   selectedCategory: string = 'all';
+  selectedCategoryDetails: { name: string, price: number, spent: number, transactions: Transaction[] } | undefined;
   sortCriteria: string = 'dateAsc';
+
+  totalSpent: number = 0;
+  totalPrice: number = 0;
+  averagePercentage: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private historyService: HistoryService,
     private transactionService: TransactionService,
     private router: Router,
-    private stateService: StateService // Inject the shared service
+    private stateService: StateService
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.monthlyPlanId = params['monthlyPlanId'];
-      this.selectedCategory = params['category'] || 'all'; // Initialize with the selected category
+      this.selectedCategory = params['category'] || 'all';
 
       if (this.monthlyPlanId) {
         this.loadPlanDetails(this.monthlyPlanId);
@@ -84,15 +89,15 @@ export class HistoryCategoryDetailsComponent implements OnInit {
 
   extractCategoryDetails(): { name: string, price: number, spent: number, transactions: Transaction[] }[] {
     if (this.selectedPlan) {
-      const categories = this.selectedPlan.category.split(', ').map(c => c.trim());
-      const prices = this.selectedPlan.priceByCategory.split(', ').map(price => parseFloat(price.trim()));
-      const spends = this.selectedPlan.spentOfCategory.split(', ').map(spend => parseFloat(spend.trim()));
+      const categories = this.selectedPlan.category.split(',').map(c => c.trim());
+      const prices = this.selectedPlan.priceByCategory.split(',').map(price => parseFloat(price.trim()));
+      const spends = this.selectedPlan.spentOfCategory.split(',').map(spend => parseFloat(spend.trim()));
 
       return categories.map((category, index) => ({
         name: category,
         price: prices[index] || 0,
         spent: spends[index] || 0,
-        transactions: []  // Will be populated later
+        transactions: []
       }));
     }
     return [];
@@ -103,11 +108,26 @@ export class HistoryCategoryDetailsComponent implements OnInit {
       this.displayedTransactions = this.categoriesWithDetails.flatMap(category =>
         category.transactions.map(transaction => ({ ...transaction, category: category.name }))
       );
+      this.selectedCategoryDetails = undefined;
+      this.calculateTotalAndAverage();
     } else {
       const selectedCategory = this.categoriesWithDetails.find(category => category.name === this.selectedCategory);
       this.displayedTransactions = selectedCategory ? [...selectedCategory.transactions] : [];
+      this.selectedCategoryDetails = selectedCategory;
+      this.totalSpent = this.totalPrice = this.averagePercentage = 0; // Reset values
     }
     this.sortTransactions();
+  }
+
+  calculateTotalAndAverage(): void {
+    this.totalSpent = this.categoriesWithDetails.reduce((total, category) => total + category.spent, 0);
+    this.totalPrice = this.categoriesWithDetails.reduce((total, category) => total + category.price, 0);
+
+    if (this.totalPrice > 0) {
+      this.averagePercentage = Math.round((this.totalSpent / this.totalPrice) * 100);
+    } else {
+      this.averagePercentage = 0;
+    }
   }
 
   sortTransactions(): void {
@@ -122,6 +142,13 @@ export class HistoryCategoryDetailsComponent implements OnInit {
         default: return 0;
       }
     });
+  }
+
+  getRoundedPercentage(spent: number, price: number): number {
+    if (price === 0) {
+      return 0;
+    }
+    return Math.round((spent / price) * 100);
   }
 
   goBack(): void {
