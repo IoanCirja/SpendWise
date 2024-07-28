@@ -6,8 +6,8 @@
   <div *ngIf="currentPlanExists; else planDetails">
     <p>You already chose a plan for this month.</p>
     <div>
-      <button mat-button (click)="onNoClick()">Cancel</button>
-      <button mat-button (click)="goToCurrentPlan()">Go to Current Plan</button>
+      <button mat-button class="cancel-chose"(click)="onNoClick()">Cancel</button>
+      <button mat-button class="go-to-current-plan" (click)="goToCurrentPlan()">Go to Current Plan</button>
     </div>
   </div>
   <ng-template #planDetails>

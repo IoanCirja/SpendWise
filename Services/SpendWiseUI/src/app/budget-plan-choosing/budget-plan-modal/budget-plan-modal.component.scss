@@ -21,7 +21,7 @@ mat-dialog-content {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
-  
+
   .text-content {
     grid-column: 1 / -1;
     display: flex;
@@ -62,7 +62,7 @@ mat-dialog-actions button {
   text-align: center;
   font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif;
-  
+
   &:hover {
     background-color: #2A6F2C !important;
     color: #fcfcf9 !important;
@@ -81,3 +81,23 @@ img {
   font-size: 0.875rem;
   margin-top: 1rem;
 }
+
+.cancel-chose{
+  color: #2A6F2C !important;
+}
+
+.cancel-chose:hover {
+  background-color: #ee0000 !important;
+  color: #FCFCF9 !important;
+}
+
+.go-to-current-plan{
+  background-color: transparent !important;
+  color: #2A6F2C !important;
+}
+
+.go-to-current-plan:hover{
+  background-color: #2A6F2C !important;
+  color: #FCFCF9 !important;
+}
+
