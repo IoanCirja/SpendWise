@@ -1,60 +1,59 @@
-
 <div class="footer">
     <div class="footer-content">
         <div class="left">
             <div class="footer-section">
                 <h2>Financial Management</h2>
-                <p>SpendWise is your ultimate financial companion designed to help you make smart spending choices. Our app offers tailored budget plans, comprehensive expense tracking, and insightful financial management tools to ensure you stay on top of your finances and achieve your savings goals.</p>
+                <p id="bigger">SpendWise is your ultimate financial companion designed to help you make smart spending choices. Our app offers tailored budget plans, comprehensive expense tracking, and insightful financial management tools to ensure you stay on top of your finances and achieve your savings goals.</p>
             </div>
 
             <div class="footer-section">
                 <div class="logo_and_links">
                     <div class="logo">
-                    <img src="assets/logo_light.png" alt="SpendWise Logo" height="50" />
-                </div>
-                <div class="legal-links">
-                  <br/>
-                <a href="#">Terms of Use</a> |
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Trademarks</a> |
-                <a href="#">License Agreements</a>
-                </div>
+                        <img src="assets/logo_light.png" alt="SpendWise Logo" height="80" />
+                    </div>
+                    <div class="legal-links">
+                        <br />
+                        <a href="#" class="light">Terms of Use</a> |
+                        <a href="#" class="light">Privacy Policy</a> |
+                        <a href="#" class="light">Trademarks</a> |
+                        <a href="#" class="light">License Agreements</a>
+                    </div>
                 </div>
 
-                <p>Copyright © 2024, SpendWise Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
-                <p>SpendWise and certain product names used herein are trademarks or registered trademarks of SpendWise Software Corporation and/or one of its subsidiaries or affiliates in Romania and/or other countries. See Trademarks or appropriate markings.</p>
+                <p class="light">Copyright © 2024, SpendWise Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
+                <p class="light">SpendWise and certain product names used herein are trademarks or registered trademarks of SpendWise Software Corporation and/or one of its subsidiaries or affiliates in Romania and/or other countries. See Trademarks or appropriate markings.</p>
             </div>
         </div>
 
         <div class="right">
             <div class="footer-section newsletter">
-                <div class="join_sign_up">
-                    <h3>JOIN US</h3>
-                    <button mat-raised-button color="primary" class="sign_up" (click)="redirectToRegister()">Sign Up</button>
+                <div class="newsletter-container">
+                    <h4 class="newsletter-title">Join Us</h4>
+                    <div class="button-group">
+                        <button class="submit" (click)="subscribeToNewsletter()" mat-raised-button color="primary">Submit</button>
+                        <button color="primary" class="sign_up" (click)="redirectToRegister()">Sign Up</button>
+                    </div>
                 </div>
-                <h4>NEWSLETTER</h4>
-              <form [formGroup]="newsLetterForm"  class="email" (ngSubmit)="subscribeToNewsletter()">
-                <label>Email</label>
-                <br>
-                <input type="text" placeholder="exemple@gmail.com" formControlName="email" name="email" required>
-                <button class="submit" type="submit" mat-raised-button color="primary">Submit</button>
-              </form>
+                <form [formGroup]="newsLetterForm" class="email" (ngSubmit)="subscribeToNewsletter()">
+                    <input type="email" id="email" placeholder="exemple@gmail.com" formControlName="email" name="email" required>
+                </form>
+                <div *ngIf="subscriptionSuccess" class="thank-you">
+                    <p>Thank you for subscribing!</p>
+                </div>
             </div>
 
             <div class="footer-section contact-info">
-                <h4>CONTACT INFORMATION</h4>
+                <h4>Contact Information</h4>
                 <p>+40 759 150 959</p>
-                <p>supportspendwiseapp.com</p>
+                <p>support@spendwiseapp.com</p>
                 <p>Bulevardul Profesor Dr. doc. Dimitrie Mangeron 27, Iași</p>
                 <div class="social-media">
-                <!-- <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.facebook.com"><img src="assets/facebook.svg" alt="Facebook" /></a>
+                    <a href="https://www.twitter.com"><img src="assets/twitter.svg" alt="Twitter" /></a>
+                    <a href="https://www.linkedin.com"><img src="assets/linkedin.svg" alt="LinkedIn" /></a>
+                    <a href="https://www.instagram.com"><img src="assets/instagram.svg" alt="Instagram" /></a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-

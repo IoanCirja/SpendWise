@@ -1,56 +1,54 @@
-
-    <div class="account-settings">
-        <mat-card class="account-settings-content">
-            <h2>Account Settings</h2>
-            <div class="personal-information-section">
-                <h3>Personal Information</h3>
-                <form class="personal-information" [formGroup]="personalInformationForm" (ngSubmit)="onSubmitPersonalInfo()">
-                    <section class="name-phone">
-                        <div class="name">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Full Name</mat-label>
-                                <input matInput type="text" formControlName="fullname" placeholder="James Smith" readonly>
-                            </mat-form-field>
-                        </div>
-                        <div class="phone-number">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Phone Number</mat-label>
-                                <input matInput type="text" formControlName="phone" placeholder="+40123456789" readonly>
-                            </mat-form-field>
-                        </div>
-                    </section>
-                    <div class="email">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Email Address</mat-label>
-                            <input matInput type="text" formControlName="email" placeholder="jamessmith@example.com" readonly>
-                        </mat-form-field>
-                    </div>
-                    <button mat-raised-button type="submit">Save Changes</button>
-                </form>
-                <h3>Change Password</h3>
-
-                <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
-                    <div class="current-password">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Current Password</mat-label>
-                            <input matInput type="password" formControlName="currentPassword" placeholder="Current password">
-                        </mat-form-field>
-                    </div>
-                    <div class="new-password">
-                        <mat-form-field appearance="fill">
-                            <mat-label>New Password</mat-label>
-                            <input matInput type="password" formControlName="newPassword" placeholder="New password">
-                        </mat-form-field>
-                    </div>
-                    <div class="confirm-new-password">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Confirm New Password</mat-label>
-                            <input matInput type="password" formControlName="confirmNewPassword" placeholder="Confirm new password">
-                        </mat-form-field>
-                    </div>
-                    <button type="submit" mat-raised-button color="primary">Change Password</button>
-                </form>
+<!-- src/app/components/account-settings/account-settings.component.html -->
+<div class="account-settings">
+    <mat-card class="account-settings-content">
+      <h2>Account Settings</h2>
+      <div class="personal-information-section">
+        <h3>Personal Information</h3>
+        <form class="personal-information" [formGroup]="personalInformationForm">
+          <section class="name-phone">
+            <div class="name">
+              <mat-form-field appearance="fill">
+                <mat-label>Full Name</mat-label>
+                <input matInput type="text" formControlName="fullname" placeholder="James Smith" readonly>
+              </mat-form-field>
             </div>
-
-        </mat-card>
-    </div>
+            <div class="phone-number">
+              <mat-form-field appearance="fill">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="text" formControlName="phone" placeholder="+40123456789" readonly>
+              </mat-form-field>
+            </div>
+          </section>
+          <div class="email">
+            <mat-form-field appearance="fill">
+              <mat-label>Email Address</mat-label>
+              <input matInput type="text" formControlName="email" placeholder="jamessmith@example.com" readonly>
+            </mat-form-field>
+          </div>
+        </form>
+        <h3>Change Password</h3>
+        <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
+          <div class="current-password">
+            <mat-form-field appearance="fill">
+              <mat-label>Current Password</mat-label>
+              <input matInput type="password" formControlName="currentPassword" placeholder="Current password">
+            </mat-form-field>
+          </div>
+          <div class="new-password">
+            <mat-form-field appearance="fill">
+              <mat-label>New Password</mat-label>
+              <input matInput type="password" formControlName="newPassword" placeholder="New password">
+            </mat-form-field>
+          </div>
+          <div class="confirm-new-password">
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm New Password</mat-label>
+              <input matInput type="password" formControlName="confirmNewPassword" placeholder="Confirm new password">
+            </mat-form-field>
+          </div>
+          <button type="submit" mat-raised-button color="primary">Change Password</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+  

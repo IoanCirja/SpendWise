@@ -5,7 +5,10 @@ body{
   background: rgb(232,255,221);
   background: linear-gradient(0deg, rgba(232,255,221,1) 0%, rgba(252,252,249,1) 100%);
   font-family: 'Roboto Condensed', sans-serif;
-  margin: 0;
+  margin-left:20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 
   h1{
     color:#043F2D;
@@ -56,15 +59,27 @@ body{
 
     }
 
-    button{
-      color:#FCFCF9;
+    .begin{
+      text-decoration: none;
+      font-weight: 500;
       background-color: #2A6F2C;
+      color: #FCFCF9;
+      padding: 25px 40px;
+
+      border-radius: 7px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .begin:hover {
+      background-color: #2A6F2C;
+      color: #FCFCF9;
     }
     .long_text{
       text-align: left;
       margin-top: 64px;
       margin-right: 100px;
       font-size: 16px;
+      line-height: 30px;
     }
   }
 
@@ -75,6 +90,7 @@ body{
     grid-template-columns: 1fr 1fr;
     img{
       width: 60%;
+      
     }
     p
     {
@@ -173,3 +189,4 @@ mat-card-header {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-520px * 5))}
 }
+

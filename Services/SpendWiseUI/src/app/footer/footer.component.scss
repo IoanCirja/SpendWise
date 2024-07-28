@@ -1,6 +1,6 @@
 .footer {
-  background: rgb(4,63,45);
-  background: linear-gradient(90deg, rgba(4,63,45,1) 0%, rgba(4,63,45,1) 35%, rgba(42,111,44,1) 100%);
+  background: rgb(4, 63, 45);
+  background: linear-gradient(90deg, rgba(4, 63, 45, 1) 0%, rgba(4, 63, 45, 1) 35%, rgba(42, 111, 44, 1) 100%);
   padding: 20px;
   color: #FCFCF9;
   font-family: 'Roboto Condensed', sans-serif;
@@ -13,6 +13,7 @@
   flex-direction: row;
   text-align: left;
   justify-content: space-between;
+  margin: 0 20px;
 }
 
 .footer-section {
@@ -32,16 +33,29 @@
   font-size: 12px;
 }
 
+.footer-section .light {
+  color: #B0B0B0;
+}
+
 .brand h1 {
   margin: 0;
   font-size: 24px;
 }
 
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .legal-links a {
   color: #FCFCF9;
   text-decoration: none;
-  margin: 0 24px;
+  margin: 0 12px;
   font-size: 14px;
+}
+
+.legal-links a.light {
+  color: #B0B0B0;
 }
 
 .legal-links a:hover {
@@ -53,6 +67,13 @@
   margin: 0 10px;
   text-decoration: none;
   font-size: 20px;
+  line-height: 20px;
+}
+
+.contact-info .social-media a img {
+  height: 24px;
+  width: 24px;
+  margin: 30px 0px; /* Add more space between icons and margin top */
 }
 
 .join_sign_up {
@@ -65,64 +86,138 @@
   font-size: 14px;
 }
 
-.email input {
-  color: #FCFCF9;
-  background-color: #2A6F2C;
-  border-color: #FCFCF9;
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
   border-radius: 7px;
-  height: 35px;
-  width: 150spx;
-  margin-right: 40px;
+  border: 1px solid #FCFCF9;
+  background-color: transparent;
+  color: #FCFCF9;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center; /* Align items to center vertically */
+  justify-content: space-between;
+}
+
+.button-container .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  margin-left: auto;
+}
+
+.newsletter-container {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  justify-content: space-between;
+  width: 100%; /* Make the container full width */
+  padding-left: 20px;
+
+}
+
+.newsletter-title {
+  margin-right: auto; /* Align title to the start */
+  font-size: 32px;
+  padding-right: 102px;
+
+}
+
+.newsletter .button-group {
+  display: flex;
+  gap: 10px;
+
+}
+
+.newsletter button {
+  background-color: transparent;
+  color: #FCFCF9;
+  border: 1px solid #FCFCF9;
+  height: 40px;
+  width: 125px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: #FCFCF9;
+  color: #043F2D !important;
+  border-color: #043F2D;
+  height: 40px;
+  width: 125px;
+}
+
+.newsletter input {
+  margin-top: 20px;
+  border-radius: 7px;
+  border: 1px solid #FCFCF9;
+  background-color: transparent;
+  color: #FCFCF9;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+}
+
+.newsletter input::placeholder {
+  color: #FCFCF9;
+}
+
+.newsletter input:focus {
+  background-color: #FCFCF9;
+  color: #043F2D;
+  outline: none;
 }
 
 ::placeholder {
   color: #FCFCF9;
 }
 
+.thank-you {
+  color: #FCFCF9;
+  margin-top: 10px;
+}
+
+.thank-you button {
+  background-color: #4CAF50;
+  color: #FCFCF9;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .logo_and_links {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
 }
 
 button {
   color: #FCFCF9 !important;
   border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.right {
-  .newsletter {
-    .join_sign_up {
-      .sign_up {
-        background-color: transparent;
-        color: #FCFCF9;
-        border: 1px solid #FCFCF9;
-        height: 40px;
-        width: 125px;
-      }
-      .sign_up:hover {
-        background-color: #FCFCF9;
-        color: #043F2D !important;
-        border-color: #043F2D;
-        height: 40px;
-        width: 125px;
-      }
-    }
-  }
+#bigger {
+  font-size: 16px;
+  line-height: 24px;
+  min-width: 1000px;
 }
 
-
-.newsletter button {
-  background-color: transparent;
-  color :#FCFCF9;
-  border: 1px solid #FCFCF9;
-  height: 40px;
-  width: 125px;
+div.left {
+  min-width: 1100px;
 }
 
-.newsletter button:hover{
-  background-color: #FCFCF9;
-  color: #043F2D !important;
-  border-color: #043F2D;
-  height: 40px;
-  width: 125px;
+div.right {
+  margin-left: 20px;
+  min-width: 400px;
+}
+
+.newsletter {
+  margin-bottom: 20px; /* Add margin between newsletter and contact information */
 }
