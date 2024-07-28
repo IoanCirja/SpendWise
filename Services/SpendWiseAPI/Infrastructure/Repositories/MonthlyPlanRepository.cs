@@ -120,5 +120,19 @@ namespace Infrastructure.Repositories
                 return false; 
             }
         }
+
+
+
+
+        public MonthlyPlanGet GetMonthlyPlanFromHistoryByMonthAndYear(Guid user_id, int year, int month)
+        {
+            var sql = "SELECT *  FROM [SpendWise].[MonthlyPlan] WHERE [user_id] = @UserId  AND YEAR([date]) = @Year AND MONTH([date]) = @Month";
+
+            var connection = _databaseContext.GetDbConnection();
+
+            var plan = connection.QueryFirstOrDefault<MonthlyPlanGet>(sql, new { UserId = user_id, Year = year, Month = month });
+
+            return plan;
+        }
     }
 }

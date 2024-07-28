@@ -86,5 +86,16 @@ namespace Infrastructure.Repositories
             var users = connection.Query<string>(sql).ToList();
             return users;
         }
+
+
+
+        public async Task<List<string>> GetAllUsersEmails()
+        {
+            var query = "SELECT [Email] From [SpendWise].[Users] WHERE [Role] = 'user'";
+
+            var connection = _databaseContext.GetDbConnection();
+            var result = await connection.QueryAsync<string>(query);
+            return result.ToList();
+        }
     }
 }
