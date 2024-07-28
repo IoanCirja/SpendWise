@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { CurrentPlanRefreshService } from '../services/current-plan-refresh-service';
+
 @Component({
   selector: 'app-transaction-modal',
   templateUrl: './transaction-modal.component.html',
@@ -20,6 +21,8 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
   userId: string | null = null;
   monthlyPlanId: string | null = null;
   subscriptions: Subscription[] = [];
+  errorMessage: string = '';
+  isInvalid: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<TransactionModalComponent>,
@@ -61,10 +64,24 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
   }
 
+  validateValue(): void {
+    if (this.transactionValue === null || this.transactionValue <= 0) {
+      this.errorMessage = 'Value must be greater than 0';
+      this.isInvalid = true;
+    } else {
+      this.errorMessage = '';
+      this.isInvalid = false;
+    }
+  }
+
   onSave(): void {
     if (!this.selectedCategory || this.transactionValue === null || !this.transactionName) {
       console.error('Name, category, and value are required.');
       return;
+    }
+
+    if (this.isInvalid) {
+      return; // Prevent saving if the input is invalid
     }
 
     const transactionData = {

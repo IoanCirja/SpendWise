@@ -13,6 +13,8 @@
       <div class="mat-card-actions">
         <p><strong>Total Amount:</strong> {{ selectedPlan?.totalAmount }} &euro;</p>
       </div>
+      <button class="export-button" (click)="exportPlan()">Export Plan</button>
+
     </mat-card-content>
     <div class="floating-indicator-wrapper">
       <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>

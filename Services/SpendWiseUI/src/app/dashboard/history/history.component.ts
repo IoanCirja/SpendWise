@@ -7,7 +7,7 @@ import { HistoryPlan } from '../models/HistoryPlan';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { firstValueFrom } from 'rxjs';
 import { StateService } from '../services/state-service';
-
+import { ExportService } from '../services/export-service';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -25,6 +25,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   constructor(
     private historyService: HistoryService,
     private accountService: AccountService,
+    private exportService: ExportService,
     private router: Router,
     private stateService: StateService
   ) {}
@@ -81,6 +82,24 @@ export class HistoryComponent implements OnInit, OnDestroy {
       console.error('Selected plan does not have a valid monthlyPlan_id');
     }
   }
+
+  exportPlan(): void {
+    if (!this.userId || !this.selectedPlan || !this.selectedPlan.date) {
+      console.error('User ID, current plan, and plan date are required to export the plan.');
+      return;
+    }
+  
+    const planDate = new Date(this.selectedPlan.date);
+    const year = planDate.getFullYear();
+    const month = planDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
+    const fileName = `${planDate.toLocaleString('default', { month: 'long' })} - ${year} Budget Summary.pdf`;
+  
+    this.exportService.exportPlan(this.userId, year, month).subscribe(
+      response => this.exportService.downloadPlan(response, fileName),
+      error => console.error('Error exporting plan', error)
+    );
+  }
+  
 
   calculateAveragePercentage(): void {
     if (this.categoriesWithDetails.length === 0) {

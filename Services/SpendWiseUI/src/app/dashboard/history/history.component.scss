@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
+  min-height: 30vw;
 }
 
 .plan-card, .category-card {
@@ -122,6 +123,7 @@
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D; /* Text color */
   font-size: 1.2rem; /* Makes the text bigger */
+  min-height: 30vw;
 }
 
 .floating-indicator-wrapper {

@@ -24,18 +24,7 @@
     transform: translate(-50%, -50%);
   }
 
-  &[data-value="100"],
-  &[data-value^="10"],
-  &[data-value^="11"],
-  &[data-value^="12"],
-  &[data-value^="13"],
-  &[data-value^="14"],
-  &[data-value^="15"],
-  &[data-value^="16"],
-  &[data-value^="17"],
-  &[data-value^="18"],
-  &[data-value^="19"],
-  &[data-value^="20"] {
+  &[data-value="-1"] {
     border-color: #f88; /* Red tone for completed state */
     &::before {
       animation: progress-firework 1.3s 0.1s ease infinite both;

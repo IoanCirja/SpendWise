@@ -1,3 +1,4 @@
+<!-- transaction-modal.component.html -->
 <h2 mat-dialog-title>Add Transaction</h2>
 <mat-dialog-content>
   <mat-form-field appearance="fill">
@@ -16,10 +17,11 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Value</mat-label>
-    <input matInput type="number" [(ngModel)]="transactionValue">
+    <input matInput type="number" [(ngModel)]="transactionValue" (ngModelChange)="validateValue()">
   </mat-form-field>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="isInvalid">Save</button>
 </mat-dialog-actions>

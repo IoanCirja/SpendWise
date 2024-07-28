@@ -26,7 +26,7 @@ export class FluidIndicatorComponent implements OnChanges, AfterViewInit {
     setTimeout(() => {
       if (this.progressElement) {
         const progressElement = this.progressElement.nativeElement;
-        const displayValue = Math.round(this.value); // Ensure integer value
+        const displayValue = this.value >= 100 ? -1 : Math.round(this.value); // Set to -1 if value is 100 or more
         progressElement.style.setProperty('--progress-value', `${displayValue}`);
         progressElement.dataset.value = `${displayValue}`;
         if (this.value >= 100) {

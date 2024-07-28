@@ -8,13 +8,15 @@
 </head>
 <body>
 <div class="flex-container">
-  <h1>LET'S MEET OUR TEAM!</h1>
+  <h1>Meet Our Team</h1>
   <div class="team-members">
-    <div *ngFor="let member of members" class="team-member">
-      <img [src]="member.imageUrl" [alt]="member.name">
-      <p class="name">{{member.name}}</p>
-      <p class="description">{{member.description}}</p>
-    </div>
+    <mat-card *ngFor="let member of members" class="team-member">
+      <img mat-card-image [src]="member.imageUrl" [alt]="member.name">
+      <mat-card-content>
+        <p class="name">{{member.name}}</p>
+        <p class="description">{{member.description}}</p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
 </body>

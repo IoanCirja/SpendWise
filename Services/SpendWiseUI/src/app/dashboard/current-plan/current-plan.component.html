@@ -8,14 +8,13 @@
     <mat-card-content>
       <p>{{ currentPlan.description }}</p>
       <div class="mat-card-actions">
-
         <button class="cancel-button" (click)="openCancelDialog()">Cancel Your Current Plan</button>
+        <button class="export-button" (click)="exportPlan()">Export Plan</button>
       </div>
     </mat-card-content>
     <div class="floating-indicator-wrapper">
       <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
       <div class="category-details">{{ totalSpent }}/{{ currentPlan.totalAmount }} &euro;</div>
-
     </div>
   </mat-card>
 

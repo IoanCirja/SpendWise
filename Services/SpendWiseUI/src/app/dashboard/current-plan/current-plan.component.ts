@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 import { DashboardButtonService } from '../services/dashboard-button-service';
 import { CurrentPlanService } from '../services/current-plan.service';
+import { ExportService } from '../services/export-service';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 import { AccountService } from '../../auth/account.service';
 import { ConfirmCancelDialogComponent } from '../cancel-plan-confirmation-modal/cancel-plan-confirmation-modal.component';
@@ -19,8 +21,8 @@ import { TransactionModalComponent } from '../transaction-modal/transaction-moda
 export class CurrentPlanComponent implements OnInit, OnDestroy {
   currentPlan: MonthlyPlan | null = null;
   categoriesWithDetails: { name: string, price: number, spent: number }[] = [];
-  averagePercentage: number = 0; // Added property
-  totalSpent: number = 0; // Added property
+  averagePercentage: number = 0;
+  totalSpent: number = 0;
   userId: string | null = null;
   subscriptions: Subscription[] = [];
   hasCurrentPlan$: Observable<boolean> | undefined;
@@ -28,6 +30,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   constructor(
     private dashboardButtonService: DashboardButtonService,
     private currentPlanService: CurrentPlanService,
+    private exportService: ExportService,  // Inject the new service
     private router: Router,
     private accountService: AccountService,
     private dialog: MatDialog,
@@ -38,9 +41,8 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     this.loadCurrentUser();
     this.hasCurrentPlan$ = this.dashboardButtonService.hasCurrentPlan();
 
-    // Subscribe to refresh notifications
     const refreshSubscription = this.currentPlanRefreshService.refresh$.subscribe(() => {
-      this.loadCurrentPlan(); // Reload current plan data
+      this.loadCurrentPlan();
     });
     this.subscriptions.push(refreshSubscription);
   }
@@ -75,11 +77,11 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
     this.currentPlanService.getCurrentPlan(this.userId).subscribe(
       data => {
         this.currentPlan = data[0];
-        this.dashboardButtonService.setCurrentPlan(this.currentPlan); // Update the shared service
+        this.dashboardButtonService.setCurrentPlan(this.currentPlan);
         if (this.currentPlan) {
           this.extractCategoryDetails();
-          this.calculateAveragePercentage(); // Calculate average percentage
-          this.calculateTotalSpent(); // Calculate total spent
+          this.calculateAveragePercentage();
+          this.calculateTotalSpent();
         }
       },
       error => {
@@ -141,7 +143,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       this.currentPlanService.cancelCurrentPlan(this.currentPlan.monthlyPlan_id).subscribe(
         response => {
           console.log('Plan canceled successfully', response);
-          this.loadCurrentPlan(); // Refresh the current plan
+          this.loadCurrentPlan();
         },
         error => {
           console.error('Error canceling the plan', error);
@@ -155,6 +157,24 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
       queryParams: { category: categoryName }
     });
   }
+
+  exportPlan(): void {
+    if (!this.userId || !this.currentPlan || !this.currentPlan.date) {
+      console.error('User ID, current plan, and plan date are required to export the plan.');
+      return;
+    }
+  
+    const planDate = new Date(this.currentPlan.date);
+    const year = planDate.getFullYear();
+    const month = planDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
+    const fileName = `${planDate.toLocaleString('default', { month: 'long' })} - ${year} Budget Summary.pdf`;
+  
+    this.exportService.exportPlan(this.userId, year, month).subscribe(
+      response => this.exportService.downloadPlan(response, fileName),
+      error => console.error('Error exporting plan', error)
+    );
+  }
+  
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
