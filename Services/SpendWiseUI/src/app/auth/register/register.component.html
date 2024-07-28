@@ -11,7 +11,7 @@
   <img src="assets/signin.svg" alt="Logo" class="login-logo">
   <div class="register-container">
     <h1>SIGN UP</h1>
-    <p>Already have an account? <button (click)="redirectToLogin()" class="login-button">Log in!</button></p>
+    <p>Already have an account? <a (click)="redirectToLogin()" class="login-button">Log in!</a></p>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="name" placeholder="Name">
       <input type="email" formControlName="email" placeholder="Email">

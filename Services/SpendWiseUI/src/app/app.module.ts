@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { MatIcon } from '@angular/material/icon';
 import { AccountSettingsComponent } from './dashboard/account-settings/account-settings.component';
 import { MatToolbar} from '@angular/material/toolbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { MatToolbar} from '@angular/material/toolbar';
         MatInputModule,
         MatCardModule,
         FormsModule,
+        FontAwesomeModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
