@@ -11,13 +11,11 @@ export class ChangePasswordService {
   
   constructor(private http: HttpClient){}
 
-  changePassword(data : PasswordReset): Observable<any>{
-
+  changePassword(data: PasswordReset): Observable<string> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    return this.http.post<any>(this.endPoint, data, {headers});
+    return this.http.post<string>(this.endPoint, data, { headers, responseType: 'text' as 'json' });
   }
-
 }

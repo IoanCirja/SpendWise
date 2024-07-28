@@ -6,7 +6,8 @@ import { PersonalInformationService } from './personal-information.service';
 import { PasswordReset } from '../models/PasswordReset';
 import { User } from '../models/User';
 import { PersonalInformation } from '../models/PersonalInformation';
-
+import { UserData } from './user-model';
+import { fetchUserDataService } from './fetch-email-service';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -28,6 +29,7 @@ export class AccountSettingsComponent {
     private fb: FormBuilder,
     private changePasswordService: ChangePasswordService,
     private personalInformationService: PersonalInformationService,
+    private fetchUserDataService: fetchUserDataService,
     private router: Router
   ) {
     this.changePasswordForm = this.fb.group({
@@ -50,14 +52,30 @@ export class AccountSettingsComponent {
     if (userString) {
       this.user = JSON.parse(userString);
       this.personalInformationForm.patchValue({
-        fullname: this.user.name,
-        email: this.user.email,
-        phone: this.user.phone
+        fullname: this.user.name
       });
+  
+      this.fetchUserData();
     } else {
       console.error('User not found in localStorage');
     }
   }
+  
+  fetchUserData(): void {
+    this.fetchUserDataService.getUserData(this.user.id).subscribe(
+      (userData: UserData) => {
+        this.user = { ...this.user, ...userData };
+        this.personalInformationForm.patchValue({
+          email: this.user.email,
+          phone: this.user.phone
+        });
+      },
+      (error) => {
+        console.error('Error fetching user data', error);
+      }
+    );
+  }
+  
 
   passwordsMatch(group: FormGroup) {
     const newPassword = group.get('newPassword')?.value;
