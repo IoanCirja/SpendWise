@@ -53,23 +53,28 @@ namespace Application.Services
 
 
                 string body = $@"
-                            <html>
-                            <body>
-                            <img src='{imageDataUrl}' alt='Logo' />
-                            <p><strong>A new budget plan named '{budgetPlan.name}' has been added.</strong></p>
+                               <html>
+                                <body>
+                                <img src='{imageDataUrl}' alt='Logo' />
+                                <p><strong>A new budget plan named '{budgetPlan.name}' has been added.</strong></p>
                             <p>Description: {budgetPlan.description}</p>
-                            <p>The budget plan has <strong>{budgetPlan.noCategory}</strong> categories:</p>
-                            <ul>";
-
+                                <p>The budget plan has <strong>{budgetPlan.noCategory}</strong> categories:</p>
+                                <ul>";
 
                 var categories = budgetPlan.category.Split(',');
-
 
                 foreach (var category in categories)
                 {
                     body += $"<li>{category.Trim()}</li>";
                 }
-                body += "</ul></body></html>";
+
+
+                body += @"
+                            </ul>
+                            <p>Have a great day ,</p>
+                                <p>The SpendWise Team</p>
+                                </body>
+                            </html>";
 
 
 
