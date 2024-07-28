@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIcon } from '@angular/material/icon';
 import { EditPlanModalComponent } from './edit-budget-plan-modal/edit-plan-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CreateBudgetPlanModalComponent,
     BudgetPlanModalComponent,
     EditPlanModalComponent,
-    
+
   ],
   imports: [
     CommonModule,
@@ -38,16 +39,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormsModule,
     HttpClientModule,
     BudgetPlanChoosingRoutingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FontAwesomeModule
 
 
 
-    
+
   ],
   exports: [
     BudgetPlanCardComponent,
     BudgetPlanListComponent
-    
+
   ],
 })
 export class BudgetPlansModule { }
