@@ -85,5 +85,27 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+
+
+
+
+        [HttpGet("{user_id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExportDetailsByMonthAndYearToPdf(Guid user_id, int year, int month)
+        {
+            try
+            {
+                string[] months = { "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December" };
+
+                string monthName = months[month - 1];
+                var pdfBytes = await this._monthlyPlanService.ExportCurrentDetailsToPdf(user_id, year, month);
+                return File(pdfBytes, "application/pdf", $"{monthName} - {year} Budget Summary.pdf");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

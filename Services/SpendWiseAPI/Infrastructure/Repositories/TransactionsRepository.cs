@@ -126,5 +126,16 @@ namespace Infrastructure.Repositories
             var file = connection.Query<Transactions>(sql, new { UserID = user_id }).ToList();
             return file;
         }
+
+
+
+        public List<Transactions> GetTransactionsForCategoryAndMonthlyPlan(string category, Guid id)
+        {
+            var sql = "select [transaction_id], [name], [monthlyPlan_id], [date], [category], [amount] from [SpendWise].[Transactions] where [category]=@Category AND [monthlyPlan_id]=@MonthlyPlanId";
+
+            var connection = _databaseContext.GetDbConnection();
+            var file = connection.Query<Transactions>(sql, new { Category = category, MonthlyPlanId = id }).ToList();
+            return file;
+        }
     }
 }

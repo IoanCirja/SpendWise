@@ -7,12 +7,16 @@ namespace Application.Services
     {
         private IBudgetPlanRepository _budgetPlanRepository;
         private IMonthlyPlanRepository _monthlyPlanRepository;
+        private IAuthenticationRepository _authenticationRepository;
+        private IEmailSender _emailSender;
 
 
-        public BudgetPlanService(IBudgetPlanRepository budgetPlanRepository, IMonthlyPlanRepository monthlyPlanRepository)
+        public BudgetPlanService(IBudgetPlanRepository budgetPlanRepository, IMonthlyPlanRepository monthlyPlanRepository,IAuthenticationRepository authenticationRepository,IEmailSender emailSender)
         {
             _budgetPlanRepository = budgetPlanRepository;
             _monthlyPlanRepository = monthlyPlanRepository;
+            _authenticationRepository = authenticationRepository;
+            _emailSender = emailSender;
         }
 
         public List<BudgetPlanGet> GetPlans()
@@ -37,6 +41,40 @@ namespace Application.Services
                 throw new Exception("Plan already added");
             }
             var registerResult = await this._budgetPlanRepository.AddPlan(budgetPlan);
+
+
+            if (registerResult)
+            {
+
+                string imageDataUrl = "https://i.postimg.cc/HntvP2Pk/logo.png";
+                var emails = await this._authenticationRepository.GetAllUsersEmails();
+
+                string subject = "A New Budget Plan was added on the SpendWise Website ";
+
+
+                string body = $@"
+                            <html>
+                            <body>
+                            <img src='{imageDataUrl}' alt='Logo' />
+                            <p><strong>A new budget plan named '{budgetPlan.name}' has been added.</strong></p>
+                            <p>Description: {budgetPlan.description}</p>
+                            <p>The budget plan has <strong>{budgetPlan.noCategory}</strong> categories:</p>
+                            <ul>";
+
+
+                var categories = budgetPlan.category.Split(',');
+
+
+                foreach (var category in categories)
+                {
+                    body += $"<li>{category.Trim()}</li>";
+                }
+                body += "</ul></body></html>";
+
+
+
+                await this._emailSender.SendEmailAsync(emails, subject, body);
+            }
 
             return registerResult;
         }

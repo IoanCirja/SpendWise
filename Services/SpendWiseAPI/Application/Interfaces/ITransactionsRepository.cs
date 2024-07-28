@@ -20,5 +20,11 @@ namespace Application.Interfaces
         List<TransactionsInfo> GetSmallestTransactionCurrentPlan(Guid user_id);
         List<DateTime> GetDate(Guid monthlyPlan_id, string category, double Amount);
         List<Transactions> GetAllTransactionsForUser(Guid user_id);
+
+
+        List<Transactions> GetTransactionsForCategoryAndMonthlyPlan(string category, Guid id);
+
+
+
     }
 }
