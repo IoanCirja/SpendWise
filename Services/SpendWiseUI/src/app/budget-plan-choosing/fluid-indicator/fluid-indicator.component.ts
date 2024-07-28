@@ -29,8 +29,11 @@ export class FluidIndicatorComponent implements OnChanges, AfterViewInit {
         const displayValue = Math.round(this.value); // Ensure integer value
         progressElement.style.setProperty('--progress-value', `${displayValue}`);
         progressElement.dataset.value = `${displayValue}`;
-        if (this.value > 50) {
+        if (this.value >= 100) {
           progressElement.classList.add('progress--upper-half-value');
+        } else if (this.value > 50) {
+          progressElement.classList.add('progress--upper-half-value');
+          progressElement.classList.remove('progress--upper-half-value');
         } else {
           progressElement.classList.remove('progress--upper-half-value');
         }

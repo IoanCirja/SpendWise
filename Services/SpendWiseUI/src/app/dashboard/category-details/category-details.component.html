@@ -1,8 +1,8 @@
 <div class="container">
   <div>
     <button mat-icon-button (click)="goBack()" class="back-button">
-      go back  </button>
-      </div>
+return     </button>
+  </div>
 
   <mat-card class="details-card">
     <mat-card-header>
@@ -31,6 +31,22 @@
             <mat-option value="nameDesc">Name Descending</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+
+      <div class="category-summary">
+        <ng-container *ngIf="selectedCategory === 'all'; else specificCategory">
+          <app-fluid-indicator [value]="calculateAveragePercentage()"></app-fluid-indicator>
+          <div class="category-details">
+            <p>{{ calculateTotalSpent() }}/{{ calculateTotalAmount() }} &euro;</p>
+
+          </div>
+        </ng-container>
+        <ng-template #specificCategory>
+          <app-fluid-indicator [value]="getRoundedPercentage(selectedCategoryDetails?.spent ?? 0, selectedCategoryDetails?.price ?? 0)"></app-fluid-indicator>
+          <div class="category-details">
+            <p>{{ selectedCategoryDetails?.spent }}/{{ selectedCategoryDetails?.price }} &euro;</p>
+          </div>
+        </ng-template>
       </div>
 
       <table class="regular-table">

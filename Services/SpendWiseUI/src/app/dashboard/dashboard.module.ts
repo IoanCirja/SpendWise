@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+
+import { RouterModule } from '@angular/router'; 
+import { BaseChartDirective } from 'ng2-charts';
+
+
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CurrentPlanComponent } from './current-plan/current-plan.component';
@@ -25,6 +29,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { ChartData, ChartOptions } from 'chart.js';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 
 import { MatIcon } from '@angular/material/icon';
@@ -46,23 +52,29 @@ import { HistoryCategoryDetailsComponent } from './history-category-details/hist
     HistoryCategoryDetailsComponent,
     FluidIndicatorComponent
   ],
-    imports: [
-        CommonModule,
-        DashboardRoutingModule,
-        MatMenuModule,
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatDialogModule,
-        FormsModule,
-        MatFormFieldModule,
-        HttpClientModule,
-        MatToolbarModule,
-        RouterModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatSortModule
-    ]
+
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    MatMenuModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    BaseChartDirective,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    MatToolbarModule,
+    RouterModule,  
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule,
+    CanvasJSAngularChartsModule
+    
+    
+  ]
+
 })
 export class DashboardModule { }

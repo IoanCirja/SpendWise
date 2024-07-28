@@ -1,1 +1,55 @@
-<p>statistics works!</p>
+<div class="container">
+  <mat-card class="statistics-card">
+    <mat-card-header>
+      <mat-card-title>Statistics</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="statistics-layout">
+        <!-- Statistics Section -->
+        <div class="statistics-section">
+          <div class="statistics-item">
+            <h3>Most Used Plan:</h3>
+            <p>{{ statistics.mostUsedPlanName }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Biggest Transaction Forever:</h3>
+            <p>Name: {{ statistics.biggestTransactionNameForever }}</p>
+            <p>Amount: {{ statistics.biggestTransactionAmountForever | currency }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Smallest Transaction Forever:</h3>
+            <p>Name: {{ statistics.smallestTransactionNameForever }}</p>
+            <p>Amount: {{ statistics.smallestTransactionAmountForever | currency }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Biggest Transaction in Current Plan:</h3>
+            <p>Name: {{ statistics.biggestTransactionNameCurrentPlan }}</p>
+            <p>Amount: {{ statistics.biggestTransactionAmountCurrentPlan | currency }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Smallest Transaction in Current Plan:</h3>
+            <p>Name: {{ statistics.smallestTransactionNameCurrentPlan }}</p>
+            <p>Amount: {{ statistics.smallestTransactionAmountCurrentPlan | currency }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>First Category Full:</h3>
+            <p>{{ statistics.firstCategoryFull }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Total Money:</h3>
+            <p>{{ statistics.totalMoney | currency }}</p>
+          </div>
+          <div class="statistics-item">
+            <h3>Spend Money:</h3>
+            <p>{{ statistics.spendMoney | currency }}</p>
+          </div>
+        </div>
+        <!-- Chart Section -->
+        <div class="chart-section">
+          <h3>User Transactions</h3>
+          <canvasjs-chart [options]="chartOptions" style="width: 100%; height: 400px;"></canvasjs-chart>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

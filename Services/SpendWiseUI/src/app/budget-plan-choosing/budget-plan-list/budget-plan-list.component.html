@@ -37,7 +37,7 @@
 </div>
 
 <div class="card-container">
-  <app-budget-plan-card
+<app-budget-plan-card
     *ngFor="let plan of getDisplayedPlans()"
     [plan_id]="plan.plan_id"
     [name]="plan.name"
@@ -45,9 +45,11 @@
     [noCategory]="plan.noCategory"
     [category]="plan.category"
     [image]="plan.image"
-    [creationDate]="plan.creationDate"  
-    [created_by]="plan.created_by">
-  </app-budget-plan-card>
+    [creationDate]="plan.creationDate"
+    [created_by]="plan.created_by"
+    (planChanged)="loadBudgetPlans()">
+</app-budget-plan-card>
+
 </div>
 
 <div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">

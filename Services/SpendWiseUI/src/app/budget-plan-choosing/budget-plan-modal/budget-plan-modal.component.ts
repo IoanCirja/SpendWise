@@ -5,6 +5,7 @@ import { AccountService } from '../../auth/account.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CurrentPlanService } from 'src/app/dashboard/services/current-plan.service';
+
 export interface DialogData {
   plan_id: string;
   name: string;
@@ -26,7 +27,7 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
   userId: string | null = null;
   subscriptions: Subscription[] = [];
   currentPlanExists: boolean = false;
-  errorMessage: string | null = null; // Added property for error message
+  errorMessage: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<BudgetPlanModalComponent>,
@@ -72,7 +73,8 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
 
   savePlan(): void {
     if (!this.userId) {
-      console.error('User ID not found. Unable to save budget plan.');
+      this.dialogRef.close();
+      this.router.navigate(['/auth/login']);
       return;
     }
 
@@ -87,7 +89,6 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
       this.errorMessage = 'Each category needs to be funded with at least 30€';
       return;
     }
-
 
     this.errorMessage = null; // Clear any previous error message
 
