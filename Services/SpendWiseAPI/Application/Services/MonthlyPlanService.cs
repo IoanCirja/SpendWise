@@ -18,7 +18,7 @@ namespace Application.Services
         public async Task<bool> AddMonthlyPlans(MonthlyPlan monthlyPlan)
         {
             var result = _monthlyPlanRepository.VerifyUserHasPlanActive(monthlyPlan.user_id);
-            if(result == false )
+            if(result == true )
             {
                 throw new Exception("User already have a current plan active");
             }

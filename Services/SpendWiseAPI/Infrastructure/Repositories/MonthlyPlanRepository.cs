@@ -108,9 +108,9 @@ namespace Infrastructure.Repositories
         }
         public bool VerifyUserHasPlanActive(Guid user_id)
         {
-            var query = "SELECT [name] from [SpendWise].[MonthlyPlan] WHERE [user_id]=@UserID and [status]='In Progress';";
+            var query = "SELECT [monthlyPlan_id] from [SpendWise].[MonthlyPlan] WHERE [user_id]=@UserID and [status]='In Progress';";
             var connection = _databaseContext.GetDbConnection();
-            var result = connection.Query<string>(query,new { UserID = user_id }).ToList();
+            var result = connection.Query<Guid>(query,new { UserID = user_id }).ToList();
             if (result.Count()>0)
             {
                 return true;

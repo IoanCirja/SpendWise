@@ -11,8 +11,8 @@ namespace Application.Services
 {
     public class NewsLetterService
     {
-        private INewsletterRepository _newsletterRepository;
-        private IEmailSender _emailSender;
+        private readonly INewsletterRepository _newsletterRepository;
+        private readonly IEmailSender _emailSender;
         public NewsLetterService(INewsletterRepository newsletterRepository, IEmailSender emailSender)
         {
             this._newsletterRepository = newsletterRepository;
