@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { CreateBudgetPlanService } from '../services/create-budget-plan-service';
 import {Subscription} from "rxjs";
 import {AccountService} from "../../auth/account.service";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-create-budget-plan-modal',
@@ -13,8 +14,8 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
   newPlan = {
     name: '',
     description: '',
-    imagine: '', 
-    categories: [{ name: '' }] 
+    imagine: '',
+    categories: [{ name: '' }]
   };
   userId: string | null = null;
   subscriptions: Subscription[] = [];
@@ -64,7 +65,7 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
 
     this.createBudgetPlanService.createBudgetPlan(planData).subscribe({
       next: () => {
-        this.dialogRef.close(true); 
+        this.dialogRef.close(true);
       },
       error: err => {
         console.error('Error creating budget plan:', err);
@@ -86,4 +87,6 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
       subscription.unsubscribe()
     );
   }
+
+    protected readonly faTrash = faTrash;
 }

@@ -2,6 +2,7 @@ import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditPlanService } from '../services/edit-budget-plan.service';
 import { DeletePlanService } from '../services/delete-budget-plan.service';
+import {faCoffee, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-edit-plan-modal',
@@ -9,6 +10,8 @@ import { DeletePlanService } from '../services/delete-budget-plan.service';
   styleUrls: ['./edit-plan-modal.component.scss']
 })
 export class EditPlanModalComponent {
+  faTrash = faTrash;
+
   plan: any = {
     name: '',
     description: '',
@@ -58,7 +61,7 @@ export class EditPlanModalComponent {
       this.validateForm();
       return;
     }
-    
+
     const updatedPlan = {
       name: this.plan.name,
       description: this.plan.description,

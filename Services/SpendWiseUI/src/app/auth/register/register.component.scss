@@ -70,8 +70,20 @@ body {
   cursor: pointer;
   height: 44px;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
 }
 
 .register-container button:hover {
   opacity: 0.8;
+}
+
+.login-button {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: transparent !important;
+  color: #2A6F2C !important;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  cursor: pointer;
 }

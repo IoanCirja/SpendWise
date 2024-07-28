@@ -26,13 +26,14 @@ body {
   border-radius: 7px;
 
   input[placeholder="First name"] {
-    width: 150px;
+    width: 145px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
   }
 
   input[placeholder="Last name"] {
-    width: 150px;
+    width: 145px;
     padding: 10px;
     margin-bottom: 10px;
   }
@@ -86,6 +87,7 @@ body {
   height: 44px;
   width: 165px;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
 }
 
 .contact-us-container button:hover {

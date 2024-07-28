@@ -9,6 +9,7 @@
 <body>
 <div class="flex-container">
   <h1>Meet Our Team</h1>
+  <p class="intro-text">We thought of the countless times we've struggled to keep our expenses in check and realized the need for a smarter solution. That’s why we created Spendwise, an innovative application designed to help you take control of your finances like never before. With Spendwise, tracking your spending and managing your budget has never been easier or more efficient.</p>
   <div class="team-members">
     <mat-card *ngFor="let member of members" class="team-member">
       <img mat-card-image [src]="member.imageUrl" [alt]="member.name">
@@ -21,3 +22,4 @@
 </div>
 </body>
 </html>
+

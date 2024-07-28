@@ -44,9 +44,7 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 7px;
-
   border: 1px solid #d9d9d9;
-
   color: #043F2D;
 }
 
@@ -61,6 +59,7 @@ body {
   height: 44px;
   width: 155px;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
 }
 
 .login-container button:hover {
@@ -71,4 +70,15 @@ body {
   margin-bottom: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D
+}
+
+.sign-up-button {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: transparent !important;
+  color: #2A6F2C !important;
+  font-weight: bold;
+}
+
+.sign-up-button:hover {
+  cursor: pointer;
 }
