@@ -17,8 +17,9 @@ namespace TestSpendWise.Pages
         }
 
         //locators
-        private IWebElement LogInButton => browser.FindElement(By.ClassName("log-in"));
-        private IWebElement LogOutButton => browser.FindElement(By.ClassName("log-out"));
+        private IWebElement LogInButton => browser.FindElement(By.Id("login"));
+        private IWebElement LogOutButton => browser.FindElement(By.Id("logout"));
+/*        private IWebElement LogOutB => browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);*/
 
 
         //methods
@@ -30,6 +31,7 @@ namespace TestSpendWise.Pages
         }
         public HomePage LogOut()
         {
+            
             LogOutButton.Click();
 
             return new HomePage(browser);
@@ -37,9 +39,9 @@ namespace TestSpendWise.Pages
 
         public bool IsUserLoggedIn()
         {
+
             return LogOutButton.Displayed;
         }
-
 
     }
 }
