@@ -29,9 +29,11 @@ namespace Application.Services
             if (result == true)
             {
                 var emails = _authenticationRepository.GetAdminEmail();
-                string subject = "A new contact us form has been completed.";
-                string urlLogo = "https://i.postimg.cc/HntvP2Pk/logo.png";
-                string body = $@"
+                if (emails.Count() != 0)
+                {
+                    string subject = "A new contact us form has been completed.";
+                    string urlLogo = "https://i.postimg.cc/HntvP2Pk/logo.png";
+                    string body = $@"
                                 <html>
                                     <body>
                                         <img src='{urlLogo}' alt='Logo' />
@@ -43,7 +45,12 @@ namespace Application.Services
                                     <body>
                                 <html>
                                ";
-                await _emailSender.SendEmailAsync(emails, subject, body);
+                    await _emailSender.SendEmailAsync(emails, subject, body);
+                }
+                else
+                {
+                    throw new Exception("don't have user with role admin");
+                }
             }
             return result;
         }
