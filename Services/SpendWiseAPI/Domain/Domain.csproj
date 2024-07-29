@@ -17,10 +17,4 @@
     <PackageReference Include="itext.bouncy-castle-adapter" Version="8.0.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="logo_light.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
