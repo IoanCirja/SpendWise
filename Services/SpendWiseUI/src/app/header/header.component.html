@@ -21,7 +21,7 @@
 
       <img src="assets/profile.svg" alt="User Image" height="40" />
       <span *ngIf="user">{{ user.name }}</span>
-      <a mat-button (click)="logout()">Log Out</a>
+      <a mat-button (click)="logout()" class="log-out">Log Out</a>
     </div>
   </ng-template>
 </mat-toolbar>
