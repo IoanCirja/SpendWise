@@ -1,42 +1,61 @@
-mat-dialog-content {
+.mat-dialog-content {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
 
-  .category-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
+.green-stripe {
+  height: 60px;
+  background-color: #2A6F2C; /* Green color */
+  width: 100%; /* Span the entire width */
+  position: relative; /* Allows positioning of the close button inside it */
+}
 
-  .categories-section {
-    margin-top: 16px;
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px; /* Distance from the right edge */
+  transform: translateY(-50%); /* Center vertically */
+  color: #FCFCF9; /* White color for the 'X' button */
+  background-color: transparent; /* Transparent background initially */
+  border: 2px solid transparent; /* No border initially */
+  border-radius: 50%; /* Round shape for the background on hover */
+  width: 24px; /* Size of the button */
+  height: 24px; /* Size of the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s, border 0.3s; /* Smooth transitions */
+}
 
-    h3 {
-      margin: 0;
-      padding-bottom: 4px;
-      border-bottom: 2px solid #3f51b5;
-    }
+.close-btn:hover {
+  color: #2A6F2C; /* Green color for the 'X' button on hover */
+  background-color: #FCFCF9; /* White background on hover */
+  border-color: #FCFCF9; /* White border on hover */
+}
 
-    .category-row {
-      margin-bottom: 8px;
-    }
+.categories-section, .general-details-section {
+  margin-top: 16px;
+}
 
-    button[mat-icon-button] {
-      margin-left: 8px;
-    }
-  }
+.categories-header, .general-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #3f51b5;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 mat-form-field {
   width: 100%;
-}
-
-mat-dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
 }
 
 mat-raised-button {
@@ -47,23 +66,22 @@ mat-label {
   font-weight: bold;
 }
 
-.cancel-create{
+.cancel-create {
   color: #2A6F2C !important;
 }
 
-.cancel-create:hover{
+.cancel-create:hover {
   background-color: #ee0000 !important;
   color: #FCFCF9 !important;
 }
 
-/* Add these styles to your component's CSS file */
 .delete-category-button {
   color: inherit; /* Ensures the default color is inherited */
   cursor: pointer; /* Changes the cursor to a pointer */
 }
 
 .delete-category-button:hover {
-  color: red; /* Changes the icon color to red on hover */
+  color: #D60707; /* Changes the icon color to red on hover */
 }
 
 .delete-btn {
@@ -71,22 +89,40 @@ mat-label {
   color: #2A6F2C !important;
   font-size: 1.2em;
   padding: 10px 20px;
-  flex: 1;
+  width: 130px;
   text-align: center;
 }
 
 .delete-btn:hover {
-  background-color: #ee0000 !important;
+  background-color: #D60707 !important;
   color: #FCFCF9 !important;
+}
+
+.dialog-title {
+  font-size: 32px;
+  margin-top: 32px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.dialog-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end; /* Aligns the buttons at the end of the line */
+  gap: 8px;
 }
 
 .save-btn {
   color: #fff !important;
   background-color: #2A6F2C !important;
-
   font-size: 1.2em;
   padding: 10px 20px;
-  flex: 1;
+  width: 130px;
   text-align: right;
 }
 
@@ -94,25 +130,26 @@ mat-label {
   color: #2A6F2C !important;
   font-size: 1.2em;
   padding: 10px 20px;
-  flex: 1;
+  width: 130px;
   text-align: left;
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .cancel-btn:hover {
-  background-color: #ee0000 !important;
+  background-color: #D60707 !important; 
   color: #FCFCF9 !important;
 }
 
-.add-category{
-  color: #2A6F2C !important;
-  font-size: 1.2em;
-  padding: 10px 20px;
-  flex: 1;
-  text-align: left;
+.add-category {
+  font-size: 24px;
+  padding: 9px 18px;
+  background-color: #2A6F2C !important;
+  color: #FCFCF9 !important;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .add-category:hover {
-  background-color: #2A6F2C !important;
-  color: #FCFCF9 !important;
-
+  background-color: #409743 !important;
+  transition: background-color 0.3s, color 0.3s;
 }

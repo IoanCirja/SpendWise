@@ -45,10 +45,10 @@ body {
   background: none !important;
   border: none;
   cursor: pointer;
-  border-radius: 7px;
+  border-radius: 50%;
   transition: background-color 0.3s, color 0.3s;
-  width: 135px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,7 @@ body {
 
 .no-plans-message {
   padding: 16px;
-  color: #f44336; // Red color to indicate alert
+  color: #f44336; 
   text-align: center;
   font-size: 16px;
   font-weight: bold;

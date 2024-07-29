@@ -71,7 +71,7 @@ export class EditPlanModalComponent {
     };
     this.editPlanService.updatePlan(this.data.plan.id, updatedPlan).subscribe({
       next: () => {
-        this.planChanged.emit(); // Emit the event after successful save
+        this.planChanged.emit(); 
         this.dialogRef.close(true);
       },
       error: err => {
@@ -90,7 +90,7 @@ export class EditPlanModalComponent {
       if (result) {
         this.deletePlanService.deletePlan(this.data.plan.id).subscribe({
           next: () => {
-            this.planChanged.emit(); // Emit the event after successful delete
+            this.planChanged.emit(); 
             this.dialogRef.close(true);
           },
           error: err => {
@@ -102,7 +102,6 @@ export class EditPlanModalComponent {
   }
 }
 
-// Add a component for the confirmation dialog inside the same file
 
 @Component({
   selector: 'delete-confirmation-dialog',

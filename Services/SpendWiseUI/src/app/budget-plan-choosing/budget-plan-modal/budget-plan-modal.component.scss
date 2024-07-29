@@ -1,9 +1,33 @@
-.custom-dialog-container {
-  .mat-dialog-container {
-    width: 80vw;
-    max-width: 1000px;
-    min-width: 600px;
-  }
+.green-stripe {
+  height: 60px;
+  background-color: #2A6F2C;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.close-btn {
+  color: #FCFCF9;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #2A6F2C;
+  background-color: #FCFCF9;
+  border-color: #FCFCF9;
 }
 
 mat-dialog-title {
@@ -11,8 +35,20 @@ mat-dialog-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #043F2D;
-  padding-bottom: 10px;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-top: 20px;
 }
 
 mat-dialog-content {
@@ -21,23 +57,23 @@ mat-dialog-content {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
+}
 
-  .text-content {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+mat-dialog-content .text-content {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  .category-inputs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+mat-dialog-content .category-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 
-  mat-form-field {
-    width: 100%;
-  }
+mat-dialog-content mat-form-field {
+  width: 100%;
 }
 
 mat-dialog-actions {
@@ -62,18 +98,11 @@ mat-dialog-actions button {
   text-align: center;
   font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif;
-
-  &:hover {
-    background-color: #2A6F2C !important;
-    color: #fcfcf9 !important;
-  }
 }
 
-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 4px;
-  margin-top: 10px;
+mat-dialog-actions button:hover {
+  background-color: #2A6F2C !important;
+  color: #fcfcf9 !important;
 }
 
 .error-message {
@@ -82,7 +111,7 @@ img {
   margin-top: 1rem;
 }
 
-.cancel-chose{
+.cancel-chose {
   color: #2A6F2C !important;
 }
 
@@ -91,13 +120,12 @@ img {
   color: #FCFCF9 !important;
 }
 
-.go-to-current-plan{
+.go-to-current-plan {
   background-color: transparent !important;
   color: #2A6F2C !important;
 }
 
-.go-to-current-plan:hover{
+.go-to-current-plan:hover {
   background-color: #2A6F2C !important;
   color: #FCFCF9 !important;
 }
-

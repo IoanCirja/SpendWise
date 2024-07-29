@@ -83,7 +83,7 @@ export class BudgetPlanCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.planChanged.emit(); // Emit the event after editing the plan
+        this.planChanged.emit(); 
       }
     });
   }

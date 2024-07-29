@@ -82,3 +82,8 @@ body {
 .sign-up-button:hover {
   cursor: pointer;
 }
+a{text-decoration: underline;}
+.error-message{
+  color: red;
+  margin-bottom: 8px;
+}

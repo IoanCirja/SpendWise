@@ -10,7 +10,7 @@ export class FluidIndicatorComponent implements OnChanges, AfterViewInit {
   @ViewChild('progressElement', { static: false }) progressElement!: ElementRef<HTMLDivElement>;
 
   ngAfterViewInit(): void {
-    this.updateProgress(); // Ensure the progress is updated when the view initializes
+    this.updateProgress(); 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -22,7 +22,6 @@ export class FluidIndicatorComponent implements OnChanges, AfterViewInit {
   updateProgress(): void {
     console.log('Updating progress with value:', this.value);
 
-    // Add a short delay to allow the view to fully initialize
     setTimeout(() => {
       if (this.progressElement) {
         const progressElement = this.progressElement.nativeElement;

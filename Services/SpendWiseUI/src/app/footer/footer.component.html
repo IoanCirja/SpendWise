@@ -27,19 +27,19 @@
 
         <div class="right">
             <div class="footer-section newsletter">
-                <div class="newsletter-container">
-                    <h4 class="newsletter-title">Join Us</h4>
-                    <div class="button-group">
-                        <button class="submit" (click)="subscribeToNewsletter()" mat-raised-button color="primary">Submit</button>
-                        <button color="primary" class="sign_up" (click)="redirectToRegister()">Sign Up</button>
-                    </div>
+              <div class="newsletter-container">
+                <h4 class="newsletter-title">Join Us</h4>
+                <div class="button-group">
+                  <button class="submit" (click)="subscribeToNewsletter()" mat-raised-button color="primary">Submit</button>
+                  <button color="primary" class="sign_up" (click)="redirectToRegister()">Sign Up</button>
                 </div>
-                <form [formGroup]="newsLetterForm" class="email" (ngSubmit)="subscribeToNewsletter()">
-                    <input type="email" id="email" placeholder="exemple@gmail.com" formControlName="email" name="email" required>
-                </form>
-                <div *ngIf="subscriptionSuccess" class="thank-you">
-                    <p>Thank you for subscribing!</p>
-                </div>
+              </div>
+              <form [formGroup]="newsLetterForm" class="email" (ngSubmit)="subscribeToNewsletter()">
+                <input type="email" id="email" placeholder="example@gmail.com" formControlName="email" name="email" required>
+              </form>
+              <div *ngIf="subscriptionMessage" class="subscription-message" [ngClass]="{'error': subscriptionError, 'success': !subscriptionError}">
+                <p>{{subscriptionMessage}}</p>
+              </div>
             </div>
 
             <div class="footer-section contact-info">

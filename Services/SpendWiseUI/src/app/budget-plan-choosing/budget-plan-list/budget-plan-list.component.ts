@@ -154,7 +154,7 @@ export class BudgetPlanListComponent implements OnInit {
   openCreateDialog(): void {
     if (this.isAdmin) {
       const dialogRef = this.dialog.open(CreateBudgetPlanModalComponent, {
-        width: '500px',
+        width: '800px',
         disableClose: true
       });
 

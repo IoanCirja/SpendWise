@@ -1,7 +1,6 @@
 <div class="header-container">
   <div class="header-left">
     <span>Choose a Budget Plan for this Month</span>
-    <!-- Conditionally render the create button -->
     <button class="details-button" *ngIf="isAdmin" (click)="openCreateDialog()">+</button>
   </div>
   <div class="header-middle">
@@ -29,7 +28,6 @@
       </mat-select>
     </mat-form-field>
     
-    <!-- Add a checkbox for admin users to filter their own plans -->
 <mat-checkbox *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
   Show My Plans Only
 </mat-checkbox>

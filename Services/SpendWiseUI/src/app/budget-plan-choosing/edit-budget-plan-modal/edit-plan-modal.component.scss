@@ -46,14 +46,13 @@ mat-label {
   font-weight: bold;
 }
 
-/* Add these styles to your component's CSS file */
 .delete-category-button {
-  color: inherit; /* Ensures the default color is inherited */
-  cursor: pointer; /* Changes the cursor to a pointer */
+  color: inherit;
+  cursor: pointer;
 }
 
 .delete-category-button:hover {
-  color: red; /* Changes the icon color to red on hover */
+  color: red;
 }
 
 .cancel-btn {
@@ -64,7 +63,7 @@ mat-label {
   text-align: left;
 }
 
-.add-category{
+.add-category {
   color: #2A6F2C !important;
   font-size: 1.2em;
   padding: 10px 20px;
@@ -75,7 +74,6 @@ mat-label {
 .add-category:hover {
   background-color: #2A6F2C !important;
   color: #FCFCF9 !important;
-
 }
 
 .cancel-btn:hover {
@@ -100,7 +98,6 @@ mat-label {
 .save-btn {
   color: #fff !important;
   background-color: #2A6F2C !important;
-
   font-size: 1.2em;
   padding: 10px 20px;
   flex: 1;

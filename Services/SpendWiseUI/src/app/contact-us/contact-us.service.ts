@@ -10,8 +10,7 @@ export class ContactUsService {
 
   constructor(private http: HttpClient) {}
 
-  contactUs(data: any): Observable<any> {
-    return this.http.post<any>(this.endPoint, data);
+  contactUs(data: any): Observable<string> {
+    return this.http.post<string>(this.endPoint, data, { responseType: 'text' as 'json' });
   }
-
 }

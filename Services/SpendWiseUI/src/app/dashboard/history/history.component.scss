@@ -9,93 +9,93 @@
 .plan-card, .category-card {
   flex: 1;
   min-width: 0;
-  border-radius: 7px; /* Rounded corners */
-  margin: 20px; /* Adds space around the cards */
-  padding: 20px; /* Adds padding inside the cards */
-  font-size: 1.2rem; /* Makes the text bigger */
-  color: #043F2D; /* Text color */
-  min-width: 300px; /* Minimum size for the cards */
-  background-color: #FCFCF9 !important; /* Set background color */
-  position: relative; /* Needed for positioning the floating indicator */
+  border-radius: 7px;
+  margin: 20px;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #043F2D;
+  min-width: 300px;
+  background-color: #FCFCF9 !important;
+  position: relative;
 }
 
 .plan-card {
-  margin-bottom: 20px; /* Adds space between the plan card and the category card */
+  margin-bottom: 20px;
 }
 
 .plan-card img {
-  width: 50px; /* Set width to 50px */
-  height: 50px; /* Set height to 50px */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  margin-right: 20px; /* Adds space between the image and the text */
-  margin-left: 20px; /* Optional: Adds space to the left of the image */
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .plan-card mat-card-title {
-  font-size: 2rem; /* Makes the title bigger */
-  line-height: 50px; /* Aligns the title vertically with the image */
+  font-size: 2rem;
+  line-height: 50px;
 }
 
 .mat-card-actions {
   display: flex;
-  justify-content: space-between; /* Align items on the same line */
-  align-items: center; /* Center align items vertically */
-  margin-top: 20px; /* Add some space at the top */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .mat-card-actions p {
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
 
 .plan-card .cancel-button {
   background: none;
   border: none;
   border-radius: 7px;
-  color: #043F2D; /* Text color */
+  color: #043F2D;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 10px 20px; /* Adds padding for better click area */
-  transition: background-color 0.3s, color 0.3s, width 0.3s, height 0.3s; /* Adds animation */
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, height 0.3s;
 }
 
 .plan-card .cancel-button:hover {
-  background-color: #ee0000; /* Red background */
-  color: #FCFCF9; /* Text color */
+  background-color: #ee0000;
+  color: #FCFCF9;
   text-align: center;
 }
 
 .category-card .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px; /* Increase the gap between category items */
-  justify-content: center; /* Center the categories */
+  gap: 30px;
+  justify-content: center;
 }
 
 .category-card .category-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; /* Increase gap between button and progress circle */
-  width: 120px; /* Adjust width as needed */
+  gap: 15px;
+  width: 120px;
 }
 
 .category-card .category-button {
-  font-size: 16px; /* Increase text size to 16px */
-  color: #043F2D; /* Initial text color */
-  background: none; /* No background initially */
-  border: none; /* Remove border initially */
-  border-radius: 5px; /* Rounded corners */
-  padding: 12px; /* Increase padding inside the button */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition for background and text color, and transformation */
-  width: 140px; /* Fixed width for consistency */
-  text-align: center; /* Center text within button */
-  transform: translateX(-5px); /* Move button 5px to the left */
+  font-size: 16px;
+  color: #043F2D;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  width: 140px;
+  text-align: center;
+  transform: translateX(-5px);
 }
 
 .category-card .category-button:hover {
-  background-color: #043F2D; /* Background color on hover */
-  color: #FCFCF9; /* Text color on hover */
+  background-color: #043F2D;
+  color: #FCFCF9;
 }
 
 .category-card .progress-circle {
@@ -106,12 +106,12 @@
 }
 
 .category-card mat-progress-spinner {
-  width: 60px; /* Increase width of spinner */
-  height: 60px; /* Increase height of spinner */
+  width: 60px;
+  height: 60px;
 }
 
 .category-card .percentage-text {
-  font-size: 1.5rem; /* Increase font size to 1.5rem */
+  font-size: 1.5rem;
 }
 
 .no-plan-message {
@@ -121,17 +121,17 @@
   text-align: center;
   height: 100%;
   font-family: 'Roboto Condensed', sans-serif;
-  color: #043F2D; /* Text color */
-  font-size: 1.2rem; /* Makes the text bigger */
+  color: #043F2D;
+  font-size: 1.2rem;
   min-height: 30vw;
 }
 
 .floating-indicator-wrapper {
   position: absolute;
-  top: -40px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
-  width: 100px; /* Width of the indicator */
-  height: 100px; /* Height of the indicator */
+  top: -40px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,22 +139,22 @@
 
 .category-header {
   display: flex;
-  justify-content: space-between; /* Ensure space between title and button */
-  align-items: center; /* Center align items vertically */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .history-details-button {
-  background: none; /* No background initially */
-  border: none; /* No border initially */
-  color: #043F2D; /* Initial text color */
-  cursor: pointer; /* Change cursor to pointer */
-  padding: 10px 20px; /* Padding for better click area */
-  font-size: 1.2rem; /* Font size */
-  border-radius: 7px; /* Rounded corners */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  background: none;
+  border: none;
+  color: #043F2D;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .history-details-button:hover {
-  background-color: #043F2D; /* Green background on hover */
-  color: #FCFCF9; /* Text color on hover */
+  background-color: #043F2D;
+  color: #FCFCF9;
 }

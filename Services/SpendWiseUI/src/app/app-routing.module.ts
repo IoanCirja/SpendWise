@@ -9,7 +9,7 @@ import { CategoryDetailsComponent } from './dashboard/category-details/category-
 import { HistoryComponent } from './dashboard/history/history.component';
 import { ManagePlansComponent } from './dashboard/manage-plans/manage-plans.component';
 import {HomeComponent} from "./home/home.component";
-
+import { MatCard } from '@angular/material/card';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },

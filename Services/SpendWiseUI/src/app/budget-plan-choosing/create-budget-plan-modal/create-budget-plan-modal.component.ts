@@ -1,16 +1,16 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateBudgetPlanService } from '../services/create-budget-plan-service';
-import {Subscription} from "rxjs";
-import {AccountService} from "../../auth/account.service";
-import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import { Subscription } from "rxjs";
+import { AccountService } from "../../auth/account.service";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-create-budget-plan-modal',
   templateUrl: './create-budget-plan-modal.component.html',
   styleUrls: ['./create-budget-plan-modal.component.scss']
 })
-export class CreateBudgetPlanModalComponent implements OnDestroy{
+export class CreateBudgetPlanModalComponent implements OnDestroy {
   newPlan = {
     name: '',
     description: '',
@@ -19,6 +19,7 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
   };
   userId: string | null = null;
   subscriptions: Subscription[] = [];
+  errorMessage: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<CreateBudgetPlanModalComponent>,
@@ -49,8 +50,15 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
   }
 
   onSave(): void {
+    this.errorMessage = null; // Reset the error message
+
+    if (this.isFormInvalid()) {
+      this.errorMessage = 'All fields must be filled out and have at least 3 characters.';
+      return;
+    }
+
     if (!this.userId) {
-      console.error('User ID not found. Unable to create budget plan.');
+      this.errorMessage = 'User ID not found. Unable to create budget plan.';
       return;
     }
 
@@ -68,9 +76,25 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
         this.dialogRef.close(true);
       },
       error: err => {
-        console.error('Error creating budget plan:', err);
+        this.errorMessage = 'Error creating budget plan: ' + err.message;
       }
     });
+  }
+
+  isFormInvalid(): boolean {
+    if (!this.newPlan.name || this.newPlan.name.length < 3 ||
+        !this.newPlan.description || this.newPlan.description.length < 3 ||
+        !this.newPlan.imagine || this.newPlan.imagine.length < 3) {
+      return true;
+    }
+
+    for (const category of this.newPlan.categories) {
+      if (!category.name || category.name.length < 3) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   loadCurrentUser(): void {
@@ -78,7 +102,7 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
       if (currentUser) {
         this.userId = currentUser.id;
       }
-    })
+    });
     this.subscriptions.push(subscription);
   }
 
@@ -88,5 +112,5 @@ export class CreateBudgetPlanModalComponent implements OnDestroy{
     );
   }
 
-    protected readonly faTrash = faTrash;
+  protected readonly faTrash = faTrash;
 }
