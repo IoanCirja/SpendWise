@@ -9,6 +9,7 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   color: #043F2D;
   background: linear-gradient(180deg, #FCFCF9 0%, #E8FFDD 100%);
+  position:relative;
 }
 
 .flex-container {
@@ -16,6 +17,10 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.flex-container h1{
+  font-size: 40px;
 }
 
 .flex-container .team-members {
@@ -27,8 +32,8 @@ body {
 }
 
 .flex-container .team-member {
-  width: 17%; /* Adjusted width to fit 3 cards in one row */
-  height: 450px; /* Increased height to fit the description */
+  width: 17%;
+  height: 500px;
   background-color: #FCFCF9;
   border-radius: 7px;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -54,14 +59,16 @@ body {
 
 .flex-container .team-member .description {
   margin-top: 5px;
-  font-size: 0.9em;
+  font-size: 18px;
   color: #043F2D;
+  line-height: 26px;
 }
 
 .flex-container .team-member .name {
   font-size: 1.28571429em;
   font-weight: 700;
-  line-height: 1.2857em;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .flex-container:hover .team-member:hover img {
@@ -77,8 +84,17 @@ body {
 }
 
 .intro-text {
-  text-align: left;
+  text-align: center;
   width: 50%;
   margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.version{
+  position: absolute;
+  bottom: -12px;
+  right: 10px;
+  font-size: 18px;
 }
 
