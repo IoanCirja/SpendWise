@@ -50,7 +50,7 @@ export class CreateBudgetPlanModalComponent implements OnDestroy {
   }
 
   onSave(): void {
-    this.errorMessage = null; // Reset the error message
+    this.errorMessage = null; 
 
     if (this.isFormInvalid()) {
       this.errorMessage = 'All fields must be filled out and have at least 3 characters.';

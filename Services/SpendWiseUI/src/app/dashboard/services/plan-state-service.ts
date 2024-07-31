@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MonthlyPlan } from '../models/MonthlyPlan';
 
-// plan-state.service.ts
 
 @Injectable({
   providedIn: 'root'

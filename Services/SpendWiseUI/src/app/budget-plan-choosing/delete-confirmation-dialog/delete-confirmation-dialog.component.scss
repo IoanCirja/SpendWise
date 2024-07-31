@@ -1,0 +1,79 @@
+
+.mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .green-stripe {
+    height: 60px;
+    background-color: #2A6F2C;
+    width: 100%;
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    color: #FCFCF9;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+  }
+  
+  .close-btn:hover {
+    color: #2A6F2C;
+    background-color: #FCFCF9;
+    border-color: #FCFCF9;
+    border-radius: 50%;
+  }
+  
+  .dialog-title {
+    font-size: 32px;
+    margin-top: 32px;
+  }
+  
+  .dialog-content {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .dialog-actions {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .delete-btn {
+    color: #043F2D !important; 
+    font-size: 1.2em;
+    padding: 10px 20px;
+    width: 130px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 7px; 
+
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d60707 !important; 
+    color: #FCFCF9 !important; 
+
+}
+p{font-size: 32px;
+font-weight: bold;
+color:#043F2D;
+line-height: normal;}
+span{
+    color: #043F2D;
+}
+  

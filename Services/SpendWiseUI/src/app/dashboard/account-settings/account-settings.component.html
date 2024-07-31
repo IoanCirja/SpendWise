@@ -1,9 +1,11 @@
-<!-- src/app/components/account-settings/account-settings.component.html -->
 <div class="account-settings">
-    <mat-card class="account-settings-content">
+  <div class="header-card-container">
+    <div class="account-settings-header">
       <h2>Account Settings</h2>
+    </div>
+    <mat-card class="account-settings-content">
       <div class="personal-information-section">
-        <h3>Personal Information</h3>
+        <span class="section-heading"><b>Personal Information</b></span>
         <form class="personal-information" [formGroup]="personalInformationForm">
           <section class="name-phone">
             <div class="name">
@@ -26,7 +28,7 @@
             </mat-form-field>
           </div>
         </form>
-        <h3>Change Password</h3>
+        <h3 class="section-heading">Change Password</h3>
         <form class="change-password" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
           <div class="current-password">
             <mat-form-field appearance="fill">
@@ -46,9 +48,11 @@
               <input matInput type="password" formControlName="confirmNewPassword" placeholder="Confirm new password">
             </mat-form-field>
           </div>
-          <button type="submit" mat-raised-button color="primary">Change Password</button>
+          <div class="button-container">
+            <button type="submit" mat-raised-button color="primary">Change Password</button>
+          </div>
         </form>
       </div>
     </mat-card>
   </div>
-  
+</div>

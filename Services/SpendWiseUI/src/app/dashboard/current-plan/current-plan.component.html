@@ -1,46 +1,47 @@
 <div class="container">
-  <!-- Plan Card -->
   <mat-card class="plan-card" *ngIf="currentPlan">
-    <mat-card-header style="display: flex; align-items: center;">
+    <mat-card-header id="firstcard"style="display: flex; align-items: center; ">
       <img mat-card-image [src]="currentPlan.image" alt="{{ currentPlan.plan_name }}">
-      <mat-card-title>{{ currentPlan.plan_name }}</mat-card-title>
+      <mat-card-title><b>{{ currentPlan.plan_name }}</b></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>{{ currentPlan.description }}</p>
       <div class="mat-card-actions">
         <button class="cancel-button" (click)="openCancelDialog()">Cancel Your Current Plan</button>
-        <button class="export-button" (click)="exportPlan()">Export Plan</button>
+        <div>
+          <ng-container *ngIf="hasCurrentPlan$ | async">
+            <button id="transaction" color="primary" (click)="openTransactionModal()">Add Transaction</button>
+          </ng-container>
+          <button class="export-button" (click)="exportPlan()">Export Plan</button>
+
+        </div>
       </div>
     </mat-card-content>
     <div class="floating-indicator-wrapper">
       <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
-      <div class="category-details">{{ totalSpent }}/{{ currentPlan.totalAmount }} &euro;</div>
+      <div class="category-details"><b>{{ totalSpent }}/{{ currentPlan.totalAmount }} &euro;</b></div>
     </div>
   </mat-card>
 
-  <!-- Categories Card -->
   <mat-card class="category-card" *ngIf="currentPlan">
     <mat-card-header style="display: flex; justify-content: space-between; align-items: center;">
-      <mat-card-title>Categories</mat-card-title>
+      <mat-card-title id ="categories"><b>Categories</b></mat-card-title>
       <button class="view-transactions-button" (click)="goToDetails()">View Transactions</button>
-      <ng-container *ngIf="hasCurrentPlan$ | async">
-        <button mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
-      </ng-container>
+
     </mat-card-header>
     <mat-card-content>
       <div class="categories">
         <div *ngFor="let category of categoriesWithDetails; let i = index" class="category-item">
           <button class="category-button" (click)="openCategoryDetails(category.name)">
-            {{ category.name }}
+            <b>{{ category.name }}</b>
           </button>
           <app-fluid-indicator [value]="getRoundedPercentage(category.spent, category.price)"></app-fluid-indicator>
-          <div class="category-details">{{ category.spent }}/{{ category.price }} &euro;</div>
+          <div class="category-details"><b>{{ category.spent }}/{{ category.price }} &euro;</b></div>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
 
-  <!-- No Plan Message -->
   <div *ngIf="!currentPlan" class="no-plan-message">
     <p>No budget plan this month. Choose one <a [routerLink]="['/budget-plans']">here</a>.</p>
   </div>

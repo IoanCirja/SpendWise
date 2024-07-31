@@ -1,0 +1,25 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  app-header {
+
+    position: sticky; 
+    top: 0;
+    width: 100%; 
+    z-index: 1000; 
+  }
+  
+  #router {
+    flex: 1; 
+    margin-top: 20px;
+  }
+  
+
+  

@@ -59,21 +59,7 @@ body{
 
     }
 
-    .begin{
-      text-decoration: none;
-      font-weight: 500;
-      background-color: #2A6F2C;
-      color: #FCFCF9;
-      padding: 25px 40px;
-
-      border-radius: 7px;
-      transition: background-color 0.3s, color 0.3s;
-    }
     
-    .begin:hover {
-      background-color: #2A6F2C;
-      color: #FCFCF9;
-    }
     .long_text{
       text-align: left;
       margin-top: 64px;
@@ -190,3 +176,27 @@ mat-card-header {
   100% { transform: translateX(calc(-520px * 5))}
 }
 
+.begin{
+  text-decoration: none;
+  font-weight: 500;
+  background-color: #2A6F2C;
+  color: #FCFCF9;
+  padding: 25px 40px;
+
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.begin:hover {
+  background-color: #2A6F2C;
+  color: #FCFCF9;
+}
+#gotoplans{
+  display: flex; 
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-right:10px;
+}
+#desc{
+  line-height: 20px;
+}

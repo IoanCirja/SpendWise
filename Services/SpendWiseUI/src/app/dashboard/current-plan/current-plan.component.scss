@@ -39,31 +39,66 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.plan-card .cancel-button, .plan-card .export-button {
+.plan-card .export-button, #transaction, .view-transactions-button {
+  background: none;
+  border: none;
+  border-radius: 7px;
+  background-color: #2A6F2C;
+  color: #FCFCF9;
+  font-size: 16px;
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition:  box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+.plan-card .cancel-button{
   background: none;
   border: none;
   border-radius: 7px;
   color: #043F2D;
-  font-size: 1.2rem;
+  font-size: 16px;
   cursor: pointer;
   padding: 10px 20px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.plan-card .cancel-button:hover, .plan-card .export-button:hover {
-  background-color: #043F2D;
+.plan-card .export-button:hover, #transaction:hover, .view-transactions-button:hover {
+  background-color: #2A6F2C;
   color: #FCFCF9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+.plan-card .cancel-button:hover{
+  background-color: #d60707;
+  color: #FCFCF9;
+}
+
+mat-card-content p {
+  margin-left: 20px;
+}
+#firstcard{
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
 }
 
 .category-card .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 50px;
   justify-content: center;
 }
+
+.category-card mat-card-content{
+  margin-top: 30px;
+}
+
+
 
 .category-card .category-item {
   display: flex;
@@ -73,6 +108,9 @@
   width: 120px;
 }
 
+#categories{
+  font-size: 2rem;
+}
 .category-card .category-button {
   font-size: 16px;
   color: #043F2D;
@@ -82,13 +120,15 @@
   padding: 12px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  width: 140px;
+  width: 160px;
   text-align: center;
   transform: translateX(-5px);
+  white-space: nowrap; 
+
 }
 
 .category-card .category-button:hover {
-  background-color: #043F2D;
+  background-color: #2A6F2C;
   color: #FCFCF9;
 }
 
@@ -104,30 +144,38 @@
   min-height: 30vw;
 }
 
+.category-details{
+  margin-top:15px;
+}
+a{
+  color:#043F2D;
+}
 .floating-indicator-wrapper {
   position: absolute;
   top: -40px;
-  right: 20px;
+  right: 45px;
   width: 100px;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .view-transactions-button {
   background: none;
   border: none;
-  color: #043F2D;
+  background-color: #2A6F2C;
+  color: #FCFCF9;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 1.2rem;
+  font-size: 16px;
   border-radius: 7px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .view-transactions-button:hover {
-  background-color: #043F2D;
+  background-color: #2A6F2C;
   color: #FCFCF9;
 }
 

@@ -33,7 +33,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadCurrentUser();
 
-    // Handle navigation state to determine if detailed view should be shown
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         const navigationState = event.restoredState;
@@ -91,7 +90,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   
     const planDate = new Date(this.selectedPlan.date);
     const year = planDate.getFullYear();
-    const month = planDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
+    const month = planDate.getMonth() + 1; 
     const fileName = `${planDate.toLocaleString('default', { month: 'long' })} - ${year} Budget Summary.pdf`;
   
     this.exportService.exportPlan(this.userId, year, month).subscribe(

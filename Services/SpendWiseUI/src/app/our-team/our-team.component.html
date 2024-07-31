@@ -13,12 +13,15 @@
   <div class="team-members">
     <mat-card *ngFor="let member of members" class="team-member">
       <img mat-card-image [src]="member.imageUrl" [alt]="member.name">
+      <p class="name">{{member.name}}</p>
+
       <mat-card-content>
-        <p class="name">{{member.name}}</p>
         <p class="description">{{member.description}}</p>
       </mat-card-content>
     </mat-card>
   </div>
+  <p class="version">SpendWise 1.0.0</p>
+
 </div>
 </body>
 </html>

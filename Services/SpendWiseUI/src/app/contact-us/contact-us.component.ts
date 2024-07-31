@@ -10,7 +10,7 @@ import { ContactUsService } from './contact-us.service';
 export class ContactUsComponent {
   contactUsForm: FormGroup;
   message: string = '';
-  messageType: 'success' | 'error' | '' = ''; // Type of message
+  messageType: 'success' | 'error' | '' = ''; 
 
   constructor(private fb: FormBuilder, private contactUsService: ContactUsService) {
     this.contactUsForm = this.fb.group({

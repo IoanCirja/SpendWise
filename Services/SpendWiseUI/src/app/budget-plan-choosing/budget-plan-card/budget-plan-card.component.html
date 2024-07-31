@@ -12,7 +12,9 @@
     <p class="description">{{ description }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button class="details-button" (click)="openDialog()">View Details</button>
-    <button mat-button class="edit-button" *ngIf="canEdit" (click)="editPlan()">Edit</button>
+    <div class="action-buttons">
+      <button class="details-button" (click)="openDialog()">View Details</button>
+      <button class="edit-button" *ngIf="canEdit" (click)="editPlan()">Edit</button>
+    </div>
   </mat-card-actions>
 </mat-card>

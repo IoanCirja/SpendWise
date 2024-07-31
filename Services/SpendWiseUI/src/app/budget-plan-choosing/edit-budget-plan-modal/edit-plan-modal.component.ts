@@ -2,7 +2,8 @@ import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditPlanService } from '../services/edit-budget-plan.service';
 import { DeletePlanService } from '../services/delete-budget-plan.service';
-import {faCoffee, faTrash} from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { DeleteConfirmationDialog } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-edit-plan-modal',
@@ -19,8 +20,9 @@ export class EditPlanModalComponent {
     categories: []
   };
   hasErrors: boolean = false;
+  errorMessage: string | null = null;
 
-  @Output() planChanged = new EventEmitter<void>(); // Added output property
+  @Output() planChanged = new EventEmitter<void>();
 
   constructor(
     public dialog: MatDialog,
@@ -44,12 +46,13 @@ export class EditPlanModalComponent {
     }
   }
 
-  validateForm(): void {
-    this.hasErrors = !(
-      this.plan.name && this.plan.name.length >= 3 &&
-      this.plan.description && this.plan.description.length >= 5 &&
-      this.plan.image && this.plan.image.length >= 5
-    );
+  validateForm(): boolean {
+    if (!this.plan.name || this.plan.name.length < 3 ||
+        !this.plan.description || this.plan.description.length < 5 ||
+        !this.plan.image || this.plan.image.length < 5) {
+      return false;
+    }
+    return true;
   }
 
   onClose(): void {
@@ -57,8 +60,10 @@ export class EditPlanModalComponent {
   }
 
   onSave(): void {
-    if (this.hasErrors) {
-      this.validateForm();
+    this.errorMessage = null;
+
+    if (!this.validateForm()) {
+      this.errorMessage = 'All fields must be filled out and have at least the required number of characters.';
       return;
     }
 
@@ -69,20 +74,21 @@ export class EditPlanModalComponent {
       category: this.plan.categories.join(','),
       image: this.plan.image
     };
+
     this.editPlanService.updatePlan(this.data.plan.id, updatedPlan).subscribe({
       next: () => {
-        this.planChanged.emit(); 
+        this.planChanged.emit();
         this.dialogRef.close(true);
       },
       error: err => {
-        console.error('Error updating plan:', err);
+        this.errorMessage = 'Error updating plan: ' + err.message;
       }
     });
   }
 
   onDelete(): void {
     const confirmDialogRef = this.dialog.open(DeleteConfirmationDialog, {
-      width: '300px',
+      width: '617px',
       data: { message: 'Are you sure you want to delete this plan?' }
     });
 
@@ -90,7 +96,7 @@ export class EditPlanModalComponent {
       if (result) {
         this.deletePlanService.deletePlan(this.data.plan.id).subscribe({
           next: () => {
-            this.planChanged.emit(); 
+            this.planChanged.emit();
             this.dialogRef.close(true);
           },
           error: err => {
@@ -103,30 +109,3 @@ export class EditPlanModalComponent {
 }
 
 
-@Component({
-  selector: 'delete-confirmation-dialog',
-  template: `
-    <h1 mat-dialog-title>Confirm Deletion</h1>
-    <div mat-dialog-content>
-      <p>{{data.message}}</p>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
-    </div>
-  `
-})
-export class DeleteConfirmationDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DeleteConfirmationDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { message: string }
-  ) {}
-
-  onCancel(): void {
-    this.dialogRef.close(false);
-  }
-
-  onConfirm(): void {
-    this.dialogRef.close(true);
-  }
-}

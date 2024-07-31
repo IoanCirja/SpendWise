@@ -9,21 +9,48 @@ body {
   padding: 20px;
   overflow-y: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  gap: 20px;
+}
+
+.header-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the card horizontally */
+  gap: 20px; /* Space between title and card */
+  width: 100%; /* Full width to align the items */
+}
+
+.account-settings-header {
+  align-self: flex-start; /* Align the title to the left of the container */
+  margin-left: 20px;
 }
 
 .account-settings-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Align content to the left */
   gap: 24px;
-  overflow-y: hidden;
-  width: 900px; /* Increased width */
+
+  width: 700px; /* Width of the card */
+  padding: 40px 20px 20px 20px; 
+  background-color: #FCFCF9; /* Background color for the card */
+  border-radius: 7px; /* Optional: Rounded corners for the card */
 }
 
 h2, h3 {
   color: #043F2D;
+  margin: 0; /* Remove default margin */
+}
+
+h3.section-heading {
+  text-align: left; /* Align section headings to the left */
+  margin: 0; /* Remove default margin */
+  border-bottom: 2px solid #2A6F2C; /* Green underline */
+  padding-bottom: 4px; /* Space between text and underline */
+  margin-bottom: 30px;
 }
 
 button {
@@ -31,6 +58,7 @@ button {
   color: #FCFCF9 !important;
   width: 165px;
   height: 44px;
+  border-radius: 7px;
 }
 
 .personal-information-section, .change-password-section {
@@ -62,11 +90,32 @@ button {
 }
 
 .email .mat-form-field, .change-password .mat-form-field {
-  width: 700px !important; /* Ensure consistent width with !important */
+  width: 700px !important;
 }
 
 mat-card {
   background-color: #FCFCF9;
   padding: 20px;
-  width: 100%; /* Ensure the card takes the full width of the container */
+  width: 700px; 
+  text-align: left; 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.personal-information-section .section-heading {
+  font-weight: bold; 
+  border-bottom: 2px solid #2A6F2C; 
+  padding-bottom: 4px; 
+  margin-bottom: 30px; 
+  color: #043F2D;
+  text-align: left; 
+  font-size: 18px;
+}
+h2{
+  margin-top: 20px;
+  font-size: 32px;
+  color:#043F2D;
 }
