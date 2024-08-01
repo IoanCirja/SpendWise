@@ -16,15 +16,20 @@ namespace TestSpendWise.Tests
     {
         private IWebDriver driver;
 
-
         [TestInitialize]
         public void SetupTest()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+
+            options.AddArgument("--no-default-browser-check");
+            options.AddArgument("--disable-search-engine-choice-screen");
+
+            options.AddArgument("--no-first-run");
+
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("http://localhost:4200");
         }
-
         /*        [TestCleanup]
                 public void CleanupTest()
                 {

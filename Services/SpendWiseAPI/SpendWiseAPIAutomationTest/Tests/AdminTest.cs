@@ -19,10 +19,18 @@ namespace SpendWiseAPIAutomationTest.Tests
         [TestInitialize]
         public void SetupTest()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+
+            options.AddArgument("--no-default-browser-check");
+
+            options.AddArgument("--no-first-run");
+            options.AddArgument("--disable-search-engine-choice-screen");
+
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("http://localhost:4200");
         }
+
 
         [TestMethod]
         public void Should_LogInAsAdmin_When_LogInFormContainsValidData()

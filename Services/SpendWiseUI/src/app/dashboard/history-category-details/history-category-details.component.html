@@ -76,7 +76,7 @@
           <tr *ngFor="let transaction of displayedTransactions">
             <td *ngIf="selectedCategory === 'all'">{{ transaction.category }}</td>
             <td>{{ transaction.name }}</td>
-            <td>{{ transaction.amount | currency }}</td>
+            <td>{{ transaction.amount}}&euro;</td>
             <td>{{ transaction.date | date:'shortDate' }}</td>
           </tr>
         </tbody>

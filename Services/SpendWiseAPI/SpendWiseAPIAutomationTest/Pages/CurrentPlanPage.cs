@@ -85,9 +85,13 @@ namespace SpendWiseAPIAutomationTest.Pages
 
         public TransactionPage GoToTransactionPage()
         {
+            ((IJavaScriptExecutor)browser).ExecuteScript("window.scrollTo(0, 0);");
+
             AddTransactionButton.Click();
+
             return new TransactionPage(browser);
         }
+
 
     }
 }
