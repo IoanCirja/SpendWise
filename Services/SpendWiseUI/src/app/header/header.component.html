@@ -4,14 +4,14 @@
   </span>
   <span class="spacer"></span>
   <nav class="nav-menu">
-    <a routerLink="/">Home</a>
-    <a routerLink="/budget-plans">Budget Plans</a>
-    <a routerLink="/our-team">About Us</a>
-    <a routerLink="/contact-us">Get in Touch</a>
+    <a id="home" routerLink="/">Home</a>
+    <a id="budget-plans" routerLink="/budget-plans">Budget Plans</a>
+    <a id="about-us" routerLink="/our-team">About Us</a>
+    <a id="Get-in-touch" routerLink="/contact-us">Get in Touch</a>
   </nav>
   <span class="spacer"></span>
   <div class="auth-buttons" *ngIf="!user; else loggedIn">
-    <a class="log_in" href="/auth/login">Log In</a>
+    <a class="log_in" href="/auth/login" id="loginHeader">Log In</a>
     <a mat-raised-button color="primary" class="sign_up" href="/auth/register">Sign Up</a>
   </div>
   <ng-template #loggedIn>
@@ -20,7 +20,7 @@
       <img src="assets/profile.svg" alt="User Image" height="40" />
       <div class="user-name-logout">
         <span *ngIf="user">{{ user.name }}</span>
-        <button mat-button class="log_out" (click)="logout()">Log Out</button>
+        <button mat-button class="log_out" id="logoutHeader" (click)="logout()">Log Out</button>
       </div>
     </div>
   </ng-template>

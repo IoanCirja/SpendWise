@@ -106,13 +106,13 @@ export class EditPlanModalComponent {
 @Component({
   selector: 'delete-confirmation-dialog',
   template: `
-    <h1 mat-dialog-title>Confirm Deletion</h1>
+    <h1 id="confirm-deletion" mat-dialog-title>Confirm Deletion</h1>
     <div mat-dialog-content>
       <p>{{data.message}}</p>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
+      <button id="cancel" mat-button (click)="onCancel()">Cancel</button>
+      <button id="confirm" mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
     </div>
   `
 })

@@ -24,7 +24,7 @@
       <mat-card-title>Categories</mat-card-title>
       <button class="view-transactions-button" (click)="goToDetails()">View Transactions</button>
       <ng-container *ngIf="hasCurrentPlan$ | async">
-        <button mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
+        <button id="add-transaction" mat-raised-button color="primary" (click)="openTransactionModal()">Add Transaction</button>
       </ng-container>
     </mat-card-header>
     <mat-card-content>
@@ -42,6 +42,6 @@
 
   <!-- No Plan Message -->
   <div *ngIf="!currentPlan" class="no-plan-message">
-    <p>No budget plan this month. Choose one <a [routerLink]="['/budget-plans']">here</a>.</p>
+    <p>No budget plan this month. Choose one <a id="here" [routerLink]="['/budget-plans']">here</a>.</p>
   </div>
 </div>

@@ -23,9 +23,9 @@
       </div>
       <div class="category-inputs">
         <div *ngFor="let category of data.categories; let i = index">
-          <mat-form-field appearance="fill">
+          <mat-form-field  appearance="fill">
             <mat-label>{{category.name}}</mat-label>
-            <input matInput type="number" [(ngModel)]="data.categories[i].value">
+            <input id="category-input" matInput type="number" [(ngModel)]="data.categories[i].value">
           </mat-form-field>
         </div>
       </div>
@@ -33,5 +33,5 @@
   </ng-template>
 </mat-dialog-content>
 <mat-dialog-actions *ngIf="!currentPlanExists">
-  <button (click)="savePlan()">Save</button>
+  <button id="save" (click)="savePlan()">Save</button>
 </mat-dialog-actions>

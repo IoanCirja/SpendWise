@@ -10,25 +10,25 @@ return     </button>
     </mat-card-header>
     <mat-card-content>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" id="filter-by-category">
           <mat-label>Filter by Category</mat-label>
           <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
-            <mat-option value="all">All</mat-option>
-            <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+            <mat-option id="all" value="all">All</mat-option>
+            <mat-option id ="filter-category-select" *ngFor="let category of categoriesWithDetails" [value]="category.name">
               {{ category.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
         
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" id="sort-by">
           <mat-label>Sort by</mat-label>
           <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
-            <mat-option value="dateAsc">Date Ascending</mat-option>
-            <mat-option value="dateDesc">Date Descending</mat-option>
-            <mat-option value="amountAsc">Amount Ascending</mat-option>
-            <mat-option value="amountDesc">Amount Descending</mat-option>
-            <mat-option value="nameAsc">Name Ascending</mat-option>
-            <mat-option value="nameDesc">Name Descending</mat-option>
+            <mat-option id="dateAsc" value="dateAsc">Date Ascending</mat-option>
+            <mat-option id="dateDesc" value="dateDesc">Date Descending</mat-option>
+            <mat-option id="amountAsc" value="amountAsc">Amount Ascending</mat-option>
+            <mat-option id="amountDesc" value="amountDesc">Amount Descending</mat-option>
+            <mat-option id="nameAsc" value="nameAsc">Name Ascending</mat-option>
+            <mat-option id="nameDesc" value="nameDesc">Name Descending</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

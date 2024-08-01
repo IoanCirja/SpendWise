@@ -28,7 +28,7 @@
       </mat-select>
     </mat-form-field>
     
-<mat-checkbox *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
+<mat-checkbox id="checkbox" *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
   Show My Plans Only
 </mat-checkbox>
   </div>

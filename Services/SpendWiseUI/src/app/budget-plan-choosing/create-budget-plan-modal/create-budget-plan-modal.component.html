@@ -10,30 +10,30 @@ x  </button>
     </div>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="newPlan.name" placeholder="Enter plan name">
+      <input id="plan-name" matInput [(ngModel)]="newPlan.name" placeholder="Enter plan name">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <textarea matInput [(ngModel)]="newPlan.description" placeholder="Enter plan description"></textarea>
+      <textarea id="plan-description" matInput [(ngModel)]="newPlan.description" placeholder="Enter plan description"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Image URL</mat-label>
-      <input matInput [(ngModel)]="newPlan.imagine" placeholder="Enter image URL">
+      <input id="plan-icon" matInput [(ngModel)]="newPlan.imagine" placeholder="Enter image URL">
     </mat-form-field>
   </div>
 
   <div class="categories-section">
     <div class="categories-header">
       <h3>Categories</h3>
-      <button mat-icon-button class="add-category" (click)="addCategory()">+</button>
+      <button id="add-category" mat-icon-button class="add-category" (click)="addCategory()">+</button>
     </div>
     <div *ngFor="let category of newPlan.categories; let i = index; trackBy: trackByIndex" class="category-row">
       <mat-form-field appearance="fill">
         <mat-label>Category Name</mat-label>
-        <input matInput [(ngModel)]="newPlan.categories[i].name" placeholder="Enter category name">
-        <button mat-icon-button matSuffix (click)="removeCategory(i)" class="delete-category-button">
+        <input id="category-name" matInput [(ngModel)]="newPlan.categories[i].name" placeholder="Enter category name">
+        <button id="delete-category" mat-icon-button matSuffix (click)="removeCategory(i)" class="delete-category-button">
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </mat-form-field>
