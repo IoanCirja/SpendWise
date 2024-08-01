@@ -22,8 +22,7 @@ namespace SpendWiseAPIAutomationTest.Pages
         }
 
         //locators
-        private IWebElement CancelButton => WaitForElement(By.Id("cancel"));
-        private IWebElement ConfirmButton => WaitForElement(By.Id("confirm"));
+        private IWebElement ConfirmButton => WaitForElement(By.ClassName("confirm-btn"));
 
         //methods
         private IWebElement WaitForElement(By by)
@@ -39,7 +38,7 @@ namespace SpendWiseAPIAutomationTest.Pages
 
         public CurrentPlanPage DontCancelCurretnPlan()
         {
-            CancelButton.Click();
+            ConfirmButton.Click();
             return new CurrentPlanPage(browser);
         }
 

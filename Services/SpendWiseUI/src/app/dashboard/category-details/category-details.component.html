@@ -14,17 +14,17 @@
         </button>
         <div class="filters">
 
-          <mat-form-field appearance="fill" class="filter">
+          <mat-form-field appearance="fill" class="filter" id="filter-by-category">
             <mat-label>Filter by Category</mat-label>
             <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
               <mat-option value="all">All</mat-option>
-              <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+              <mat-option id="filter-category-select" *ngFor="let category of categoriesWithDetails" [value]="category.name">
                 {{ category.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="filter">
+          <mat-form-field appearance="fill" class="filter" id="sort-by">
             <mat-label>Sort by</mat-label>
             <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
               <mat-option id="dateAsc" value="dateAsc">Date Ascending</mat-option>

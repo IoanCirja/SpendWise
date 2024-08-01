@@ -20,9 +20,7 @@ namespace SpendWiseAPIAutomationTest.Pages
         }
 
         //locators
-        private IWebElement CancelButton => WaitForElement(By.Id("cancel"));
-        private IWebElement ConfirmButton => WaitForElement(By.Id("confirm"));
-        private IWebElement Title => WaitForElement(By.Id("confirm-deletion"));
+        private IWebElement DeleteButton => WaitForElement(By.Id("delete-btn"));
 
         //methods
         private IWebElement WaitForElement(By by)
@@ -32,14 +30,14 @@ namespace SpendWiseAPIAutomationTest.Pages
 
         public BudgetPlanPage ConfirmDeletePlan()
         {
-            ConfirmButton.Click();
+            DeleteButton.Click();
             return new BudgetPlanPage(browser);
         }
 
         public bool IsDeleteConfimationDialogDisplayed()
         {
             try {
-                return Title.Displayed;
+                return DeleteButton.Displayed;
             }
             catch (NoSuchElementException) {
                 return false;

@@ -44,6 +44,8 @@ namespace SpendWiseAPIAutomationTest.Pages
 
             for (int i = 0; i < inputFieldsCount; i++)
             {
+                //wait
+                Thread.Sleep(2000);
                 string value = rnd.Next(100, 1000).ToString();
                 categoryInputFields[i].Click();
                 categoryInputFields[i].Clear();

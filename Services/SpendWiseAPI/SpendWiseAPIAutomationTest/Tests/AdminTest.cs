@@ -10,6 +10,7 @@ using WebApiContracts;
 
 namespace SpendWiseAPIAutomationTest.Tests
 {
+    [TestClass]
     public class AdminTest
     {
         private IWebDriver driver;

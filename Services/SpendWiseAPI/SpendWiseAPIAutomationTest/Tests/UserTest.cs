@@ -489,6 +489,9 @@ namespace TestSpendWise.Tests
 
             accountSettingsPage.ChangePassword(resetPassword);
 
+            //wait
+            Thread.Sleep(3000);
+
             // assert: check if account settings page is displayed
             Assert.IsTrue(accountSettingsPage.IsAccountSettingsDisplayed(), "The change password button is not found");
         }
@@ -764,7 +767,7 @@ namespace TestSpendWise.Tests
             Assert.IsTrue(budgetPlanPage.IsBudgetPlanPageDisplayed(), "The budget card is not found");
 
             //choose a plan
-            string planTitle = "Family Plan";
+            string planTitle = "Travel Plan";
 
             //budget plan dialog
             var budgetPlanDialog = budgetPlanPage.ChoseBudgetPlan(planTitle);
@@ -800,7 +803,7 @@ namespace TestSpendWise.Tests
             //fill in log in form
             UserCredentialsContract1 user = new UserCredentialsContract1()
             {
-                Email = "sabina-nadejda.barila@student.tuiasi.ro",
+                Email = "ioan.cirja@student.tuiasi.ro",
                 Password = "Password123"
             };
 
@@ -913,7 +916,7 @@ namespace TestSpendWise.Tests
             Assert.IsTrue(budgetPlanPage.IsBudgetPlanPageDisplayed(), "The budget card is not found");
 
             //choose a plan
-            string planTitle = "Family Plan";
+            string planTitle = "Travel Plan";
 
             //budget plan dialog
             var budgetPlanDialog = budgetPlanPage.ChoseBudgetPlan(planTitle);
@@ -929,7 +932,7 @@ namespace TestSpendWise.Tests
             //wait
             Thread.Sleep(3000);
 
-            currentPlanPage = dasboardPage.GoToCurrentPlanPage();
+            //currentPlanPage = dasboardPage.GoToCurrentPlanPage();
 
             var transactionPage = currentPlanPage.GoToTransactionPage();
 

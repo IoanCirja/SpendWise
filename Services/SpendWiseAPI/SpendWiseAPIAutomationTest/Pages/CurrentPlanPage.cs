@@ -24,7 +24,7 @@ namespace SpendWiseAPIAutomationTest.Pages
 
         private IWebElement Container => WaitForElement(By.ClassName("container"));
         private IWebElement CancelPlanButton => WaitForElement(By.ClassName("cancel-button"));
-        public IWebElement AddTransactionButton => WaitForElement(By.Id("add-transaction"));
+        public IWebElement AddTransactionButton => WaitForElement(By.Id("transaction"));
 
         //methods
         public bool IsPlanActive()

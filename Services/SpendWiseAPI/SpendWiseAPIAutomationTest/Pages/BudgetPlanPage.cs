@@ -71,7 +71,7 @@ namespace SpendWiseAPIAutomationTest.Pages
 
         public BudgetPlanPage ShowOnlyMyPlans()
         {
-            var checkbox = WaitForElement(By.Id("checkbox"));
+            var checkbox = WaitForElement(By.ClassName("myplans"));
             checkbox.Click();
             return new BudgetPlanPage(browser);
         }

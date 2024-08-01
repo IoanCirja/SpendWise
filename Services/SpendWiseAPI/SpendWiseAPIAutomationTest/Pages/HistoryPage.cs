@@ -19,7 +19,7 @@ namespace SpendWiseAPIAutomationTest.Pages
             wait = new WebDriverWait(browser, TimeSpan.FromSeconds(20));
         }
         //locators
-        private IWebElement Container => WaitForElement(By.Id("history-page"));
+        private IWebElement Container => WaitForElement(By.ClassName("container"));
         private IWebElement ExportButton => WaitForElement(By.ClassName("export-button"));
 
         //methods

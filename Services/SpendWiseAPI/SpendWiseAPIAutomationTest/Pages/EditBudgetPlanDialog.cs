@@ -21,8 +21,6 @@ namespace SpendWiseAPIAutomationTest.Pages
         }
         //locators
         private IWebElement DeleteButton => WaitForElement(By.ClassName("delete-btn"));
-
-        private IWebElement CancelButton => WaitForElement(By.ClassName("cancel-btn"));
         //methods
         private IWebElement WaitForElement(By by)
         {

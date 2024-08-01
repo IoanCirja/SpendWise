@@ -53,6 +53,7 @@ namespace SpendWiseAPIAutomationTest.Pages
 
             //wait
             Thread.Sleep(3000);
+
             foreach (var option in options)
             {
                 if (option.Text.Equals(transaction.category, StringComparison.OrdinalIgnoreCase))

@@ -45,7 +45,7 @@ namespace SpendWiseAPIAutomationTest.Pages
         public bool IsAccountSettingsDisplayed()
         {
             try {
-                return ChangePasswordButton.Displayed;
+                return CurrentPassword.Displayed;
             }
             catch (NoSuchElementException)
             {
