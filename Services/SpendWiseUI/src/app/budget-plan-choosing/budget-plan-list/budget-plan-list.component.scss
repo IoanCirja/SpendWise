@@ -24,6 +24,12 @@ body {
 
 }
 
+::ng-deep {
+  .custom-input-background .mat-mdc-form-field-flex {
+    background-color: #81c470bb !important;
+  }
+}
+
 .header-middle {
   flex: 1;
   display: flex;
