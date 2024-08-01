@@ -28,13 +28,25 @@ namespace SpendWiseAPI.Application.Tests
             //Arrange
             string email = "ionut.vasile@gmail.com";
             var emails = new List<string>();
-            string subject = "SpendWise";
+            string subject = "Welcome to the SpendWise Community!";
             string urlLogo = "https://i.postimg.cc/HntvP2Pk/logo.png";
             string body = $@"
                                 <html>
                                     <body>
                                         <img src='{urlLogo}' alt='Logo' />
-                                        <p><strong>You have just subscribed to the SpendWise website newsletter.</strong></p>
+                                        <p><strong>Dear Subscriber,</strong></p>
+                                        <p>Thank you for joining the SpendWise community! We are thrilled to have you on board and are committed to helping you make the most of your finances with our expertly curated content. By subscribing to our newsletter, you've taken a step towards smarter spending and a more simplified financial life.</p>
+                                        <p>As a subscriber, you’ll receive regular updates featuring:</p>
+                                        <ul>
+                                            <li>New Budget Plans: Explore our latest and most effective budget plans tailored to various financial goals and lifestyles. Whether you're saving for a big purchase, planning for retirement, or simply looking to better manage your monthly expenses, we've got you covered.</li>
+                                            <li>Exclusive Tips and Tricks: Gain insider knowledge on saving money, budgeting, and making informed financial decisions.</li>
+                                            <li>Community Highlights: Read success stories and get inspired by other members of the SpendWise community.</li>
+                                        </ul>
+                                        <p>We are dedicated to providing you with the best content to help you navigate the world of finance with confidence. If you have any questions, suggestions, or topics you'd like us to cover, don't hesitate to reach out.</p>
+                                        <p>Welcome aboard, and here's to smarter spending!</p>
+                                        <p>Warm regards,</p>
+                                        <p>The SpendWise Team</p>
+                                        <p>Smart Spending, Simplified</p>
                                     <body>
                                 <html>
                                ";
@@ -62,13 +74,25 @@ namespace SpendWiseAPI.Application.Tests
             //Arrange
             string email = "ionut.vasile@gmail.com";
             var emails = new List<string>();
-            string subject = "SpendWise";
+            string subject = "Welcome to the SpendWise Community!";
             string urlLogo = "https://i.postimg.cc/HntvP2Pk/logo.png";
             string body = $@"
                                 <html>
                                     <body>
                                         <img src='{urlLogo}' alt='Logo' />
-                                        <p><strong>You have just subscribed to the SpendWise website newsletter.</strong></p>
+                                        <p><strong>Dear Subscriber,</strong></p>
+                                        <p>Thank you for joining the SpendWise community! We are thrilled to have you on board and are committed to helping you make the most of your finances with our expertly curated content. By subscribing to our newsletter, you've taken a step towards smarter spending and a more simplified financial life.</p>
+                                        <p>As a subscriber, you’ll receive regular updates featuring:</p>
+                                        <ul>
+                                            <li>New Budget Plans: Explore our latest and most effective budget plans tailored to various financial goals and lifestyles. Whether you're saving for a big purchase, planning for retirement, or simply looking to better manage your monthly expenses, we've got you covered.</li>
+                                            <li>Exclusive Tips and Tricks: Gain insider knowledge on saving money, budgeting, and making informed financial decisions.</li>
+                                            <li>Community Highlights: Read success stories and get inspired by other members of the SpendWise community.</li>
+                                        </ul>
+                                        <p>We are dedicated to providing you with the best content to help you navigate the world of finance with confidence. If you have any questions, suggestions, or topics you'd like us to cover, don't hesitate to reach out.</p>
+                                        <p>Welcome aboard, and here's to smarter spending!</p>
+                                        <p>Warm regards,</p>
+                                        <p>The SpendWise Team</p>
+                                        <p>Smart Spending, Simplified</p>
                                     <body>
                                 <html>
                                ";

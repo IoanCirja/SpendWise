@@ -49,16 +49,19 @@ namespace Application.Services
                 string imageDataUrl = "https://i.postimg.cc/HntvP2Pk/logo.png";
                 var emails = await this._authenticationRepository.GetAllUsersEmails();
 
-                string subject = "A New Budget Plan was added on the SpendWise Website ";
+                string subject = $"Introducing Our New Budget Plan: {budgetPlan.name}";
 
 
                 string body = $@"
                                <html>
                                 <body>
                                 <img src='{imageDataUrl}' alt='Logo' />
-                                <p><strong>A new budget plan named '{budgetPlan.name}' has been added.</strong></p>
-                            <p>Description: {budgetPlan.description}</p>
-                                <p>The budget plan has <strong>{budgetPlan.noCategory}</strong> categories:</p>
+                                <p><strong>Dear Subscriber,</strong></p>
+                                <p>We are excited to announce that a new budget plan, named <strong>{budgetPlan.name}</strong>, has been added to our collection of financial tools on SpendWise!</p>
+                                <p>Description:</p>
+                                <p>This plan, <strong>{budgetPlan.name}</strong>, is designed to help you streamline your expenses and optimize your savings. It offers a flexible approach to managing your finances, suitable for various income levels and spending habits.</p>
+                                <p>Categories Included:</p>
+                                <p>The <strong>{budgetPlan.name}</strong> budget plan is structured around {budgetPlan.noCategory} key categories:</p>
                                 <ul>";
 
                 var categories = budgetPlan.category.Split(',');
@@ -71,10 +74,13 @@ namespace Application.Services
 
                 body += @"
                             </ul>
-                            <p>Have a great day ,</p>
-                                <p>The SpendWise Team</p>
-                                </body>
-                            </html>";
+                            <p>We believe this new budget plan will be a valuable addition to your financial toolkit, making it easier than ever to achieve your financial goals.</p>
+                            <p>Have a great day!</p>
+                            <p>Warm regards</p>
+                            <p>The SpendWise Team</p>
+                            <p>Smart Spending, Simplified</p>
+                        </body>
+                    </html>";
 
 
 
