@@ -7,13 +7,13 @@
   <h1 class="dialog-title">Add a Transaction</h1>
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="transactionName">
+    <input id="transaction-name" matInput [(ngModel)]="transactionName">
   </mat-form-field>
   
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" id="transaction-category">
     <mat-label>Category</mat-label>
     <mat-select [(ngModel)]="selectedCategory">
-      <mat-option *ngFor="let category of categories" [value]="category">
+      <mat-option id="transaction-category-select" *ngFor="let category of categories" [value]="category">
         {{ category }}
       </mat-option>
     </mat-select>
@@ -21,11 +21,11 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Value</mat-label>
-    <input matInput type="number" [(ngModel)]="transactionValue" (ngModelChange)="validateValue()">
+    <input id="transaction-amount" matInput type="number" [(ngModel)]="transactionValue" (ngModelChange)="validateValue()">
   </mat-form-field>
   
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions">
-  <button mat-raised-button color="primary" class="confirm-btn" (click)="onSave()" >Save</button>
+  <button id="transaction-save" mat-raised-button color="primary" class="confirm-btn" (click)="onSave()" >Save</button>
 </mat-dialog-actions>

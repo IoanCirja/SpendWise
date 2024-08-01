@@ -32,7 +32,7 @@
             <div class="category-label">{{category.name}}</div>
             <div class="category-input">
               <mat-form-field appearance="fill">
-                <input matInput type="number" [(ngModel)]="data.categories[i].value">
+                <input id="category-input" matInput type="number" [(ngModel)]="data.categories[i].value">
               </mat-form-field>
             </div>
           </div>
@@ -45,5 +45,5 @@
   <p>{{errorMessage}}</p>
 </div>
 <mat-dialog-actions *ngIf="!currentPlanExists">
-  <button (click)="savePlan()">Save</button>
+  <button id="save" (click)="savePlan()">Save</button>
 </mat-dialog-actions>
