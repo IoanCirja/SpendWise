@@ -3,12 +3,10 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  min-height: 30vw;
 }
 
 .plan-card, .category-card {
   flex: 1;
-  min-width: 0;
   border-radius: 7px;
   margin: 20px;
   padding: 20px;
@@ -18,6 +16,7 @@
   background-color: #FCFCF9 !important;
   position: relative;
 }
+
 
 .plan-card {
   margin-bottom: 20px;
@@ -38,37 +37,45 @@
 
 .mat-card-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.mat-card-actions p {
-  margin: 0;
-}
 
-.plan-card .cancel-button {
-  background: none;
-  border: none;
-  border-radius: 7px;
-  color: #043F2D;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 10px 20px;
-  transition: background-color 0.3s, color 0.3s, width 0.3s, height 0.3s;
-}
 
-.plan-card .cancel-button:hover {
-  background-color: #ee0000;
+ .plan-card .export-button:hover, #transaction:hover {
+  background-color: #2A6F2C;
   color: #FCFCF9;
-  text-align: center;
+}
+.plan-card .cancel-button:hover{
+  background-color: #d60707;
+  color: #FCFCF9;
+}
+
+mat-card-content p {
+  margin-left: 20px;
+}
+mat-card-header{
+
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .category-card .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 50px;
   justify-content: center;
+}
+
+.category-card mat-card-content{
+  margin-top: 30px;
+}
+
+.category-header{
+  display: flex;
+  justify-content: space-between;
 }
 
 .category-card .category-item {
@@ -79,6 +86,9 @@
   width: 120px;
 }
 
+#categories{
+  font-size: 2rem;
+}
 .category-card .category-button {
   font-size: 16px;
   color: #043F2D;
@@ -88,30 +98,16 @@
   padding: 12px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  width: 140px;
+  width: 160px;
   text-align: center;
   transform: translateX(-5px);
+  white-space: nowrap; 
+
 }
 
 .category-card .category-button:hover {
-  background-color: #043F2D;
+  background-color: #2A6F2C;
   color: #FCFCF9;
-}
-
-.category-card .progress-circle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.category-card mat-progress-spinner {
-  width: 60px;
-  height: 60px;
-}
-
-.category-card .percentage-text {
-  font-size: 1.5rem;
 }
 
 .no-plan-message {
@@ -126,35 +122,106 @@
   min-height: 30vw;
 }
 
+.category-details{
+  margin-top:15px;
+}
+
 .floating-indicator-wrapper {
   position: absolute;
   top: -40px;
-  right: 20px;
+  right: 45px;
   width: 100px;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.history-details-button {
-  background: none;
-  border: none;
-  color: #043F2D;
+.view-transactions-button, .export-button {
+  background-color: #2A6F2C;
+  color: #FCFCF9;
+  border:none;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 1.2rem;
+  font-size: 16px;
   border-radius: 7px;
+}
+
+
+.history-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh; /* Full viewport height */
+  position: relative; /* Ensure the header is positioned relative to this container */
+}
+
+.history-header {
+  position: absolute;
+  top: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  font-size: 32px;
+  color: #043F2D;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  z-index: 1; /* Ensure it appears above other content */
+}
+
+.history-card {
+  display: flex;
+  flex-direction: column; /* Ensure buttons are stacked vertically */
+  align-items: center;
+  min-width: 400px;
+  margin-top: 70px;
+  min-height: 500px;
+  border-radius: 7px;
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Optional: add space between buttons */
+}
+
+/* Styles for buttons in the history list */
+.plans-list button {
+  border-radius: 7px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.history-details-button:hover {
-  background-color: #043F2D;
-  color: #FCFCF9;
+.plans-list button:hover {
+  background-color: #2A6F2C; 
+  color: #FCFCF9; 
+}
+
+#firstcard{
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+}
+
+#backbtn {
+  width: 48px;
+  height: 48px;
+  border:none;
+  font-size: 24px;
+  background-color: transparent;
+  color: #043F2D;
+  border-radius: 50%;
+  padding: 8px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  z-index: 1; 
+}
+
+
+#backbtn:hover {
+  background-color: #2A6F2C; 
+  color: #fcfcf9; 
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class StatisticsService {
 
   private apiUrl = 'https://localhost:7154/Statistics/GetStatistics';
-  private baseUrl = 'https://localhost:7154/Transactions/GetAllTransactionForUser'; // Update with your API base URL
+  private baseUrl = 'https://localhost:7154/Transactions/GetAllTransactionForUser'; 
 
   constructor(private http: HttpClient) { }
 

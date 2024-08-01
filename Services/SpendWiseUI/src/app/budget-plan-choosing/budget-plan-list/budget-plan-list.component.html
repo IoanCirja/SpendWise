@@ -4,12 +4,15 @@
     <button class="details-button" *ngIf="isAdmin" (click)="openCreateDialog()">+</button>
   </div>
   <div class="header-middle">
-    <mat-form-field appearance="fill">
+    <mat-form-field  appearance="fill">
       <mat-label>Search</mat-label>
       <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()" placeholder="Search budget plans">
     </mat-form-field>
   </div>
   <div class="header-right">
+    <mat-checkbox class="myplans" *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
+      <b>My Plans</b>
+    </mat-checkbox>
     <mat-form-field>
       <mat-label>Sort Options</mat-label>
       <mat-select [(value)]="selectedSortOption" (selectionChange)="onSortChange()">
@@ -28,35 +31,32 @@
       </mat-select>
     </mat-form-field>
     
-<mat-checkbox id="checkbox" *ngIf="isAdmin" [(ngModel)]="showMyPlansOnly" (change)="applyFilter()" [disabled]="disableCheckbox">
-  Show My Plans Only
-</mat-checkbox>
+
   </div>
 </div>
 
 <div class="card-container">
-<app-budget-plan-card
-    *ngFor="let plan of getDisplayedPlans()"
-    [plan_id]="plan.plan_id"
-    [name]="plan.name"
-    [description]="plan.description"
-    [noCategory]="plan.noCategory"
-    [category]="plan.category"
-    [image]="plan.image"
-    [creationDate]="plan.creationDate"
-    [created_by]="plan.created_by"
-    (planChanged)="loadBudgetPlans()">
-</app-budget-plan-card>
-
+  <app-budget-plan-card
+      *ngFor="let plan of getDisplayedPlans()"
+      [plan_id]="plan.plan_id"
+      [name]="plan.name"
+      [description]="plan.description"
+      [noCategory]="plan.noCategory"
+      [category]="plan.category"
+      [image]="plan.image"
+      [creationDate]="plan.creationDate"
+      [created_by]="plan.created_by"
+      (planChanged)="loadBudgetPlans()">
+  </app-budget-plan-card>
 </div>
 
 <div *ngIf="selectedViewOption === 'Pages'" class="pagination-controls">
-  <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{currentPage}} of {{totalPages}}</span>
-  <button mat-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  <button (click)="previousPage()" [disabled]="currentPage === 1" class="pagination-button">←</button>
+  <span class="pagination-text">Page {{currentPage}} of {{totalPages}}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="pagination-button">→</button>
 </div>
 
 <div class="no-plans-message" *ngIf="!hasPlansToShow && showMyPlansOnly">
-  No plans available for your account. 
+  <p>No plans available for your account. </p>
 </div>
 

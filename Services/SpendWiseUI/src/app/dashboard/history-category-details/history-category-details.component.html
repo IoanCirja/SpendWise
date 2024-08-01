@@ -1,47 +1,67 @@
 <div class="container">
   <div>
     <button mat-icon-button (click)="goBack()" class="back-button">
-      Go Back
+      ←
     </button>
   </div>
 
   <mat-card class="details-card">
     <mat-card-header>
-      <mat-card-title>Transactions</mat-card-title>
-    </mat-card-header>
+  </mat-card-header>
     <mat-card-content>
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Filter by Category</mat-label>
-          <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
-            <mat-option value="all">All</mat-option>
-            <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
-              {{ category.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div class="filter-indicator-container">
 
-        <mat-form-field appearance="fill">
-          <mat-label>Sort by</mat-label>
-          <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
-            <mat-option value="dateAsc">Date Ascending</mat-option>
-            <mat-option value="dateDesc">Date Descending</mat-option>
-            <mat-option value="amountAsc">Amount Ascending</mat-option>
-            <mat-option value="amountDesc">Amount Descending</mat-option>
-            <mat-option value="nameAsc">Name Ascending</mat-option>
-            <mat-option value="nameDesc">Name Descending</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <div *ngIf="selectedCategory === 'all'" class="category-summary">
-          <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
-          <div class="category-details">{{ totalSpent | currency }}/{{ totalPrice | currency }}</div>
+        <div class="filters">
+          <mat-form-field appearance="fill" class="filter">
+            <mat-label>Filter by Category</mat-label>
+            <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
+              <mat-option value="all">All</mat-option>
+              <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="filter">
+            <mat-label>Sort by</mat-label>
+            <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
+              <mat-option value="dateAsc">Date Ascending</mat-option>
+              <mat-option value="dateDesc">Date Descending</mat-option>
+              <mat-option value="amountAsc">Amount Ascending</mat-option>
+              <mat-option value="amountDesc">Amount Descending</mat-option>
+              <mat-option value="nameAsc">Name Ascending</mat-option>
+              <mat-option value="nameDesc">Name Descending</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div *ngIf="selectedCategory !== 'all' && selectedCategoryDetails" class="category-summary">
-          <app-fluid-indicator [value]="getRoundedPercentage(selectedCategoryDetails.spent, selectedCategoryDetails.price)"></app-fluid-indicator>
-          <div class="category-details">{{ selectedCategoryDetails.spent }}/{{ selectedCategoryDetails.price }} &euro;</div>
+        
+        <div id="data">
+          <app-fluid-indicator 
+            [value]="selectedCategory === 'all' ? averagePercentage : getRoundedPercentage(selectedCategoryDetails?.spent ?? 0, selectedCategoryDetails?.price ?? 0)">
+          </app-fluid-indicator>
+          <div class="category-summary">
+            <ng-container *ngIf="selectedCategory === 'all'; else specificCategory">
+              <div class="category-details">
+                <p id="percentage"><b>{{ totalSpent }}/{{ totalPrice }}&euro;</b></p>
+              </div>
+            </ng-container>
+            <ng-template #specificCategory>
+              <div class="category-details">
+                <p><b>{{ selectedCategoryDetails?.spent }}/{{ selectedCategoryDetails?.price }}&euro;</b></p>
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
+      
+
+      
+
+
+
+
+
+      
 
       <table class="regular-table">
         <thead>

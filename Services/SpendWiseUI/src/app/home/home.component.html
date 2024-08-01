@@ -73,11 +73,16 @@
                 </mat-card-header>
                 <mat-card-content>
                   <p>{{ plan.category }}</p>
-                  <p>{{ plan.description }}</p>
+                  <p id="desc">{{ plan.description }}</p>
                 </mat-card-content>
               </mat-card>
             </div>
           </div>
+          <div id="gotoplans" >
+            <button  mat-raised-button color="primary" class="begin" (click)="redirectToPlans()">Go to Budget Plans</button>
+
+          </div>
+
         </section>
     </body>
  </html>

@@ -5,7 +5,6 @@ import { AccountService } from '../../auth/account.service';
 import { TransactionService } from '../services/transaction-service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
 import { CurrentPlanRefreshService } from '../services/current-plan-refresh-service';
 
 @Component({
@@ -30,7 +29,7 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
     private accountService: AccountService,
     private transactionService: TransactionService,
     private router: Router,
-    private currentPlanRefreshService: CurrentPlanRefreshService // Inject CurrentPlanRefreshService
+    private currentPlanRefreshService: CurrentPlanRefreshService 
   ) {}
 
   ngOnInit(): void {
@@ -74,14 +73,19 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSave(): void {
-    if (!this.selectedCategory || this.transactionValue === null || !this.transactionName) {
-      console.error('Name, category, and value are required.');
-      return;
-    }
-
+  validateForm(): boolean {
+    this.isInvalid = !this.selectedCategory || this.transactionValue === null || this.transactionValue <= 0 || !this.transactionName;
     if (this.isInvalid) {
-      return; // Prevent saving if the input is invalid
+      this.errorMessage = 'All fields are required and value must be greater than 0';
+    } else {
+      this.errorMessage = '';
+    }
+    return !this.isInvalid;
+  }
+
+  onSave(): void {
+    if (!this.validateForm()) {
+      return; 
     }
 
     const transactionData = {
@@ -95,12 +99,10 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
     this.transactionService.saveTransaction(transactionData).subscribe(
       response => {
         console.log('Transaction saved successfully', response);
-        this.dialogRef.close(true); // Close the modal and signal success
+        this.dialogRef.close(true); 
 
-        // Notify CurrentPlanComponent to refresh
         this.currentPlanRefreshService.triggerRefresh();
 
-        // Redirect to dashboard/current-plan
         this.router.navigate(['/dashboard/current-plan']);
       },
       error => {
@@ -110,7 +112,7 @@ export class TransactionModalComponent implements OnInit, OnDestroy {
   }
 
   onCancel(): void {
-    this.dialogRef.close(); // Close the modal without saving
+    this.dialogRef.close(); 
   }
 
   ngOnDestroy() {

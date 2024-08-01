@@ -70,7 +70,7 @@ namespace Application.Services
         public MonthlyPlanDemo GetDemoMonthlyPlan(Guid plan_id)
         {
             var result = _monthlyPlanRepository.GetDemoMonthlyPlan(plan_id);
-            if (result.Count==0)
+            if (result.Count()==0)
             {
                 throw new Exception("Errorrs, insert demo for plan_id not exist");
             }

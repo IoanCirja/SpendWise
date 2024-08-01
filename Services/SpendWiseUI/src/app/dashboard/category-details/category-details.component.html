@@ -1,53 +1,61 @@
 <div class="container">
   <div>
-    <button mat-icon-button (click)="goBack()" class="back-button">
-return     </button>
+    <mat-card-header>
+      <mat-card-title class="category-details-title">Transaction Details</mat-card-title>
+    </mat-card-header>
   </div>
 
   <mat-card class="details-card">
-    <mat-card-header>
-      <mat-card-title>Category Details</mat-card-title>
-    </mat-card-header>
+
     <mat-card-content>
-      <div>
-        <mat-form-field appearance="fill" id="filter-by-category">
-          <mat-label>Filter by Category</mat-label>
-          <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
-            <mat-option id="all" value="all">All</mat-option>
-            <mat-option id ="filter-category-select" *ngFor="let category of categoriesWithDetails" [value]="category.name">
-              {{ category.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        
-        <mat-form-field appearance="fill" id="sort-by">
-          <mat-label>Sort by</mat-label>
-          <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
-            <mat-option id="dateAsc" value="dateAsc">Date Ascending</mat-option>
-            <mat-option id="dateDesc" value="dateDesc">Date Descending</mat-option>
-            <mat-option id="amountAsc" value="amountAsc">Amount Ascending</mat-option>
-            <mat-option id="amountDesc" value="amountDesc">Amount Descending</mat-option>
-            <mat-option id="nameAsc" value="nameAsc">Name Ascending</mat-option>
-            <mat-option id="nameDesc" value="nameDesc">Name Descending</mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div class="filter-indicator-container">
+        <button mat-icon-button (click)="goBack()" class="back-button">
+          ←
+        </button>
+        <div class="filters">
+
+          <mat-form-field appearance="fill" class="filter">
+            <mat-label>Filter by Category</mat-label>
+            <mat-select [(value)]="selectedCategory" (selectionChange)="filterTransactions()">
+              <mat-option value="all">All</mat-option>
+              <mat-option *ngFor="let category of categoriesWithDetails" [value]="category.name">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="filter">
+            <mat-label>Sort by</mat-label>
+            <mat-select [(value)]="sortCriteria" (selectionChange)="sortTransactions()">
+              <mat-option id="dateAsc" value="dateAsc">Date Ascending</mat-option>
+              <mat-option id="dateDesc" value="dateDesc">Date Descending</mat-option>
+              <mat-option id="amountAsc" value="amountAsc">Amount Ascending</mat-option>
+              <mat-option id="amountDesc" value="amountDesc">Amount Descending</mat-option>
+              <mat-option id="nameAsc" value="nameAsc">Name Ascending</mat-option>
+              <mat-option id="nameDesc" value="nameDesc">Name Descending</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div id="data">
+          <app-fluid-indicator [value]="selectedCategory === 'all' ? calculateAveragePercentage() : getRoundedPercentage(selectedCategoryDetails?.spent ?? 0, selectedCategoryDetails?.price ?? 0)">
+          </app-fluid-indicator>
+          <div class="category-summary">
+            <ng-container *ngIf="selectedCategory === 'all'; else specificCategory">
+              <div class="category-details">
+                <p id="percentage"><b>{{ calculateTotalSpent() }}/{{ calculateTotalAmount() }} &euro;</b></p>
+              </div>
+            </ng-container>
+            <ng-template #specificCategory>
+              <div class="category-details">
+                <p><b>{{ selectedCategoryDetails?.spent }}/{{ selectedCategoryDetails?.price }} &euro;</b></p>
+              </div>
+            </ng-template>
+        </div>
+       
+        </div>
       </div>
 
-      <div class="category-summary">
-        <ng-container *ngIf="selectedCategory === 'all'; else specificCategory">
-          <app-fluid-indicator [value]="calculateAveragePercentage()"></app-fluid-indicator>
-          <div class="category-details">
-            <p>{{ calculateTotalSpent() }}/{{ calculateTotalAmount() }} &euro;</p>
 
-          </div>
-        </ng-container>
-        <ng-template #specificCategory>
-          <app-fluid-indicator [value]="getRoundedPercentage(selectedCategoryDetails?.spent ?? 0, selectedCategoryDetails?.price ?? 0)"></app-fluid-indicator>
-          <div class="category-details">
-            <p>{{ selectedCategoryDetails?.spent }}/{{ selectedCategoryDetails?.price }} &euro;</p>
-          </div>
-        </ng-template>
-      </div>
 
       <table class="regular-table">
         <thead>
@@ -62,7 +70,7 @@ return     </button>
           <tr *ngFor="let transaction of displayedTransactions">
             <td *ngIf="selectedCategory === 'all'">{{ transaction.category }}</td>
             <td>{{ transaction.name }}</td>
-            <td>{{ transaction.amount | currency }}</td>
+            <td>{{ transaction.amount }}&euro;</td>
             <td>{{ transaction.date | date:'shortDate' }}</td>
           </tr>
         </tbody>

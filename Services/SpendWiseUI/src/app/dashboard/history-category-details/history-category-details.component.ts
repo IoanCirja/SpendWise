@@ -114,7 +114,7 @@ export class HistoryCategoryDetailsComponent implements OnInit {
       const selectedCategory = this.categoriesWithDetails.find(category => category.name === this.selectedCategory);
       this.displayedTransactions = selectedCategory ? [...selectedCategory.transactions] : [];
       this.selectedCategoryDetails = selectedCategory;
-      this.totalSpent = this.totalPrice = this.averagePercentage = 0; // Reset values
+      this.totalSpent = this.totalPrice = this.averagePercentage = 0; 
     }
     this.sortTransactions();
   }

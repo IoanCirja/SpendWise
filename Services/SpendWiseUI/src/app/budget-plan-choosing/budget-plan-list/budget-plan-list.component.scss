@@ -14,23 +14,33 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 .header-left span {
   font-size: 1.5rem;
   font-weight: bold;
   font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+::ng-deep {
+  .custom-input-background .mat-mdc-form-field-flex {
+    background-color: #81c470bb !important;
+  }
 }
 
 .header-middle {
   flex: 1;
   display: flex;
   justify-content: center;
+
 }
 
 .header-middle mat-form-field {
   flex: 1;
   max-width: 500px;
+  margin-left: 200px;
 }
 
 .header-right {
@@ -67,7 +77,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   padding: 20px;
-  margin: 20px;
   box-sizing: border-box;
 }
 
@@ -85,8 +94,53 @@ body {
 
 .no-plans-message {
   padding: 16px;
-  color: #f44336; 
+  color: #043F2D; 
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+  min-height: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-button {
+  background-color: #2A6F2C; 
+  border: none;
+  border-radius: 7px; 
+  color: #ffffff;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:disabled {
+  background-color: #c0c0c0; 
+  cursor: not-allowed;
+}
+
+.pagination-button:hover {
+  background-color: #1a5c2e; 
+}
+
+.pagination-text {
+  margin: 0 20px;
+  font-size: 16px;
+  font-weight: bold; 
+}
+
+.myplans{
+  margin-right: 40px;
+  padding-bottom:20px ;
 }

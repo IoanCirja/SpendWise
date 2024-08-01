@@ -68,7 +68,8 @@ export class BudgetPlanCardComponent implements OnInit {
 
   editPlan(): void {
     const dialogRef = this.dialog.open(EditPlanModalComponent, {
-      width: '500px',
+      width: '800px',
+
       data: {
         plan: {
           id: this.plan_id,

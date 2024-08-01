@@ -39,4 +39,7 @@ export class HomeComponent implements OnInit {
   redirectToLogin(): void {
     this.router.navigate(['/auth/login']);
   }
+  redirectToPlans():void{
+    this.router.navigate(['/budget-plans']);
+  }
 }

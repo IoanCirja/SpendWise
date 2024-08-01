@@ -17,6 +17,7 @@ import { MatIcon } from '@angular/material/icon';
 import { EditPlanModalComponent } from './edit-budget-plan-modal/edit-plan-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { DeleteConfirmationDialog } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     CreateBudgetPlanModalComponent,
     BudgetPlanModalComponent,
     EditPlanModalComponent,
+    DeleteConfirmationDialog,
 
   ],
   imports: [

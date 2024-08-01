@@ -6,32 +6,32 @@
 
 .green-stripe {
   height: 60px;
-  background-color: #2A6F2C; /* Green color */
-  width: 100%; /* Span the entire width */
-  position: relative; /* Allows positioning of the close button inside it */
+  background-color: #2A6F2C; 
+  width: 100%; 
+  position: relative;
 }
 
 .close-btn {
   position: absolute;
   top: 50%;
-  right: 16px; /* Distance from the right edge */
-  transform: translateY(-50%); /* Center vertically */
-  color: #FCFCF9; /* White color for the 'X' button */
-  background-color: transparent; /* Transparent background initially */
-  border: 2px solid transparent; /* No border initially */
-  border-radius: 50%; /* Round shape for the background on hover */
-  width: 24px; /* Size of the button */
-  height: 24px; /* Size of the button */
+  right: 16px; 
+  transform: translateY(-50%); 
+  color: #FCFCF9; 
+
+  width: 24px; 
+  height: 24px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s, color 0.3s, border 0.3s; /* Smooth transitions */
+  transition: background-color 0.3s, color 0.3s, border 0.3s; 
 }
 
 .close-btn:hover {
-  color: #2A6F2C; /* Green color for the 'X' button on hover */
-  background-color: #FCFCF9; /* White background on hover */
-  border-color: #FCFCF9; /* White border on hover */
+  color: #2A6F2C; 
+  background-color: #FCFCF9; 
+  border-color: #FCFCF9; 
+  border-radius: 50%; 
+
 }
 
 .categories-section, .general-details-section {
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #3f51b5;
+  border-bottom: 4px solid #2A6F2C;
   padding-bottom: 4px;
   margin-bottom: 8px;
 }
@@ -70,22 +70,18 @@ mat-label {
   color: #2A6F2C !important;
 }
 
-.cancel-create:hover {
-  background-color: #ee0000 !important;
-  color: #FCFCF9 !important;
-}
+
 
 .delete-category-button {
-  color: inherit; /* Ensures the default color is inherited */
-  cursor: pointer; /* Changes the cursor to a pointer */
+  color: inherit; 
+  cursor: pointer; 
 }
 
 .delete-category-button:hover {
-  color: #D60707; /* Changes the icon color to red on hover */
+  color: #D60707; 
 }
 
 .delete-btn {
-  background-color: transparent !important;
   color: #2A6F2C !important;
   font-size: 1.2em;
   padding: 10px 20px;
@@ -93,10 +89,6 @@ mat-label {
   text-align: center;
 }
 
-.delete-btn:hover {
-  background-color: #D60707 !important;
-  color: #FCFCF9 !important;
-}
 
 .dialog-title {
   font-size: 32px;
@@ -113,7 +105,7 @@ mat-label {
 .dialog-actions {
   margin-top: 32px;
   display: flex;
-  justify-content: flex-end; /* Aligns the buttons at the end of the line */
+  justify-content: center; 
   gap: 8px;
 }
 
@@ -124,6 +116,11 @@ mat-label {
   padding: 10px 20px;
   width: 130px;
   text-align: right;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  margin-right: 32px;
+  margin-left: 20px;
+
 }
 
 .cancel-btn {
@@ -135,21 +132,25 @@ mat-label {
   transition: background-color 0.3s, color 0.3s; 
 }
 
-.cancel-btn:hover {
-  background-color: #D60707 !important; 
-  color: #FCFCF9 !important;
-}
+
 
 .add-category {
   font-size: 24px;
   padding: 9px 18px;
-  background-color: #2A6F2C !important;
-  color: #FCFCF9 !important;
+  background-color: #2A6F2C !important; 
+  color: #FCFCF9 !important; 
   border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
+
 .add-category:hover {
-  background-color: #409743 !important;
-  transition: background-color 0.3s, color 0.3s;
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.general-details-header h3,
+.categories-header h3 {
+  color: #043F2D; 
 }

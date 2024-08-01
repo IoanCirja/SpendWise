@@ -1,40 +1,73 @@
-.mat-dialog-container {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .mat-dialog-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 16px;
-  }
-  
-  .mat-dialog-content {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .mat-dialog-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-  }
-  
-  .mat-button {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .mat-raised-button {
-    font-size: 14px;
-    min-width: 100px;
-  }
-  
-  .mat-button, .mat-raised-button {
-    text-transform: none;
-  }
-  
+/* General styling for modals */
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.green-stripe {
+  height: 60px;
+  background-color: #2A6F2C;
+  width: 100%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #FCFCF9;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+.close-btn:hover {
+  color: #2A6F2C;
+  background-color: #FCFCF9;
+  border-color: #FCFCF9;
+  border-radius: 50%;
+}
+
+.dialog-title {
+  font-size: 32px;
+  margin-top: 32px;
+  color: #043F2D;
+}
+
+.dialog-content {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  color: #043F2D;
+}
+
+.dialog-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.confirm-btn {
+  font-size: 1em;
+  padding: 10px 12px;
+  height: 39px; 
+  border-radius: 7px; 
+  border: none;
+  color: #043F2D; 
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+
+.confirm-btn:hover {
+  color: #FCFCF9; 
+  background-color: #d60707; 
+  border-radius: 7px;
+  padding: 10px 12px; 
+}

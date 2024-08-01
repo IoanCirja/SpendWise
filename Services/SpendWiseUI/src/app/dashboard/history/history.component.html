@@ -1,60 +1,63 @@
-<div class="container" id="history-page">
-  <!-- Conditionally show Return button -->
-  <button mat-icon-button *ngIf="isDetailedView" (click)="goBack()">Return</button>
+<div class="container">
+  <button id="backbtn" *ngIf="isDetailedView" (click)="goBack()">←</button>
 
-  <!-- Detailed View: Plan Card -->
   <mat-card class="plan-card" *ngIf="isDetailedView">
-    <mat-card-header style="display: flex; align-items: center;">
+    <mat-card-header id="firstcard"style="display: flex; align-items: center; ">
       <img mat-card-image [src]="selectedPlan?.image" alt="{{ selectedPlan?.plan_name }}">
       <mat-card-title>{{ selectedPlan?.plan_name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>{{ selectedPlan?.description }}</p>
       <div class="mat-card-actions">
-        <p><strong>Total Amount:</strong> {{ selectedPlan?.totalAmount }} &euro;</p>
+        <button class="export-button" (click)="exportPlan()">Export Plan</button>
+
       </div>
-      <button class="export-button" (click)="exportPlan()">Export Plan</button>
 
     </mat-card-content>
     <div class="floating-indicator-wrapper">
       <app-fluid-indicator [value]="averagePercentage"></app-fluid-indicator>
+      <p> <b>{{selectedPlan?.amountSpent}}/{{ selectedPlan?.totalAmount }} &euro;</b></p>
+
     </div>
   </mat-card>
 
-  <!-- Detailed View: Categories Card -->
   <mat-card class="category-card" *ngIf="isDetailedView">
     <mat-card-header class="category-header">
       <mat-card-title>Categories</mat-card-title>
-      <button class="history-details-button" (click)="goToDetails()">View History Details</button>
+      <button class="view-transactions-button" (click)="goToDetails()">View History Details</button>
     </mat-card-header>
     <mat-card-content>
       <div class="categories">
         <div *ngFor="let category of categoriesWithDetails; let i = index" class="category-item">
           <button class="category-button" (click)="openCategoryDetails(category.name)">
-            {{ category.name }}
+            <b>{{ category.name }}</b>
           </button>
           <app-fluid-indicator [value]="getRoundedPercentage(category.spent, category.price)"></app-fluid-indicator>
-          <div class="category-details">{{ category.spent }}/{{ category.price }}&euro;</div>
+          <div class="category-details"><b>{{ category.spent }}/{{ category.price }}&euro;</b></div>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
 
-  <!-- No Plan Message -->
   <div *ngIf="!isDetailedView && historyPlans.length === 0" class="no-plan-message">
     <p>No budget plans in History. Your current plan will be automatically added when it ends.</p>
   </div>
 
-  <!-- History Plans List -->
-  <ng-container *ngIf="!isDetailedView && historyPlans.length > 0">
-    <mat-card class="history-card">
-      <mat-card-content>
-        <div class="plans-list">
-          <button id="plan-button" mat-raised-button *ngFor="let plan of historyPlans" (click)="onPlanSelect(plan)">
-            {{ plan.plan_name }} ({{ plan.date | date:'shortDate' }})
-          </button>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </ng-container>
-</div>
+  <div class="history-container" *ngIf="!isDetailedView && historyPlans.length > 0">
+    <div class="history-header">
+      Choose a Plan from History
+    </div>
+    <ng-container id="list">
+      <mat-card class="history-card">
+        <mat-card-content>
+          <div class="plans-list">
+            <button id="plan-button" mat-raised-button *ngFor="let plan of historyPlans" (click)="onPlanSelect(plan)">
+              {{ plan.plan_name }} ({{ plan.date | date:'shortDate' }})
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+  
+

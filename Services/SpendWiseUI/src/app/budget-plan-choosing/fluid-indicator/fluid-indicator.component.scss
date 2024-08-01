@@ -5,10 +5,11 @@
 
 .progress {
   --progress-value: 40;
-  --progress-indicator-size: 150px; /* Reduced size */
-  --progress-size: 90px; /* Reduced size */
-  --progress-inner-size: calc(var(--progress-size) - 10px); /* Adjusted for new size */
-  border: 5px solid #fcfcf9; /* Light background color for the circle */
+  --progress-indicator-size: 150px; 
+  --progress-size: 90px; 
+  --progress-inner-size: calc(var(--progress-size) - 10px); 
+  border: 5px solid #fcfcf9; 
+  position: relative;
 
   &::before {
     content: "";
@@ -25,11 +26,20 @@
   }
 
   &[data-value="-1"] {
-    border-color: #f88; /* Red tone for completed state */
+    border-color: #f88; 
     &::before {
       animation: progress-firework 1.3s 0.1s ease infinite both;
     }
-    
+
+    .progress-indicator,
+    .progress-indicator:nth-child(2) {
+      background: #d60707;
+      top: 0; 
+      bottom: 0; 
+      height: 100%; 
+      animation: none; 
+      border-radius: 50%; 
+    }
   }
 
   &,
@@ -40,9 +50,9 @@
     justify-content: center;
     width: var(--progress-size);
     height: var(--progress-size);
-    border-radius: 50%; /* Adjusted to a circle */
-    background: #fcfcf9; /* Light background color */
-    border: 5px solid #ccc; /* Border added */
+    border-radius: 50%; 
+    background: #fcfcf9;
+    border: 5px solid #ccc; 
   }
 
   &-inner {
@@ -60,18 +70,18 @@
     width: 90%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #333; /* Darker text color for better readability */
+    color: #333; 
 
     strong {
-      font-size: 120%; /* Adjusted size */
+      font-size: 120%; 
     }
     span {
-      font-size: 100%; /* Adjusted size */
+      font-size: 100%; 
     }
   }
 
   &-indicator {
-    background: #8dbf8e; /* Main indicator color: light green */
+    background: #8dbf8e; 
     transform-origin: center center;
     opacity: 0.6;
     animation: progress-wave-animation 8s linear infinite both;
@@ -85,18 +95,18 @@
   }
 
   &-indicator:nth-child(2) {
-    background: #6ca76c; /* Slightly darker green for the second indicator */
+    background: #6ca76c; 
     transform: rotate(90deg);
     border-radius: 90%;
   }
 
   &.progress--upper-half-value {
     &-indicator {
-      background: #fc8a8a; /* Transition to red tones */
+      background: #fc8a8a; 
     }
 
     &-indicator:nth-child(2) {
-      background: #d63f3f; /* Darker red for the second indicator */
+      background: #d63f3f; 
     }
   }
 }
@@ -105,7 +115,7 @@
   from, 0% {
     width: 50%;
     height: 50%;
-    background: #f88; /* Red tone for the firework effect */
+    background: #f88; 
     opacity: 1;
   }
   30% {
@@ -114,7 +124,7 @@
   to, 100% {
     width: 150%;
     height: 150%;
-    background: #fbb; /* Light red for the final effect */
+    background: #fbb; 
     opacity: 0;
   }
 }

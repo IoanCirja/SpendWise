@@ -18,18 +18,18 @@ export class BudgetPlanListComponent implements OnInit {
 
   viewOptions: string[] = ['View All', 'Pages'];
   sortOptions: string[] = [
-    'Sort by Name (A-Z)',
-    'Sort by Name (Z-A)',
-    'Sort by No. of Categories (Ascending)',
-    'Sort by No. of Categories (Descending)',
-    'Sort by Creation Date (Newest First)',
-    'Sort by Creation Date (Oldest First)'
+    'Name (A-Z)',
+    'Name (Z-A)',
+    'No. of Categories (Ascending)',
+    'No. of Categories (Descending)',
+    'Newest',
+    'Oldest'
   ];
-  selectedSortOption: string = 'Sort by Creation Date (Newest First)';
+  selectedSortOption: string = 'Newest';
   selectedViewOption: string = this.viewOptions[0];
 
   currentPage: number = 1;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 3;
   totalPages: number = 1;
 
   isAdmin: boolean = false;
@@ -71,22 +71,22 @@ export class BudgetPlanListComponent implements OnInit {
 
   sortBudgetPlans(): void {
     switch (this.selectedSortOption) {
-      case 'Sort by Name (A-Z)':
+      case 'Name (A-Z)':
         this.filteredBudgetPlans.sort((a, b) => a.name.localeCompare(b.name));
         break;
-      case 'Sort by Name (Z-A)':
+      case 'Name (Z-A)':
         this.filteredBudgetPlans.sort((a, b) => b.name.localeCompare(a.name));
         break;
-      case 'Sort by No. of Categories (Ascending)':
+      case 'No. of Categories (Ascending)':
         this.filteredBudgetPlans.sort((a, b) => a.noCategory - b.noCategory);
         break;
-      case 'Sort by No. of Categories (Descending)':
+      case 'No. of Categories (Descending)':
         this.filteredBudgetPlans.sort((a, b) => b.noCategory - a.noCategory);
         break;
-      case 'Sort by Creation Date (Newest First)':
+      case 'Newest':
         this.filteredBudgetPlans.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
         break;
-      case 'Sort by Creation Date (Oldest First)':
+      case 'Oldest':
         this.filteredBudgetPlans.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime());
         break;
     }

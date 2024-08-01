@@ -1,61 +1,20 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 .container {
   padding: 20px;
   font-family: 'Roboto Condensed', sans-serif; 
-  position: relative; /* To position the back button absolutely */
+  position: relative; 
   margin-bottom: 400px;
 }
 
 .details-card {
-  width: 70%; /* Adjusted to fit within container */
+  width: 70%; 
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px auto; /* Center the card horizontally with margin auto */
-  padding: 16px; /* Add padding inside the card */
-}
-
-.mat-form-field {
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-.regular-table {
-  width: calc(100% - 30px); /* Full width minus some padding to center */
-  border-collapse: collapse;
-  font-size: 18px; /* Increase font size */
-  margin: 16px auto; /* Center the table with auto margin */
-  
-  th, td {
-    padding: 16px 24px; /* Increase padding for larger columns */
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #e8f5e9; 
-    color: #388e3c; 
-    font-weight: 600;
-    font-size: 18px; /* Increase font size */
-  }
-
-  tr {
-    transition: background-color 0.3s ease;
-  }
-
-  tr:hover {
-    background-color: #e8f5e9; 
-  }
-
-  td {
-    vertical-align: middle;
-    font-size: 18px; /* Increase font size */
-  }
-}
-
-.mat-card-content {
-  padding: 0; /* Remove padding to fit the table better */
+  margin: 20px auto;
+  padding: 16px; 
+  background-color: #fff; 
 }
 
 .mat-card-header {
@@ -65,29 +24,94 @@
   padding: 16px;
 }
 
-.mat-card-title {
-  font-size: 24px;
+.category-details-title {
+  font-size: 28px; 
   font-weight: 700;
 }
 
-.mat-card-content p {
-  font-size: 16px;
-  color: #333;
+.mat-card-content {
+  padding: 16px; 
+}
+
+#percentage{
+  font-weight: bold !important;
+}
+
+.filter-indicator-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+.filters {
+  display: flex;
+  gap: 20px; 
+  flex: 1; 
+  margin-top: 20px;
+}
+
+.filter {
+  width: auto;
+}
+
+.regular-table {
+  width: calc(100% - 30px); 
+  border-collapse: collapse;
+  font-size: 18px; 
+  margin: 16px auto; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+  overflow: hidden; 
+}
+
+.regular-table th,
+.regular-table td {
+  padding: 16px 24px; 
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.regular-table th {
+  background-color: #e8f5e9; 
+  color: #043F2D; 
+  font-weight: 600;
+  font-size: 18px; 
+}
+
+.regular-table tr {
+  transition: background-color 0.3s ease;
+}
+
+.regular-table tr:hover {
+  background-color: #e8f5e9; 
+}
+
+.regular-table td {
+  vertical-align: middle;
+  font-size: 18px; 
 }
 
 .back-button {
-  position: absolute; /* Position it absolutely within the container */
-  top: 16px; /* Space from the top */
-  left: 16px; /* Space from the left */
-  color: #000; /* Default color */
-  background-color: #e0e0e0; /* Background color */
-  border-radius: 50%; /* Make the button circular */
-  padding: 8px; /* Add some padding */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
-  z-index: 1; /* Ensure the button is above other content */
-  
-  &:hover {
-    background-color: #4caf50; /* Green background on hover */
-    color: #fff; /* White color on hover */
-  }
+  position: absolute; 
+  top: 16px; 
+  left: 16px; 
+  color: #043F2D; 
+  border-radius: 50%; 
+  padding: 8px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  z-index: 1; 
+}
+
+.back-button:hover {
+  background-color: #2A6F2C; 
+  color: #fcfcf9; 
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.category-details{
+  margin-left:20px;
 }

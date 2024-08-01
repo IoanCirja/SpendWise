@@ -20,10 +20,9 @@ export class CurrentPlanService {
 
   cancelCurrentPlan(monthlyPlan_id: string): Observable<string> {
     console.log(`"${monthlyPlan_id}"`);
-    // Using HttpResponse to handle text response
     return this.http.post<string>(this.apiUrlCancelPlan, `"${monthlyPlan_id}"`, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      responseType: 'text' as 'json'  // Specify response type as 'text'
+      responseType: 'text' as 'json' 
     });
   }
 }

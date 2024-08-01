@@ -1,23 +1,36 @@
-<h1 mat-dialog-title>Edit Budget Plan</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="plan.name" placeholder="Enter plan name">
-  </mat-form-field>
+<div class="green-stripe">
+  <button mat-icon-button class="close-btn" (click)="onClose()">
+    x
+  </button>
+</div>
+<h1 mat-dialog-title class="dialog-title"><b>Edit Budget Plan</b></h1>
+<div mat-dialog-content class="dialog-content">
+  <div class="general-details-section">
+    <div class="general-details-header">
+      <h3>General Details</h3>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="plan.name" placeholder="Enter plan name">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="plan.description" placeholder="Enter plan description"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="plan.description" placeholder="Enter plan description"></textarea>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Image URL</mat-label>
-    <input matInput [(ngModel)]="plan.image" placeholder="Enter image URL">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput [(ngModel)]="plan.image" placeholder="Enter image URL">
+    </mat-form-field>
+  </div>
 
   <div class="categories-section">
-    <h2>Categories</h2>
-    <div *ngFor="let category of plan.categories; let i = index" class="category-row">
+    <div class="categories-header">
+      <h3>Categories</h3>
+      <button mat-icon-button class="add-category" (click)="addCategory()">+</button>
+    </div>
+    <div *ngFor="let category of plan.categories; let i = index;" class="category-row">
       <mat-form-field appearance="fill">
         <mat-label>Category Name</mat-label>
         <input matInput [(ngModel)]="plan.categories[i]" placeholder="Enter category name">
@@ -26,11 +39,10 @@
         </button>
       </mat-form-field>
     </div>
-    <button mat-raised-button class="add-category" (click)="addCategory()">Add Category</button>
   </div>
 </div>
-<div mat-dialog-actions>
-  <button mat-button class="cancel-btn" (click)="onClose()">Cancel</button>
+<div mat-dialog-actions class="dialog-actions">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
   <button mat-button class="delete-btn" (click)="onDelete()">Delete Plan</button>
-  <button mat-raised-button color="primary" class="save-btn" (click)="onSave()">Save</button>
+  <button mat-raised-button class="save-btn" (click)="onSave()">Save</button>
 </div>

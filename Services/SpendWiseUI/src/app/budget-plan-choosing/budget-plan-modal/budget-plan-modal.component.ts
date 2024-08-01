@@ -90,7 +90,7 @@ export class BudgetPlanModalComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.errorMessage = null; // Clear any previous error message
+    this.errorMessage = null; 
 
     const plan_id = this.dataHolder.plan_id;
     const totalAmount = this.dataHolder.categories.reduce((acc, category) => acc + category.value, 0);

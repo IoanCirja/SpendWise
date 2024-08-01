@@ -30,7 +30,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   constructor(
     private dashboardButtonService: DashboardButtonService,
     private currentPlanService: CurrentPlanService,
-    private exportService: ExportService,  // Inject the new service
+    private exportService: ExportService,  
     private router: Router,
     private accountService: AccountService,
     private dialog: MatDialog,
@@ -166,7 +166,7 @@ export class CurrentPlanComponent implements OnInit, OnDestroy {
   
     const planDate = new Date(this.currentPlan.date);
     const year = planDate.getFullYear();
-    const month = planDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
+    const month = planDate.getMonth() + 1; 
     const fileName = `${planDate.toLocaleString('default', { month: 'long' })} - ${year} Budget Summary.pdf`;
   
     this.exportService.exportPlan(this.userId, year, month).subscribe(

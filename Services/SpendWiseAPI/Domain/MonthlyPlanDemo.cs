@@ -8,7 +8,7 @@ namespace Domain
 {
     public class MonthlyPlanDemo
     {
-        public string totalAmount { get; set; }
+        public double totalAmount { get; set; }
         public string priceByCategory { get; set; }
     }
 }

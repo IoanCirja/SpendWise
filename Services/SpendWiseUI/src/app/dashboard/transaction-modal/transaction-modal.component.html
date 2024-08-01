@@ -1,6 +1,10 @@
-<!-- transaction-modal.component.html -->
-<h2 mat-dialog-title>Add Transaction</h2>
-<mat-dialog-content>
+<div class="green-stripe">
+  <button mat-icon-button class="close-btn" (click)="onCancel()">
+    x
+  </button>
+</div>
+<mat-dialog-content class="dialog-content">
+  <h1 class="dialog-title">Add a Transaction</h1>
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
     <input id="transaction-name" matInput [(ngModel)]="transactionName">
@@ -8,7 +12,7 @@
   
   <mat-form-field appearance="fill" id="transaction-category">
     <mat-label>Category</mat-label>
-    <mat-select [(value)]="selectedCategory">
+    <mat-select [(ngModel)]="selectedCategory">
       <mat-option id="transaction-category-select" *ngFor="let category of categories" [value]="category">
         {{ category }}
       </mat-option>
@@ -19,9 +23,9 @@
     <mat-label>Value</mat-label>
     <input id="transaction-amount" matInput type="number" [(ngModel)]="transactionValue" (ngModelChange)="validateValue()">
   </mat-form-field>
+  
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button id="transaction-cancel" mat-button (click)="onCancel()">Cancel</button>
-  <button id="transaction-save" mat-raised-button color="primary" (click)="onSave()" [disabled]="isInvalid">Save</button>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-raised-button color="primary" class="confirm-btn" (click)="onSave()" >Save</button>
 </mat-dialog-actions>

@@ -5,7 +5,7 @@ export type BudgetPlan = {
     noCategory: number;
     category: string;
     image: string;
-    creationDate: string; // Ensure this is included
+    creationDate: string; 
     created_by: string;
   };
   
